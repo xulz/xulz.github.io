@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>时光.漫步</title>
+    <link>http://xulz.github.io/</link>
+    <description>Recent content on 时光.漫步</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2016</copyright>
+    <lastBuildDate>Tue, 04 Oct 2016 19:04:27 +0800</lastBuildDate>
+    <atom:link href="http://xulz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Go In Action</title>
+      <link>http://xulz.github.io/post/go-in-action/</link>
+      <pubDate>Tue, 04 Oct 2016 19:04:27 +0800</pubDate>
+      
+      <guid>http://xulz.github.io/post/go-in-action/</guid>
+      <description>&lt;p&gt;静态站点生成器之前有所尝试,了解过Octopress和Pelican,在Github Pages建了个Hello World就没有然后了.&lt;br /&gt;
+最近再次想继续这种方式的写作练习,是在听完&amp;rsquo;内核恐慌&amp;rsquo;播客的一期节目,也因此知道了Hugo.&lt;br /&gt;
+最近几个月一直在强迫自己用Github和Markdown,正好整合.&lt;/p&gt;
+
+&lt;p&gt;BTW,&lt;a href=&#34;https://www.staticgen.com/&#34;&gt;StaticGen&lt;/a&gt;这个汇总站点真不错.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
