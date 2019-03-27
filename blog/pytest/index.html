@@ -1,0 +1,523 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>pytest测试框架 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="pytest测试框架">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="pytest测试框架 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/pytest/" itemprop="url">
+        pytest测试框架
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-03-21">
+    2018-03-21
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">847 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>单元测试最初流行是从JUnit,而他的发明者Kent Beck大神的经典名作&lt;测试驱动开发&gt;这本小书却引领了TDD的风潮,产生了xUnit各个语言系列.</p>
+
+<p>初次接触pytest,感觉不像个xUnit,因为既看不到对TestCase的继承,也找不到Setup/Teardown这些建立/销毁函数.当然这些基本功能肯定是支持的.</p>
+
+<p>pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.</p>
+
+<h2 id="py-test-用法">py.test 用法</h2>
+
+<p>pytest提供丰富的命令行参数.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">pytest -h
+# 其他用法
+-q, --quiet  
+-s  --capture=no   
+--cache-show
+--cache-clear</pre></div>
+<p>下面以测试过程为序,展开各过程主要用法.</p>
+
+<h3 id="配置">配置</h3>
+
+<p>pytest配置文件: pytest.ini|tox.ini|setup.cfg</p>
+
+<h3 id="收集">收集</h3>
+
+<h4 id="pytest-mark">pytest.mark</h4>
+
+<blockquote>
+<p>注: 只作用于tests,对fixture无效</p>
+</blockquote>
+
+<h4 id="命令行测试用例选择">命令行测试用例选择:</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">-k EXPRESSION   : 按正则选取
+-m MARKEXPR     : 示例 &#34;not (slow or long)”
+--ignore=path   忽略部分测试集</pre></div>
+<h3 id="运行">运行</h3>
+
+<p>基本用法:</p>
+
+<blockquote>
+<p>pytest test_mod.py::TestClass::test_method</p>
+</blockquote>
+
+<p>命令行辅助选项:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">--lf, --last-failed   rerun only the tests that failed at the last run (or all if none failed)
+# 退出条件:
+-x, --exitfirst 出错后退出
+--maxfail=num 失败N次后退出</pre></div>
+<h3 id="报告">报告</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 需要先安装pytest-html插件
+py.test --html=report.html
+
+# 命令行选项:
+--durations=N         # 显示最慢的执行 (N=0 for all)</pre></div>
+<h3 id="fixture">fixture</h3>
+
+<p>fixtures通常存放在根目录的conftest.py或子文件夹的conftest.py(可用来覆盖并重新定义).</p>
+
+<h4 id="fixture的用法">fixture的用法</h4>
+
+<p>@pytest.fixture()</p>
+
+<p>主要参数:</p>
+
+<ul>
+<li><p>scope: session/module/class</p></li>
+
+<li><p>params: 参数化,会执行多次</p></li>
+
+<li><p>autouse=True</p></li>
+</ul>
+
+<p>tear down函数体定义:</p>
+
+<ul>
+<li><p>代码块为yield之后的所有语句</p></li>
+
+<li><p>或者使用request.addfinalizer(fin)的方式 (好处:及时发生异常也会执行)</p></li>
+</ul>
+
+<h4 id="命令行辅助项">命令行辅助项</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">--fixtures  显示可用的fixture
+--setup-only          only setup fixtures, do not execute tests.
+--setup-show        show setup of fixtures while executing tests.
+--setup-plan          show what fixtures and tests would be executed but  don&#39;t execute anything.</pre></div>
+<h2 id="功能介绍">功能介绍</h2>
+
+<h3 id="fixtures">Fixtures</h3>
+
+<p>装饰器标记函数为fixture, 总体上fixtures提供:</p>
+
+<ul>
+<li><p>单元测试框架的基本功能</p></li>
+
+<li><p>依赖注入: 一些共有函数值/帮助函数/Mock等</p></li>
+
+<li><p>测试数据参数化</p></li>
+
+<li><p>灵活性由不同的作用范围和目录级conftest.py等提供</p></li>
+</ul>
+
+<h3 id="monkeypatch">monkeypatch</h3>
+
+<p>Monkeypatching/mocking modules and environments.</p>
+
+<ul>
+<li><p>monkeypatch.setattr()</p></li>
+
+<li><p>monkeypatch.delattr()</p></li>
+</ul>
+
+<h2 id="扩展资源">扩展资源</h2>
+
+<h3 id="流行插件">流行插件</h3>
+
+<ul>
+<li><a href="https://github.com/pytest-dev/pytest-variables">pytest-variables</a> : 通过json文件定义共享变量</li>
+<li><a href="https://github.com/pytest-dev/pytest-html">pytest-html</a> : HTML测试报告</li>
+<li><a href="https://github.com/pytest-dev/pytest-selenium">pytest-selenium</a></li>
+</ul>
+
+<h3 id="文档">文档</h3>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/34466027/in-py-test-what-is-the-use-of-conftest-py-files">conftest的用法</a></li>
+<li><a href="https://docs.pytest.org/en/latest/customize.html">配置文件</a></li>
+<li><a href="https://docs.pytest.org/en/latest/builtin.html">API接口和内置方法</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/testing" rel="tag" title="testing">#testing#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/linux-system-command/" rel="next" title="Linux系统命令">
+        <i class="fa fa-chevron-left"></i> Linux系统命令
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/linux-search/" rel="prev" title="Linux文件查找/内容搜索命令">
+        Linux文件查找/内容搜索命令 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#py-test-用法">py.test 用法</a>
+<ul>
+<li><a href="#配置">配置</a></li>
+<li><a href="#收集">收集</a>
+<ul>
+<li><a href="#pytest-mark">pytest.mark</a></li>
+<li><a href="#命令行测试用例选择">命令行测试用例选择:</a></li>
+</ul></li>
+<li><a href="#运行">运行</a></li>
+<li><a href="#报告">报告</a></li>
+<li><a href="#fixture">fixture</a>
+<ul>
+<li><a href="#fixture的用法">fixture的用法</a></li>
+<li><a href="#命令行辅助项">命令行辅助项</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#功能介绍">功能介绍</a>
+<ul>
+<li><a href="#fixtures">Fixtures</a></li>
+<li><a href="#monkeypatch">monkeypatch</a></li>
+</ul></li>
+<li><a href="#扩展资源">扩展资源</a>
+<ul>
+<li><a href="#流行插件">流行插件</a></li>
+<li><a href="#文档">文档</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

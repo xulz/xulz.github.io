@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Health on XuLizhao &#39;s Notes</title>
+    <link>/tags/health/</link>
+    <description>Recent content in Health on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 14 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/health/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>再学游泳</title>
+      <link>/play/swimming/</link>
+      <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/play/swimming/</guid>
+      <description>最近再次开始学游泳，距离初次学蛙泳已经过去了10多年。当时还在大学蹭宿舍，因为一直很喜欢向往大海，便让老同学教我蛙泳。 期间由于基础不行，某次</description>
+    </item>
+    
+  </channel>
+</rss>

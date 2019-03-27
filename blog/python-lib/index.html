@@ -1,0 +1,584 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>python流行库/框架汇总 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="python流行库/框架汇总">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="python流行库/框架汇总 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/python-lib/" itemprop="url">
+        python流行库/框架汇总
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-04">
+    2018-07-04
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">721 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>作为一个Python粉,一直在各种场合使用这个语言,最近也在试图从Python2彻底切换到Python3.</p>
+
+<p>如果说缺点的话,也只有对它的性能有所抱怨(GIL),不能使用多核CPU.</p>
+
+<p>这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.</p>
+
+<p>注: 具体类别以个人喜好排序</p>
+
+<h2 id="开发类">开发类</h2>
+
+<h3 id="必备">必备</h3>
+
+<ul>
+<li><a href="http://docs.python-requests.org/">Requests</a> :用的最久和最多的库</li>
+</ul>
+
+<h3 id="web开发">Web开发</h3>
+
+<ul>
+<li><a href="http://flask.pocoo.org/">Flask</a> :轻量级微框架</li>
+<li><a href="https://www.djangoproject.com/">Django</a> :全栈框架</li>
+<li><a href="https://trypyramid.com/">Pyramid</a> :想用却没太多实战</li>
+</ul>
+
+<h4 id="flask相关">Flask相关</h4>
+
+<ul>
+<li><a href="http://www.pythondoc.com/flask-sqlalchemy/index.html">Flask-SQLAlchemy</a></li>
+</ul>
+
+<h4 id="rest服务">REST服务</h4>
+
+<ul>
+<li><a href="https://github.com/pyeve/eve">Eve</a>: 基于Flask的灵活RESTful服务</li>
+<li><a href="https://github.com/encode/django-rest-framework">Django REST framework</a></li>
+<li><a href="https://github.com/falconry/falcon">Falcon</a>: 高性能微服务框架</li>
+</ul>
+
+<h3 id="数据库">数据库</h3>
+
+<ul>
+<li><a href="http://docs.peewee-orm.com/en/latest/index.html">peewee</a> : 轻量级ORM</li>
+<li><a href="http://www.sqlalchemy.org/">SQLAlchemy</a> : 标配ORM</li>
+</ul>
+
+<h4 id="driver-驱动">Driver/驱动</h4>
+
+<ul>
+<li><a href="https://github.com/PyMySQL/PyMySQL">PyMySQL</a> : 纯python实现的MySQL客户端</li>
+<li><a href="http://initd.org/psycopg/">psycopg2</a>: 最常用PostgreSQL客户端</li>
+<li><a href="https://github.com/MagicStack/asyncpg">asyncpg</a>: 支持asyncio的PostgreSQL客户端</li>
+<li><a href="https://cx-oracle.readthedocs.io">cx_Oracle</a>: Oracle客户端</li>
+</ul>
+
+<h3 id="i-o-多线程">I/O 多线程</h3>
+
+<ul>
+<li><a href="https://github.com/dabeaz/curio">Curio</a> : 协程库,aysncio的其他版本</li>
+</ul>
+
+<h3 id="功能增强">功能增强</h3>
+
+<ul>
+<li><a href="https://github.com/dbader/schedule">schedule</a>: 类似cron的任务安排</li>
+<li><a href="https://github.com/Yelp/elastalert">ElastAlert</a> : Elasticsearch提醒</li>
+<li><a href="http://docs.celeryproject.org/">Celery</a> : 异步消息/任务队列</li>
+<li><a href="https://github.com/rq/rq">rq</a>: 精简版任务队列,基于Redis</li>
+</ul>
+
+<h3 id="图像处理">图像处理</h3>
+
+<ul>
+<li><a href="https://github.com/python-pillow/Pillow">Pillow</a></li>
+</ul>
+
+<h3 id="加密">加密</h3>
+
+<ul>
+<li><a href="https://github.com/pyca/cryptography">cryptography</a></li>
+</ul>
+
+<h3 id="网络抓取">网络抓取</h3>
+
+<ul>
+<li><a href="https://github.com/scrapy/scrapy">Scrapy</a>/<a href="https://github.com/scrapinghub/portia">Portia</a> web前端</li>
+<li><a href="https://github.com/binux/pyspider/releases">pyspider</a></li>
+</ul>
+
+<h3 id="语言规范">语言规范</h3>
+
+<ul>
+<li><a href="https://github.com/google/yapf">YAPF</a> : 格式化及规范</li>
+<li><a href="https://github.com/faif/python-patterns">常用设计模式</a></li>
+</ul>
+
+<h3 id="客户端">客户端</h3>
+
+<ul>
+<li><a href="https://github.com/pallets/click">Click</a>: 命令行工具</li>
+<li><a href="https://github.com/pyinstaller/pyinstaller">PyInstaller</a> : 安装打包</li>
+<li><a href="https://github.com/kivy/kivy">Kivy</a>: 跨平台/手机产品原型设计</li>
+</ul>
+
+<h2 id="运维相关">运维相关</h2>
+
+<h3 id="生产部署">生产部署</h3>
+
+<ul>
+<li><a href="http://docs.gunicorn.org/en/stable/index.html">Gunicorn</a> : WSGI HTTP Server</li>
+</ul>
+
+<h3 id="自动化-运维">自动化/运维</h3>
+
+<ul>
+<li><a href="http://docs.fabfile.org/">Fabric</a> : 轻量部署</li>
+<li><a href="https://docs.ansible.com/ansible/latest/index.html">Ansible</a></li>
+<li><a href="https://github.com/boto/boto3">Boto 3</a>: AWS运维</li>
+</ul>
+
+<h3 id="监控">监控</h3>
+
+<ul>
+<li><a href="https://github.com/giampaolo/psutil">psutil</a>:进程和系统监控</li>
+<li><a href="https://github.com/Jahaja/psdash">psdash</a>: 基于psutil和flask的web端</li>
+</ul>
+
+<h2 id="测试">测试</h2>
+
+<h3 id="测试库-框架">测试库/框架</h3>
+
+<ul>
+<li><a href="https://docs.pytest.org/">pytest</a> : 基础测试框架</li>
+<li><a href="https://github.com/joke2k/faker">Faker</a> : 假数据生成</li>
+<li><a href="https://github.com/minimaxir/big-list-of-naughty-strings">易出错输入字符集</a></li>
+<li><a href="https://github.com/asweigart/pyautogui">PyAutoGUI</a>: GUI自动化,操作鼠标/键盘</li>
+</ul>
+
+<h3 id="性能测试">性能测试</h3>
+
+<ul>
+<li><a href="https://github.com/locustio/locust">Locust</a></li>
+</ul>
+
+<h2 id="数据科学">数据科学</h2>
+
+<h3 id="数据处理">数据处理</h3>
+
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/overview.html">pandas</a></li>
+<li><a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a> : Excel操作</li>
+<li><a href="https://github.com/harelba/q">q</a>: 在csv上运行SQL</li>
+</ul>
+
+<h3 id="可视化">可视化</h3>
+
+<ul>
+<li><a href="https://github.com/matplotlib/matplotlib">Matplotlib</a> : 最早接触的绘图库</li>
+<li><a href="https://github.com/bokeh/bokeh">Bokeh</a> : 交互式可视化</li>
+</ul>
+
+<h2 id="工具">工具</h2>
+
+<ul>
+<li><a href="https://httpie.org/">HTTPie</a> : 增强易用版curl</li>
+
+<li><p><a href="https://github.com/requests/httpbin">httpbin</a>/<a href="https://httpbin.org/">官方站</a> : 请求/响应服务,学习HTTP协议</p></li>
+
+<li><p><a href="https://github.com/audreyr/cookiecutter">cookiecutter</a>:项目开发模板</p></li>
+</ul>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<ul>
+<li><a href="https://awesome-python.com/">awesome-python</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/python" rel="tag" title="python">#python#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/fabric/" rel="next" title="Fabric自动化部署">
+        <i class="fa fa-chevron-left"></i> Fabric自动化部署
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/cert/" rel="prev" title="证书那些事">
+        证书那些事 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#开发类">开发类</a>
+<ul>
+<li><a href="#必备">必备</a></li>
+<li><a href="#web开发">Web开发</a>
+<ul>
+<li><a href="#flask相关">Flask相关</a></li>
+<li><a href="#rest服务">REST服务</a></li>
+</ul></li>
+<li><a href="#数据库">数据库</a>
+<ul>
+<li><a href="#driver-驱动">Driver/驱动</a></li>
+</ul></li>
+<li><a href="#i-o-多线程">I/O 多线程</a></li>
+<li><a href="#功能增强">功能增强</a></li>
+<li><a href="#图像处理">图像处理</a></li>
+<li><a href="#加密">加密</a></li>
+<li><a href="#网络抓取">网络抓取</a></li>
+<li><a href="#语言规范">语言规范</a></li>
+<li><a href="#客户端">客户端</a></li>
+</ul></li>
+<li><a href="#运维相关">运维相关</a>
+<ul>
+<li><a href="#生产部署">生产部署</a></li>
+<li><a href="#自动化-运维">自动化/运维</a></li>
+<li><a href="#监控">监控</a></li>
+</ul></li>
+<li><a href="#测试">测试</a>
+<ul>
+<li><a href="#测试库-框架">测试库/框架</a></li>
+<li><a href="#性能测试">性能测试</a></li>
+</ul></li>
+<li><a href="#数据科学">数据科学</a>
+<ul>
+<li><a href="#数据处理">数据处理</a></li>
+<li><a href="#可视化">可视化</a></li>
+</ul></li>
+<li><a href="#工具">工具</a></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

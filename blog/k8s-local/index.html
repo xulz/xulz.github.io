@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Kubernetes部署篇:本地开发测试环境搭建 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Kubernetes部署篇:本地开发测试环境搭建">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Kubernetes部署篇:本地开发测试环境搭建 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/k8s-local/" itemprop="url">
+        Kubernetes部署篇:本地开发测试环境搭建
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-04-13">
+    2018-04-13
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">955 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>本文侧重于入门Kubernetes时的本地开发测试环境搭建,及minikube的使用.</p>
+
+<p>尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.</p>
+
+<h3 id="mac单节点体验">Mac单节点体验</h3>
+
+<p>先安装相应的几个工具:</p>
+
+<ul>
+<li>下载Minikube: <a href="https://github.com/kubernetes/minikube/releases">minikube-darwin-amd64</a></li>
+<li>kuberctl
+<br /></li>
+</ul>
+
+<p>后续命令:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    chmod +x minikube-darwin-amd64
+    mv minikube-darwin-amd64 /usr/local/bin/minikube
+    brew install kubectl</code></pre></div>
+<p>验证环境正确:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">注: 进行前需梯子,否则第一步下载localkube可能失败,产生如下错误
+Error creating localkube asset from url: Error opening file asset: open /Users/xulz/.minikube/cache/localkube/localkube-v1.8.0: no such file or directory
+进而导致之后Pod的状态一直是ContainerCreating</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 确保本机已安装VirtualBox</span>
+    minikube start
+    kubectl run hello-minikube --image<span style="color:#555">=</span>gcr.io/google_containers/echoserver:1.4 --port<span style="color:#555">=</span><span style="color:#f60">8080</span>
+    <span style="color:#09f;font-style:italic"># 检查Pod是否已运行, 需要从ContainerCreating更新为Running</span>
+    kubectl get pod
+    <span style="color:#09f;font-style:italic"># 如果一直是ContainerCreating, 检查错误原因</span>
+    kubectl describe pods
+    <span style="color:#09f;font-style:italic"># 页面应该可访问</span>
+    curl <span style="color:#069;font-weight:bold">$(</span>minikube service hello-minikube --url<span style="color:#069;font-weight:bold">)</span>
+    <span style="color:#09f;font-style:italic"># 查看Dashboard</span>
+    minikube dashboard
+    <span style="color:#09f;font-style:italic"># 不用时清除</span>
+    kubectl delete deployment hello-minikube
+    minikube stop</code></pre></div>
+<h3 id="ubuntu多节点">Ubuntu多节点</h3>
+
+<p>使用工具conjure-up搭建本地测试/开发环境, 本身基于juju部署工具.</p>
+
+<p>官方支持2种部署模式:</p>
+
+<ul>
+<li><p>kubernetes-core : (Staging环境) 1个Master节点+1个Worker节点</p></li>
+
+<li><p>canonical-kubernetes: (生产环境) 2 masters, 3 workers, 3 etc nodes 及API Load Balance</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 本地安装使用kubectl</span>
+sudo snap install kubectl --classic
+<span style="color:#09f;font-style:italic"># 准备阶段</span>
+sudo snap install conjure-up --classic
+sudo snap install lxd
+newgrp lxd
+sudo usermod -a -G lxd xulz
+/snap/bin/lxd init
+<span style="color:#09f;font-style:italic"># 需要重启机器</span>
+sudo reboot
+<span style="color:#09f;font-style:italic"># 禁用IPv6, conjure-up基于的juju暂时不支持</span>
+lxc network <span style="color:#366">set</span> lxdbr0 ipv6.address none</code></pre></div></li>
+</ul>
+
+<p>使用图像界面安装</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    conjure-up kubernetes
+    <span style="color:#09f;font-style:italic"># 对于Docker的虚拟网络插件,这里选择默认的Flannel</span>
+    <span style="color:#09f;font-style:italic"># 安装过程需开启梯子, gcr.io 不可访问</span></code></pre></div>
+<blockquote>
+<p>Kubernetes常用网络插件: flannel, calico, weave</p>
+
+<p>这里的网络也称作SDN(软件定义网络), 通常基于CNI: Container Network Interface/容器网络接口</p>
+</blockquote>
+
+<h3 id="juju常用命令">juju常用命令</h3>
+
+<p>在查看运行环境及问题排查时常会用到的命令.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    juju controllers
+    <span style="color:#09f;font-style:italic"># Models 有2个是因为包含内置的管理模块default</span>
+    <span style="color:#09f;font-style:italic"># 查看当前的 Controller, Model, User</span>
+    juju whoami
+    <span style="color:#09f;font-style:italic"># 显示当前应用状态</span>
+    juju status
+    <span style="color:#09f;font-style:italic"># 远程登录到master</span>
+    <span style="color:#09f;font-style:italic"># 日志存放在 /var/log/juju/</span>
+    juju ssh kubernetes-master/0
+    <span style="color:#09f;font-style:italic"># 获取当前controller名称</span>
+    juju switch
+    <span style="color:#09f;font-style:italic"># 卸载停止controller</span>
+    juju destroy-controller &lt;上一步得到的名字&gt; --destroy-all-models
+    <span style="color:#09f;font-style:italic"># 单独卸载 model</span>
+    juju destroy-model &lt;model_name&gt;</code></pre></div>
+<h3 id="资源">资源</h3>
+
+<ul>
+<li><a href="https://kubernetes.io/docs/setup/minikube/">Running Kubernetes Locally via Minikube</a></li>
+<li><a href="https://jujucharms.com/docs/stable/tut-lxd">LXD入门介绍</a></li>
+<li><a href="https://ieevee.com/tech/2017/09/17/k8s-yum-mirror.html">k8s国内镜像介绍</a></li>
+<li><a href="https://anjia0532.github.io/2017/11/15/gcr-io-image-mirror/">gcr.io/google-containers Hub镜像</a></li>
+</ul>
+
+<blockquote>
+<p>注: gcr(Google Container Registry)的URL结构是gcr.io/{PROJECT_ID}/{image}:tag,在国内不可访问，请使用以上镜像．</p>
+</blockquote>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/kubernetes" rel="tag" title="kubernetes">#kubernetes#</a>
+    
+    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/webtest/" rel="next" title="Web测试及工具">
+        <i class="fa fa-chevron-left"></i> Web测试及工具
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/k8s-deploy/" rel="prev" title="Kubernetes部署篇:Kubespray方式自动化">
+        Kubernetes部署篇:Kubespray方式自动化 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#mac单节点体验">Mac单节点体验</a></li>
+<li><a href="#ubuntu多节点">Ubuntu多节点</a></li>
+<li><a href="#juju常用命令">juju常用命令</a></li>
+<li><a href="#资源">资源</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Linux调优 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Linux调优">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Linux调优 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/linux-tuning/" itemprop="url">
+        Linux调优
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-03-09">
+    2018-03-09
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1553 字 ~4分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.</p>
+
+<h2 id="性能基本调优">性能基本调优</h2>
+
+<p>通常涉及到/etc/sysctl.conf和/etc/security/limits.conf配置文件的修改.</p>
+
+<p>也可使用命令修改,使用sysctl -p 立即生效.</p>
+
+<h3 id="内核参数设置">内核参数设置</h3>
+
+<p>sysctl命令可以用来实时的读取/修改内核参数</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 显示所有可用内核参数</span>
+    sysctl -a
+    
+    <span style="color:#09f;font-style:italic"># 加载/etc/sysctl.conf的参数</span>
+    sysctl -p</code></pre></div>
+<h3 id="提高文件描述符限制">提高文件描述符限制</h3>
+
+<p>soft limit类似于warning, hard limit是真实的最大值限制.</p>
+
+<p>默认的1024偏小, 有两种方式修改:</p>
+
+<h4 id="临时设置">临时设置</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 查看当前值</span>
+    <span style="color:#366">ulimit</span> -n
+    <span style="color:#09f;font-style:italic"># 临时增加</span>
+    <span style="color:#366">ulimit</span> -n <span style="color:#f60">65535</span>
+    <span style="color:#09f;font-style:italic"># 单个进程的限制为soft limit</span>
+    <span style="color:#09f;font-style:italic"># hard limit应小于当前系统打开的文件描述符</span>
+    <span style="color:#09f;font-style:italic"># 相应增加nr_open</span>
+    <span style="color:#366">echo</span> <span style="color:#f60">2000000</span> &gt; /proc/sys/fs/nr_open
+    <span style="color:#09f;font-style:italic"># 系统级限制, 上限为nr_open</span>
+    <span style="color:#366">echo</span> <span style="color:#f60">1000000</span> &gt; /proc/sys/fs/file-max</code></pre></div>
+<h4 id="systemd服务设置">SystemD服务设置</h4>
+
+<p>在CentOS7使用SystemD启动的服务不同于CentOS6, 对/etc/security/limits.conf的设置不会生效.</p>
+
+<p>需要修改/etc/systemd/system.conf或/etc/systemd/system.conf.d/tomcat.conf.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 对应下面几项</span>
+<span style="color:#033">DefaultLimitCORE</span><span style="color:#555">=</span>infinity
+<span style="color:#033">DefaultLimitNOFILE</span><span style="color:#555">=</span><span style="color:#f60">102400</span>
+<span style="color:#033">DefaultLimitNPROC</span><span style="color:#555">=</span><span style="color:#f60">102400</span></code></pre></div>
+<p>常用的命令:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看当前进程的限制</span>
+cat /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>/limits
+
+<span style="color:#09f;font-style:italic"># 查看当前进程句柄数</span>
+lsof -p <span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>|wc -l
+<span style="color:#09f;font-style:italic">## 或者使用</span>
+ls /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>/fd|wc -l</code></pre></div>
+<h4 id="永久设置">永久设置</h4>
+
+<p>修改 /etc/security/limits.conf,重启以生效.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">    *               soft    nofile           65535
+    *               hard    nofile           65535
+    root            soft    nofile           65535
+    root            hard    nofile           65535
+    # 系统级内核句柄限制
+    fs.file-max = 1000000</code></pre></div>
+<h4 id="查看当前描述符情况">查看当前描述符情况</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 列出打开/占用的文件描述符</span>
+    cat /proc/sys/fs/file-nr
+    <span style="color:#09f;font-style:italic"># 三个值分别代表 占用/未使用/最大可用值</span>
+    <span style="color:#09f;font-style:italic"># 注: lsof只会列出进程占用</span>
+    lsof | wc -l
+    <span style="color:#09f;font-style:italic"># 要得到线程占用,需要使用</span>
+    ps -eLf
+    
+    <span style="color:#09f;font-style:italic"># 查看某进程限制</span>
+    cat /proc/<span style="color:#555">[</span>Process ID<span style="color:#555">]</span>/limits</code></pre></div>
+<h3 id="增加可用端口数">增加可用端口数</h3>
+
+<p>默认28000, net.ipv4.ip_local_port_range</p>
+
+<p>如果Nginx作代理,需要增加端口范围,否则会出现错误: Cannot assign requested address .</p>
+
+<p>IPv4端口可用数:端口号是16位无符号整数,即65535</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 实时生效</span>
+    <span style="color:#366">echo</span> <span style="color:#f60">12000</span> <span style="color:#f60">64000</span> &gt; /proc/sys/net/ipv4/ip_local_port_range
+    <span style="color:#09f;font-style:italic"># 永久生效</span>
+    sysctl -w net.ipv4.ip_local_port_range<span style="color:#555">=</span><span style="color:#c30">&#34;12000 64000&#34;</span></code></pre></div>
+<h3 id="可选-最大线程数">可选:最大线程数</h3>
+
+<p>一般不需要设置</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 默认31299
+echo 100000 &gt; /proc/sys/kernel/threads-max</pre></div>
+<p>查看当前线程数:</p>
+
+<ul>
+<li>top, then hit H to view threads</li>
+<li>top -H</li>
+<li>htop</li>
+</ul>
+
+<h2 id="网络调优">网络调优</h2>
+
+<h3 id="通用网络参数">通用网络参数</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/etc/sysctl.conf
+# 系统网络设置
+# 生效值取系统和下面TCP设置值的最大值
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216</pre></div>
+<h3 id="tcp-ip调优">TCP/IP调优</h3>
+
+<h4 id="backlog-queue">Backlog Queue</h4>
+
+<p>最大连接数队列. 可选, 查看kernel日志决定是否需要调整</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">net.core.somaxconn
+net.core.netdev_max_backlog = 300000</pre></div>
+<h4 id="网络缓冲区大小">网络缓冲区大小</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># TCP读取缓冲区
+# 格式: 最小值/默认值/最大值 字节数
+# cat /proc/sys/net/ipv4/tcp_rmem
+net.ipv4.tcp_rmem = 4096 87380 16777216
+# 发送缓冲区
+net.ipv4.tcp_wmem = 4096 65536 16777216
+# TCP内存, 对应 low/pressure/high 页大小(4K)
+net.ipv4.tcp_mem = 786432 2097152 3145728</pre></div>
+<h3 id="udp调优">UDP调优</h3>
+
+<p>默认比较受限</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">#改成8M
+sysctl -w net.core.rmem_max=8388608</pre></div>
+<h3 id="主要参数">主要参数</h3>
+
+<h4 id="receive-side-scaling-rss">Receive-Side Scaling (RSS)</h4>
+
+<p>also known as multi-queue receive, distributes network receive processing across several hardware-based receive queues, allowing inbound network traffic to be processed by multiple CPUs.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">cat /sys/class/net/eth1/queues/&lt;rx-0&gt;/
+ethtool --show-rxfh-indir eth1</pre></div>
+<h4 id="close-wait-和-time-wait-解释">CLOSE_WAIT 和 TIME_WAIT 解释</h4>
+
+<p>TCP是全双工的,任何一端可以是source或destination.</p>
+
+<p>Due to the way TCP/IP works, connections can not be closed immediately. Packets may arrive out of order or be retransmitted after the connection has been closed.</p>
+
+<p>CLOSE_WAIT indicates that the remote endpoint (other side of the connection) has closed the connection.</p>
+
+<p>TIME_WAIT indicates that local endpoint (this side) has closed the connection. The connection is being kept around so that any delayed packets can be matched to the connection and handled appropriately.</p>
+
+<p>The connections will be removed when they time out within four minutes.</p>
+
+<h4 id="tcp-tw-reuse和tcp-tw-recycle">tcp_tw_reuse和tcp_tw_recycle</h4>
+
+<p>不用开启 net.ipv4.tcp_tw_recycle, 最新内核4.12已结去掉该参数.</p>
+
+<p>连接有incoming和outgoing之分，tcp_tw_reuse仅仅对outgoing有效.</p>
+
+<p>设计协议时,尽量不用让客户端先关闭连接,应该让服务端控制.</p>
+
+<h4 id="tcp-udp参数">TCP/UDP参数</h4>
+
+<ul>
+<li>Socket receive buffer size: Socket send and receive sizes are dynamically adjusted, so they rarely need to be manually edited.</li>
+<li>rmem_default : A kernel parameter that controls the default size of receive buffers used by sockets.</li>
+</ul>
+
+<h3 id="调优常用指标">调优常用指标</h3>
+
+<ul>
+<li>Ping 100以下</li>
+<li>网络延迟50ms以下</li>
+<li>Dns解析尽量快</li>
+<li>尽量少丢包</li>
+<li>反向代理优化</li>
+</ul>
+
+<h2 id="调优辅助工具">调优辅助工具</h2>
+
+<h3 id="a-href-https-github-com-brendangregg-perf-tools-perf-tools-a"><a href="https://github.com/brendangregg/perf-tools">perf-tools</a></h3>
+
+<p>开源的性能分析工具,基于perf和ftrace.</p>
+
+<figure>
+    <img src="http://www.brendangregg.com/Perf/linux_observability_tools.png"/> <figcaption>
+            <h4>Linux Performance Observability Tools</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="systemtap">SystemTap</h3>
+
+<ul>
+<li>SystemTap<a href="https://sourceware.org/systemtap/">官方网站</a></li>
+<li>CentOS<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/systemtap_beginners_guide/useful-systemtap-scripts">有用的脚本</a></li>
+</ul>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<ul>
+<li><a href="http://www.brendangregg.com/linuxperf.html">Linux性能资源大全</a></li>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/index">RedHat官方系统调优指南</a></li>
+<li><a href="http://coolshell.cn/articles/11564.html">TCP的那些事儿</a> : TCP协议特点汇总</li>
+<li><a href="http://colobu.com/2014/09/18/linux-tcpip-tuning/">Linux TCP/IP 协议栈调</a></li>
+<li><a href="https://vincent.bernat.im/en/blog/2014-tcp-time-wait-state-linux">tcp_tw_reuse和tcp_tw_recycle调整对于过多TIME_WAIT的调研</a></li>
+<li><a href="http://smilejay.com/2016/06/centos-7-systemd-conf-limits/">centos7-systemd-conf-limits</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/linux" rel="tag" title="linux">#linux#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/nginx-tuning/" rel="next" title="Nginx调优">
+        <i class="fa fa-chevron-left"></i> Nginx调优
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/linux-system-command/" rel="prev" title="Linux系统命令">
+        Linux系统命令 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#性能基本调优">性能基本调优</a>
+<ul>
+<li><a href="#内核参数设置">内核参数设置</a></li>
+<li><a href="#提高文件描述符限制">提高文件描述符限制</a>
+<ul>
+<li><a href="#临时设置">临时设置</a></li>
+<li><a href="#systemd服务设置">SystemD服务设置</a></li>
+<li><a href="#永久设置">永久设置</a></li>
+<li><a href="#查看当前描述符情况">查看当前描述符情况</a></li>
+</ul></li>
+<li><a href="#增加可用端口数">增加可用端口数</a></li>
+<li><a href="#可选-最大线程数">可选:最大线程数</a></li>
+</ul></li>
+<li><a href="#网络调优">网络调优</a>
+<ul>
+<li><a href="#通用网络参数">通用网络参数</a></li>
+<li><a href="#tcp-ip调优">TCP/IP调优</a>
+<ul>
+<li><a href="#backlog-queue">Backlog Queue</a></li>
+<li><a href="#网络缓冲区大小">网络缓冲区大小</a></li>
+</ul></li>
+<li><a href="#udp调优">UDP调优</a></li>
+<li><a href="#主要参数">主要参数</a>
+<ul>
+<li><a href="#receive-side-scaling-rss">Receive-Side Scaling (RSS)</a></li>
+<li><a href="#close-wait-和-time-wait-解释">CLOSE_WAIT 和 TIME_WAIT 解释</a></li>
+<li><a href="#tcp-tw-reuse和tcp-tw-recycle">tcp_tw_reuse和tcp_tw_recycle</a></li>
+<li><a href="#tcp-udp参数">TCP/UDP参数</a></li>
+</ul></li>
+<li><a href="#调优常用指标">调优常用指标</a></li>
+</ul></li>
+<li><a href="#调优辅助工具">调优辅助工具</a>
+<ul>
+<li><a href="#a-href-https-github-com-brendangregg-perf-tools-perf-tools-a"><a href="https://github.com/brendangregg/perf-tools">perf-tools</a></a></li>
+<li><a href="#systemtap">SystemTap</a></li>
+</ul></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

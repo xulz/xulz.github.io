@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Testing on XuLizhao &#39;s Notes</title>
+    <link>/tags/testing/</link>
+    <description>Recent content in Testing on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 21 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>全链路压测笔记续</title>
+      <link>/blog/more-load-test-note/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/more-load-test-note/</guid>
+      <description>&lt;p&gt;看完美团的分享觉得不过瘾，继续学习其他大厂的分享。&lt;/p&gt;
+
+&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>美团全链路压测Quake学习笔记</title>
+      <link>/blog/meituan-load-test-note/</link>
+      <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/meituan-load-test-note/</guid>
+      <description>&lt;p&gt;今天读了美团技术团队新发布的全链路压测平台Quake在美团中的实践，做个笔记。&lt;/p&gt;
+
+&lt;p&gt;先说下总的读后感:&lt;/p&gt;
+
+&lt;p&gt;压力测试/性能测试有多种方式，从下面的几个发展阶段可以看出越来越追求真实高峰访问的模拟。&lt;/p&gt;
+
+&lt;p&gt;现在大公司普遍的分布式架构，云计算的应用，容器的使用也可以提供更有力的资源调度。但全链路压测最重要的工作在于需要架构，开发团队的支持和适配工作。&lt;/p&gt;
+
+&lt;p&gt;没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。&lt;/p&gt;
+
+&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Web测试及工具</title>
+      <link>/blog/webtest/</link>
+      <pubDate>Tue, 10 Apr 2018 07:02:21 +0000</pubDate>
+      
+      <guid>/blog/webtest/</guid>
+      <description>&lt;p&gt;整理下测试相关的东西在这里。&lt;/p&gt;
+
+&lt;p&gt;说到Web网页自动化测试，事实上的唯一标准就是基于WebDriver/Selenium的实现了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;说明: WebDriver 等同于Selenium2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;webdriver-介绍&#34;&gt;WebDriver 介绍&lt;/h2&gt;
+
+&lt;p&gt;WebDriver 是一个跨浏览器的网站自动化测试API，主要包含以下几方面&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Browser Control： navigation, snapshotting, window control, override geolocation&lt;/li&gt;
+&lt;li&gt;User input simulation： mouse, keyborad, file uploads, altert handling&lt;/li&gt;
+&lt;li&gt;Web stuff： find/query elements, evaluate JavaScript, manipulate cookies
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>接口测试及工具</title>
+      <link>/blog/apitest/</link>
+      <pubDate>Tue, 10 Apr 2018 03:26:58 +0000</pubDate>
+      
+      <guid>/blog/apitest/</guid>
+      <description>接口（API）测试随着REST的流行有个越来越多的应用，而基于测试金字塔理论，偏底层的接口测试是投入产出最高的。 接口测试基本操作： 生成符合协</description>
+    </item>
+    
+    <item>
+      <title>pytest测试框架</title>
+      <link>/blog/pytest/</link>
+      <pubDate>Wed, 21 Mar 2018 03:38:22 +0000</pubDate>
+      
+      <guid>/blog/pytest/</guid>
+      <description>&lt;p&gt;单元测试最初流行是从JUnit,而他的发明者Kent Beck大神的经典名作&amp;lt;测试驱动开发&amp;gt;这本小书却引领了TDD的风潮,产生了xUnit各个语言系列.&lt;/p&gt;
+
+&lt;p&gt;初次接触pytest,感觉不像个xUnit,因为既看不到对TestCase的继承,也找不到Setup/Teardown这些建立/销毁函数.当然这些基本功能肯定是支持的.&lt;/p&gt;
+
+&lt;p&gt;pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

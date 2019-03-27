@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Play on XuLizhao &#39;s Notes</title>
+    <link>/categories/play/</link>
+    <description>Recent content in Play on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 14 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/play/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>再学游泳</title>
+      <link>/play/swimming/</link>
+      <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/play/swimming/</guid>
+      <description>最近再次开始学游泳，距离初次学蛙泳已经过去了10多年。当时还在大学蹭宿舍，因为一直很喜欢向往大海，便让老同学教我蛙泳。 期间由于基础不行，某次</description>
+    </item>
+    
+    <item>
+      <title>电音欣赏</title>
+      <link>/play/electronic-muisc/</link>
+      <pubDate>Fri, 13 Apr 2018 04:00:38 +0000</pubDate>
+      
+      <guid>/play/electronic-muisc/</guid>
+      <description>去年下半年玩王者荣耀(年前已出坑)的收获之一就是接触了电音,当时找一些攻略视频看,背景音乐都很带劲,于是通过网易云音乐的歌单发现了电音的广阔</description>
+    </item>
+    
+    <item>
+      <title>回到WordPress</title>
+      <link>/play/blog-wordpress/</link>
+      <pubDate>Thu, 29 Mar 2018 09:12:46 +0000</pubDate>
+      
+      <guid>/play/blog-wordpress/</guid>
+      <description>&lt;h2 id=&#34;最近几年博客经历&#34;&gt;最近几年博客经历&lt;/h2&gt;
+
+&lt;p&gt;3年前改用Evernote做笔记,因为很少写博客的原因停掉了国外共享主机的wordpress,之前的内容也迁移到了Blogger平台(国内不可访问,仅作为备份).&lt;/p&gt;
+
+&lt;p&gt;后来为了学习git和markdown,也时常在GitHub上写笔记.&lt;/p&gt;
+
+&lt;p&gt;久闻Go大名已久,在听了播客内核恐慌某期讲静态博客后,尝试了高性能的Hugo.&lt;/p&gt;
+
+&lt;p&gt;去年总收到阿里云的广告促销,也想有一个移动版调试系统,就购买了云主机,把域名也迁到了国内.&lt;/p&gt;
+
+&lt;p&gt;在上面部署了静态博客, 由于Hugo/Lektor缺乏好用的主题,最后使用了已有所了解的Hexo. 也就有了前两篇搭建博客的记录文章.&lt;/p&gt;
+
+&lt;h2 id=&#34;wordpress&#34;&gt;WordPress&lt;/h2&gt;
+
+&lt;p&gt;又回到WordPress,其实是为了让写博客这件事变得简单. 不管静态博客还是新生代Ghost,最终用下来的感觉是表面看似简洁的新博客使用起来并不简单.&lt;/p&gt;
+
+&lt;p&gt;例如静态博客, 需要git版本管理,每次修改需要commit/push, Hexo需要generate/deploy(虽然这一步在Github Pages可以hook自动化),有时候还需要clean,而生成静态页面/rsync并不像Hugo那么智能高效.&lt;/p&gt;
+
+&lt;p&gt;由于云主机几乎没有资源占用率,实际上新版WordPress有很大改进,在插件优化之后,安装前后资源占用几乎没有变化.&lt;/p&gt;
+
+&lt;p&gt;之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>静态博客Hexo</title>
+      <link>/play/blog-hexo/</link>
+      <pubDate>Fri, 02 Feb 2018 06:58:17 +0000</pubDate>
+      
+      <guid>/play/blog-hexo/</guid>
+      <description>&lt;p&gt;可能过于追求完美,使用Ghost博客两个多月,感觉功能还是过于简单,许多常用的功能用户早就提了Issue,官方却认为不是核心.&lt;/p&gt;
+
+&lt;p&gt;比如常用的文章目录,归档页,搜索功能等. 文章目录折腾下来已经可用了,搜索折腾了一半,实在没时间调试放弃了.见&lt;a href=&#34;/2017/start&#34;&gt;新博客&lt;/a&gt;这篇记录文章.&lt;/p&gt;
+
+&lt;p&gt;本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>新博客</title>
+      <link>/play/blog-ghost/</link>
+      <pubDate>Mon, 27 Nov 2017 02:10:29 +0000</pubDate>
+      
+      <guid>/play/blog-ghost/</guid>
+      <description>&lt;p&gt;本博客基于Ghost开源博客平台搭建,系统基于Node.js开发.&lt;/p&gt;
+
+&lt;p&gt;主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go In Action</title>
+      <link>/play/blog-hugo/</link>
+      <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/play/blog-hugo/</guid>
+      <description>更新下关于静态博客Hugo的旧文, 本博客现在就是使用Hugo生成. 最早知道Hugo是在听完&amp;rsquo;内核恐慌&amp;rsquo;播客的一期节目</description>
+    </item>
+    
+  </channel>
+</rss>

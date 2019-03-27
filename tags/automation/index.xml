@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Automation on XuLizhao &#39;s Notes</title>
+    <link>/tags/automation/</link>
+    <description>Recent content in Automation on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 27 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fabric自动化部署</title>
+      <link>/blog/fabric/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/fabric/</guid>
+      <description>&lt;p&gt;Fabric比较轻量级,平时在部署多个服务器时经常用到.&lt;/p&gt;
+
+&lt;p&gt;今年作者发布了不向后兼容的Fabric2, 由于原有的脚本改动太多,暂时还没有迁移.&lt;/p&gt;
+
+&lt;p&gt;[2018.12更新]&lt;br /&gt;
+Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.&lt;br /&gt;
+在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.&lt;br /&gt;
+算了不折腾了,直接上Ansible吧.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ansible Checklist</title>
+      <link>/blog/ansible/</link>
+      <pubDate>Tue, 19 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/ansible/</guid>
+      <description>&lt;p&gt;最早接触Ansible是在15年,后来断断续续用过几次,因为更倾向于所写即所得的Fabric,后者也更轻量级.&lt;/p&gt;
+
+&lt;p&gt;每次拾起来都要查文档,记录下常见用法.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

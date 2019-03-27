@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>私有Docker仓库Harbor - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="私有Docker仓库Harbor">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="私有Docker仓库Harbor - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/harbor/" itemprop="url">
+        私有Docker仓库Harbor
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-13">
+    2018-07-13
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">725 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    
+
+<p>提到私有容器仓库,VMWare出品的开源Harbor算是首选.</p>
+
+<p>安装和配置照官方文档来很简单,今天在尝试push镜像时遇到了如下错误:
+&ldquo;Get <a href="https://yourdomain.com/v2/:">https://yourdomain.com/v2/:</a> Service Unavailable&rdquo;, 检查之下发现是没有配置https引起.</p>
+
+<!---more-->
+
+<h2 id="配置https">配置https</h2>
+
+<p>虽然可以给docker常驻进程添加&ndash;insecure-registry 这个参数而改用默认的http协议(需要重启docker), 但该参数会使本机所有的注册服务都不再安全, 极力不推荐这么做.</p>
+
+<p>配置https的步骤其实不复杂,记录如下:</p>
+
+<p><del>先使用mkcert生成证书和密钥, 该工具见上篇证书一文</del>
+注: mkcert的方式对docker/k8s会产生问题, 改用官方证书生成方式</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 创建CA证书</span>
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days <span style="color:#f60">365</span> -out ca.crt
+
+<span style="color:#09f;font-style:italic"># 生成CSR</span>
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout yourdomain.com.key   -out yourdomain.com.csr
+
+<span style="color:#09f;font-style:italic"># 生成域名证书</span>
+penssl x509 -req -days <span style="color:#f60">365</span> -in yourdomain.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out yourdomain.com.crt
+
+<span style="color:#09f;font-style:italic"># 复制证书到服务器</span>
+ssh yourdomain.com <span style="color:#c30">&#34;mkdir -p /data/cert&#34;</span>
+scp yourdomain.com*.pem yourdomain.com:/data/cert
+
+vi ~/harbor/harbor.cfg</code></pre></div>
+<p>编辑如下内容:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg">  <span style="color:#309">hostname</span> <span style="color:#555">=</span> <span style="color:#c30">yourdomain.com
+</span><span style="color:#c30">  ui_url_protocol = https
+</span><span style="color:#c30">  ssl_cert = /data/cert/yourdomain.com.crt
+</span><span style="color:#c30">  ssl_cert_key = /data/cert/yourdomain.com.key</span></code></pre></div>
+<p>之后重启harbor服务:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./prepare
+docker-compose down
+docker-compose up -d</code></pre></div>
+<h3 id="配置docker客户端进程https">配置docker客户端进程https</h3>
+
+<p>解决错误:&ldquo;Error response from daemon: Get v1/_ping: x509: certificate signed by unknown authority&rdquo;</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /etc/docker/certs.d/yourdomain.com
+<span style="color:#09f;font-style:italic"># 复制上一节生成的ca.crt到此</span>
+
+<span style="color:#09f;font-style:italic"># 产生客户端证书</span>
+openssl genrsa -out client.key <span style="color:#f60">4096</span>
+openssl req -new -x509 -text -key client.key -out client.cert</code></pre></div>
+<p>最终目录结构如下:
+tree /etc/docker/certs.d/yourdomain.com</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">.
+├── ca.crt
+├── client.cert
+└── client.key</pre></div>
+<p><strong>Ubuntu可能需要更新系统证书:</strong></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp youdomain.com.crt /usr/local/share/ca-certificates/
+update-ca-certificates</code></pre></div>
+<h3 id="为kubernetes节点设置验证">为kubernetes节点设置验证</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在其中一台节点登录私有仓库</span>
+docker login reg.server
+<span style="color:#09f;font-style:italic"># 会更新$HOME/.docker/config.json</span>
+
+<span style="color:#09f;font-style:italic"># 复制到其他节点</span>
+<span style="color:#033">nodes</span><span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(</span>kubectl get nodes -o <span style="color:#033">jsonpath</span><span style="color:#555">=</span><span style="color:#c30">&#39;{range.items[*].metadata}{.name} {end}&#39;</span><span style="color:#069;font-weight:bold">)</span>
+<span style="color:#069;font-weight:bold">for</span> n in <span style="color:#033">$nodes</span>; <span style="color:#069;font-weight:bold">do</span> scp ~/.docker/config.json root@<span style="color:#033">$n</span>:/root/.docker/config.json; <span style="color:#069;font-weight:bold">done</span></code></pre></div>
+<h2 id="备注">备注</h2>
+
+<h3 id="web-ui">Web UI</h3>
+
+<p>默认用户名/密码: admin/Harbor12345</p>
+
+<h3 id="推送本地镜像到该仓库">推送本地镜像到该仓库</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">docker login yourdomain.com
+docker tag myimg:mytag yourdomain.com/pt/myimg:mytag
+docker push yourdomain.com/myproject/myimg:mytag</pre></div>
+<h3 id="docker-notary">Docker Notary</h3>
+
+<p>Harbor可以和Notary结合, Notary是一个内容数字签名服务,保证分发的内容/镜像可信.</p>
+
+<h2 id="资源">资源</h2>
+
+<ul>
+<li><a href="https://github.com/vmware/harbor">官网</a></li>
+<li><a href="https://github.com/vmware/harbor/blob/master/docs/installation_guide.md">安装配置向导</a></li>
+<li><a href="https://github.com/vmware/harbor/blob/master/docs/configure_https.md">https配置向导</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/containers/images/">k8s镜像文档</a></li>
+</ul>
+
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/docker" rel="tag" title="docker">#docker#</a>
+    
+    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/cert/" rel="next" title="证书那些事">
+        <i class="fa fa-chevron-left"></i> 证书那些事
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/cloud-native/" rel="prev" title="Kubernetes和云原生计算">
+        Kubernetes和云原生计算 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#配置https">配置https</a>
+<ul>
+<li><a href="#配置docker客户端进程https">配置docker客户端进程https</a></li>
+<li><a href="#为kubernetes节点设置验证">为kubernetes节点设置验证</a></li>
+</ul></li>
+<li><a href="#备注">备注</a>
+<ul>
+<li><a href="#web-ui">Web UI</a></li>
+<li><a href="#推送本地镜像到该仓库">推送本地镜像到该仓库</a></li>
+<li><a href="#docker-notary">Docker Notary</a></li>
+</ul></li>
+<li><a href="#资源">资源</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

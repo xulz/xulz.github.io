@@ -1,0 +1,608 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Nginx - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Nginx">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Nginx - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/nginx/" itemprop="url">
+        Nginx
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-12-13">
+    2017-12-13
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1117 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    
+
+<p>时常会用到Nginx,一直没有好好的梳理下,以后更新在这里.</p>
+
+<h2 id="基础使用">基础使用</h2>
+
+<h3 id="安装">安装</h3>
+
+<p>照<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install">官方教程</a>来就好,没啥好说的.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># CentOS中 $releasever替换为主版本号,比如7; $basearch 替换为架构, 用arch命令查看
+# Ubuntu中 用以下命令修复错误: GPG error: http://nginx.org/packages/ubuntu xenial Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY $key;
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $key</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># CentOS</span>
+sudo tee /etc/yum.repos.d/nginx.repo <span style="color:#c30">&lt;&lt;-&#39;EOF&#39;
+</span><span style="color:#c30">[nginx]
+</span><span style="color:#c30">name=nginx repo
+</span><span style="color:#c30">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+</span><span style="color:#c30">gpgcheck=0
+</span><span style="color:#c30">enabled=1
+</span><span style="color:#c30">EOF</span></code></pre></div>
+<p>常用命令:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 手动启动
+/etc/init.d/nginx start
+# 开机启动服务
+chkconfig nginx on
+# 修改配置文件后,验证语法正确
+nginx -t
+# 重新加载配置让修改立即生效
+sudo nginx -s reload</pre></div>
+<h2 id="配置">配置</h2>
+
+<ul>
+<li>/etc/nginx/nginx.conf</li>
+<li>默认常用Document Root : /var/www/, /srv, /usr/share/www</li>
+</ul>
+
+<h3 id="指令">指令:</h3>
+
+<h4 id="location">Location</h4>
+
+<ul>
+<li>使用正则:必须以下面2种前缀开始
+
+<ul>
+<li>&ldquo;~&rdquo; 大小写匹配</li>
+<li>&ldquo;~*&rdquo; 忽略大小写匹配</li>
+<li>不做匹配检查使用空block,即 &ldquo;/ /&rdquo;</li>
+</ul></li>
+<li>不使用正则(literal): 逐字匹配,一旦匹配停止继续检索
+
+<ul>
+<li>= 前缀强制URI和Location参数的匹配</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>正则备忘: ^ 代表以xx开始, $代表以xx结尾</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">location  = / {
+# 只匹配 / 查询
+}
+location /test {
+# 开启目录自动索引
+    autoindex on;
+}</pre></div>
+<h4 id="url重写">URL重写</h4>
+
+<p>rewrite (PCRE, perl兼容正则)</p>
+
+<h4 id="try-files">try_files</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 首先找相应的URI
+# 如果没有,尝试添加/作为目录去匹配
+# 如果还是找不到,转发给代理
+try_files $uri $uri/ @proxy;</pre></div>
+<h3 id="主要变量">主要变量:</h3>
+
+<ul>
+<li>$server_name : 虚拟主机名</li>
+</ul>
+
+<h2 id="本地开发环境">本地开发环境</h2>
+
+<h3 id="mac安装">Mac安装</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew install nginx
+# 以服务的形式随系统启动
+brew services start nginx
+# 主要配置目录
+/usr/local/var/www  # Doc Root
+/usr/local/etc/nginx/nginx.conf
+/usr/local/etc/nginx/servers/  ## 虚拟server </pre></div>
+<h3 id="windows使用服务">Windows使用服务</h3>
+
+<p>借助于 <a href="https://github.com/kohsuke/winsw">winsw</a> 可以把Nginx安装成服务.</p>
+
+<blockquote>
+<p>winsw.exe install/uninstall/start/stop/restart/status</p>
+</blockquote>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Q: 在CentOS安装完,绑定8443端口出错: <code>bind() to 0.0.0.0:8443 failed, Permission denied</code> A: 原因: SELinux 阻止了连接 解决1: semanage port -a -t http_port_t -p tcp 8443 解决2: tsebool httpd_can_network_connect on -P</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 辅助调试命令
+sestatus
+tail -f /var/log/audit/audit.log
+semanage port -l | grep http_port_t
+getsebool -a | grep httpd
+# 如果找不到semanage命令:
+yum provides /usr/sbin/semanage
+yum -y install policycoreutils-python</pre></div>
+<h2 id="常见配置场景">常见配置场景</h2>
+
+<h3 id="端口重定向">端口重定向</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    location /test {
+        # 重写URLs,把请求/testXXXX转换成/XXXX交给AppServer.
+        rewrite ^/test(.*) /$1 break;
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+    }</pre></div>
+<h3 id="启用https">启用HTTPS</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf"># 利用多核
+worker_processes auto;
+
+http {
+# 缓存ssl session以提高性能
+    ssl_session_cache   shared:SSL:10m;
+    ssl_session_timeout 10m;
+
+    server {
+        listen              443 ssl;
+        ssl_certificate     /etc/ssl/xulizhao.com.crt;
+        ssl_certificate_key /etc/ssl/xulizhao.com.key;
+
+        # 优先采用server端算法
+        ssl_prefer_server_ciphers   on;
+    ...</code></pre></div>
+<h3 id="对某路径启用认证密码保护">对某路径启用认证密码保护</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 使用htpasswd工具加密密码
+sudo apt-get install apache2-utils
+sudo htpasswd -c /etc/nginx/.htpasswd admin
+# 编辑配置,添加
+sudo vi /etc/nginx/sites-available/default
+    auth_basic &#34;Private Property&#34;;
+    auth_basic_user_file /etc/nginx/.htpasswd;
+sudo service nginx reload</pre></div>
+<h3 id="修改超时设置">修改超时设置</h3>
+
+<p>Nginx连接Tomcat的默认超时是1分钟</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vi /etc/nginx/conf.d/default.conf
+# 修改proxy_read_timeout的值
+location / {
+        proxy_pass  http://127.0.0.1:8080;
+        proxy_read_timeout 180;
+    }</pre></div>
+<h3 id="状态页">状态页</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">location /nginx_status {
+        stub_status on;
+        access_log   off;
+        # Security
+        allow 192.168.1.100;
+        deny all;
+   }</pre></div>
+<h3 id="blog-二级域名与子目录映射">blog 二级域名与子目录映射</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">location / {  
+        rewrite ^/(.*)$ /blog/$1 last;  
+    }  
+location ~* ^/blog/.*$ {  
+        proxy_pass http://127.0.0.1:8080;  
+    }  </pre></div>
+<h3 id="日志记录响应时间">日志记录响应时间</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf"># 在预制格式combined的最后
+# 添加 $request_time 和 $upstream_response_time
+log_format  combined_timed  &#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;
+                  &#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;
+                  &#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34; $request_time $upstream_response_time&#39;;
+access_log  /var/log/nginx/access.log  combined_timed;</code></pre></div>
+<h2 id="语言支持">语言支持</h2>
+
+<h3 id="支持php">支持php</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 添加以下内容
+location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include fastcgi_params;
+}</pre></div>
+<h2 id="资源">资源</h2>
+
+<ul>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">location指令官方文档</a></li>
+<li><a href="https://aotu.io/notes/2016/08/16/nginx-https/index.html">Nginx 配置 HTTPS 服务器</a></li>
+<li><a href="http://openresty.org/cn/">Open Resty</a>: Nginx增强版, 使用Lua扩展功能.
+
+<ul>
+<li>特点: 可以直接访问 Redis/MemCached;</li>
+<li>使用场景: 安全过滤模块, 数据报表;</li>
+<li>应用: 淘宝量子统计, 去哪网</li>
+</ul></li>
+<li><a href="https://github.com/moonbingbing/openresty-best-practices">OpenResty 最佳实践</a></li>
+</ul>
+
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/python/" rel="next" title="Python配置备忘">
+        <i class="fa fa-chevron-left"></i> Python配置备忘
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/ssh/" rel="prev" title="SSH使用及扩展">
+        SSH使用及扩展 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#基础使用">基础使用</a>
+<ul>
+<li><a href="#安装">安装</a></li>
+</ul></li>
+<li><a href="#配置">配置</a>
+<ul>
+<li><a href="#指令">指令:</a>
+<ul>
+<li><a href="#location">Location</a></li>
+<li><a href="#url重写">URL重写</a></li>
+<li><a href="#try-files">try_files</a></li>
+</ul></li>
+<li><a href="#主要变量">主要变量:</a></li>
+</ul></li>
+<li><a href="#本地开发环境">本地开发环境</a>
+<ul>
+<li><a href="#mac安装">Mac安装</a></li>
+<li><a href="#windows使用服务">Windows使用服务</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#常见配置场景">常见配置场景</a>
+<ul>
+<li><a href="#端口重定向">端口重定向</a></li>
+<li><a href="#启用https">启用HTTPS</a></li>
+<li><a href="#对某路径启用认证密码保护">对某路径启用认证密码保护</a></li>
+<li><a href="#修改超时设置">修改超时设置</a></li>
+<li><a href="#状态页">状态页</a></li>
+<li><a href="#blog-二级域名与子目录映射">blog 二级域名与子目录映射</a></li>
+<li><a href="#日志记录响应时间">日志记录响应时间</a></li>
+</ul></li>
+<li><a href="#语言支持">语言支持</a>
+<ul>
+<li><a href="#支持php">支持php</a></li>
+</ul></li>
+<li><a href="#资源">资源</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

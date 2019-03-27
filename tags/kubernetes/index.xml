@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on XuLizhao &#39;s Notes</title>
+    <link>/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 29 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用kubeadm手动搭建Kubernetes集群</title>
+      <link>/blog/kubeadm/</link>
+      <pubDate>Sat, 29 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/kubeadm/</guid>
+      <description>&lt;p&gt;用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.&lt;br /&gt;
+所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.&lt;br /&gt;
+这也是此文/这次实践的目的所在.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>再提镜像站的使用</title>
+      <link>/blog/mirror/</link>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/mirror/</guid>
+      <description>把时间花在下载软件或必须翻过去访问外部网络是让人苦恼的一件事, 镜像站能很好地解决一些问题. 最早时使用Ubuntu国内镜像加速软件更新,后来使</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes命名空间的应用</title>
+      <link>/blog/k8s-namespace/</link>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/k8s-namespace/</guid>
+      <description>&lt;p&gt;在实际应用中存在一个Kubernetes集群中多个部署环境的问题,比如存在dev,qa,stage等.&lt;/p&gt;
+
+&lt;p&gt;如果部署在一个集群会省去不少运维成本且节省资源占用.&lt;/p&gt;
+
+&lt;p&gt;通常这会用到命名空间的特性.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes和云原生计算</title>
+      <link>/blog/cloud-native/</link>
+      <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/cloud-native/</guid>
+      <description>&lt;p&gt;最早注意到云原生这个概念是某次看文章说Kubernetes是作为CNCF(云原生计算基金会)的主要项目来开发的,该基金会属于Linux基金会旗下,还包括被熟知的prometheus,istio等开源项目, 似乎可以理解为Kubernetes生态系统.&lt;/p&gt;
+
+&lt;p&gt;至此Kubernetes把&lt;a href=&#34;/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes控制命令kubectl汇总</title>
+      <link>/blog/k8s-command/</link>
+      <pubDate>Fri, 13 Apr 2018 06:43:37 +0000</pubDate>
+      
+      <guid>/blog/k8s-command/</guid>
+      <description>kubectl 作为Kubernetes集群管理的命令行工具,经常用到的几个子命令包括: kubectl get &amp;ndash; list resources kubectl describe &amp;ndash; show detailed information about a resource kubectl logs &amp;ndash; print the logs from a container in a pod kubectl exec &amp;ndash; execute a command on</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes部署篇:Kubespray方式自动化</title>
+      <link>/blog/k8s-deploy/</link>
+      <pubDate>Fri, 13 Apr 2018 01:27:57 +0000</pubDate>
+      
+      <guid>/blog/k8s-deploy/</guid>
+      <description>众所周知Kubernetes集群的部署比较繁琐复杂,这里列出常见的几种部署方式及过程. 官方现在提供2种主要的部署方式: Kubespray : 基于Ansible</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes部署篇:本地开发测试环境搭建</title>
+      <link>/blog/k8s-local/</link>
+      <pubDate>Fri, 13 Apr 2018 01:19:50 +0000</pubDate>
+      
+      <guid>/blog/k8s-local/</guid>
+      <description>&lt;p&gt;本文侧重于入门Kubernetes时的本地开发测试环境搭建,及minikube的使用.&lt;/p&gt;
+
+&lt;p&gt;尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>微服务</title>
+      <link>/blog/microservices/</link>
+      <pubDate>Thu, 28 Dec 2017 07:38:18 +0000</pubDate>
+      
+      <guid>/blog/microservices/</guid>
+      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>/blog/kubernetes/</link>
+      <pubDate>Mon, 18 Dec 2017 02:38:06 +0000</pubDate>
+      
+      <guid>/blog/kubernetes/</guid>
+      <description>&lt;p&gt;Kubernetes(缩写为k8s)是最流行的开源容器管理平台, 现在也是事实上的容器编排调度标准.&lt;/p&gt;
+
+&lt;p&gt;打算写系列的相关文章,记录自己的学习过程.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-local&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes部署篇:本地开发测试环境搭建&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-deploy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes部署篇:Kubespray方式自动化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/kubeadm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;用kubeadm手动搭建Kubernetes集群&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-command&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kubectl命令汇总&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-namespace&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes命名空间的应用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

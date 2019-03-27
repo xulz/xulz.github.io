@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Classic on XuLizhao &#39;s Notes</title>
+    <link>/tags/classic/</link>
+    <description>Recent content in Classic on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/classic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>书法与文字</title>
+      <link>/read/shufa/</link>
+      <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/read/shufa/</guid>
+      <description>&lt;p&gt;最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读国学</title>
+      <link>/read/guoxue/</link>
+      <pubDate>Fri, 23 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/read/guoxue/</guid>
+      <description>国学的火热似乎起自十多年前百家讲坛的于丹系列,最近几年也总能听到教儿童读弟子规或者各地开女德班等的无关真正国学的负面新闻. 最近读章太炎的国学</description>
+    </item>
+    
+    <item>
+      <title>读诗词</title>
+      <link>/read/poem/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/read/poem/</guid>
+      <description>为了听蒙曼品最美唐诗冲了会员,也因此收听到了更多的音频,毕竟喜欢的还有郦波品读唯美诗词名篇, 虽然我之前从没看过诗词大会之类的节目. 听过一些之</description>
+    </item>
+    
+    <item>
+      <title>读历史</title>
+      <link>/read/history/</link>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/read/history/</guid>
+      <description>缘起 在年初的时候,因偶然机会追了一部国产剧,即网剧大军师司马懿. 当时是很着迷的, 因为看的下载版,可以说看的不舍昼夜. 评价嘛,上部明显好于下部</description>
+    </item>
+    
+  </channel>
+</rss>

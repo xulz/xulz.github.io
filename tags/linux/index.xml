@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on XuLizhao &#39;s Notes</title>
+    <link>/tags/linux/</link>
+    <description>Recent content in Linux on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 13 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu日常</title>
+      <link>/blog/ubuntu/</link>
+      <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/ubuntu/</guid>
+      <description>很早就接触使用Ubuntu，也是自己最钟爱的Linux系统。 给Ubuntu留一篇记录日常使用。 Ubuntu 18.04安装中文输入法 sogou拼音由于不</description>
+    </item>
+    
+    <item>
+      <title>Vim必知必会</title>
+      <link>/blog/vim/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vim/</guid>
+      <description>&lt;p&gt;VI/VIM作为Nix环境的常用编辑器,有一些常用命令/用法.&lt;/p&gt;
+
+&lt;p&gt;由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux调优</title>
+      <link>/blog/linux-tuning/</link>
+      <pubDate>Fri, 09 Mar 2018 09:17:28 +0000</pubDate>
+      
+      <guid>/blog/linux-tuning/</guid>
+      <description>&lt;p&gt;Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux调试命令/工具</title>
+      <link>/blog/linux-debug-command/</link>
+      <pubDate>Sun, 14 Jan 2018 09:59:48 +0000</pubDate>
+      
+      <guid>/blog/linux-debug-command/</guid>
+      <description>&lt;p&gt;Linux的强大之一是丰富的命令系统,尤其在调试服务端应用时.&lt;/p&gt;
+
+&lt;p&gt;记录在这里方便查阅.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>利器之TMUX</title>
+      <link>/blog/tmux/</link>
+      <pubDate>Mon, 18 Dec 2017 02:21:35 +0000</pubDate>
+      
+      <guid>/blog/tmux/</guid>
+      <description>用法 tmux ls : list sessions tmux attach -t 0 : -t 代表“target” , 0 是session名 tmux kill-session -t 0 : 结束会话 tmux source ~/.tmux.conf : 重新加载配置 复制和粘贴: 使用Shift临时禁用</description>
+    </item>
+    
+  </channel>
+</rss>

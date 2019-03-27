@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Message on XuLizhao &#39;s Notes</title>
+    <link>/tags/message/</link>
+    <description>Recent content in Message on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 24 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/message/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>开源消息队列实现</title>
+      <link>/blog/mq/</link>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/mq/</guid>
+      <description>&lt;p&gt;经常会遇到系统中使用Message Queue/消息队列的情况, 与此类似的模型还有 pubsub/发布订阅模式(publisher/subscriber).&lt;/p&gt;
+
+&lt;p&gt;这两种模型的实现也被看做 消息中间件/MOM(Message-Oriented Middleware),因为这种结构解耦了发送端和接收端,简化了架构.&lt;/p&gt;
+
+&lt;p&gt;另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

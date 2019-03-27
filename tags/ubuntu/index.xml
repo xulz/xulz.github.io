@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on XuLizhao &#39;s Notes</title>
+    <link>/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 10 May 2018 07:12:50 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在Windows10运行增强版Ubuntu,支持复制粘贴和本地磁盘映射</title>
+      <link>/blog/hyperv-ubuntu-enhanced-mode/</link>
+      <pubDate>Thu, 10 May 2018 07:12:50 +0000</pubDate>
+      
+      <guid>/blog/hyperv-ubuntu-enhanced-mode/</guid>
+      <description>使用Win10自带的Hyper-V运行Ubuntu虚拟机确实资源使用很小，Ubuntu虚拟机开个全屏，用起来和双系统没有区别。 前提 由于这是最</description>
+    </item>
+    
+  </channel>
+</rss>

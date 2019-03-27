@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Go in Action 学习笔记 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Go in Action 学习笔记">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Go in Action 学习笔记 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/go-in-action/" itemprop="url">
+        Go in Action 学习笔记
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-02-13">
+    2019-02-13
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1723 字 ~4分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>初学Go时主要读的&lt;Go语言圣经&gt;,正式中文版叫&lt;Go程序设计语言&gt;, 由于当时写的代码还很少,实际上很多是不太懂的或后来也忘了.<br />
+之后想读些其他书时,本来想读的&lt;Go编程实战&gt;在豆瓣的评分偏低,便一直没读. 在写过一些代码后,偶然再读这本书,发现其实战意义很高,是很好的一本进阶书.<br />
+由此看来豆瓣的评分只能当个参考,需要读读看是不是适合自己.</p>
+
+<p>做了些简单的笔记. 顺便说, 第一作者的Ultimate Go虽然是英文视频,讲的也很好很深入,有需要的可联系我.</p>
+
+<h2 id="读书笔记">读书笔记</h2>
+
+<h3 id="go特点和约定">Go特点和约定</h3>
+
+<p>在Go语言中，所有的变量都以值的方式传递。</p>
+
+<p>命名惯例: 如果接口类型只包含一个方法，那么这个类型的名字以er结尾。</p>
+
+<p>将工厂函数命名为New是Go语言的一个习惯。</p>
+
+<p>因为大部分方法在被调用后都需要维护接收者的值的状态，所以，一个最佳实践是，将方法的接收者声明为指针。</p>
+
+<h3 id="并发">并发</h3>
+
+<p>推荐使用WaitGroup(计数信号量)来跟踪goroutine的工作是否完成。</p>
+
+<p>写并发程序的时候，最佳做法是，在main函数返回前，清理并终止所有之前启动的goroutine。</p>
+
+<h3 id="包">包</h3>
+
+<p>所有处于同一个文件夹里的代码文件，必须使用同一个包名。(按惯例,包和文件夹同名)</p>
+
+<p>init函数在main之前执行, init函数用在设置包、初始化变量或者其他要在程序运行前优先完成的引导工作。</p>
+
+<p>可以在指定包的时候使用通配符。3个点表示匹配所有的字符串。</p>
+
+<h3 id="第四章-数组-切片和映射">第四章: 数组,切片和映射</h3>
+
+<p>主要介绍了集合数据结构:</p>
+
+<p>数组: 长度固定,类型的相同的连续块.</p>
+
+<p>切片: 动态数组</p>
+
+<p>切片之所以被称为切片，是因为创建一个新的切片就是把底层数组切出一部分</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">slice <span style="color:#555">:=</span> <span style="color:#366">make</span>([]<span style="color:#078;font-weight:bold">int</span>,<span style="color:#f60">3</span>,<span style="color:#f60">5</span>)
+slice <span style="color:#555">:=</span> []<span style="color:#078;font-weight:bold">string</span>{<span style="color:#c30">&#34;red&#34;</span>,<span style="color:#c30">&#34;blue&#34;</span>}
+
+<span style="color:#09f;font-style:italic">//创建有3个元素的整型数组
+</span><span style="color:#09f;font-style:italic"></span>array<span style="color:#555">:=</span>[<span style="color:#f60">3</span>]<span style="color:#078;font-weight:bold">int</span>{<span style="color:#f60">10</span>,<span style="color:#f60">20</span>,<span style="color:#f60">30</span>}
+
+<span style="color:#09f;font-style:italic">//创建长度和容量都是3的整型切片
+</span><span style="color:#09f;font-style:italic"></span>slice<span style="color:#555">:=</span>[]<span style="color:#078;font-weight:bold">int</span>{<span style="color:#f60">10</span>,<span style="color:#f60">20</span>,<span style="color:#f60">30</span>}</code></pre></div>
+<p>nil切片和空切片是两个东西.</p>
+
+<ul>
+<li>在需要描述一个不存在的切片时，nil切片会很好用。</li>
+<li>想表示空集合时空切片很有用</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#09f;font-style:italic">//创建有5个元素的整型数组
+</span><span style="color:#09f;font-style:italic"></span>array<span style="color:#555">:=</span>[<span style="color:#f60">5</span>]<span style="color:#078;font-weight:bold">int</span>{<span style="color:#f60">10</span>,<span style="color:#f60">20</span>,<span style="color:#f60">30</span>,<span style="color:#f60">40</span>,<span style="color:#f60">50</span>}
+
+<span style="color:#09f;font-style:italic">//创建一个新切片,其长度为2个元素，容量为4个元素
+</span><span style="color:#09f;font-style:italic"></span>newSlice<span style="color:#555">:=</span>slice[<span style="color:#f60">1</span>:<span style="color:#f60">3</span>]
+
+
+<span style="color:#09f;font-style:italic">// 生成新切片是限制第三个参数容量和长度一样,避免新切片的append操作改变原底层数组值
+</span><span style="color:#09f;font-style:italic"></span>source<span style="color:#555">:=</span>[]<span style="color:#078;font-weight:bold">string</span>{<span style="color:#c30">&#34;Apple&#34;</span>,<span style="color:#c30">&#34;Orange&#34;</span>,<span style="color:#c30">&#34;Plum&#34;</span>,<span style="color:#c30">&#34;Banana&#34;</span>,<span style="color:#c30">&#34;Grape&#34;</span>}
+slice <span style="color:#555">:=</span> source[<span style="color:#f60">2</span>:<span style="color:#f60">3</span>:<span style="color:#f60">3</span>]
+slice = <span style="color:#366">append</span>(slice,<span style="color:#c30">&#34;Kiwi&#34;</span>)
+
+<span style="color:#09f;font-style:italic">// 追加s2的所有值到s1
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">append</span>(s1,s2<span style="color:#555">...</span>) </code></pre></div>
+<p>常用函数:append, cap, len</p>
+
+<h4 id="range">range</h4>
+
+<p>关键字range可以用于迭代数组、字符串、切片、映射和通道。</p>
+
+<p>range迭代切片,返回的第二个值是对应元素值的副本</p>
+
+<h4 id="映射">映射</h4>
+
+<p>是存储键值对的无序集合(散列表实现).</p>
+
+<p>常用函数: delete.</p>
+
+<p><strong>将切片或者映射传递给函数成本很小，并且不会复制底层的数据结构。</strong></p>
+
+<h3 id="第五章-类型系统">第五章: 类型系统</h3>
+
+<p><strong>使用组合设计模式,复用其他类型的功能. 一个类型通常由其他更小的类型组合而(避免使用复杂的继承模型).</strong></p>
+
+<p>关键字func和函数名之间的参数被称作接收者，将函数与接收者的类型绑在一起。如果一个函数有接收者，这个函数就被称为方法。</p>
+
+<p>值接收者使用值的副本来调用方法，而指针接受者使用实际值来调用方法。</p>
+
+<ul>
+<li>内置(原始)类型: 数值类型(整型,浮点型),字符串类型,布尔类型</li>
+<li>引用类型: 切片,映射,通道,接口,函数类型</li>
+</ul>
+
+<h4 id="类型的本质">类型的本质</h4>
+
+<p>大多数情况下,结构类型的本质是非原始的,需要使用指针来共享这个值.</p>
+
+<p>类型的值具备非原始的本质，所以总是应该被共享，而不是被复制。</p>
+
+<p>是使用值接收者还是指针接收者，不应该由该方法是否修改了接收到的值来决定。这个决策应该基于该类型的本质。
+这条规则的一个例外是，需要让类型值符合某个接口的时候，即便类型的本质是非原始本质的，也可以选择使用值接收者声明方法。这样做完全符合接口值调用方法的机制。</p>
+
+<p>因为不是总能获取一个值的地址，所以值(Value)的方法集(Method Receivers)只包括了使用值接收者实现的方法。</p>
+
+<h4 id="接口">接口</h4>
+
+<p>是声明了一组行为并支持多态的类型。</p>
+
+<p>接口允许对行为(而不是类型)建模. Go的接口更小,只倾向于定义一个单一的动作.</p>
+
+<p>如果要让一个用户定义的类型实现一个接口，这个用户定义的类型要实现接口类型里声明的所有方法。</p>
+
+<h4 id="嵌入类型">嵌入类型</h4>
+
+<p>嵌入类型提供了扩展类型的能力，而无需使用继承。</p>
+
+<p>嵌入类型是将已有的类型直接声明在新的结构类型里。被嵌入的类型被称为新的外部类型的内部类型。</p>
+
+<p>由于内部类型的提升，内部类型实现的接口会自动提升到外部类型。如果外部类型实现了notify方法，内部类型的实现就不会被提升。</p>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<ul>
+<li><a href="https://github.com/goinaction/code">书籍配套代码</a></li>
+<li><a href="https://www.ardanlabs.com/blog/">作者博客</a></li>
+<li>Ultimate Go 培训 <a href="https://github.com/ardanlabs/gotraining">文档</a> /<a href="https://www.oreilly.com/library/view/ultimate-go-programming/9780135261651/">大纲</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/go" rel="tag" title="go">#go#</a>
+    
+    <a href="/tags/read" rel="tag" title="read">#read#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/django/" rel="next" title="Django再记录">
+        <i class="fa fa-chevron-left"></i> Django再记录
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#读书笔记">读书笔记</a>
+<ul>
+<li><a href="#go特点和约定">Go特点和约定</a></li>
+<li><a href="#并发">并发</a></li>
+<li><a href="#包">包</a></li>
+<li><a href="#第四章-数组-切片和映射">第四章: 数组,切片和映射</a>
+<ul>
+<li><a href="#range">range</a></li>
+<li><a href="#映射">映射</a></li>
+</ul></li>
+<li><a href="#第五章-类型系统">第五章: 类型系统</a>
+<ul>
+<li><a href="#类型的本质">类型的本质</a></li>
+<li><a href="#接口">接口</a></li>
+<li><a href="#嵌入类型">嵌入类型</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

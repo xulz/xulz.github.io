@@ -1,0 +1,554 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>网络分析工具 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="网络分析工具">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="网络分析工具 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/network-tools/" itemprop="url">
+        网络分析工具
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-01-03">
+    2018-01-03
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1168 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>这里的网络分析工具可以归为两大类:</p>
+
+<ul>
+<li><p>网络代理: 用的最多的是 Fiddler</p></li>
+
+<li><p>分析工具: 比较熟悉的是Wireshark</p></li>
+</ul>
+
+<h2 id="代理类">代理类</h2>
+
+<h3 id="fiddler">Fiddler</h3>
+
+<p>以Android客户端抓包为例,主要步骤为:</p>
+
+<ul>
+<li><p>[Tools]-[Options], 检查Connections和HTTPS选项,开启代理模式</p></li>
+
+<li><p>安卓浏览器访问 <YOUR_IP>:8888, 下载并安装根证书</p></li>
+
+<li><p>设置安卓WIFI代理为以上地址和端口</p></li>
+</ul>
+
+<h3 id="charles-付费">Charles (付费)</h3>
+
+<h3 id="burp-suite">Burp Suite</h3>
+
+<p>默认端口8080</p>
+
+<h3 id="mitmproxy">mitmproxy</h3>
+
+<p>Python写的开源调试工具, 解析/修改/重放/保存</p>
+
+<h2 id="抓包分析">抓包分析</h2>
+
+<h3 id="wireshark">Wireshark</h3>
+
+<p>需要区分两种过滤语言</p>
+
+<h4 id="capture-filter-a-href-http-biot-com-capstats-bpf-html-berkley-packet-filter-a">Capture Filter: <a href="http://biot.com/capstats/bpf.html">Berkley Packet Filter</a></h4>
+
+<blockquote>
+<p>示例: host xulizhao.com and port 443</p>
+</blockquote>
+
+<h4 id="a-href-https-www-wireshark-org-docs-wsug-html-chunked-chworkbuilddisplayfiltersection-html-display-filter-a"><a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html">Display Filter</a></h4>
+
+<p>常用过滤器</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 地址/端口
+ip.addr == 10.0.0.1
+ip.src ==
+ip.src_host ==
+tcp.port==4000
+tcp.port == 8080 and ip.addr==127.0.0.1
+# HTTP
+http
+http.request # 显示所有GET请求
+# 其他
+# 显示所有 TCP resets
+tcp.flags.reset==1 
+# 显示所有retransmissions
+tcp.analysis.retransmission 
+tcp.analysis.lost_segment
+tcp.analysis.ack_lost_segment
+# 显示包含关键字 traffic 的包
+tcp contains traffic 
+frame contains ...</pre></div>
+<h4 id="知识点">知识点</h4>
+
+<ul>
+<li>Wireshark的时间戳存在偏差,非标准时间</li>
+<li>每个包在Info存在唯一标识</li>
+<li>DUP ACK/TCP Retransmission 是正常的</li>
+<li>协议
+
+<ul>
+<li>802.11即以太网,在frames</li>
+<li>Internet Protocol/IP: 包含在每个以太frame,在packets</li>
+<li>Transmission Control Protocol/TCP: 包在每个IP packet,在segments</li>
+<li>Transport Layer Security/TLS: 通过TCP字节流,在records/messages</li>
+<li>Hypertext Transfer Protocol/HTTP: 在加密的TLS连接中携带,一般不可见</li>
+</ul></li>
+<li>名词解释
+
+<ul>
+<li>TCP Spurious Retransmission: 发送方重传了接收方已确认的数据, 通常因为发送方认为该数据包丢失而重发.</li>
+<li>TCP post number reused: 可能意味网络存在重复包.</li>
+</ul></li>
+</ul>
+
+<h4 id="编辑-合并文件">编辑/合并文件</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">editcap -c 10000 in.pcap out.pcap
+editcap -A &#34;2017-05-11 12:00:00&#34; -B &#34;2017-05-11 13:00:00&#34; in.pcap out.pcap
+mergecap out.pcap in1.pcap in2.pcap</pre></div>
+<h3 id="tcpdump">tcpdump</h3>
+
+<blockquote>
+<p>sudo tcpdump -n -s 4096 -w l.log port 80</p>
+</blockquote>
+
+<p>常用选项:</p>
+
+<ul>
+<li><p>-n: 不做地址和端口的数字/名称转换</p></li>
+
+<li><p>-i: 捕获的网卡名</p></li>
+
+<li><p>-w: 把原始包写到文件, 而不是解析并打印(默认行为). 可以用-r选项再次打印</p></li>
+</ul>
+
+<h3 id="tcpflow">tcpflow</h3>
+
+<p>轻量级网络包分析</p>
+
+<h2 id="android全局抓包分析-http-https-tcp">Android全局抓包分析(HTTP/HTTPS+TCP)</h2>
+
+<p>最近遇到的问题是，App也使用了TCP协议，如果使用Fiddler这类HTTP代理工具会造成应用使用问题。</p>
+
+<p>所以要同时抓取HTTP/HTTPS和TCP数据，安卓自带的WiFi代理便局限了。</p>
+
+<p>抓包方案有2个：</p>
+
+<h3 id="android机已rooted">Android机已ROOTED</h3>
+
+<p>手机端安装tcpdump，因为安卓本身就是基于*Nix的嘛，在电脑用Wireshark抓包。</p>
+
+<p>其实就是一条命令：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">adb exec-out &#34;tcpdump -i any -U -w - 2&gt;/dev/null&#34; | wireshark -k -S -i -</pre></div>
+<h3 id="电脑建立wifi热点">电脑建立WiFi热点</h3>
+
+<p>由于是公司的手机，不能随便ROOT。思路是通过电脑的无线网络建立一个代理WiFi热点。</p>
+
+<p>在Windows7/10都可以，如果是台式机，需要自备无线网卡。</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 确定  Hosted network supported/支持的承载网络为 Yes/是
+netsh wlan show drivers
+
+# 建立虚拟WiFi
+netsh wlan set hostednetwork mode=allow ssid=testWiFi key=password
+# 设置网络连接共享: 右键点击正在使用的以太网络连接，[属性]-[共享]标签-勾选 [Internet共享连接]并从下拉列表选择刚创建的网络。
+# Windows10位置：[Windows Settings]-[Network&amp;Internet]-[Change Adapter Options]
+
+#开启无线AP
+netsh wlan start hostednetwork</pre></div>
+<h2 id="资源">资源</h2>
+
+<h3 id="链接">链接</h3>
+
+<ul>
+<li><a href="http://www.telerik.com/fiddler">Fiddler</a></li>
+<li><a href="https://mitmproxy.org/">mitmproxy</a></li>
+<li><a href="https://github.com/simsong/tcpflow">tcpflow</a></li>
+</ul>
+
+<h3 id="扩展阅读">扩展阅读</h3>
+
+<ul>
+<li><a href="http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid">fiddler安卓配置图文教程</a></li>
+<li><a href="http://docs.telerik.com/fiddler/knowledgebase/uiguide">fiddler各图标的意思</a></li>
+<li><a href="https://lukasa.co.uk/2016/01/Debugging_With_Wireshark_TLS/">TLS的Wireshark例子</a></li>
+<li><a href="http://rationallyparanoid.com/articles/tcpdump.html">tcpdump命令详解</a></li>
+<li><a href="http://www.cnblogs.com/findyou/p/3491065.html">Android抓包方法(三)</a></li>
+<li><a href="https://xiazdong.github.io/2015/07/14/Android%20%E6%8A%93%E5%8C%85%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/">Android 抓包实践总结</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/monitoring/" rel="next" title="聊聊监控系统">
+        <i class="fa fa-chevron-left"></i> 聊聊监控系统
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/tomcat/" rel="prev" title="Tomcat">
+        Tomcat <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#代理类">代理类</a>
+<ul>
+<li><a href="#fiddler">Fiddler</a></li>
+<li><a href="#charles-付费">Charles (付费)</a></li>
+<li><a href="#burp-suite">Burp Suite</a></li>
+<li><a href="#mitmproxy">mitmproxy</a></li>
+</ul></li>
+<li><a href="#抓包分析">抓包分析</a>
+<ul>
+<li><a href="#wireshark">Wireshark</a>
+<ul>
+<li><a href="#capture-filter-a-href-http-biot-com-capstats-bpf-html-berkley-packet-filter-a">Capture Filter: <a href="http://biot.com/capstats/bpf.html">Berkley Packet Filter</a></a></li>
+<li><a href="#a-href-https-www-wireshark-org-docs-wsug-html-chunked-chworkbuilddisplayfiltersection-html-display-filter-a"><a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html">Display Filter</a></a></li>
+<li><a href="#知识点">知识点</a></li>
+<li><a href="#编辑-合并文件">编辑/合并文件</a></li>
+</ul></li>
+<li><a href="#tcpdump">tcpdump</a></li>
+<li><a href="#tcpflow">tcpflow</a></li>
+</ul></li>
+<li><a href="#android全局抓包分析-http-https-tcp">Android全局抓包分析(HTTP/HTTPS+TCP)</a>
+<ul>
+<li><a href="#android机已rooted">Android机已ROOTED</a></li>
+<li><a href="#电脑建立wifi热点">电脑建立WiFi热点</a></li>
+</ul></li>
+<li><a href="#资源">资源</a>
+<ul>
+<li><a href="#链接">链接</a></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>设计数据密集型应用笔记 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="设计数据密集型应用笔记">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="设计数据密集型应用笔记 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/ddia/" itemprop="url">
+        设计数据密集型应用笔记
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-03">
+    2018-12-03
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">6234 字 ~13分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>去年就看到总有人推荐<Design Data Intensive Applications>这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.</p>
+
+<p>今年偶然看到网上有<a href="https://github.com/Vonng/ddia">中译版</a>,惭愧的是到了年底,最近几个月才读来.</p>
+
+<p>书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.</p>
+
+<p>暂时还剩第三部分没读完,先记些凌乱的笔记.</p>
+
+<p>数据密集型:</p>
+
+<ul>
+<li>数据是主要挑战,涉及数据量,数据复杂度和数据变化速度.</li>
+<li>于此对应的是计算密集型.</li>
+</ul>
+
+<h2 id="第一部分-数据系统基础">第一部分:数据系统基础</h2>
+
+<p>数据系统设计的基本思想</p>
+
+<h3 id="第一章-可靠性-可扩展性-可维护性">第一章: 可靠性,可扩展性,可维护性</h3>
+
+<p><strong>可靠性:</strong></p>
+
+<ul>
+<li>要设计具有容错/韧性的系统以应对各种故障.</li>
+<li>常见的故障种类:</li>
+<li>硬件故障</li>
+<li>软件错误</li>
+<li>人为错误</li>
+</ul>
+
+<p><strong>可扩展性:</strong> 用负载参数描述负载</p>
+
+<p>描述性能:</p>
+
+<ul>
+<li>Throughout</li>
+<li>Response Time(客户端感受时间,区别于Latency). 响应时间重视时间分布,即使用百分位而不是平均数</li>
+</ul>
+
+<p>软件系统的三个设计原则</p>
+
+<ul>
+<li>可操作性(运维友好)</li>
+<li>简单性(好的抽象)</li>
+<li>可演化性/可扩展性/可修改性/可塑性</li>
+</ul>
+
+<h3 id="第二章-数据模型和查询语言">第二章:数据模型和查询语言</h3>
+
+<p>数据模型: 数据的存储和查询等</p>
+
+<ul>
+<li>关系模型: 事务处理和批处理</li>
+<li>文档模型: 对多对多和连接(记录之间存在关系)支持较差</li>
+<li>图模型</li>
+</ul>
+
+<h4 id="关系模型">关系模型</h4>
+
+<p>存储ID还是文本字符串是个副本(duplication)问题,去除冗余副本是数据库规范化的关键思想.</p>
+
+<p>声明式查询语言(SQL)相对命令式的优势:</p>
+
+<ul>
+<li>比命令式API更简洁和容易</li>
+<li>隐藏了数据引擎的实现细节</li>
+</ul>
+
+<h4 id="文档数据库">文档数据库</h4>
+
+<p>适用于大多数关系都是一对多关系(树状结构化数据)</p>
+
+<p>文档数据库的应用场景是：数据通常是自我包含的，而且文档之间的关系非常稀少。</p>
+
+<p>准确的说文档数据库 并不是无模式(schemaless),应该是schema-on-read(隐含的数据结构).</p>
+
+<p>JSON表示比多表模式具有更好的局部性(locality).</p>
+
+<h3 id="第三章">第三章</h3>
+
+<p>主流的两大类存储引擎：</p>
+
+<ul>
+<li>日志结构（log-structured）的存储引擎</li>
+<li>面向页面（page-oriented）的存储引擎（例如B树）</li>
+</ul>
+
+<h4 id="日志结构学派">日志结构学派</h4>
+
+<p>日志/log:仅追加的数据文件. (只允许附加到文件和删除过时的文件，但不会更新已经写入的文件)</p>
+
+<p>哈希索引: Bitcask(Riak默认存储引擎)</p>
+
+<p>SSTables(排序字符串表（Sorted String Table）)制作LSM树/日志结构合并树</p>
+
+<p>Bloom过滤器/布隆过滤器是用于近似集合内容的内存高效数据结构，它可以告诉您数据库中是否出现键，从而为不存在的键节省许多不必要的磁盘读取操作.</p>
+
+<p>LSM树性能优势:</p>
+
+<p>由于数据按排序顺序存储，因此可以高效地执行范围查询（扫描所有高于某些最小值和最高值的所有键），并且因为磁盘写入是连续的，所以LSM树可以支持非常高的写入吞吐量。</p>
+
+<h4 id="就地更新学派">就地更新学派</h4>
+
+<p>将磁盘视为一组可以覆盖的固定大小的页面。例子:B树.</p>
+
+<p>日志结构索引将数据库分解为可变大小的段，通常是几兆字节或更大的大小，并且总是按顺序编写段。相比之下，B树将数据库分解成固定大小的块或页面.</p>
+
+<p>为了使数据库对崩溃具有韧性，B树实现通常会带有一个额外的磁盘数据结构：预写式日志（WAL, write-ahead-log）/ 重做日志(redo log)</p>
+
+<p>并发控制使用锁存器（latches）（轻量级锁）保护树的数据结构来完成.</p>
+
+<p>根据经验，通常LSM树的写入速度更快，而B树的读取速度更快。 LSM树上的读取通常比较慢，因为它们必须在压缩的不同阶段检查几个不同的数据结构和SSTables。</p>
+
+<p>内存数据库的性能优势并不是因为它们不需要从磁盘读取的事实。相反，它们更快的原因在于省去了将内存数据结构编码为磁盘数据结构的开销。</p>
+
+<h4 id="数据仓库">数据仓库</h4>
+
+<p>数据仓库是一个独立的数据库，分析人员可以查询需要的内容，而不影响OLTP操作。
+数据仓库包含公司所有各种OLTP系统中的只读数据副本。
+从OLTP数据库中提取数据（使用定期的数据转储或连续的更新流），转换成适合分析的模式，清理并加载到数据仓库中。将数据存入仓库的过程称为&rdquo;抽取-转换-加载（ETL）&rdquo;</p>
+
+<ul>
+<li>在线事务处理（OLTP, OnLine Transaction Processing）</li>
+<li>在线分析处理（OLAP, OnLine Analytice Processing）</li>
+</ul>
+
+<p>星型模式/维度建模</p>
+
+<p>由事实表和维度表组成.</p>
+
+<p>列存储</p>
+
+<h3 id="第四章-编码与演化">第四章:编码与演化</h3>
+
+<p>将数据结构转换为网络中的字节或磁盘上的字节的几种方法。我们看到了这些编码的细节不仅影响其效率，更重要的是应用程序的体系结构和部署它们的选项。</p>
+
+<p>服务支持滚动升级需要提供向后兼容性（新代码可以读取旧数据）和向前兼容性（旧代码可以读取新数据）的方式进行编码.</p>
+
+<ul>
+<li>编程语言特定的编码</li>
+<li>JSON，XML和CSV等文本格式</li>
+<li>二进制模式驱动格式</li>
+</ul>
+
+<p>二进制模式驱动格式允许使用清晰定义的前向和后向兼容性语义进行紧凑，高效的编码。</p>
+
+<p>对于静态类型编程语言的用户来说，从模式生成代码的能力是有用的，因为它可以在编译时进行类型检查。</p>
+
+<ul>
+<li>Thrift</li>
+<li>Protocol Buffers</li>
+<li>Avro</li>
+</ul>
+
+<p>数据流的几种模式</p>
+
+<ul>
+<li>数据库</li>
+<li>RPC和REST API</li>
+<li>异步消息传递(消息代理或Actor模型)</li>
+</ul>
+
+<p>REST似乎是公共API的主要风格。 RPC框架的主要重点在于同一组织拥有的服务之间的请求，通常在同一数据中心内。</p>
+
+<h2 id="第二部分-分布式数据系统">第二部分:分布式数据系统</h2>
+
+<ul>
+<li>共享架构:
+
+<ul>
+<li>共享内存架构（shared-memory architecture）: 垂直扩展（vertical scaling）或向上扩展（scale up）</li>
+<li>共享磁盘架构（shared-disk architecture）: 网络附属存储（Network Attached Storage, NAS）或存储区网络（Storage Area Network, SAN）</li>
+</ul></li>
+<li>无共享架构（shared-nothing architecture）: 水平扩展（horizontal scale） 或向外扩展（scale out）</li>
+</ul>
+
+<p>NUMA: 非均匀内存访问（nonuniform memory access）</p>
+
+<p>数据分布在多个节点上有两种常见的方式：</p>
+
+<ul>
+<li>复制（Replication）</li>
+<li>分区 (Partitioning) : 不同的分区可以指派给不同的节点（node）, 亦称分片（shard）</li>
+</ul>
+
+<h3 id="第五章-复制">第五章: 复制</h3>
+
+<h4 id="单主复制">单主复制</h4>
+
+<p>半同步（semi-synchronous）配置:
+在数据库上启用同步复制，通常意味着其中一个跟随者是同步的，而其他的则是异步的。这保证你至少在两个节点上拥有最新的数据副本：主库和同步从库。</p>
+
+<p>处理节点宕机</p>
+
+<ul>
+<li>从库失效：追赶恢复</li>
+<li>主库失效：故障转移（failover）,需要认真考虑可能的情况</li>
+</ul>
+
+<p>复制日志的实现</p>
+
+<ul>
+<li>基于语句的复制(副作用太大,通常不使用)</li>
+<li>传输预写式日志（WAL）</li>
+<li>逻辑日志复制（基于行）: 复制和存储引擎使用不同的日志格式</li>
+<li>基于触发器的复制: 较灵活,但开销较大</li>
+</ul>
+
+<h4 id="多主复制">多主复制</h4>
+
+<p>多领导者配置（也称多主、多活复制）,通常用于多数据中心.</p>
+
+<p>实现: CouchDB</p>
+
+<h4 id="无主复制">无主复制</h4>
+
+<p>leaderless</p>
+
+<h4 id="复制延迟问题-最终一致性">复制延迟问题(最终一致性)</h4>
+
+<ul>
+<li>读己之写</li>
+<li>单调读（Monotonic reads）: 比强一致性（strong consistency）更弱，但比最终一致性（eventually consistency）更强的保证</li>
+<li>一致前缀读: 如果一系列写入按某个顺序发生，那么任何人读取这些写入时，也会看见它们以同样的顺序出现</li>
+</ul>
+
+<h3 id="第六章-分区-partitions">第六章: 分区/Partitions</h3>
+
+<p><strong>键值数据的分区</strong></p>
+
+<ul>
+<li>根据键的范围分区:存在偏斜和热点的问题</li>
+<li>根据键的散列分区</li>
+</ul>
+
+<p><strong>分片与次级索引</strong></p>
+
+<ul>
+<li>按文档的二级索引/文档分区索引/本地索引: 分散/聚集（scatter/gather）方法</li>
+<li>根据关键词(Term)的二级索引/全局索引</li>
+</ul>
+
+<p>分区再平衡策略</p>
+
+<ul>
+<li>固定数量的分区:创建比节点更多的分区，并为每个节点分配多个分区</li>
+<li>动态分区: 按节点比例分区</li>
+</ul>
+
+<h3 id="第七章-事务">第七章: 事务</h3>
+
+<p>事务通常被理解为，将多个对象上的多个操作合并为一个执行单元的机制</p>
+
+<p>ACID代表原子性（Atomicity），一致性（Consistency），隔离性（Isolation）和持久性（Durability）</p>
+
+<ul>
+<li>原子性/可中止性（abortability）: 能够在错误时中止事务，丢弃该事务进行的所有写入变更的能力。</li>
+<li>一致性: 对数据的一组特定陈述必须始终成立。即不变量（invariants）</li>
+<li>原子性，隔离性和持久性是数据库的属性，而一致性（在ACID意义上）是应用程序的属性。</li>
+<li>隔离性: 同时执行的事务是相互隔离的</li>
+</ul>
+
+<h4 id="并发控制常用的隔离级别">并发控制常用的隔离级别</h4>
+
+<ul>
+<li>读已提交是一个非常流行的隔离级别,通过使用行锁（row-level lock） 来防止脏写</li>
+<li>快照隔离/可重复读: 通常使用多版本对象/多版本并发控制（MVCC, multi-version concurrentcy control）实现</li>
+<li>可序列化(Serializability）:通常被认为是最强的隔离级别。它保证即使事务可以并行执行，最终的结果也是一样的</li>
+</ul>
+
+<p>一些可能遇到的问题:</p>
+
+<p>脏读/脏写/读取偏差(不可重复读)/更新丢失/写偏差/幻读/字面意义上的串行执行(单核CPU)/两阶段锁定/可串行化快照隔离（SSI）</p>
+
+<p>MySQL/InnoDB的可重复读并不会自动检测丢失的更新</p>
+
+<p>比较并设置（CAS, Compare And Set）</p>
+
+<p>幻读（phantoms）:即一个事务改变另一个事务的搜索查询的结果</p>
+
+<p>记录系统和衍生数据系统之间的区别不在于工具，而在于应用程序中的使用方式。</p>
+
+<h3 id="第八章-分布式系统的麻烦">第八章: 分布式系统的麻烦</h3>
+
+<p>分布式系统与运行在单台计算机上的程序的不同之处：</p>
+
+<ul>
+<li>没有共享内存，只有通过可变延迟的不可靠网络传递的消息</li>
+<li>系统可能遭受部分失效</li>
+<li>不可靠的时钟和处理暂停</li>
+</ul>
+
+<p>物理时钟:时钟和单调钟</p>
+
+<p>时钟: 根据某个日历（也称为挂钟时间（wall-clock time））返回当前日期和时间,通常程序返回自epoch（1970年1月1日 午夜 UTC，格里高利历）以来的秒数（或毫秒）.需要根据NTP服务器设置同步.
+单调钟: 适用于测量持续时间（时间间隔），例如超时或服务的响应时间. 保证总是前进的事实（而时钟可以及时跳回）.单调钟不需要同步.</p>
+
+<p>拜占庭将军问题: 在不信任的环境中达成共识的问题.</p>
+
+<h3 id="第九章-一致性与共识">第九章: 一致性与共识</h3>
+
+<p>共识（consensus）：就是让所有的节点对某件事达成一致</p>
+
+<p>事务隔离主要是为了，避免由于同时执行事务而导致的竞争状态，而分布式一致性主要关于，面对延迟和故障时，如何协调副本间的状态。</p>
+
+<p>最强一致性模型之一: 线性一致性（linearizability）</p>
+
+<p>线性一致性（linearizability）/ 原子一致性（atomic consistency）/ 强一致性（strong consistency）/ 立即一致性（immediate consistency）/ 外部一致性（external consistency ）</p>
+
+<p>基本思想：使系统看起来好像只有一个数据副本,是读取和写入寄存器（单个对象）的新鲜度保证</p>
+
+<p>依赖线性一致性的场景:</p>
+
+<ul>
+<li>锁定和领导选举</li>
+<li>约束和唯一性保证</li>
+<li>跨信道的时序依赖</li>
+</ul>
+
+<p>CAP定理的正式定义仅限于很狭隘的范围，尽管CAP在历史上有一些影响力，但对于设计系统而言并没有实际价值.</p>
+
+<p>因果一致性为我们提供了一个较弱的一致性模型</p>
+
+<p>版本向量可以区分两个操作是并发的，还是一个因果依赖另一个；而兰伯特时间戳(更加紧凑)总是施行一个全序。</p>
+
+<p>线性一致的CAS（或自增并返回）寄存器与全序广播都都等价于共识问题</p>
+
+<p>共识可以解决的问题:</p>
+
+<ul>
+<li>线性一致性的CAS寄存器</li>
+<li>原子事务提交</li>
+<li>全序广播</li>
+<li>锁和租约</li>
+<li>成员/协调服务</li>
+<li>唯一性约束</li>
+</ul>
+
+<p>ZooKeeper这样的工具为应用提供了“外包”的共识、故障检测和成员服务。</p>
+
+<h2 id="第三部分-派生数据">第三部分: 派生数据</h2>
+
+<h3 id="第十章-批处理算法和框架">第十章: 批处理算法和框架</h3>
+
+<h4 id="与unix设计相通">与Unix设计相通</h4>
+
+<p>Unix设计原则包括：输入是不可变的，输出是为了作为另一个（仍未知的）程序的输入，而复杂的问题是通过编写“做好一件事”的小工具来解决的.</p>
+
+<p>在Unix世界中，允许程序与程序组合的统一接口是文件与管道；在MapReduce中，该接口是一个分布式文件系统。</p>
+
+<h4 id="分布式批处理-mapreduce">分布式批处理/MapReduce</h4>
+
+<p>批处理的常见用途:<br />
+搜索,构建机器学习系统，例如分类器（比如垃圾邮件过滤器，异常检测，图像识别）与推荐系统（例如，你可能认识的人，你可能感兴趣的产品或相关的搜索)</p>
+
+<p>分布式批处理框架需要解决的两个主要问题是：</p>
+
+<ul>
+<li>分区: 在MapReduce中，Mapper根据输入文件块进行分区。</li>
+<li>容错: MapReduce经常写入磁盘;数据流引擎更多地将中间状态保存在内存中，更少地物化中间状态;确定性算子减少了需要重算的数据量.</li>
+</ul>
+
+<p>分布式批处理引擎有一个刻意限制的编程模型：回调函数（比如Mapper和Reducer）被假定是无状态的. 使得批处理作业中的代码无需操心实现容错机制.</p>
+
+<p><strong>MapReduce的连接算法</strong></p>
+
+<ul>
+<li>排序合并连接</li>
+<li>广播散列连接</li>
+<li>分区散列连接</li>
+</ul>
+
+<h4 id="数据流引擎的优化">数据流引擎的优化</h4>
+
+<p>Tez是一个相当薄的库，它依赖于YARN shuffle服务来实现节点间数据的实际复制，而Spark和Flink则是包含了独立网络通信层，调度器，及用户向API的大型框架。</p>
+
+<p>Hive，Spark和Flink都有基于代价的查询优化器可以做到这一点，甚至可以改变连接顺序，最小化中间状态的数量.</p>
+
+<h4 id="图批量处理">图批量处理</h4>
+
+<p>在整个图上执行某种离线处理或分析,这种需求经常出现在机器学习应用（如推荐引擎）或排序系统中,最着名的图形分析算法之一是PageRank.</p>
+
+<p>使用批量同步并行（BSP）计算模型,即Pregel模型.</p>
+
+<h4 id="一些概念">一些概念</h4>
+
+<p>事件日志: 描述登录用户在网站上做的事情（称为活动事件（activity events）或点击流数据（clickstream data）.事件日志是事实表，用户数据库是其中的一个维度。</p>
+
+<p>物化（materialization）: 将中间状态写入文件的过程</p>
+
+<p>算子(operators)是Map和Reduce的泛化</p>
+
+<p><strong>高级API和语言:</strong></p>
+
+<p>Mahout在MapReduce，Spark和Flink之上实现了用于机器学习的各种算法</p>
+
+<p>空间算法: 如最近邻搜索（k-nearest neghbors, kNN）</p>
+
+<h3 id="第十一章-流处理-stream-processing">第十一章: 流处理(stream processing)</h3>
+
+<p>消息系统的分类:</p>
+
+<ul>
+<li>直接从生产者传递给消费者</li>
+<li>消息代理(message broker) / 消息队列(message queue)
+
+<ul>
+<li>AMQP/JMS风格的消息代理: 适用于在消息处理代价高昂，希望逐条并行处理，顺序不重要的情况下</li>
+<li>基于日志的消息代理: 适用于消息吞吐量很高，处理迅速，顺序很重要的情况下</li>
+</ul></li>
+</ul>
+
+<p>一个记录/事件(event)由生产者（producer）/发布者（publisher）/发送者（sender）生成一次，然后可能由多个消费者（consumer）/订阅者（subscribers）/接收者（recipients）进行处理.</p>
+
+<p>许多开源分布式流处理框架的设计都是针对分析设计的：例如Apache Storm，Spark Streaming，Flink，Concord，Samza和Kafka Streams。</p>
+
+<p>流处理的几种目的:</p>
+
+<ul>
+<li>搜索事件模式（复杂事件处理）</li>
+<li>计算分窗聚合（流分析)</li>
+<li>保证衍生数据系统处于最新状态（物化视图）。</li>
+</ul>
+
+<p><strong>流式连接</strong><br />
+流处理中可能出现的三种连接类型：</p>
+
+<ul>
+<li>流流连接</li>
+<li>流表连接</li>
+<li>表表连接</li>
+</ul>
+
+<p><strong>容错</strong></p>
+
+<p>流处理中实现容错和恰好一次语义的技术: 可以使用更细粒度的恢复机制，基于微批次，存档点，事务，或幂等写入。</p>
+
+<p>Spark在批处理引擎上执行流处理，将流分解为微批次（microbatches）, 而Apache Flink则在流处理引擎上执行批处理.</p>
+
+<p><strong>幂等性（idempotence）</strong>: 幂等操作是多次重复执行与单次执行效果相同的操作。</p>
+
+<h3 id="第十二章-数据系统的未来">第十二章:数据系统的未来</h3>
+
+<p>(串联起前边章节的汇总篇)</p>
+
+<h4 id="批处理与流处理">批处理与流处理</h4>
+
+<p>在维护衍生数据时，批处理和流处理都是有用的。流处理允许将输入中的变化以低延迟反映在衍生视图中，而批处理允许重新处理大量累积的历史数据以便将新视图导出到现有数据集上。</p>
+
+<p><strong>Lambda架构</strong><br />
+核心思想是通过将不可变事件附加到不断增长的数据集来记录传入数据，这类似于事件溯源。<br />
+为了从这些事件中衍生出读取优化的视图, Lambda架构建议并行运行两个不同的系统：批处理系统（如Hadoop MapReduce）和独立的流处理系统（如Storm）。<br />
+在Lambda方法中，流处理器消耗事件并快速生成对视图的近似更新；批处理器稍后将使用同一组事件并生成衍生视图的更正版本。</p>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/distributed" rel="tag" title="distributed">#distributed#</a>
+    
+    <a href="/tags/database" rel="tag" title="database">#database#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/read/guoxue/" rel="next" title="读国学">
+        <i class="fa fa-chevron-left"></i> 读国学
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/python3/" rel="prev" title="迁移至Python3">
+        迁移至Python3 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#第一部分-数据系统基础">第一部分:数据系统基础</a>
+<ul>
+<li><a href="#第一章-可靠性-可扩展性-可维护性">第一章: 可靠性,可扩展性,可维护性</a></li>
+<li><a href="#第二章-数据模型和查询语言">第二章:数据模型和查询语言</a>
+<ul>
+<li><a href="#关系模型">关系模型</a></li>
+<li><a href="#文档数据库">文档数据库</a></li>
+</ul></li>
+<li><a href="#第三章">第三章</a>
+<ul>
+<li><a href="#日志结构学派">日志结构学派</a></li>
+<li><a href="#就地更新学派">就地更新学派</a></li>
+<li><a href="#数据仓库">数据仓库</a></li>
+</ul></li>
+<li><a href="#第四章-编码与演化">第四章:编码与演化</a></li>
+</ul></li>
+<li><a href="#第二部分-分布式数据系统">第二部分:分布式数据系统</a>
+<ul>
+<li><a href="#第五章-复制">第五章: 复制</a>
+<ul>
+<li><a href="#单主复制">单主复制</a></li>
+<li><a href="#多主复制">多主复制</a></li>
+<li><a href="#无主复制">无主复制</a></li>
+<li><a href="#复制延迟问题-最终一致性">复制延迟问题(最终一致性)</a></li>
+</ul></li>
+<li><a href="#第六章-分区-partitions">第六章: 分区/Partitions</a></li>
+<li><a href="#第七章-事务">第七章: 事务</a>
+<ul>
+<li><a href="#并发控制常用的隔离级别">并发控制常用的隔离级别</a></li>
+</ul></li>
+<li><a href="#第八章-分布式系统的麻烦">第八章: 分布式系统的麻烦</a></li>
+<li><a href="#第九章-一致性与共识">第九章: 一致性与共识</a></li>
+</ul></li>
+<li><a href="#第三部分-派生数据">第三部分: 派生数据</a>
+<ul>
+<li><a href="#第十章-批处理算法和框架">第十章: 批处理算法和框架</a>
+<ul>
+<li><a href="#与unix设计相通">与Unix设计相通</a></li>
+<li><a href="#分布式批处理-mapreduce">分布式批处理/MapReduce</a></li>
+<li><a href="#数据流引擎的优化">数据流引擎的优化</a></li>
+<li><a href="#图批量处理">图批量处理</a></li>
+<li><a href="#一些概念">一些概念</a></li>
+</ul></li>
+<li><a href="#第十一章-流处理-stream-processing">第十一章: 流处理(stream processing)</a></li>
+<li><a href="#第十二章-数据系统的未来">第十二章:数据系统的未来</a>
+<ul>
+<li><a href="#批处理与流处理">批处理与流处理</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

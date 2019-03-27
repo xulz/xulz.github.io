@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on XuLizhao &#39;s Notes</title>
+    <link>/tags/tools/</link>
+    <description>Recent content in Tools on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vim必知必会</title>
+      <link>/blog/vim/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/vim/</guid>
+      <description>&lt;p&gt;VI/VIM作为Nix环境的常用编辑器,有一些常用命令/用法.&lt;/p&gt;
+
+&lt;p&gt;由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

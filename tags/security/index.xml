@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on XuLizhao &#39;s Notes</title>
+    <link>/tags/security/</link>
+    <description>Recent content in Security on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 03 Apr 2018 03:32:33 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>你的网站账号密码安全吗</title>
+      <link>/blog/check-your-password/</link>
+      <pubDate>Tue, 03 Apr 2018 03:32:33 +0000</pubDate>
+      
+      <guid>/blog/check-your-password/</guid>
+      <description>&lt;p&gt;今天看了Django开发者的一篇&lt;a href=&#34;https://www.b-list.org/weblog/2018/mar/06/two-new-projects/&#34;&gt;文章&lt;/a&gt;,关于web安全的子项目, 其中提到了一个用于检测用户密码是否安全的API.&lt;/p&gt;
+
+&lt;p&gt;不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.&lt;/p&gt;
+
+&lt;p&gt;对普通用户,提供两个主要的网页查询功能:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;你邮件账户的密码是否已泄漏[&lt;a href=&#34;https://haveibeenpwned.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;1&lt;/a&gt;]&lt;/li&gt;
+&lt;li&gt;你正在使用的密码是否存在于泄漏数据库及被其他用户泄漏的次数[&lt;a href=&#34;https://haveibeenpwned.com/Passwords&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2&lt;/a&gt;]&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

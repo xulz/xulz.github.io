@@ -1,0 +1,614 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>JVM和GC调优 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="JVM和GC调优">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="JVM和GC调优 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/jvm/" itemprop="url">
+        JVM和GC调优
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-27">
+    2018-09-27
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1511 字 ~4分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。</p>
+
+<h2 id="hotspot-jvm">Hotspot JVM</h2>
+
+<p>这里的JVM特指Oracle的 Hotspot JVM.<br />
+由 class loader, the runtime data areas（含heap）, 和execution engine（含GC和JIT）三部分组成。<br />
+Heap主要用于对象数据的存放。</p>
+
+<p>性能优化主要涉及heap大小和适合的GC算法的调优。<br />
+优化着重于两个目标：</p>
+
+<ul>
+<li>响应能力：长时间的停顿不可接受<br /></li>
+<li>吞吐率：较长一段时间的处理量，快速响应不是必须的。</li>
+</ul>
+
+<h2 id="gc主要算法">GC主要算法</h2>
+
+<h3 id="serial">Serial</h3>
+
+<p>-XX:+UseSerialGC</p>
+
+<h3 id="parallel">Parallel</h3>
+
+<p>JDK8默认值。<br />
+-XX:+UseParallelGC<br />
+-XX:+UseParallelOldGC</p>
+
+<h3 id="cms">CMS</h3>
+
+<p>新生代使用Parallel New + 老年代使用CMS（Concurrent Mark-Sweep Collector）。</p>
+
+<p>-XX:+UseParNewGC
+-XX:+UseConcMarkSweepGC</p>
+
+<p>前三种算法的Heap堆结构：
+<img src="https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/images/HeapStructure.png" alt="Heap堆结构" /></p>
+
+<ul>
+<li>Young Generation = eden + Survivor Space(S0+S1)</li>
+<li>Old Generation == Tenured</li>
+<li>Permanent Generation == Permanent</li>
+</ul>
+
+<h3 id="g1">G1</h3>
+
+<p>代表Garbage First，适用于多核和超大内存的情况，需要JDK7u4+。<br />
+是CMS的替代方案，被划分为相同大小的区域，由eden,survivor和old三部分组成。<br />
+使用场景：Heap 6G+ 或要求停顿时间小于0.5s</p>
+
+<p>-XX:+UseG1GC<br />
+其他参数：</p>
+
+<ul>
+<li>-XX:MaxGCPauseMillis=200  （默认200ms）<br /></li>
+<li>-XX:InitiatingHeapOccupancyPercent=45 （默认45%，开始并发GC Cycle）<br /></li>
+<li>-XX:G1ReservePercent=10（默认10%，提高以避免 to-space overflow错误）</li>
+</ul>
+
+<p>通常2000个区域，每个区域1~32Mb。</p>
+
+<p>注：不要设置新生代大小（-Xmn）</p>
+
+<h2 id="调优">调优</h2>
+
+<p>建议：老年代占用率至少大于新生代活跃数据的1.5倍，新生代空间大小至少为堆大小的10%.</p>
+
+<p><strong>主要触发事件：</strong></p>
+
+<p>新生代用完会触发Minor GC，时间通常很快；<br />
+老年代（tenure+perm）用完会触发Full GC,时间通常较长。<br />
+原始是更频繁的Minor GC和更少的Full GC。</p>
+
+<p>Heap Size = Young Gen + Old Gen + Meta space</p>
+
+<h3 id="主要参数">主要参数</h3>
+
+<ul>
+<li>-Xms Heap初始大小</li>
+<li>-Xmx Heap最大值</li>
+<li>-Xmn 新生代Heap大小（推荐不设置，使用则该值不能太大）</li>
+</ul>
+
+<p>XMX和XMS设置一样大,减轻伸缩堆带来的压力　　
+JVM占用内存会超过Xmx大致1/3, 因此Xmx的值不应超过总内存的60%~70%.　　
+-X 是设置JVM参数的新命令，不带-X 的是为了兼容之前版本.</p>
+
+<p><strong>打印默认参数</strong><br />
+java -XX:+PrintFlagsFinal -version</p>
+
+<h3 id="thread-stack-size">Thread Stack Size</h3>
+
+<p>Java 8 64bit 默认1024k.
+每个线程启动时JVM为该线程创建一个新的Java Stack,在discrete frames存放线程状态,执行两类操作push和pop frames.<br />
+使用递归算法或使用第三方框架会增加该大小．</p>
+
+<p>如果应用创建很多线程，在申请更多线程栈内存会报StackOverFlowError错误.<br />
+可以用设置最大线程栈内存: -Xss256k 或　-XX:ThreadStackSize=256<br />
+也可以压缩操作符和类指针:<br />
+-XX:+UseCompressedClassPointers<br />
+-XX:+UseCompressedOops</p>
+
+<p>原则:</p>
+
+<ul>
+<li>一般没必要设置该值，除非64bit　JVM的物理内存较小产生OutOfMemory错误</li>
+<li>设置为较小的值可以有更大的Heap size</li>
+<li>一般来说，64bit　JVM使用256k足够用</li>
+</ul>
+
+<h3 id="oom问题">OOM问题</h3>
+
+<p>针对Tomcat</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 检索gc日志</span>
+grep <span style="color:#c30">&#39;java.lang.OutOfMemoryError: GC overhead limit exceeded&#39;</span> catalina.2016-10-25.log
+
+<span style="color:#09f;font-style:italic"># 记录heap dump，setenv.sh</span>
+XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath<span style="color:#555">=</span>/usr/local/tomcat/logs/</code></pre></div>
+<h2 id="gc日志">GC日志</h2>
+
+<h3 id="参数设置">参数设置</h3>
+
+<p>一些gc日志参数，经常使用的:<br />
+-verbosegc<br />
+-Xloggc:/var/log/gc.log</p>
+
+<p><strong>设置更详细日志</strong><br />
+-XX:+PrintGC<br />
+-XX:+PrintGCDetails</p>
+
+<p><strong>显示时间</strong><br />
+-XX:+PrintGCTimeStamps<br />
+-XX:+PrintGCDateStamps</p>
+
+<h3 id="日志分析">日志分析</h3>
+
+<p>Allocation Failure：运行GC（一般是新生代回收即minor GC）的原因，意味着新生代已没有空间.</p>
+
+<p>一共存在8种OutOfMemoryErrors , GC日志可以记录5种:</p>
+
+<ol>
+<li>Java heap space</li>
+<li>GC overhead limit exceeded</li>
+<li>Requested array size exceeded VM limit</li>
+<li>Permgen space</li>
+<li>Metaspace</li>
+</ol>
+
+<h2 id="名称缩写">名称缩写</h2>
+
+<ul>
+<li>JRE: Java Runtime Environment</li>
+<li>JDK:  Java Development Kit</li>
+<li>JVM： Java Virtual Machine</li>
+<li>GC:  Garbage Collection</li>
+<li>JMX: Java Management Extentions</li>
+<li>JPA: Java Persistence API</li>
+</ul>
+
+<h2 id="工具">工具</h2>
+
+<h3 id="gc日志分析">GC日志分析</h3>
+
+<ul>
+<li>jstat: 命令行工具</li>
+<li><a href="https://www.oracle.com/technetwork/java/visualgc-136680.html">Visual GC</a></li>
+<li><a href="https://github.com/chewiebug/GCViewer">GCViewer</a></li>
+<li><a href="http://gceasy.io/">在线gc日志分析</a></li>
+</ul>
+
+<h3 id="heap-dump分析">Heap Dump分析</h3>
+
+<ul>
+<li><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jhat.html">JHAT</a>
+&gt; jhat heap-dump.hprof</li>
+<li><a href="https://www.eclipse.org/mat/">Eclipse Memory Analyzer (MAT)</a></li>
+<li><a href="https://www.ibm.com/developerworks/community/groups/service/html/communitystart?communityUuid=4544bafe-c7a2-455f-9d43-eb866ea60091">IBM HeapAnalyzer</a>:貌似已停更</li>
+</ul>
+
+<h3 id="获取heap-dump">获取heap dump</h3>
+
+<ul>
+<li>jmap -dump : 运行时获得(会停止java进程)</li>
+<li>JConsole使用 HotSpotDiagnosticMXBean</li>
+<li>使用JVM参数 -XX:+HeapDumpOnOutOfMemoryError</li>
+<li>使用hprof命令: java -agentlib:hprof=help</li>
+</ul>
+
+<h3 id="获取threaddump">获取ThreadDump</h3>
+
+<ul>
+<li>jstack -l <pid> &gt;&gt; threadinfo.log</li>
+<li>kill -3 <pid></li>
+<li><code>jcmd &lt;pid&gt; Thread.print &gt; &lt;file-path&gt;</code></li>
+</ul>
+
+<h2 id="参考资源">参考资源</h2>
+
+<p>官方文档：</p>
+
+<ul>
+<li><a href="https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html">Getting Started with the G1 Garbage Collector</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/">HotSpot Virtual Machine Garbage Collection Tuning Guide</a></li>
+<li><a href="https://apexapps.oracle.com/pls/apex/f?p=44785:50:12109546031484::NO:::">Java Virtual Machine Troubleshooting</a></li>
+</ul>
+
+<p>其他：</p>
+
+<ul>
+<li><a href="https://plumbr.io/java-garbage-collection-handbook">GC Handbook</a> ： GC手册</li>
+<li><a href="https://shipilev.net/jvm-anatomy-park/">JVM Anatomy Park</a> ：深入讲解JVM</li>
+<li><a href="https://www.cubrid.org/blog/how-to-tune-java-garbage-collection">How to Tune Java Garbage Collection</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/java" rel="tag" title="java">#java#</a>
+    
+    <a href="/tags/performance" rel="tag" title="performance">#performance#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/more-load-test-note/" rel="next" title="全链路压测笔记续">
+        <i class="fa fa-chevron-left"></i> 全链路压测笔记续
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/acme/" rel="prev" title="自动生成SSL证书的利器acme.sh">
+        自动生成SSL证书的利器acme.sh <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#hotspot-jvm">Hotspot JVM</a></li>
+<li><a href="#gc主要算法">GC主要算法</a>
+<ul>
+<li><a href="#serial">Serial</a></li>
+<li><a href="#parallel">Parallel</a></li>
+<li><a href="#cms">CMS</a></li>
+<li><a href="#g1">G1</a></li>
+</ul></li>
+<li><a href="#调优">调优</a>
+<ul>
+<li><a href="#主要参数">主要参数</a></li>
+<li><a href="#thread-stack-size">Thread Stack Size</a></li>
+<li><a href="#oom问题">OOM问题</a></li>
+</ul></li>
+<li><a href="#gc日志">GC日志</a>
+<ul>
+<li><a href="#参数设置">参数设置</a></li>
+<li><a href="#日志分析">日志分析</a></li>
+</ul></li>
+<li><a href="#名称缩写">名称缩写</a></li>
+<li><a href="#工具">工具</a>
+<ul>
+<li><a href="#gc日志分析">GC日志分析</a></li>
+<li><a href="#heap-dump分析">Heap Dump分析</a></li>
+<li><a href="#获取heap-dump">获取heap dump</a></li>
+<li><a href="#获取threaddump">获取ThreadDump</a></li>
+</ul></li>
+<li><a href="#参考资源">参考资源</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

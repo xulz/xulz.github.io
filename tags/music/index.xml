@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Music on XuLizhao &#39;s Notes</title>
+    <link>/tags/music/</link>
+    <description>Recent content in Music on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 13 Apr 2018 04:00:38 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/music/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>电音欣赏</title>
+      <link>/play/electronic-muisc/</link>
+      <pubDate>Fri, 13 Apr 2018 04:00:38 +0000</pubDate>
+      
+      <guid>/play/electronic-muisc/</guid>
+      <description>去年下半年玩王者荣耀(年前已出坑)的收获之一就是接触了电音,当时找一些攻略视频看,背景音乐都很带劲,于是通过网易云音乐的歌单发现了电音的广阔</description>
+    </item>
+    
+  </channel>
+</rss>

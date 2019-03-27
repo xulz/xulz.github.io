@@ -1,0 +1,564 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Web测试及工具 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Web测试及工具">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Web测试及工具 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/webtest/" itemprop="url">
+        Web测试及工具
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-04-10">
+    2018-04-10
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">959 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>整理下测试相关的东西在这里。</p>
+
+<p>说到Web网页自动化测试，事实上的唯一标准就是基于WebDriver/Selenium的实现了。</p>
+
+<blockquote>
+<p>说明: WebDriver 等同于Selenium2</p>
+</blockquote>
+
+<h2 id="webdriver-介绍">WebDriver 介绍</h2>
+
+<p>WebDriver 是一个跨浏览器的网站自动化测试API，主要包含以下几方面</p>
+
+<ul>
+<li>Browser Control： navigation, snapshotting, window control, override geolocation</li>
+<li>User input simulation： mouse, keyborad, file uploads, altert handling</li>
+<li>Web stuff： find/query elements, evaluate JavaScript, manipulate cookies
+<br />
+<br /></li>
+</ul>
+
+<h2 id="页面对象模型">页面对象模型</h2>
+
+<p>页面对象模型是挺早就有的一个概念，现在也是实现的一个通用标准/最佳实践.</p>
+
+<p>他的思想是应该暴露你要交互的服务而不是具体实现，即你的测试方法不应该包含最底层的WebDriver API。</p>
+
+<p>如果某些复杂UI的层次结构只是用来组织UI，应该与page对象分离开。断言也应该与页面对象分离。</p>
+
+<p>同时“页面”对象并不意味着为每个页面建立一个这样的对象，比如页面有重要意义的元素可以独立为一个page对象。</p>
+
+<p>Martin Flower最早提出的Page Object<a href="http://martinfowler.com/bliki/PageObject.html">英文版</a>/<a href="http://huangbowen.net/blog/2013/09/17/page-object/">中文版</a></p>
+
+<h3 id="页面对象的例子">页面对象的例子</h3>
+
+<ul>
+<li>Page(object)
+
+<ul>
+<li><strong>init</strong>(self, testsetup)</li>
+<li>get_url(self, url)</li>
+<li>is_the_current_page</li>
+<li>get_url_current_page</li>
+<li>is_element_present(self, *locator)</li>
+<li>is_element_visible(self, *locator)</li>
+<li>return_to_previous_page</li>
+</ul></li>
+<li>Base(Page)</li>
+<li>Regions</li>
+</ul>
+
+<h2 id="一些流行语言的工具和框架实现">一些流行语言的工具和框架实现</h2>
+
+<h3 id="selenium-server">Selenium Server</h3>
+
+<ul>
+<li><p><a href="https://github.com/SeleniumHQ/docker-selenium">Docker images for Selenium Grid Server</a></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># start the hub</span>
+java -jar selenium-server-standalone-2.47.0.jar -role hub -port <span style="color:#f60">4444</span>
+    
+<span style="color:#09f;font-style:italic"># start the node</span>
+java -jar selenium-server-standalone-2.47.0.jar -role node -hub http://localhost:4444/grid/register
+<span style="color:#09f;font-style:italic"># 其他</span>
+java -jar selenium-server-standalone-<span style="color:#555">{</span>version<span style="color:#555">}</span>.jar -Dwebdriver.chrome.driver<span style="color:#555">=</span>/path/to/chromedriver
+<span style="color:#09f;font-style:italic"># Chrome Only</span>
+chromedriver --port<span style="color:#555">=</span><span style="color:#f60">4444</span> --url-base<span style="color:#555">=</span>wd/hub</code></pre></div></li>
+</ul>
+
+<h3 id="python实现">Python实现</h3>
+
+<ul>
+<li><a href="https://selenium-python.readthedocs.io/">Selenium with Python</a>:Python使用文档</li>
+<li><a href="https://github.com/cobrateam/splinter">splinter</a></li>
+<li><a href="https://github.com/mozilla/PyPOM">PageObject库</a></li>
+<li><a href="https://github.com/robotframework/SeleniumLibrary">RobotFramework库</a></li>
+</ul>
+
+<h3 id="java实现">Java实现</h3>
+
+<p>基本组成：</p>
+
+<ul>
+<li>UI层: selenide</li>
+<li>Report框架: allure</li>
+<li>断言框架: assertj-core/assertj-db</li>
+<li>基础测试框架: TestNG/JUnit</li>
+</ul>
+
+<p>相关网站/文档：</p>
+
+<ul>
+<li><a href="https://github.com/codeborne/selenide">Selenide</a>/<a href="https://github.com/selenide-examples">示例</a></li>
+<li><a href="http://testng.org/doc/selenium.html">结合TestNG</a></li>
+<li>JDK:<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html">java.awt.Robot</a></li>
+<li><a href="https://bitbucket.org/atlassian/atlassian-selenium">Atlassian Selenium</a>: 供学习</li>
+<li><a href="https://github.com/NetEase/Dagger"><del>Dagger</del></a>:网易开源，不再维护，同样基于TestNG,供参考</li>
+</ul>
+
+<h3 id="node-js-javascript实现">Node.JS/JavaScript实现</h3>
+
+<ul>
+<li><a href="https://github.com/alibaba/uirecorder">UI Recorder</a>:阿里的录制回放工具</li>
+<li><a href="https://theintern.github.io/">Intern</a> :全功能自动化测试工具</li>
+<li><a href="http://karma-runner.github.io">Karma</a>:浏览器测试执行工具, 因AngularJS而生</li>
+<li><a href="http://www.webdriver.io">WebdriverIO</a> :Node.js库,结合BDD框架使用</li>
+<li><a href="http://nightwatchjs.org/">Nightwatch.js</a> :Node.JS 实现的UI测试框架</li>
+<li><a href="https://github.com/groupon/testium">Testnium</a>:GroupOn的Node集成测试库</li>
+</ul>
+
+<h3 id="响应式布局测试">响应式布局测试</h3>
+
+<ul>
+<li><a href="http://galenframework.com/">Galen</a></li>
+</ul>
+
+<h3 id="jenkins集成">Jenkins集成</h3>
+
+<p>SeleniumPlugin</p>
+
+<h3 id="浏览器辅助工具">浏览器辅助工具</h3>
+
+<p>Chrome</p>
+
+<ul>
+<li>CSS Selector Helper for Chrome</li>
+<li>Selenium Page Object Generator</li>
+</ul>
+
+<p>Firefox</p>
+
+<ul>
+<li>Firebug</li>
+<li>Firefinder : Finds HTML elements matching chosen CSS selector(s) or XPath expression</li>
+<li>xpathchecker : An interactive editor for XPath expressions &ndash; Firefox Extension</li>
+<li>WebDriver Element Locator 2.0</li>
+</ul>
+
+<h2 id="示例">示例</h2>
+
+<h3 id="元素定位">元素定位</h3>
+
+<p>CSS Selector</p>
+
+<ul>
+<li>.class</li>
+<li>#id</li>
+<li>element [operator: , &gt; + ~ ] element</li>
+<li>[id]</li>
+<li>:checked</li>
+</ul>
+
+<p>参考文档<a href="http://www.w3schools.com/cssref/css_selectors.asp">CSS Selector</a>/<a href="http://www.w3schools.com/cssref/trysel.asp">测试页</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors">关于Selectors</a></p>
+
+<h3 id="关于等待">关于等待</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#09f;font-style:italic"># Waiting for an element to appear</span>
+    driver<span style="color:#555">.</span>wait(until<span style="color:#555">.</span>elementLocated(by<span style="color:#555">.</span><span style="color:#366">id</span>(<span style="color:#c30">&#39;elementappearschild&#39;</span>)), <span style="color:#f60">10000</span>, <span style="color:#c30">&#39;Could not locate the child element within the time specified&#39;</span>);
+    <span style="color:#09f;font-style:italic"># Waiting for an element to disappear</span>
+    <span style="color:#555">//</span>Method1: driver<span style="color:#555">.</span>wait(until<span style="color:#555">.</span>elementIsNotVisible(element),<span style="color:#f60">10000</span>);
+    <span style="color:#555">//</span>Method2 [better]:
+    driver<span style="color:#555">.</span>wait(function() {
+    <span style="color:#069;font-weight:bold">return</span> driver<span style="color:#555">.</span>isElementPresent(by<span style="color:#555">.</span><span style="color:#366">id</span>(<span style="color:#c30">&#39;elementdisappears&#39;</span>))<span style="color:#555">.</span>then(function(present) {
+    <span style="color:#069;font-weight:bold">return</span> <span style="color:#a00;background-color:#faa">!</span>present;
+    });
+    }, <span style="color:#f60">10000</span>, <span style="color:#c30">&#39;The element was still present when it should have disappeared.&#39;</span>);
+    <span style="color:#09f;font-style:italic"># Waiting for an element’s text to change to a value</span>
+    driver<span style="color:#555">.</span>wait(until<span style="color:#555">.</span>elementTextContains(element, <span style="color:#c30">&#39;new&#39;</span>),<span style="color:#f60">10000</span>);</code></pre></div>
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<ul>
+<li><a href="https://seleniumhq.github.io/docs/index.html">官方文档</a></li>
+<li><a href="http://www.aosabook.org/en/selenium.html">Architecture of Selenium Webdriver</a></li>
+<li><a href="https://seleniumguidebook.com/">Selenium Guidebook</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/testing" rel="tag" title="testing">#testing#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/apitest/" rel="next" title="接口测试及工具">
+        <i class="fa fa-chevron-left"></i> 接口测试及工具
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/k8s-local/" rel="prev" title="Kubernetes部署篇:本地开发测试环境搭建">
+        Kubernetes部署篇:本地开发测试环境搭建 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#webdriver-介绍">WebDriver 介绍</a></li>
+<li><a href="#页面对象模型">页面对象模型</a>
+<ul>
+<li><a href="#页面对象的例子">页面对象的例子</a></li>
+</ul></li>
+<li><a href="#一些流行语言的工具和框架实现">一些流行语言的工具和框架实现</a>
+<ul>
+<li><a href="#selenium-server">Selenium Server</a></li>
+<li><a href="#python实现">Python实现</a></li>
+<li><a href="#java实现">Java实现</a></li>
+<li><a href="#node-js-javascript实现">Node.JS/JavaScript实现</a></li>
+<li><a href="#响应式布局测试">响应式布局测试</a></li>
+<li><a href="#jenkins集成">Jenkins集成</a></li>
+<li><a href="#浏览器辅助工具">浏览器辅助工具</a></li>
+</ul></li>
+<li><a href="#示例">示例</a>
+<ul>
+<li><a href="#元素定位">元素定位</a></li>
+<li><a href="#关于等待">关于等待</a></li>
+</ul></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

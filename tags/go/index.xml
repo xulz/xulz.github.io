@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on XuLizhao &#39;s Notes</title>
+    <link>/tags/go/</link>
+    <description>Recent content in Go on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 13 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go in Action 学习笔记</title>
+      <link>/blog/go-in-action/</link>
+      <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/go-in-action/</guid>
+      <description>&lt;p&gt;初学Go时主要读的&amp;lt;Go语言圣经&amp;gt;,正式中文版叫&amp;lt;Go程序设计语言&amp;gt;, 由于当时写的代码还很少,实际上很多是不太懂的或后来也忘了.&lt;br /&gt;
+之后想读些其他书时,本来想读的&amp;lt;Go编程实战&amp;gt;在豆瓣的评分偏低,便一直没读. 在写过一些代码后,偶然再读这本书,发现其实战意义很高,是很好的一本进阶书.&lt;br /&gt;
+由此看来豆瓣的评分只能当个参考,需要读读看是不是适合自己.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go并发编程笔记</title>
+      <link>/blog/go-concurrency/</link>
+      <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/go-concurrency/</guid>
+      <description>&lt;p&gt;最近尝试用Go重写以前Python的一个工具,感觉一直工作于Hard模式,可是又不想轻易的放弃Golang的实践,因为遇到一些问题最终变成从入门到放弃.&lt;/p&gt;
+
+&lt;p&gt;还好一周周坚持了下来,虽然遇到一个问题可能会解决多半天甚至一天多时间,还是有所学的.&lt;/p&gt;
+
+&lt;p&gt;今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go语言学习笔记</title>
+      <link>/blog/golang/</link>
+      <pubDate>Tue, 26 Dec 2017 07:00:40 +0000</pubDate>
+      
+      <guid>/blog/golang/</guid>
+      <description>&lt;p&gt;接触Go有段时间了，感觉有几个学习资源很有帮助：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;官方Go指南 : 边写边学, 最轻松简单的方式&lt;/li&gt;
+&lt;li&gt;系统的学习: 推荐书 &lt;Go程序设计语言&gt;， 我是先看的&lt;a href=&#34;https://xulizhao.com/docs/gopl&#34;&gt;中文电子版&lt;/a&gt;之后买的实体书。&lt;/li&gt;
+&lt;li&gt;官方文档&amp;rdquo;Effective Go/实效Go编程&amp;rdquo; : 理解Go的必读文档
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go网络开发笔记</title>
+      <link>/blog/go-networking/</link>
+      <pubDate>Tue, 26 Dec 2017 03:33:27 +0000</pubDate>
+      
+      <guid>/blog/go-networking/</guid>
+      <description>&lt;p&gt;用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go开发遇到的坑</title>
+      <link>/blog/go-fix-it/</link>
+      <pubDate>Wed, 20 Dec 2017 06:49:56 +0000</pubDate>
+      
+      <guid>/blog/go-fix-it/</guid>
+      <description>&lt;p&gt;由于之前主要用的是Python这类动态语言,切换到Go还有些不适应.&lt;/p&gt;
+
+&lt;p&gt;这些出错信息看的一头雾水,记下来供参考.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go流行库简介</title>
+      <link>/blog/go-lib/</link>
+      <pubDate>Fri, 15 Dec 2017 08:44:11 +0000</pubDate>
+      
+      <guid>/blog/go-lib/</guid>
+      <description>&lt;p&gt;Go作为最近几年随大数据,Docker而火热起来(依然偏小众)的服务端语言,最近接触下来的感觉是第三方库/框架还是不够稳定和丰富,很多应用场景还没有一个绝对地位的首选库.&lt;/p&gt;
+
+&lt;p&gt;偶尔发现&lt;a href=&#34;https://go.libhunt.com/&#34;&gt;LibHunt&lt;/a&gt;还不错,可以在库选型时做些对比.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Golang开发环境</title>
+      <link>/blog/go-basic/</link>
+      <pubDate>Tue, 28 Nov 2017 10:14:35 +0000</pubDate>
+      
+      <guid>/blog/go-basic/</guid>
+      <description>&lt;p&gt;简单记录下Go语言开发环境的搭建和基本用法.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

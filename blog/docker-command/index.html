@@ -1,0 +1,581 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Docker Command - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Docker Command">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Docker Command - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/docker-command/" itemprop="url">
+        Docker Command
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-05-11">
+    2018-05-11
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1142 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>实际使用中，docker的命令还是很多的，这里单列出来方便查询。</p>
+
+<h2 id="常用命令">常用命令</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 停止所有运行的containers</span>
+docker stop <span style="color:#069;font-weight:bold">$(</span>docker ps -q<span style="color:#069;font-weight:bold">)</span>
+
+<span style="color:#09f;font-style:italic"># 删除所有容器</span>
+docker rm <span style="color:#069;font-weight:bold">$(</span>docker ps -a -q<span style="color:#069;font-weight:bold">)</span>
+
+<span style="color:#09f;font-style:italic"># 显示所有exited的容器ID</span>
+docker ps -a -q -f <span style="color:#033">status</span><span style="color:#555">=</span>exited
+
+
+<span style="color:#09f;font-style:italic"># 显示标准输出日志</span>
+docker logs --follow &lt;container&gt;</code></pre></div>
+<h3 id="docker-run">docker run</h3>
+
+<p>docker run 选项详解</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># --rm 容器关闭时自动删除容器, 通常用于运行一次性命令</span>
+<span style="color:#09f;font-style:italic"># -d, —detach 在后台运行(detached模式)并打印容器ID, 如果不指定,容器运行日志会打印到终端</span>
+<span style="color:#09f;font-style:italic"># -p &lt;hostPort&gt;:&lt;containerPort&gt; 建立宿主机到容器的端口映射</span>
+
+<span style="color:#09f;font-style:italic">#  -v &lt;hostDirectory/volume&gt;:&lt;containerDirectory&gt; 建立宿主机到容器的文件目录映射, 如果不指定,则不能持久化保存变更</span></code></pre></div>
+<blockquote>
+<p>上面的docker volume如果不存在会自动创建, 也可以手动创建:
+docker volume create my-container-data</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 指定网络
+docker run --net mynet123 --ip 172.18.0.22 -it ubuntu bash</pre></div>
+<h4 id="从host传递环境变量到container">从Host传递环境变量到Container</h4>
+
+<p>方式1: 使用-e 参数</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LOCUST_MODE</span><span style="color:#555">=</span><span style="color:#c30">&#34;master&#34;</span>;printenv |grep LOADS_MODE; docker run -e LOCUST_MODE ...</code></pre></div>
+<p>方式2: 使用 &ndash;env-file参数</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 指定环境变量文件</span>
+docker run --env-file<span style="color:#555">=</span>runtime_env</code></pre></div>
+<h3 id="排查-调试">排查/调试</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看容器日志, 包含已Exited</span>
+docker logs -f &lt;container id/name&gt;
+
+<span style="color:#09f;font-style:italic"># 或者直接登录容器</span>
+docker run xxx -ti bash
+
+<span style="color:#09f;font-style:italic"># inspect 查看状态/LogPath</span>
+docker inspect xxx</code></pre></div>
+<h3 id="docker-network">docker network</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    docker port &lt;CONTAINER&gt;
+    docker network ls
+    <span style="color:#09f;font-style:italic"># 创建新的bridge 网络</span>
+    docker network create net-demo
+    docker network create --subnet<span style="color:#555">=</span><span style="color:#f60">172</span>.18.0.0/16 mynet123</code></pre></div>
+<h3 id="docker-volume-数据卷">docker volume/数据卷</h3>
+
+<ul>
+<li>docker volume ls</li>
+</ul>
+
+<h3 id="docker-system">docker system</h3>
+
+<ul>
+<li>docker system prune : 删除不用的数据
+
+<ul>
+<li>-a, &ndash;all : 删除所有不用镜像而不仅仅悬挂的</li>
+<li>-f, &ndash;force</li>
+<li>&ndash;volumes : 不用的卷也删除</li>
+<li>&ndash;filter &ldquo;key=value&rdquo;</li>
+</ul></li>
+<li>docker system info : 系统信息</li>
+<li>docker system df : 磁盘占用</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker system prune -a
+<span style="color:#09f;font-style:italic"># This will remove:</span>
+<span style="color:#09f;font-style:italic">#        - all stopped containers</span>
+<span style="color:#09f;font-style:italic">#        - all networks not used by at least one container</span>
+<span style="color:#09f;font-style:italic">#        - all images without at least one container associated to them</span>
+<span style="color:#09f;font-style:italic">#        - all build cache</span></code></pre></div>
+<h2 id="制作镜像">制作镜像</h2>
+
+<h3 id="dockerfile">Dockerfile</h3>
+
+<p>例子</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile">    <span style="color:#09f;font-style:italic"># 基础镜像</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    FROM  python:3-onbuild<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 对外暴露端口</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    EXPOSE <span style="color:#f60">5000</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 执行命令</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    CMD: <span style="color:#555">[</span><span style="color:#c30">&#34;python&#34;</span>,<span style="color:#c30">&#34;.app.py&#34;</span><span style="color:#555">]</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 其他</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 运行命令</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    RUN apt -yqq update<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 把应用添加到容器卷</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    ADD flask-app /opt/flask-app<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 设置工作目录</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    WORKDIR /opt/flask-app</code></pre></div>
+<h3 id="docker-build">docker build</h3>
+
+<ul>
+<li>-t &lt;版本标签&gt;</li>
+<li>PATH/URL/. : 通常使用的最后的.代表当前路径</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 构建及运行示例</span>
+docker build -t my-app .
+docker run -it --rm --name my-running-app my-app
+
+<span style="color:#09f;font-style:italic"># 强制构建/不使用缓存</span>
+docker build --no-cache -t my-app -f Dockerfile .</code></pre></div>
+<h3 id="run-entrypoint-cmd的区别">RUN/ENTRYPOINT/CMD的区别</h3>
+
+<ul>
+<li>RUN: 构建新镜像层</li>
+<li>ENTRYPOINT: 总是需要执行命令时使用,使容器可执行</li>
+<li>CMD: 需要提供默认命令,参数可以被覆盖</li>
+</ul>
+
+<p><strong>两种形式:shell和exec</strong></p>
+
+<ul>
+<li>shell形式 <instruction> <command> : 会调用/bin/sh -c <command>并执行shell处理</li>
+<li>exce形式 <instruction> [&ldquo;executable&rdquo;,&ldquo;param1&rdquo;]
+
+<ul>
+<li>直接调用executable,例如 /bin/bash写作 ENTRYPOINT [&ldquo;/bin/bash&rdquo;,&ldquo;-c&rdquo;,&ldquo;echo Hello, $name&rdquo;]</li>
+<li>更多用于 CMD和 ENTRYPOINT</li>
+</ul></li>
+</ul>
+
+<h3 id="传递参数">传递参数</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 通常组合为</span>
+ENTRYPOINT <span style="color:#555">[</span><span style="color:#c30">&#34;/bin/bash&#34;</span>,<span style="color:#c30">&#34;-c&#34;</span>,<span style="color:#c30">&#34;param1&#34;</span><span style="color:#555">]</span>
+CMD <span style="color:#555">[</span><span style="color:#c30">&#34;param2&#34;</span>,<span style="color:#c30">&#34;param3&#34;</span><span style="color:#555">]</span></code></pre></div>
+<h3 id="调试">调试</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 对于直接EXITED的容器,可修改入口为</span>
+ENTRYPOINT <span style="color:#555">[</span><span style="color:#c30">&#34;/bin/bash&#34;</span>,<span style="color:#c30">&#34;-c&#34;</span>,<span style="color:#c30">&#34;sleep 1800&#34;</span><span style="color:#555">]</span>
+<span style="color:#09f;font-style:italic"># 容器启动后,再登录容器shell查看日志</span></code></pre></div>
+<h2 id="镜像导出-导入">镜像导出/导入</h2>
+
+<h3 id="保存镜像">保存镜像</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 格式:</span> 
+docker save -o &lt;path <span style="color:#069;font-weight:bold">for</span> generated tar file&gt; &lt;image name&gt;
+<span style="color:#09f;font-style:italic"># 压缩</span>
+docker save &lt;docker image name&gt; | gzip &gt; &lt;docker image name&gt;.tar.gz</code></pre></div>
+<h3 id="导入镜像">导入镜像</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker load &lt; my-image.tar.gz
+<span style="color:#09f;font-style:italic"># 注: 对于gzip, bzip2, xz的压缩文件,导入时会自动解压</span></code></pre></div>
+<h2 id="docker-compose">docker-compose</h2>
+
+<p>定义及运行多个容器应用,Python写的一个工具</p>
+
+<p>PS. 原来docker-compose最初也是收购来的</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">    <span style="color:#09f;font-style:italic"># 停止服务</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    docker-compose stop<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 停止并删除container及数据卷</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    docker-compose down -v<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 创建,启动并在后台运行container</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    docker-compose up -d</code></pre></div>
+<h3 id="docker-compose-yml">docker-compose.yml</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#bbb">    </span>version:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>services:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>&lt;service_name&gt;:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>image:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>command:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>ports:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>volumes:</code></pre></div>
+<h2 id="技巧">技巧</h2>
+
+<ul>
+<li>所有命令的Container ID可以仅使用前2/4位</li>
+</ul>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<ul>
+<li><a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/">Docker RUN vs CMD vs ENTRYPOINT</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/docker" rel="tag" title="docker">#docker#</a>
+    
+    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/docker-best-practice/" rel="next" title="Docker最佳实践">
+        <i class="fa fa-chevron-left"></i> Docker最佳实践
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/ansible/" rel="prev" title="Ansible Checklist">
+        Ansible Checklist <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#常用命令">常用命令</a>
+<ul>
+<li><a href="#docker-run">docker run</a>
+<ul>
+<li><a href="#从host传递环境变量到container">从Host传递环境变量到Container</a></li>
+</ul></li>
+<li><a href="#排查-调试">排查/调试</a></li>
+<li><a href="#docker-network">docker network</a></li>
+<li><a href="#docker-volume-数据卷">docker volume/数据卷</a></li>
+<li><a href="#docker-system">docker system</a></li>
+</ul></li>
+<li><a href="#制作镜像">制作镜像</a>
+<ul>
+<li><a href="#dockerfile">Dockerfile</a></li>
+<li><a href="#docker-build">docker build</a></li>
+<li><a href="#run-entrypoint-cmd的区别">RUN/ENTRYPOINT/CMD的区别</a></li>
+<li><a href="#传递参数">传递参数</a></li>
+<li><a href="#调试">调试</a></li>
+</ul></li>
+<li><a href="#镜像导出-导入">镜像导出/导入</a>
+<ul>
+<li><a href="#保存镜像">保存镜像</a></li>
+<li><a href="#导入镜像">导入镜像</a></li>
+</ul></li>
+<li><a href="#docker-compose">docker-compose</a>
+<ul>
+<li><a href="#docker-compose-yml">docker-compose.yml</a></li>
+</ul></li>
+<li><a href="#技巧">技巧</a></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

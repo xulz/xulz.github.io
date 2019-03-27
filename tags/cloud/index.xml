@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on XuLizhao &#39;s Notes</title>
+    <link>/tags/cloud/</link>
+    <description>Recent content in Cloud on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 18 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes和云原生计算</title>
+      <link>/blog/cloud-native/</link>
+      <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/cloud-native/</guid>
+      <description>&lt;p&gt;最早注意到云原生这个概念是某次看文章说Kubernetes是作为CNCF(云原生计算基金会)的主要项目来开发的,该基金会属于Linux基金会旗下,还包括被熟知的prometheus,istio等开源项目, 似乎可以理解为Kubernetes生态系统.&lt;/p&gt;
+
+&lt;p&gt;至此Kubernetes把&lt;a href=&#34;/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>微服务</title>
+      <link>/blog/microservices/</link>
+      <pubDate>Thu, 28 Dec 2017 07:38:18 +0000</pubDate>
+      
+      <guid>/blog/microservices/</guid>
+      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

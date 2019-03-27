@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>NodeJS及前端开发 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="NodeJS及前端开发">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="NodeJS及前端开发 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/nodejs-and-frontend/" itemprop="url">
+        NodeJS及前端开发
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-02-05">
+    2018-02-05
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1047 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>因为最近使用的两个博客系统都是基于NodeJS开发的,也顺便谈谈我理解的JavaScript及前端开发.</p>
+
+<p>NodeJS的是伴随Chrome的V8 Engine而出现,由于JS群众基础及高性能而快速发展,本质是它使用类似Nginx的事件循环模型可以处理极高的并发请求.异步IO及基于NodeJS的第三方库都提供的异步版本,使得较简单的编程模型带来极高的性能, JavaScipt这一应用于前端开发的古老语言焕发出新的生机.</p>
+
+<p>早期前端开发的JavaScript由于要处理浏览器版本兼容且语言本身问题,充斥着丑陋的代码. 伴随着JQuery及第三方框架/库的流行,JavaScript也变得优美起来.</p>
+
+<p>前端开发三剑客: HTML + CSS + JavaScript这些年随着新标准的发展也比我最初接触时强大易用多了, 一切事物还真得以发展的眼光看待,技术领域尤其容不得偏见.</p>
+
+<p>因为偶尔会忘记,下面记些简单的笔记:</p>
+
+<h2 id="nodejs">NodeJS</h2>
+
+<p>Node是一个JS应用的平台,而不是框架. 尤其适用于数据密集型实时服务和大并发量/小数据块的长连接场景.</p>
+
+<ul>
+<li>匿名函数调用也被称为回调(a.k.a callback)</li>
+<li>steams是随时间进行的数据分发</li>
+</ul>
+
+<h3 id="node版本">Node版本</h3>
+
+<p>稳定版本: 6.x /最新版本: 9.x</p>
+
+<h4 id="使用n管理多版本">使用n管理多版本</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">npm install -g n
+n stable  # n lts</pre></div>
+<h4 id="使用nvm管理多版本">使用nvm管理多版本</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+nvm install node
+nvm use node</pre></div>
+<h4 id="卸载">卸载</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Ubuntu
+sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+# Mac
+brew uninstall --force node</pre></div>
+<h3 id="包管理npm">包管理npm</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 安装
+curl -0 -L https://npmjs.com/install.sh | sudo sh</pre></div>
+<p>选项说明:</p>
+
+<ul>
+<li>-g: 代表全局</li>
+</ul>
+
+<h4 id="使用淘宝镜像">使用淘宝镜像</h4>
+
+<p>npm在国内的使用环境很糟,经常安装第三方包超时,强烈建议换成国内镜像.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># https://npm.taobao.org/
+# 相关工具镜像 https://npm.taobao.org/mirrors
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+# 使用别名 cnpm
+echo &#39;\n#alias for cnpm\nalias cnpm=&#34;npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc&#34;&#39; &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc</pre></div>
+<h3 id="依赖管理-yarn">依赖管理 Yarn</h3>
+
+<p>Facebook出品替代npm的新工具</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># https://yarnpkg.com/lang/en/docs/install/
+# Mac
+brew install yarn  # 会自动安装Node
+brew install yarn --without-node  # 使用node版本管理工具安装</pre></div>
+<h3 id="资源">资源</h3>
+
+<ul>
+<li><a href="http://sourabhbajaj.com/mac-setup/Node.js/README.html">Mac使用指南</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04">How To Install Node.js on Ubuntu 16.04</a></li>
+</ul>
+
+<h2 id="前端工具集">前端工具集</h2>
+
+<h3 id="包管理">包管理</h3>
+
+<p><a href="https://bower.io/">Bower</a></p>
+
+<h3 id="构建工具">构建工具</h3>
+
+<blockquote>
+<p>注: 前面出现的较新</p>
+</blockquote>
+
+<p>自动化构建工具</p>
+
+<p><a href="https://gulpjs.com/">Gulp</a> vs. Grunt</p>
+
+<p>把依赖全部提取到一个文件</p>
+
+<p><a href="https://webpack.js.org/">webpack</a> vs. <a href="http://browserify.org/">browserify</a></p>
+
+<h2 id="桌面开发electron">桌面开发Electron</h2>
+
+<p>最早知道基于HTML+CSS+JavaScript的桌面开发是看到豌豆荚团队的访谈,知道了基于Chromium的CEF框架.</p>
+
+<p>之后不断演进出优秀的<a href="https://electronjs.org/">Electron</a>,该框架极大的简化了跨平台开发的成本,你很难想象VSCode,Slack等工具是基于Electron和Web开发技术做出来的.</p>
+
+<h2 id="javascript">JavaScript</h2>
+
+<h3 id="babel">Babel</h3>
+
+<p>JavaScript转换器,把高版本(ES标准)转换为浏览器兼容版本</p>
+
+<h3 id="js语言增强">JS语言增强</h3>
+
+<ul>
+<li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+<li><a href="http://coffeescript.org/">CoffeeScript</a></li>
+</ul>
+
+<h3 id="资源-1">资源</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">MDN学习资源</a></li>
+</ul>
+
+<h2 id="css">CSS</h2>
+
+<h3 id="css扩展语言">CSS扩展语言</h3>
+
+<ul>
+<li><a href="http://lesscss.org/">Less</a></li>
+<li><a href="http://stylus-lang.com/">Stylus</a></li>
+<li><a href="http://sass-lang.com/">Saas</a></li>
+</ul>
+
+<h3 id="响应式设计">响应式设计</h3>
+
+<h3 id="资源-2">资源</h3>
+
+<ul>
+<li><a href="https://www.w3schools.com/css/css3_mediaqueries.asp">@media 控制不同尺寸设备的显示</a></li>
+<li><a href="http://www.css3templates.co.uk/templates.html">CSS3 模板</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS">MDN学习资源</a></li>
+</ul>
+
+<h2 id="链接">链接</h2>
+
+<ul>
+<li><a href="http://efe.baidu.com/">百度的轮子</a></li>
+<li><a href="http://babeljs.io/">Babel</a> : Facebook出品</li>
+<li><a href="https://gruntjs.com/">Grunt</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/play/blog-hexo/" rel="next" title="静态博客Hexo">
+        <i class="fa fa-chevron-left"></i> 静态博客Hexo
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/distributed-paper/" rel="prev" title="分布式系统的那些论文及开源实现">
+        分布式系统的那些论文及开源实现 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">37</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#nodejs">NodeJS</a>
+<ul>
+<li><a href="#node版本">Node版本</a>
+<ul>
+<li><a href="#使用n管理多版本">使用n管理多版本</a></li>
+<li><a href="#使用nvm管理多版本">使用nvm管理多版本</a></li>
+<li><a href="#卸载">卸载</a></li>
+</ul></li>
+<li><a href="#包管理npm">包管理npm</a>
+<ul>
+<li><a href="#使用淘宝镜像">使用淘宝镜像</a></li>
+</ul></li>
+<li><a href="#依赖管理-yarn">依赖管理 Yarn</a></li>
+<li><a href="#资源">资源</a></li>
+</ul></li>
+<li><a href="#前端工具集">前端工具集</a>
+<ul>
+<li><a href="#包管理">包管理</a></li>
+<li><a href="#构建工具">构建工具</a></li>
+</ul></li>
+<li><a href="#桌面开发electron">桌面开发Electron</a></li>
+<li><a href="#javascript">JavaScript</a>
+<ul>
+<li><a href="#babel">Babel</a></li>
+<li><a href="#js语言增强">JS语言增强</a></li>
+<li><a href="#资源-1">资源</a></li>
+</ul></li>
+<li><a href="#css">CSS</a>
+<ul>
+<li><a href="#css扩展语言">CSS扩展语言</a></li>
+<li><a href="#响应式设计">响应式设计</a></li>
+<li><a href="#资源-2">资源</a></li>
+</ul></li>
+<li><a href="#链接">链接</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

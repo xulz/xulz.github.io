@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Document on XuLizhao &#39;s Notes</title>
+    <link>/tags/document/</link>
+    <description>Recent content in Document on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/document/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LaTeX生成PDF实践</title>
+      <link>/blog/latex/</link>
+      <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/latex/</guid>
+      <description>&lt;p&gt;LaTeX最广泛的用途应该是在学术领域写论文, 其实在排版(尤其公式,格式)上也胜过Word很多,绝对专业.&lt;/p&gt;
+
+&lt;p&gt;最近为了在本地生成一个PDF,做了一些了解.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

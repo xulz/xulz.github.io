@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Release on XuLizhao &#39;s Notes</title>
+    <link>/tags/release/</link>
+    <description>Recent content in Release on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 30 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Jenkins持续集成工具</title>
+      <link>/blog/jenkins/</link>
+      <pubDate>Thu, 30 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/jenkins/</guid>
+      <description>时不时会和持续集成工具Jenkins打交道. Python API调用 无认证 import requests api_url = &amp;#34;http://jenkins.xulizhao.com/job/test_job/api/json?tree=lastSuccessfulBuild[number]&amp;#34; r = requests.get(api_url) build_number = r.json()[&amp;#39;lastSuccessfulBuild&amp;#39;][&amp;#39;number&amp;#39;] 需要认证 # 先安装依赖库 pip install python-jenkins # 代码示例 import jenkins server = jenkins.Jenkins(&amp;#39;http://jenkins.xulizhao.com&amp;#39;, username=&amp;#39;user&amp;#39;, password=&amp;#39;password&amp;#39;) last_build_number =</description>
+    </item>
+    
+  </channel>
+</rss>
