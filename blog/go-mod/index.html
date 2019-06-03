@@ -1,0 +1,435 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Go依赖库管理初探 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Go依赖库管理初探">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Go依赖库管理初探 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="/blog/go-mod/" itemprop="url">
+        Go依赖库管理初探
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-03-24">
+    2019-03-24
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Go作为一个新语言,其依赖管理系统一直不够完善,官方直到去年才在1.11加入modules(也叫vgo). 在此之前社区不满官方的官僚,还有过一阵激烈的讨论,讨论流行第三方库dep的不被采纳而官方自造轮子.</p>
+
+<p>最近在项目首次使用了modules系统,但还是采用的兼容的vendor模式. 总体用下来还不错,一些github库也已经使用该方式.</p>
+
+<p>下面简要列下常见用法.</p>
+
+<p></p>
+
+<h2 id="开启该选项">开启该选项</h2>
+
+<p>环境变量设置为开启状态:  GO111MODULE=on</p>
+
+<p>如果使用Goland IDE, 到项目 [settings]-[Go modules(vgo)]- 勾选 &ldquo;Enable Go modules(vgo) integration&rdquo;</p>
+
+<h2 id="使用">使用</h2>
+
+<p>主要通过命令 <em>go mod</em> 实现, 具体用法参考 <strong>go help mod</strong></p>
+
+<h3 id="常用命令">常用命令</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 列出当前模块和它的所有依赖库
+</span><span style="color:#09f;font-style:italic"></span>go list -m all lists
+<span style="color:#09f;font-style:italic"># 列出详细依赖信息
+</span><span style="color:#09f;font-style:italic"></span>go list -m -json all
+
+<span style="color:#09f;font-style:italic"># 查看某库的可用版本
+</span><span style="color:#09f;font-style:italic"></span>go list -m -versions github.com/BurntSushi/toml
+
+
+
+<span style="color:#09f;font-style:italic"># 删除不用的依赖
+</span><span style="color:#09f;font-style:italic"></span>go mod tidy</code></pre></div>
+<h3 id="使用vendor管理本项目依赖">使用vendor管理本项目依赖</h3>
+
+<p>注: 需要说明的,这些依赖只包含本项目用到的直接依赖, 第三方库的自身依赖由它本身维护.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 生成本地依赖
+</span><span style="color:#09f;font-style:italic"></span>go mod vendor
+
+<span style="color:#09f;font-style:italic"># 构建时指定vendor
+</span><span style="color:#09f;font-style:italic"></span>go build -mod<span style="color:#555">=</span>vendor 
+ <span style="color:#09f;font-style:italic">#或者   
+</span><span style="color:#09f;font-style:italic"></span> <span style="color:#033">GOFLAGS</span><span style="color:#555">=</span>-mod<span style="color:#555">=</span>环境变量信息</code></pre></div>
+<h3 id="语义化版本维护库">语义化版本维护库</h3>
+
+<p>semantic import versioning的支持.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"># 把模块路径定义为类似 rsc.io/quote/v3 的格式</code></pre></div>
+<h3 id="版本管理">版本管理</h3>
+
+<p>vendor目录和go.mod , go.sum文件都应该提交至版本库.</p>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<ul>
+<li><a href="https://blog.golang.org/using-go-modules">官方博客介绍</a></li>
+<li><a href="https://github.com/golang/go/wiki/Modules">官方wiki介绍</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/go" rel="tag" title="go">#go#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="/blog/go-in-action/" rel="next" title="Go in Action 学习笔记">
+        <i class="fa fa-chevron-left"></i> Go in Action 学习笔记
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/blog/bazel-build/" rel="prev" title="bazel构建工具">
+        bazel构建工具 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     <div class="post-nav">
+
+    
+    
+    
+    
+    
+        
+            
+        
+        
+        
+        
+    
+
+<div class="clear"></div>
+</div>
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    
+        
+        
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">39</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
+            <i class="fa fa-fw fa-globe"></i>
+            知乎
+        </a>
+        </span>
+    
+</div>
+
+      
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#开启该选项">开启该选项</a></li>
+<li><a href="#使用">使用</a>
+<ul>
+<li><a href="#常用命令">常用命令</a></li>
+<li><a href="#使用vendor管理本项目依赖">使用vendor管理本项目依赖</a></li>
+<li><a href="#语义化版本维护库">语义化版本维护库</a></li>
+<li><a href="#版本管理">版本管理</a></li>
+</ul></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+ <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+<div class="theme-info">
+   津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+</body>
+</html>

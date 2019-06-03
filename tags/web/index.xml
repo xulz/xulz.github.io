@@ -22,7 +22,8 @@
 之前几个项目特意使用了以轻量著称的Flask,两者算是各有千秋吧.&lt;/p&gt;
 
 &lt;p&gt;去年Django2.0推出后一直想尝试,正好最近拿来试试.&lt;br /&gt;
-用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.&lt;/p&gt;</description>
+用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,7 +38,9 @@
 
 &lt;p&gt;之前用的HTTP的验证方式，由于一知半解，这块每次手动配置也会花费一些时间。&lt;/p&gt;
 
-&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;</description>
+&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

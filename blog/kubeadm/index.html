@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1934 字 ~4分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -158,12 +158,14 @@
 所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.<br />
 这也是此文/这次实践的目的所在.</p>
 
+<p></p>
+
 <h2 id="前提条件">前提条件</h2>
 
 <h3 id="禁用swap">禁用swap</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo swapoff -a
-<span style="color:#09f;font-style:italic"># 永久性禁用</span>
-<span style="color:#09f;font-style:italic"># 编辑/etc/fstab并注释掉swap那一行</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># 永久性禁用
+</span><span style="color:#09f;font-style:italic"></span># 编辑/etc/fstab并注释掉swap那一行</code></pre></div>
 <h3 id="保留端口">保留端口</h3>
 
 <p><strong>Master节点</strong></p>
@@ -253,8 +255,8 @@
 </ul>
 
 <p>注: kubelet的版本号不应该超过API server</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Ubuntu</span>
-apt-get update <span style="color:#555">&amp;&amp;</span> apt-get install -y apt-transport-https curl
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Ubuntu
+</span><span style="color:#09f;font-style:italic"></span>apt-get update <span style="color:#555">&amp;&amp;</span> apt-get install -y apt-transport-https curl
 curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -
 cat <span style="color:#c30">&lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list
 </span><span style="color:#c30">deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main
@@ -263,33 +265,33 @@ apt-get update
 apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl</code></pre></div>
 <h3 id="kubeadm-init">kubeadm init</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 可以先运行下面命令检查到gcr.io的连接性</span>
-<span style="color:#09f;font-style:italic"># kubeadm config images pull</span>
-<span style="color:#09f;font-style:italic"># 解决etcd pull失败的问题</span>
-docker pull  xulz/coreos-etcd:v3.2.24
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 可以先运行下面命令检查到gcr.io的连接性
+</span><span style="color:#09f;font-style:italic"># kubeadm config images pull
+</span><span style="color:#09f;font-style:italic"># 解决etcd pull失败的问题
+</span><span style="color:#09f;font-style:italic"></span>docker pull  xulz/coreos-etcd:v3.2.24
 docker tag xulz/coreos-etcd:v3.2.24 gcr.mirrors.ustc.edu.cn/google-containers/etcd:3.2.24
 
 kubeadm init --kubernetes-version<span style="color:#555">=</span>v1.13.1 --image-repository<span style="color:#555">=</span>gcr.mirrors.ustc.edu.cn/google-containers --pod-network-cidr<span style="color:#555">=</span><span style="color:#f60">192</span>.168.0.0/16
 
-<span style="color:#09f;font-style:italic"># --image-repository 指定镜像mirror,默认k8s.gcr.io</span>
-<span style="color:#09f;font-style:italic"># 也可以通过配置文件的形式 imageRepository: &lt;private-registry&gt;</span>
+<span style="color:#09f;font-style:italic"># --image-repository 指定镜像mirror,默认k8s.gcr.io
+</span><span style="color:#09f;font-style:italic"># 也可以通过配置文件的形式 imageRepository: &lt;private-registry&gt;
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic"># root用户运行 
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">export</span> <span style="color:#033">KUBECONFIG</span><span style="color:#555">=</span>/etc/kubernetes/admin.conf
 
-<span style="color:#09f;font-style:italic"># root用户运行</span> 
-<span style="color:#366">export</span> <span style="color:#033">KUBECONFIG</span><span style="color:#555">=</span>/etc/kubernetes/admin.conf
-
-<span style="color:#09f;font-style:italic"># 记录下关于 kubeadm join的输出用于添加节点</span></code></pre></div>
+# 记录下关于 kubeadm join的输出用于添加节点</code></pre></div>
 <p>注: token用户master和加入节点间的双向认证,需保密. 也可用 kubeadm token命令管理token.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># kubelet环境变量</span>
-<span style="color:#09f;font-style:italic"># /var/lib/kubelet/kubeadm-flags.env</span>
-<span style="color:#09f;font-style:italic"># kubelet配置文件</span>
-<span style="color:#09f;font-style:italic"># /var/lib/kubelet/config.yaml</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># kubelet环境变量
+</span><span style="color:#09f;font-style:italic"># /var/lib/kubelet/kubeadm-flags.env
+</span><span style="color:#09f;font-style:italic"># kubelet配置文件
+</span><span style="color:#09f;font-style:italic"></span># /var/lib/kubelet/config.yaml</code></pre></div>
 <h3 id="安装pod网络插件">安装Pod网络插件</h3>
 
 <p><strong>pod networking provider</strong></p>
 
 <p>这里使用的CNI network plugin是Calico,它需要提供CIDR(默认使用192.168.0.0/16), 已经在上步的init提供.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 先获取本地镜像并tag</span>
-docker pull xulz/calico-node:v3.3.2
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 先获取本地镜像并tag
+</span><span style="color:#09f;font-style:italic"></span>docker pull xulz/calico-node:v3.3.2
 docker tag xulz/calico-node:v3.3.2 quay.io/calico/node:v3.3.2
 docker pull xulz/calico-cni:v3.3.2
 docker tag xulz/calico-cni:v3.3.2 quay.io/calico/cni:v3.3.2
@@ -300,48 +302,48 @@ docker tag quay.mirrors.ustc.edu.cn/calico/typha:v3.3.2 quay.io/calico/typha:v3.
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
 
-<span style="color:#09f;font-style:italic"># 检查状态, CoreDNS pod应该已经运行</span>
-kubectl get pods --all-namespaces</code></pre></div>
+<span style="color:#09f;font-style:italic"># 检查状态, CoreDNS pod应该已经运行
+</span><span style="color:#09f;font-style:italic"></span>kubectl get pods --all-namespaces</code></pre></div>
 <h3 id="添加节点">添加节点</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm join --token &lt;token&gt; &lt;master-ip&gt;:&lt;master-port&gt; --discovery-token-ca-cert-hash sha256:&lt;hash&gt;
 
-<span style="color:#09f;font-style:italic"># 获取token</span>
-kubeadm token list
+<span style="color:#09f;font-style:italic"># 获取token
+</span><span style="color:#09f;font-style:italic"></span>kubeadm token list
 
-<span style="color:#09f;font-style:italic"># 获取 --discovery-token-ca-cert-hash的值</span>
-openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der <span style="color:#f60">2</span>&gt;/dev/null | <span style="color:#c30;font-weight:bold">\
+<span style="color:#09f;font-style:italic"># 获取 --discovery-token-ca-cert-hash的值
+</span><span style="color:#09f;font-style:italic"></span>openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der <span style="color:#f60">2</span>&gt;/dev/null | <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   openssl dgst -sha256 -hex | sed <span style="color:#c30">&#39;s/^.* //&#39;</span>
    
-<span style="color:#09f;font-style:italic"># 检查状态</span>
-kubectl get nodes   </code></pre></div>
+<span style="color:#09f;font-style:italic"># 检查状态
+</span><span style="color:#09f;font-style:italic"></span>kubectl get nodes   </code></pre></div>
 <h3 id="删除节点-清除">删除节点/清除</h3>
 
 <p><strong>在Master节点执行</strong></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl drain &lt;node name&gt; --delete-local-data --force --ignore-daemonsets
 kubectl delete node &lt;node name&gt;</code></pre></div>
 <p><strong>在要删除的节点执行:</strong></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 重置状态</span>
-kubeadm reset
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 重置状态
+</span><span style="color:#09f;font-style:italic"></span>kubeadm reset
 
-<span style="color:#09f;font-style:italic"># 清理iptables</span>
-iptables -F <span style="color:#555">&amp;&amp;</span> iptables -t nat -F <span style="color:#555">&amp;&amp;</span> iptables -t mangle -F <span style="color:#555">&amp;&amp;</span> iptables -X</code></pre></div>
+<span style="color:#09f;font-style:italic"># 清理iptables
+</span><span style="color:#09f;font-style:italic"></span>iptables -F <span style="color:#555">&amp;&amp;</span> iptables -t nat -F <span style="color:#555">&amp;&amp;</span> iptables -t mangle -F <span style="color:#555">&amp;&amp;</span> iptables -X</code></pre></div>
 <h2 id="参考">参考</h2>
 
 <h3 id="kubeadm-命令参考">kubeadm 命令参考</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 输出默认配置</span>
-kubeadm config print
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 输出默认配置
+</span><span style="color:#09f;font-style:italic"></span>kubeadm config print
 
-<span style="color:#09f;font-style:italic"># 输出指定api对象</span>
-kubeadm config print-default --api-objects KubeletConfiguration
+<span style="color:#09f;font-style:italic"># 输出指定api对象
+</span><span style="color:#09f;font-style:italic"></span>kubeadm config print-default --api-objects KubeletConfiguration
 
 
-<span style="color:#09f;font-style:italic"># 列出/获取kubeadm需要的容器镜像</span>
-kubeadm config images list
+<span style="color:#09f;font-style:italic"># 列出/获取kubeadm需要的容器镜像
+</span><span style="color:#09f;font-style:italic"></span>kubeadm config images list
 kubeadm config images pull
 
-<span style="color:#09f;font-style:italic"># 指定版本, 跳过该地址的检查 https://dl.k8s.io/release/stable-1.txt</span>
---kubernetes-version<span style="color:#555">=</span>v1.13.1</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># --config指定配置文件</span>
-kubeadm init --config kubeadm-config.yaml</code></pre></div>
+<span style="color:#09f;font-style:italic"># 指定版本, 跳过该地址的检查 https://dl.k8s.io/release/stable-1.txt
+</span><span style="color:#09f;font-style:italic"></span>--kubernetes-version<span style="color:#555">=</span>v1.13.1</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># --config指定配置文件
+</span><span style="color:#09f;font-style:italic"></span>kubeadm init --config kubeadm-config.yaml</code></pre></div>
 <h3 id="kubelet配置">kubelet配置</h3>
 
 <p><strong>init阶段</strong></p>
@@ -549,7 +551,7 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -566,7 +568,7 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -649,7 +651,7 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

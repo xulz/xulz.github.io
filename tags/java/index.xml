@@ -17,7 +17,9 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/jvm/</guid>
-      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;</description>
+      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,7 +32,9 @@
 
 &lt;p&gt;所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.&lt;/p&gt;
 
-&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;</description>
+&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -41,7 +45,9 @@
       <guid>/blog/tomcat/</guid>
       <description>&lt;p&gt;Tomcat是最常用的Java部署容器，在我最初接触Java时就是主流，特点就是稳定.&lt;/p&gt;
 
-&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;</description>
+&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

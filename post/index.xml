@@ -6,10 +6,59 @@
     <description>Recent content in Posts on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 13 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>开源反向代理及负载均衡Envoy初探</title>
+      <link>/blog/envoy-proxy/</link>
+      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/envoy-proxy/</guid>
+      <description>&lt;p&gt;Envoy是Lyft于2017年开源的网络反向代理工具,现属于CNCF基金会的毕业项目.&lt;/p&gt;
+
+&lt;p&gt;和Nginx和HAProxy相比,功能更强大,开源更彻底(提供的许多功能是其他产品的付费功能).&lt;/p&gt;
+
+&lt;p&gt;更重要的是作为新兴代理,与微服务紧密结合,可以做入口代理/边缘代理/中间代理等. 流行的Service Mesh框架istio就是基于Envoy构建而成.&lt;/p&gt;
+
+&lt;p&gt;Envoy本身用C++开发,并发模型与Nginx类似,具有很高的处理性能.&lt;/p&gt;
+
+&lt;p&gt;本文尽量脱离微服务和Service Mesh,聚焦于Envoy代理本身所提供的丰富功能.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>bazel构建工具</title>
+      <link>/blog/bazel-build/</link>
+      <pubDate>Fri, 31 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/bazel-build/</guid>
+      <description>&lt;p&gt;Bazel是Google开源的一个构建系统,主要支持分布式缓存和增量编译,使得大项目的构建更快速, 主要用于C++,Java,Go等服务端项目构建.&lt;/p&gt;
+
+&lt;p&gt;有一个与之类似的快速构建系统Buck(Facebook开源)则更关注于Android和iOS客户端的构建. 两者都倾向于mono repo(而非基于项目的仓库)的构建.&lt;/p&gt;
+
+&lt;p&gt;之前看了眼官方教程,觉得过于复杂没有引起兴趣. 最近看到在B站代码和envoy都作为标配,所以再做些深入了解.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go依赖库管理初探</title>
+      <link>/blog/go-mod/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/go-mod/</guid>
+      <description>&lt;p&gt;Go作为一个新语言,其依赖管理系统一直不够完善,官方直到去年才在1.11加入modules(也叫vgo). 在此之前社区不满官方的官僚,还有过一阵激烈的讨论,讨论流行第三方库dep的不被采纳而官方自造轮子.&lt;/p&gt;
+
+&lt;p&gt;最近在项目首次使用了modules系统,但还是采用的兼容的vendor模式. 总体用下来还不错,一些github库也已经使用该方式.&lt;/p&gt;
+
+&lt;p&gt;下面简要列下常见用法.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Go in Action 学习笔记</title>
@@ -33,7 +82,8 @@
 之前几个项目特意使用了以轻量著称的Flask,两者算是各有千秋吧.&lt;/p&gt;
 
 &lt;p&gt;去年Django2.0推出后一直想尝试,正好最近拿来试试.&lt;br /&gt;
-用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.&lt;/p&gt;</description>
+用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,7 +94,9 @@
       <guid>/blog/mindset/</guid>
       <description>&lt;p&gt;Mindset是一本讲思维模式的书,作者是斯坦福大学心理学教授, 与其说这是一本心理学或成功学著作, 更重要的这是一本很好的教育理念的书, 当然对于个人的成长也是很有帮助的.&lt;br /&gt;
 好多年前看到有人推荐这边书,当时只知道英文名字,英文版读起来也很慢. 后来才知道原来已有中译版, 人邮的&amp;lt;心理定向与成功 &amp;gt;,中信的&amp;lt;看见成长的自己 &amp;gt;和最新后浪的&amp;lt;终身成长&amp;gt;其实都是这本书.&lt;br /&gt;
-之前只看了开头几章, 也许好书你很难错过,因为总会看到有人推荐,于是最近开始继续阅读.&lt;/p&gt;</description>
+之前只看了开头几章, 也许好书你很难错过,因为总会看到有人推荐,于是最近开始继续阅读.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -55,7 +107,9 @@
       <guid>/blog/kubeadm/</guid>
       <description>&lt;p&gt;用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.&lt;br /&gt;
 所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.&lt;br /&gt;
-这也是此文/这次实践的目的所在.&lt;/p&gt;</description>
+这也是此文/这次实践的目的所在.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -73,7 +127,9 @@
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/read/shufa/</guid>
-      <description>&lt;p&gt;最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -84,7 +140,9 @@
       <guid>/blog/iterm2/</guid>
       <description>&lt;p&gt;平时用的最多的系统是Windows10和Ubuntu,如果说苹果系统MacOS有什么让我离不开的特性的话,iTerm2绝对排第一.&lt;/p&gt;
 
-&lt;p&gt;可这个经常使用的免费终端居然有一些我不知道的好用功能,特记录与此.&lt;/p&gt;</description>
+&lt;p&gt;可这个经常使用的免费终端居然有一些我不知道的好用功能,特记录与此.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -95,7 +153,9 @@
       <guid>/blog/latex/</guid>
       <description>&lt;p&gt;LaTeX最广泛的用途应该是在学术领域写论文, 其实在排版(尤其公式,格式)上也胜过Word很多,绝对专业.&lt;/p&gt;
 
-&lt;p&gt;最近为了在本地生成一个PDF,做了一些了解.&lt;/p&gt;</description>
+&lt;p&gt;最近为了在本地生成一个PDF,做了一些了解.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -108,7 +168,9 @@
 
 &lt;p&gt;如果部署在一个集群会省去不少运维成本且节省资源占用.&lt;/p&gt;
 
-&lt;p&gt;通常这会用到命名空间的特性.&lt;/p&gt;</description>
+&lt;p&gt;通常这会用到命名空间的特性.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -125,7 +187,9 @@
 
 &lt;p&gt;幸运的是近两年主流库/框架都已支持Python3,毕竟发布已经10年多了,在新项目中毫无疑问必须用Python3.&lt;/p&gt;
 
-&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;</description>
+&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -138,7 +202,9 @@
 
 &lt;p&gt;今年偶然看到网上有&lt;a href=&#34;https://github.com/Vonng/ddia&#34;&gt;中译版&lt;/a&gt;,惭愧的是到了年底,最近几个月才读来.&lt;/p&gt;
 
-&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;</description>
+&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -180,7 +246,9 @@
 
 &lt;p&gt;之前用的HTTP的验证方式，由于一知半解，这块每次手动配置也会花费一些时间。&lt;/p&gt;
 
-&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;</description>
+&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -189,7 +257,9 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/jvm/</guid>
-      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;</description>
+      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -200,7 +270,9 @@
       <guid>/blog/more-load-test-note/</guid>
       <description>&lt;p&gt;看完美团的分享觉得不过瘾，继续学习其他大厂的分享。&lt;/p&gt;
 
-&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;</description>
+&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -209,7 +281,7 @@
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/meituan-load-test-note/</guid>
-      <description>&lt;p&gt;今天读了美团技术团队新发布的全链路压测平台Quake在美团中的实践，做个笔记。&lt;/p&gt;
+      <description>&lt;p&gt;今天读了美团技术团队新发布的&lt;a href=&#34;https://tech.meituan.com/2018/09/27/quake-introduction.html&#34;&gt;全链路压测平台Quake在美团中的实践&lt;/a&gt;，做个笔记。&lt;/p&gt;
 
 &lt;p&gt;先说下总的读后感:&lt;/p&gt;
 
@@ -219,7 +291,9 @@
 
 &lt;p&gt;没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。&lt;/p&gt;
 
-&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;</description>
+&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -246,7 +320,8 @@
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/mysql-tuning/</guid>
-      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.&lt;/p&gt;</description>
+      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -259,7 +334,9 @@
 
 &lt;p&gt;所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.&lt;/p&gt;
 
-&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;</description>
+&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -272,7 +349,9 @@
 
 &lt;p&gt;还好一周周坚持了下来,虽然遇到一个问题可能会解决多半天甚至一天多时间,还是有所学的.&lt;/p&gt;
 
-&lt;p&gt;今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.&lt;/p&gt;</description>
+&lt;p&gt;今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -285,7 +364,9 @@
 
 &lt;p&gt;这两种模型的实现也被看做 消息中间件/MOM(Message-Oriented Middleware),因为这种结构解耦了发送端和接收端,简化了架构.&lt;/p&gt;
 
-&lt;p&gt;另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.&lt;/p&gt;</description>
+&lt;p&gt;另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -294,7 +375,9 @@
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/network/</guid>
-      <description>&lt;p&gt;好记性不如烂笔头, 网络基础知识备忘.&lt;/p&gt;</description>
+      <description>&lt;p&gt;好记性不如烂笔头, 网络基础知识备忘.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -305,7 +388,9 @@
       <guid>/blog/cloud-native/</guid>
       <description>&lt;p&gt;最早注意到云原生这个概念是某次看文章说Kubernetes是作为CNCF(云原生计算基金会)的主要项目来开发的,该基金会属于Linux基金会旗下,还包括被熟知的prometheus,istio等开源项目, 似乎可以理解为Kubernetes生态系统.&lt;/p&gt;
 
-&lt;p&gt;至此Kubernetes把&lt;a href=&#34;/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;</description>
+&lt;p&gt;至此Kubernetes把&lt;a href=&#34;/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -325,7 +410,9 @@
       <guid>/blog/cert/</guid>
       <description>&lt;p&gt;断断续续接触过加密通讯的一些场景, 随着近两年安全的普及,建站使用https也成为标配.&lt;/p&gt;
 
-&lt;p&gt;这篇文章试图汇总下证书这块的知识提纲.&lt;/p&gt;</description>
+&lt;p&gt;这篇文章试图汇总下证书这块的知识提纲.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -338,7 +425,9 @@
 
 &lt;p&gt;如果说缺点的话,也只有对它的性能有所抱怨(GIL),不能使用多核CPU.&lt;/p&gt;
 
-&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;</description>
+&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -354,7 +443,9 @@
 &lt;p&gt;[2018.12更新]&lt;br /&gt;
 Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.&lt;br /&gt;
 在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.&lt;br /&gt;
-算了不折腾了,直接上Ansible吧.&lt;/p&gt;</description>
+算了不折腾了,直接上Ansible吧.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -365,7 +456,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/vim/</guid>
       <description>&lt;p&gt;VI/VIM作为Nix环境的常用编辑器,有一些常用命令/用法.&lt;/p&gt;
 
-&lt;p&gt;由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.&lt;/p&gt;</description>
+&lt;p&gt;由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -376,7 +469,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/ansible/</guid>
       <description>&lt;p&gt;最早接触Ansible是在15年,后来断断续续用过几次,因为更倾向于所写即所得的Fabric,后者也更轻量级.&lt;/p&gt;
 
-&lt;p&gt;每次拾起来都要查文档,记录下常见用法.&lt;/p&gt;</description>
+&lt;p&gt;每次拾起来都要查文档,记录下常见用法.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -385,7 +480,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Fri, 11 May 2018 10:15:55 +0000</pubDate>
       
       <guid>/blog/docker-command/</guid>
-      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;</description>
+      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -441,7 +538,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/k8s-local/</guid>
       <description>&lt;p&gt;本文侧重于入门Kubernetes时的本地开发测试环境搭建,及minikube的使用.&lt;/p&gt;
 
-&lt;p&gt;尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.&lt;/p&gt;</description>
+&lt;p&gt;尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -465,10 +564,10 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 &lt;ul&gt;
 &lt;li&gt;Browser Control： navigation, snapshotting, window control, override geolocation&lt;/li&gt;
 &lt;li&gt;User input simulation： mouse, keyborad, file uploads, altert handling&lt;/li&gt;
-&lt;li&gt;Web stuff： find/query elements, evaluate JavaScript, manipulate cookies
-&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+
+&lt;li&gt;&lt;p&gt;Web stuff： find/query elements, evaluate JavaScript, manipulate cookies&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -506,14 +605,7 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/check-your-password/</guid>
       <description>&lt;p&gt;今天看了Django开发者的一篇&lt;a href=&#34;https://www.b-list.org/weblog/2018/mar/06/two-new-projects/&#34;&gt;文章&lt;/a&gt;,关于web安全的子项目, 其中提到了一个用于检测用户密码是否安全的API.&lt;/p&gt;
 
-&lt;p&gt;不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.&lt;/p&gt;
-
-&lt;p&gt;对普通用户,提供两个主要的网页查询功能:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;你邮件账户的密码是否已泄漏[&lt;a href=&#34;https://haveibeenpwned.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;1&lt;/a&gt;]&lt;/li&gt;
-&lt;li&gt;你正在使用的密码是否存在于泄漏数据库及被其他用户泄漏的次数[&lt;a href=&#34;https://haveibeenpwned.com/Passwords&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2&lt;/a&gt;]&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -542,7 +634,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;由于云主机几乎没有资源占用率,实际上新版WordPress有很大改进,在插件优化之后,安装前后资源占用几乎没有变化.&lt;/p&gt;
 
-&lt;p&gt;之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.&lt;/p&gt;</description>
+&lt;p&gt;之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -551,7 +645,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Tue, 27 Mar 2018 07:16:47 +0000</pubDate>
       
       <guid>/blog/linux-bash/</guid>
-      <description>&lt;p&gt;这里主要记录Linux系统的默认shell Bash用法.&lt;/p&gt;</description>
+      <description>&lt;p&gt;这里主要记录Linux系统的默认shell Bash用法.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -560,7 +656,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Tue, 27 Mar 2018 06:42:45 +0000</pubDate>
       
       <guid>/blog/linux-search/</guid>
-      <description>&lt;p&gt;Linux的文件检索或者日志文件关键字搜索应该是很常用的工作场景, 这里汇总常见的命令用法.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Linux的文件检索或者日志文件关键字搜索应该是很常用的工作场景, 这里汇总常见的命令用法.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -573,7 +671,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;初次接触pytest,感觉不像个xUnit,因为既看不到对TestCase的继承,也找不到Setup/Teardown这些建立/销毁函数.当然这些基本功能肯定是支持的.&lt;/p&gt;
 
-&lt;p&gt;pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.&lt;/p&gt;</description>
+&lt;p&gt;pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -582,7 +682,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Tue, 13 Mar 2018 03:09:29 +0000</pubDate>
       
       <guid>/blog/linux-system-command/</guid>
-      <description>&lt;p&gt;Linux系統命令, 完成一些常見任務.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Linux系統命令, 完成一些常見任務.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -591,7 +693,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Fri, 09 Mar 2018 09:17:28 +0000</pubDate>
       
       <guid>/blog/linux-tuning/</guid>
-      <description>&lt;p&gt;Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -600,7 +704,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Fri, 09 Mar 2018 09:17:27 +0000</pubDate>
       
       <guid>/blog/nginx-tuning/</guid>
-      <description>&lt;p&gt;Nginx在部署服务时经常被用到, 大多时候是作为代理使用. 如果用户量比较大就涉及到一些调优, 本文做一些分类记录.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Nginx在部署服务时经常被用到, 大多时候是作为代理使用. 如果用户量比较大就涉及到一些调优, 本文做一些分类记录.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -615,7 +721,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;今天先看看这些经典论文及衍生的开源系统.&lt;/p&gt;
 
-&lt;p&gt;按时间顺序/影响力最大的应该就是谷歌的老三篇了,即 GFS + MapReduce + BigTable.&lt;/p&gt;</description>
+&lt;p&gt;按时间顺序/影响力最大的应该就是谷歌的老三篇了,即 GFS + MapReduce + BigTable.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -630,7 +738,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;早期前端开发的JavaScript由于要处理浏览器版本兼容且语言本身问题,充斥着丑陋的代码. 伴随着JQuery及第三方框架/库的流行,JavaScript也变得优美起来.&lt;/p&gt;
 
-&lt;p&gt;前端开发三剑客: HTML + CSS + JavaScript这些年随着新标准的发展也比我最初接触时强大易用多了, 一切事物还真得以发展的眼光看待,技术领域尤其容不得偏见.&lt;/p&gt;</description>
+&lt;p&gt;前端开发三剑客: HTML + CSS + JavaScript这些年随着新标准的发展也比我最初接触时强大易用多了, 一切事物还真得以发展的眼光看待,技术领域尤其容不得偏见.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -643,7 +753,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;比如常用的文章目录,归档页,搜索功能等. 文章目录折腾下来已经可用了,搜索折腾了一半,实在没时间调试放弃了.见&lt;a href=&#34;/2017/start&#34;&gt;新博客&lt;/a&gt;这篇记录文章.&lt;/p&gt;
 
-&lt;p&gt;本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.&lt;/p&gt;</description>
+&lt;p&gt;本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -654,7 +766,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/linux-debug-command/</guid>
       <description>&lt;p&gt;Linux的强大之一是丰富的命令系统,尤其在调试服务端应用时.&lt;/p&gt;
 
-&lt;p&gt;记录在这里方便查阅.&lt;/p&gt;</description>
+&lt;p&gt;记录在这里方便查阅.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -663,7 +777,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Fri, 12 Jan 2018 02:33:44 +0000</pubDate>
       
       <guid>/blog/redis/</guid>
-      <description>&lt;p&gt;最流行的内存数据库,Redis可以理解为Remote Dictionary Service.&lt;/p&gt;</description>
+      <description>&lt;p&gt;最流行的内存数据库,Redis可以理解为Remote Dictionary Service.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -672,7 +788,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Thu, 11 Jan 2018 09:31:35 +0000</pubDate>
       
       <guid>/blog/mysql/</guid>
-      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;</description>
+      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -685,7 +803,8 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;blockquote&gt;
 &lt;p&gt;吐槽:官方的管理工具pgAdmin真难用啊, 命令也没有MySQL易记.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -694,7 +813,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Thu, 11 Jan 2018 08:38:35 +0000</pubDate>
       
       <guid>/blog/linux-firewall/</guid>
-      <description>&lt;p&gt;CentOS作为一个开发环境用还是有些繁琐了,今天因为忘了iptables防火墙默认开启,还浪费了些时间找原因.&lt;/p&gt;</description>
+      <description>&lt;p&gt;CentOS作为一个开发环境用还是有些繁琐了,今天因为忘了iptables防火墙默认开启,还浪费了些时间找原因.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -705,7 +826,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/tomcat/</guid>
       <description>&lt;p&gt;Tomcat是最常用的Java部署容器，在我最初接触Java时就是主流，特点就是稳定.&lt;/p&gt;
 
-&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;</description>
+&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -720,7 +843,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 &lt;li&gt;&lt;p&gt;网络代理: 用的最多的是 Fiddler&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;分析工具: 比较熟悉的是Wireshark&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -731,7 +856,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/monitoring/</guid>
       <description>&lt;p&gt;2017很快就要过去了,也顺便整理下散落在印象笔记的一些片段.&lt;/p&gt;
 
-&lt;p&gt;监控系统本来是运维的一个重要组成,因为工作需要也接触了一些开源的监控系统, 下面简要的聊聊我所知道的.&lt;/p&gt;</description>
+&lt;p&gt;监控系统本来是运维的一个重要组成,因为工作需要也接触了一些开源的监控系统, 下面简要的聊聊我所知道的.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -740,7 +867,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Thu, 28 Dec 2017 07:38:18 +0000</pubDate>
       
       <guid>/blog/microservices/</guid>
-      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;</description>
+      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -753,7 +882,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;纵观软件世界,一个软件系统能流行起来很大原因是其生态是不是够丰富和繁荣,比如容器docker,Spring框架.&lt;/p&gt;
 
-&lt;p&gt;oh-my-zsh提供了丰富的插件及主题,是我的装机必备. 在这里记录下常用设置.&lt;/p&gt;</description>
+&lt;p&gt;oh-my-zsh提供了丰富的插件及主题,是我的装机必备. 在这里记录下常用设置.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -767,10 +898,10 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 &lt;ol&gt;
 &lt;li&gt;官方Go指南 : 边写边学, 最轻松简单的方式&lt;/li&gt;
 &lt;li&gt;系统的学习: 推荐书 &lt;Go程序设计语言&gt;， 我是先看的&lt;a href=&#34;https://xulizhao.com/docs/gopl&#34;&gt;中文电子版&lt;/a&gt;之后买的实体书。&lt;/li&gt;
-&lt;li&gt;官方文档&amp;rdquo;Effective Go/实效Go编程&amp;rdquo; : 理解Go的必读文档
-&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;</description>
+
+&lt;li&gt;&lt;p&gt;官方文档&amp;rdquo;Effective Go/实效Go编程&amp;rdquo; : 理解Go的必读文档&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -779,7 +910,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Tue, 26 Dec 2017 03:33:27 +0000</pubDate>
       
       <guid>/blog/go-networking/</guid>
-      <description>&lt;p&gt;用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.&lt;/p&gt;</description>
+      <description>&lt;p&gt;用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -794,7 +927,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;做Python开发后,慢慢从Eclipse+PyDev逐渐切换到PyCharm,感觉这才是IDE的样子,也就是足够智能.&lt;/p&gt;
 
-&lt;p&gt;之后越来越喜欢全家桶,IDEA,DataGrip,GoLand, 毕竟操作习惯了,而且我每次安装完必须给界面换成Darcula的黑色主题.&lt;/p&gt;</description>
+&lt;p&gt;之后越来越喜欢全家桶,IDEA,DataGrip,GoLand, 毕竟操作习惯了,而且我每次安装完必须给界面换成Darcula的黑色主题.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -805,7 +940,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/go-fix-it/</guid>
       <description>&lt;p&gt;由于之前主要用的是Python这类动态语言,切换到Go还有些不适应.&lt;/p&gt;
 
-&lt;p&gt;这些出错信息看的一头雾水,记下来供参考.&lt;/p&gt;</description>
+&lt;p&gt;这些出错信息看的一头雾水,记下来供参考.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -824,7 +961,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 &lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/kubeadm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;用kubeadm手动搭建Kubernetes集群&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-command&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kubectl命令汇总&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-namespace&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes命名空间的应用&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -839,7 +978,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更高级功能的控制工具,主要特性:&lt;/p&gt;
 
-&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;</description>
+&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -859,7 +1000,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/blog/go-lib/</guid>
       <description>&lt;p&gt;Go作为最近几年随大数据,Docker而火热起来(依然偏小众)的服务端语言,最近接触下来的感觉是第三方库/框架还是不够稳定和丰富,很多应用场景还没有一个绝对地位的首选库.&lt;/p&gt;
 
-&lt;p&gt;偶尔发现&lt;a href=&#34;https://go.libhunt.com/&#34;&gt;LibHunt&lt;/a&gt;还不错,可以在库选型时做些对比.&lt;/p&gt;</description>
+&lt;p&gt;偶尔发现&lt;a href=&#34;https://go.libhunt.com/&#34;&gt;LibHunt&lt;/a&gt;还不错,可以在库选型时做些对比.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -868,7 +1011,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Fri, 15 Dec 2017 06:19:55 +0000</pubDate>
       
       <guid>/blog/ssh/</guid>
-      <description>&lt;p&gt;经常和Linux服务器打交道就离不开SSH.&lt;/p&gt;</description>
+      <description>&lt;p&gt;经常和Linux服务器打交道就离不开SSH.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -886,7 +1031,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Wed, 13 Dec 2017 07:58:35 +0000</pubDate>
       
       <guid>/blog/python/</guid>
-      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -904,7 +1051,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Tue, 28 Nov 2017 10:14:35 +0000</pubDate>
       
       <guid>/blog/go-basic/</guid>
-      <description>&lt;p&gt;简单记录下Go语言开发环境的搭建和基本用法.&lt;/p&gt;</description>
+      <description>&lt;p&gt;简单记录下Go语言开发环境的搭建和基本用法.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -917,7 +1066,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;如果是新手,强烈推荐阅读&lt;a href=&#34;http://rogerdudler.github.io/git-guide/index.zh.html&#34;&gt;Git简明教程&lt;/a&gt;, 进阶必读 &lt;a href=&#34;https://git-scm.com/book/zh&#34;&gt;Pro Git中文版&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;git常用命令&#34;&gt;Git常用命令&lt;/h1&gt;</description>
+&lt;h1 id=&#34;git常用命令&#34;&gt;Git常用命令&lt;/h1&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -928,7 +1079,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <guid>/play/blog-ghost/</guid>
       <description>&lt;p&gt;本博客基于Ghost开源博客平台搭建,系统基于Node.js开发.&lt;/p&gt;
 
-&lt;p&gt;主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).&lt;/p&gt;</description>
+&lt;p&gt;主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -959,7 +1112,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
 
 &lt;p&gt;在手机上碎片阅读李笑来老师的书可追溯到几年前的&amp;lt;把时间当作朋友&amp;gt;,去年是&amp;lt;成长-YC创业课读书笔记&amp;gt;, 最近还在读的是&amp;lt;新生-七年就是一辈子&amp;gt;.&lt;/p&gt;
 
-&lt;p&gt;笑来老师的书部部精品,还有&lt;a href=&#34;http://zhibimo.com/books/xiaolai&#34;&gt;正版免费&lt;/a&gt;可读,你还奢求什么.&lt;/p&gt;</description>
+&lt;p&gt;笑来老师的书部部精品,还有&lt;a href=&#34;http://zhibimo.com/books/xiaolai&#34;&gt;正版免费&lt;/a&gt;可读,你还奢求什么.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

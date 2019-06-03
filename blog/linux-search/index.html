@@ -149,32 +149,34 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">937 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>Linux的文件检索或者日志文件关键字搜索应该是很常用的工作场景, 这里汇总常见的命令用法.</p>
 
-<h2 id="find">find</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 只查找特定文件</span>
-find . -type f -name <span style="color:#c30">&#39;*.py&#39;</span>
+<p></p>
 
-<span style="color:#09f;font-style:italic"># 只查找特定文件</span>
-find . -type f -name <span style="color:#c30">&#39;*.py&#39;</span>
-<span style="color:#09f;font-style:italic"># 在所有目录查找特定文件名</span>
-find / -type f -name httpd.conf
-<span style="color:#09f;font-style:italic"># 忽略大小写</span>
-find . -iname
-<span style="color:#09f;font-style:italic"># 忽略目录</span>
-find / -xdev -type f -size +100M 
+<h2 id="find">find</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 只查找特定文件
+</span><span style="color:#09f;font-style:italic"></span>find . -type f -name <span style="color:#c30">&#39;*.py&#39;</span>
+
+<span style="color:#09f;font-style:italic"># 只查找特定文件
+</span><span style="color:#09f;font-style:italic"></span>find . -type f -name <span style="color:#c30">&#39;*.py&#39;</span>
+<span style="color:#09f;font-style:italic"># 在所有目录查找特定文件名
+</span><span style="color:#09f;font-style:italic"></span>find / -type f -name httpd.conf
+<span style="color:#09f;font-style:italic"># 忽略大小写
+</span><span style="color:#09f;font-style:italic"></span>find . -iname
+<span style="color:#09f;font-style:italic"># 忽略目录
+</span><span style="color:#09f;font-style:italic"></span>find / -xdev -type f -size +100M 
 find / -size +100M -not -path <span style="color:#c30">&#39;/proc/*&#39;</span></code></pre></div>
 <h3 id="查找大文件">查找大文件</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find . -type f -size +100M -exec ls -lh <span style="color:#555">{}</span> <span style="color:#c30;font-weight:bold">\;</span> | awk <span style="color:#c30">&#39;{ print $8 &#34;: &#34; $5 }&#39;</span> 
-<span style="color:#09f;font-style:italic"># 支持文件名含空格</span> 
-find <span style="color:#033">$1</span> -type f -exec stat --format <span style="color:#c30">&#39;%Y :%y %n&#39;</span> <span style="color:#555">{}</span> <span style="color:#c30;font-weight:bold">\;</span> | sort -nr | cut -d: -f2- | head 
-<span style="color:#09f;font-style:italic"># 执行更快</span> 
-find <span style="color:#033">$1</span> -type f | xargs stat --format <span style="color:#c30">&#39;%Y :%y %n&#39;</span> | sort -nr | cut -d: -f2- | head </code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 最常用 </pre></div>
+<span style="color:#09f;font-style:italic"># 支持文件名含空格 
+</span><span style="color:#09f;font-style:italic"></span>find <span style="color:#033">$1</span> -type f -exec stat --format <span style="color:#c30">&#39;%Y :%y %n&#39;</span> <span style="color:#555">{}</span> <span style="color:#c30;font-weight:bold">\;</span> | sort -nr | cut -d: -f2- | head 
+<span style="color:#09f;font-style:italic"># 执行更快 
+</span><span style="color:#09f;font-style:italic"></span>find <span style="color:#033">$1</span> -type f | xargs stat --format <span style="color:#c30">&#39;%Y :%y %n&#39;</span> | sort -nr | cut -d: -f2- | head </code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 最常用 </pre></div>
 <h3 id="统计代码行数">统计代码行数</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">find . -name ‘.py’ | xargs wc -l
 (find ./ -name &#39;.py&#39; -print0 | xargs -0 cat)|wc -l
@@ -383,7 +385,7 @@ rpm -qpi ***.rpm </pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -400,7 +402,7 @@ rpm -qpi ***.rpm </pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -492,7 +494,7 @@ rpm -qpi ***.rpm </pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

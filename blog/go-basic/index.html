@@ -149,12 +149,14 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">466 字 ~1分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>简单记录下Go语言开发环境的搭建和基本用法.</p>
+
+<p></p>
 
 <h2 id="安装">安装</h2>
 
@@ -186,25 +188,25 @@
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#366">cd</span> <span style="color:#033">$GOPATH</span>/src
     mkdir -p golang.org/x
     <span style="color:#366">cd</span> golang.org/x
-    <span style="color:#09f;font-style:italic"># 通常下边几个库就够用了,具体以错误提示相应的下载</span>
-    git clone https://github.com/golang/net.git
+    <span style="color:#09f;font-style:italic"># 通常下边几个库就够用了,具体以错误提示相应的下载
+</span><span style="color:#09f;font-style:italic"></span>    git clone https://github.com/golang/net.git
     git clone https://github.com/golang/sys.git
     git clone https://github.com/golang/crypto.git</code></pre></div>
 <h2 id="常用命令">常用命令</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 运行</span>
-    go run hello.go
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 运行
+</span><span style="color:#09f;font-style:italic"></span>    go run hello.go
     
-    <span style="color:#09f;font-style:italic"># 编译并指定运行环境</span>
-    <span style="color:#033">GOOS</span><span style="color:#555">=</span>linux <span style="color:#033">GOARCH</span><span style="color:#555">=</span>amd64 go build -o hello hello.go
+    <span style="color:#09f;font-style:italic"># 编译并指定运行环境
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#033">GOOS</span><span style="color:#555">=</span>linux <span style="color:#033">GOARCH</span><span style="color:#555">=</span>amd64 go build -o hello hello.go
     
-    <span style="color:#09f;font-style:italic"># 打包</span>
-    go install hello.go
+    <span style="color:#09f;font-style:italic"># 打包
+</span><span style="color:#09f;font-style:italic"></span>    go install hello.go
     
-    <span style="color:#09f;font-style:italic"># 格式化, -w:直接覆盖原代码,不输出到控制台</span>
-    gofmt -w hello.go
+    <span style="color:#09f;font-style:italic"># 格式化, -w:直接覆盖原代码,不输出到控制台
+</span><span style="color:#09f;font-style:italic"></span>    gofmt -w hello.go
     
-    <span style="color:#09f;font-style:italic">## 查看文档</span>
-    godoc fmt</code></pre></div>
+    <span style="color:#09f;font-style:italic">## 查看文档
+</span><span style="color:#09f;font-style:italic"></span>    godoc fmt</code></pre></div>
 <h2 id="依赖管理">依赖管理</h2>
 
 <p>可以通过<a href="https://github.com/golang/dep">Dep</a>这个工具来管理项目依赖.</p>
@@ -308,7 +310,7 @@ dep init
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -325,7 +327,7 @@ dep init
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -390,7 +392,7 @@ dep init
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

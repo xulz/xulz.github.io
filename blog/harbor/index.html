@@ -171,17 +171,17 @@
 
 <p><del>先使用mkcert生成证书和密钥, 该工具见上篇证书一文</del>
 注: mkcert的方式对docker/k8s会产生问题, 改用官方证书生成方式</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 创建CA证书</span>
-openssl req -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days <span style="color:#f60">365</span> -out ca.crt
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 创建CA证书
+</span><span style="color:#09f;font-style:italic"></span>openssl req -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days <span style="color:#f60">365</span> -out ca.crt
 
-<span style="color:#09f;font-style:italic"># 生成CSR</span>
-openssl req -newkey rsa:4096 -nodes -sha256 -keyout yourdomain.com.key   -out yourdomain.com.csr
+<span style="color:#09f;font-style:italic"># 生成CSR
+</span><span style="color:#09f;font-style:italic"></span>openssl req -newkey rsa:4096 -nodes -sha256 -keyout yourdomain.com.key   -out yourdomain.com.csr
 
-<span style="color:#09f;font-style:italic"># 生成域名证书</span>
-penssl x509 -req -days <span style="color:#f60">365</span> -in yourdomain.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out yourdomain.com.crt
+<span style="color:#09f;font-style:italic"># 生成域名证书
+</span><span style="color:#09f;font-style:italic"></span>penssl x509 -req -days <span style="color:#f60">365</span> -in yourdomain.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out yourdomain.com.crt
 
-<span style="color:#09f;font-style:italic"># 复制证书到服务器</span>
-ssh yourdomain.com <span style="color:#c30">&#34;mkdir -p /data/cert&#34;</span>
+<span style="color:#09f;font-style:italic"># 复制证书到服务器
+</span><span style="color:#09f;font-style:italic"></span>ssh yourdomain.com <span style="color:#c30">&#34;mkdir -p /data/cert&#34;</span>
 scp yourdomain.com*.pem yourdomain.com:/data/cert
 
 vi ~/harbor/harbor.cfg</code></pre></div>
@@ -198,10 +198,10 @@ docker-compose up -d</code></pre></div>
 
 <p>解决错误:&ldquo;Error response from daemon: Get v1/_ping: x509: certificate signed by unknown authority&rdquo;</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">cd</span> /etc/docker/certs.d/yourdomain.com
-<span style="color:#09f;font-style:italic"># 复制上一节生成的ca.crt到此</span>
-
-<span style="color:#09f;font-style:italic"># 产生客户端证书</span>
-openssl genrsa -out client.key <span style="color:#f60">4096</span>
+<span style="color:#09f;font-style:italic"># 复制上一节生成的ca.crt到此
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic"># 产生客户端证书
+</span><span style="color:#09f;font-style:italic"></span>openssl genrsa -out client.key <span style="color:#f60">4096</span>
 openssl req -new -x509 -text -key client.key -out client.cert</code></pre></div>
 <p>最终目录结构如下:
 tree /etc/docker/certs.d/yourdomain.com</p>
@@ -213,12 +213,12 @@ tree /etc/docker/certs.d/yourdomain.com</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp youdomain.com.crt /usr/local/share/ca-certificates/
 update-ca-certificates</code></pre></div>
 <h3 id="为kubernetes节点设置验证">为kubernetes节点设置验证</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在其中一台节点登录私有仓库</span>
-docker login reg.server
-<span style="color:#09f;font-style:italic"># 会更新$HOME/.docker/config.json</span>
-
-<span style="color:#09f;font-style:italic"># 复制到其他节点</span>
-<span style="color:#033">nodes</span><span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(</span>kubectl get nodes -o <span style="color:#033">jsonpath</span><span style="color:#555">=</span><span style="color:#c30">&#39;{range.items[*].metadata}{.name} {end}&#39;</span><span style="color:#069;font-weight:bold">)</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在其中一台节点登录私有仓库
+</span><span style="color:#09f;font-style:italic"></span>docker login reg.server
+<span style="color:#09f;font-style:italic"># 会更新$HOME/.docker/config.json
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic"># 复制到其他节点
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">nodes</span><span style="color:#555">=</span><span style="color:#069;font-weight:bold">$(</span>kubectl get nodes -o <span style="color:#033">jsonpath</span><span style="color:#555">=</span><span style="color:#c30">&#39;{range.items[*].metadata}{.name} {end}&#39;</span><span style="color:#069;font-weight:bold">)</span>
 <span style="color:#069;font-weight:bold">for</span> n in <span style="color:#033">$nodes</span>; <span style="color:#069;font-weight:bold">do</span> scp ~/.docker/config.json root@<span style="color:#033">$n</span>:/root/.docker/config.json; <span style="color:#069;font-weight:bold">done</span></code></pre></div>
 <h2 id="备注">备注</h2>
 
@@ -336,7 +336,7 @@ docker push yourdomain.com/myproject/myimg:mytag</pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -353,7 +353,7 @@ docker push yourdomain.com/myproject/myimg:mytag</pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -426,7 +426,7 @@ docker push yourdomain.com/myproject/myimg:mytag</pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

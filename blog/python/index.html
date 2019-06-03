@@ -149,12 +149,14 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">491 字 ~1分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>Python开发环境问题记录.</p>
+
+<p></p>
 
 <h2 id="镜像加速">镜像加速</h2>
 
@@ -168,20 +170,20 @@ vi ~/.pip/pip.conf
     use-mirrors = true
     mirrors = https://pypi.douban.com/</pre></div>
 <h3 id="清华镜像">清华镜像</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 临时使用</span>
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pipenv
-<span style="color:#09f;font-style:italic"># 设为默认, 修改</span>
-<span style="color:#09f;font-style:italic"># ~/pip/pip.conf (Linux)</span>
-<span style="color:#09f;font-style:italic"># %APPDATA%\pip\pip.ini (Windows 10)</span>
-<span style="color:#09f;font-style:italic"># $HOME/Library/Application Support/pip/pip.conf (macOS)</span>
-<span style="color:#555">[</span>global<span style="color:#555">]</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 临时使用
+</span><span style="color:#09f;font-style:italic"></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pipenv
+<span style="color:#09f;font-style:italic"># 设为默认, 修改
+</span><span style="color:#09f;font-style:italic"># ~/pip/pip.conf (Linux)
+</span><span style="color:#09f;font-style:italic"># %APPDATA%\pip\pip.ini (Windows 10)
+</span><span style="color:#09f;font-style:italic"># $HOME/Library/Application Support/pip/pip.conf (macOS)
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#555">[</span>global<span style="color:#555">]</span>
 index-url <span style="color:#555">=</span> https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></div>
 <p>Anaconda镜像</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --set show_channel_urls yes
-<span style="color:#09f;font-style:italic"># 第三方源</span>
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</code></pre></div>
+<span style="color:#09f;font-style:italic"># 第三方源
+</span><span style="color:#09f;font-style:italic"></span>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</code></pre></div>
 <h2 id="在mac上同时安装python2和python3">在Mac上同时安装Python2和Python3</h2>
 
 <p>缘起: 在High Sierra 10.12及更高版本,给系统自带的Python2安装一些第三方库(如gevent)会因为系统开启SIP导致失败.</p>
@@ -194,17 +196,17 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 
 <p>比较好的方式是使用brew安装最新版的Python2/3</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install python2
-<span style="color:#09f;font-style:italic"># 有问题重装</span>
-<span style="color:#09f;font-style:italic"># brew reinstall python@2</span>
-brew install python3
-<span style="color:#09f;font-style:italic"># 安装之后也相应的安装了对应的pip2, pip3</span>
-python2 -V
+<span style="color:#09f;font-style:italic"># 有问题重装
+</span><span style="color:#09f;font-style:italic"># brew reinstall python@2
+</span><span style="color:#09f;font-style:italic"></span>brew install python3
+<span style="color:#09f;font-style:italic"># 安装之后也相应的安装了对应的pip2, pip3
+</span><span style="color:#09f;font-style:italic"></span>python2 -V
 pip2 -V
-<span style="color:#09f;font-style:italic"># 建立快捷方式</span>
-brew link python3</code></pre></div>
+<span style="color:#09f;font-style:italic"># 建立快捷方式
+</span><span style="color:#09f;font-style:italic"></span>brew link python3</code></pre></div>
 <h3 id="pip3安装第三方库">pip3安装第三方库</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 需要添加到PATH</span>
-<span style="color:#366">export</span> <span style="color:#033">PATH</span><span style="color:#555">=</span>/Users/xulz/Library/Python/3.6/bin:<span style="color:#033">$PATH</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 需要添加到PATH
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">export</span> <span style="color:#033">PATH</span><span style="color:#555">=</span>/Users/xulz/Library/Python/3.6/bin:<span style="color:#033">$PATH</span></code></pre></div>
 <h3 id="安装pip3">安装pip3</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python3 -m ensurepip</code></pre></div>
 <h2 id="踩过的坑">踩过的坑</h2>
@@ -315,7 +317,7 @@ brew link python3</code></pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -332,7 +334,7 @@ brew link python3</code></pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -404,7 +406,7 @@ brew link python3</code></pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

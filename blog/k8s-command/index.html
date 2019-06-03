@@ -172,88 +172,88 @@
 <h3 id="get-获取信息">get 获取信息</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get nodes
 kubectl get deployments
-<span style="color:#09f;font-style:italic"># -o yaml 输出yaml配置格式</span>
-kubectl -n kube-system get deployment coredns -o yaml
+<span style="color:#09f;font-style:italic"># -o yaml 输出yaml配置格式
+</span><span style="color:#09f;font-style:italic"></span>kubectl -n kube-system get deployment coredns -o yaml
 
 kubectl get pods
-<span style="color:#09f;font-style:italic"># 显示更详细的信息</span>
-kubectl get pods -o wide
-<span style="color:#09f;font-style:italic"># 显示所有命名空间的</span>
-kubectl get pods --all-namespaces
-<span style="color:#09f;font-style:italic"># 指定命名空间 -n</span>
-<span style="color:#09f;font-style:italic"># -w 监控变化</span>
-kubectl get pod -n kube-system
+<span style="color:#09f;font-style:italic"># 显示更详细的信息
+</span><span style="color:#09f;font-style:italic"></span>kubectl get pods -o wide
+<span style="color:#09f;font-style:italic"># 显示所有命名空间的
+</span><span style="color:#09f;font-style:italic"></span>kubectl get pods --all-namespaces
+<span style="color:#09f;font-style:italic"># 指定命名空间 -n
+</span><span style="color:#09f;font-style:italic"># -w 监控变化
+</span><span style="color:#09f;font-style:italic"></span>kubectl get pod -n kube-system
 
 kubectl get componentstatuses
-<span style="color:#09f;font-style:italic"># 等价于</span>
-kubectl get cs</code></pre></div>
+<span style="color:#09f;font-style:italic"># 等价于
+</span><span style="color:#09f;font-style:italic"></span>kubectl get cs</code></pre></div>
 <h3 id="delete-删除资源">delete 删除资源</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl delete pod &lt;pod-name&gt;</code></pre></div>
 <h3 id="describe-详细信息">describe 详细信息</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl describe pod &lt;pod-id&gt;
 
-<span style="color:#09f;font-style:italic"># 描述系统命名空间Pod, 经常用于查找问题</span>
-kubectl describe pod calico-node-j2ggr --namespace<span style="color:#555">=</span>kube-system</code></pre></div>
+<span style="color:#09f;font-style:italic"># 描述系统命名空间Pod, 经常用于查找问题
+</span><span style="color:#09f;font-style:italic"></span>kubectl describe pod calico-node-j2ggr --namespace<span style="color:#555">=</span>kube-system</code></pre></div>
 <h3 id="logs-获取容器日志">logs 获取容器日志</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">POD_NAME=$(kubectl get pods -l run=nginx -o jsonpath=&#34;{.items[0].metadata.name}&#34;)
 kubectl logs $POD_NAME</pre></div>
 <h3 id="exec-在容器执行命令">exec 在容器执行命令</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kubectl exec -ti -- $POD_NAME &lt;command&gt;</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl <span style="color:#366">exec</span> -ti k8s-demo -- /bin/bash
-<span style="color:#09f;font-style:italic"># 查看环境变量</span>
-<span style="color:#09f;font-style:italic"># printenv</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># 查看环境变量
+</span><span style="color:#09f;font-style:italic"></span># printenv</code></pre></div>
 <h3 id="配置-部署">配置/部署</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 部署Deployment</span>
-kubectl create -f deployment.yaml
-<span style="color:#09f;font-style:italic"># 编辑Deployment</span>
-kubectl edit deployment/nginx-deployment
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 部署Deployment
+</span><span style="color:#09f;font-style:italic"></span>kubectl create -f deployment.yaml
+<span style="color:#09f;font-style:italic"># 编辑Deployment
+</span><span style="color:#09f;font-style:italic"></span>kubectl edit deployment/nginx-deployment
 
-<span style="color:#09f;font-style:italic"># 基于配置文件创建pod</span>
-kubectl create -f &lt;config.yaml&gt;
+<span style="color:#09f;font-style:italic"># 基于配置文件创建pod
+</span><span style="color:#09f;font-style:italic"></span>kubectl create -f &lt;config.yaml&gt;
 
-<span style="color:#09f;font-style:italic"># 创建其他资源</span>
-kubectl create secret generic kubernetes-bootcamp --from-literal<span style="color:#555">=</span><span style="color:#c30">&#34;mykey=mydata&#34;</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># 创建其他资源
+</span><span style="color:#09f;font-style:italic"></span>kubectl create secret generic kubernetes-bootcamp --from-literal<span style="color:#555">=</span><span style="color:#c30">&#34;mykey=mydata&#34;</span></code></pre></div>
 <h3 id="在非master机器使用kubectl">在非Master机器使用kubectl</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp root@&lt;master ip&gt;:/etc/kubernetes/admin.conf .
 kubectl --kubeconfig ./admin.conf get nodes</code></pre></div>
 <h2 id="按使用场景">按使用场景</h2>
 
 <h3 id="部署容器镜像">部署容器镜像</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## 部署</span>
-kubectl run &lt;deployment name&gt;  —image<span style="color:#555">=</span>&lt;full url&gt;  —port<span style="color:#555">=</span><span style="color:#f60">8080</span>
-<span style="color:#09f;font-style:italic"># 例如</span>
-kubectl run kubernetes-bootcamp --image<span style="color:#555">=</span>gcr.io/google-samples/kubernetes-bootcamp:v1 --port<span style="color:#555">=</span><span style="color:#f60">8080</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## 部署
+</span><span style="color:#09f;font-style:italic"></span>kubectl run &lt;deployment name&gt;  —image<span style="color:#555">=</span>&lt;full url&gt;  —port<span style="color:#555">=</span><span style="color:#f60">8080</span>
+<span style="color:#09f;font-style:italic"># 例如
+</span><span style="color:#09f;font-style:italic"></span>kubectl run kubernetes-bootcamp --image<span style="color:#555">=</span>gcr.io/google-samples/kubernetes-bootcamp:v1 --port<span style="color:#555">=</span><span style="color:#f60">8080</span>
 kubectl run busybox --image<span style="color:#555">=</span>busybox
 
-<span style="color:#09f;font-style:italic"># 检查</span>
-kubectl get deployments
-<span style="color:#09f;font-style:italic"># 使用标签过滤</span>
-kubectl get pods -l <span style="color:#033">run</span><span style="color:#555">=</span>busybox</code></pre></div>
+<span style="color:#09f;font-style:italic"># 检查
+</span><span style="color:#09f;font-style:italic"></span>kubectl get deployments
+<span style="color:#09f;font-style:italic"># 使用标签过滤
+</span><span style="color:#09f;font-style:italic"></span>kubectl get pods -l <span style="color:#033">run</span><span style="color:#555">=</span>busybox</code></pre></div>
 <h3 id="升级及回滚">升级及回滚</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## 升级</span>
-kubectl <span style="color:#366">set</span> image deployment/nginx-deployment <span style="color:#033">nginx</span><span style="color:#555">=</span>nginx:1.9.1
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## 升级
+</span><span style="color:#09f;font-style:italic"></span>kubectl <span style="color:#366">set</span> image deployment/nginx-deployment <span style="color:#033">nginx</span><span style="color:#555">=</span>nginx:1.9.1
 
 kubectl rollout status deployment/nginx-deployment
 
 kubectl rollout undo &lt;deployment&gt; <span style="color:#555">[</span>--to-revision<span style="color:#555">=</span><span style="color:#f60">2</span><span style="color:#555">]</span>
     
 
-<span style="color:#09f;font-style:italic"># 手动强制更新容器镜像</span>
-<span style="color:#09f;font-style:italic"># 注: 仅适用于ReplicationController</span>
-kubectl rolling-update k8s-demo  --image<span style="color:#555">=</span>k8s-demo:latest --image-pull-policy Always</code></pre></div>
+<span style="color:#09f;font-style:italic"># 手动强制更新容器镜像
+</span><span style="color:#09f;font-style:italic"># 注: 仅适用于ReplicationController
+</span><span style="color:#09f;font-style:italic"></span>kubectl rolling-update k8s-demo  --image<span style="color:#555">=</span>k8s-demo:latest --image-pull-policy Always</code></pre></div>
 <h3 id="暴露服务">暴露服务</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 使API Server监听本地的8001端口</span>
-kubectl proxy
-<span style="color:#09f;font-style:italic"># 使用NodePort服务方式暴露部署</span>
-kubectl expose deployment nginx --port <span style="color:#f60">80</span> --type NodePort
-<span style="color:#09f;font-style:italic"># 标签标记</span>
-kubectl label
-<span style="color:#09f;font-style:italic"># 检查</span>
-kubectl get services</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 使API Server监听本地的8001端口
+</span><span style="color:#09f;font-style:italic"></span>kubectl proxy
+<span style="color:#09f;font-style:italic"># 使用NodePort服务方式暴露部署
+</span><span style="color:#09f;font-style:italic"></span>kubectl expose deployment nginx --port <span style="color:#f60">80</span> --type NodePort
+<span style="color:#09f;font-style:italic"># 标签标记
+</span><span style="color:#09f;font-style:italic"></span>kubectl label
+<span style="color:#09f;font-style:italic"># 检查
+</span><span style="color:#09f;font-style:italic"></span>kubectl get services</code></pre></div>
 <h3 id="自动扩容">自动扩容</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl scale deployment nginx-deployment  --replicas<span style="color:#555">=</span><span style="color:#f60">5</span>
 
-<span style="color:#09f;font-style:italic"># 自动扩容/Horizontal Pod Autoscaler</span>
-kubectl autoscale deployment nginx-deployment --min<span style="color:#555">=</span><span style="color:#f60">10</span> --max<span style="color:#555">=</span><span style="color:#f60">15</span> --cpu-percent<span style="color:#555">=</span><span style="color:#f60">80</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># 自动扩容/Horizontal Pod Autoscaler
+</span><span style="color:#09f;font-style:italic"></span>kubectl autoscale deployment nginx-deployment --min<span style="color:#555">=</span><span style="color:#f60">10</span> --max<span style="color:#555">=</span><span style="color:#f60">15</span> --cpu-percent<span style="color:#555">=</span><span style="color:#f60">80</span></code></pre></div>
     </div>
     <footer class="post-footer">
      
@@ -347,7 +347,7 @@ kubectl autoscale deployment nginx-deployment --min<span style="color:#555">=</s
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -364,7 +364,7 @@ kubectl autoscale deployment nginx-deployment --min<span style="color:#555">=</s
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -443,7 +443,7 @@ kubectl autoscale deployment nginx-deployment --min<span style="color:#555">=</s
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

@@ -149,34 +149,41 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1142 字 ~3分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>实际使用中，docker的命令还是很多的，这里单列出来方便查询。</p>
 
+<p></p>
+
 <h2 id="常用命令">常用命令</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 停止所有运行的containers</span>
-docker stop <span style="color:#069;font-weight:bold">$(</span>docker ps -q<span style="color:#069;font-weight:bold">)</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 停止所有运行的containers
+</span><span style="color:#09f;font-style:italic"></span>docker stop <span style="color:#069;font-weight:bold">$(</span>docker ps -q<span style="color:#069;font-weight:bold">)</span>
 
-<span style="color:#09f;font-style:italic"># 删除所有容器</span>
-docker rm <span style="color:#069;font-weight:bold">$(</span>docker ps -a -q<span style="color:#069;font-weight:bold">)</span>
+<span style="color:#09f;font-style:italic"># 删除所有容器
+</span><span style="color:#09f;font-style:italic"></span>docker rm <span style="color:#069;font-weight:bold">$(</span>docker ps -a -q<span style="color:#069;font-weight:bold">)</span>
 
-<span style="color:#09f;font-style:italic"># 显示所有exited的容器ID</span>
-docker ps -a -q -f <span style="color:#033">status</span><span style="color:#555">=</span>exited
+<span style="color:#09f;font-style:italic"># 显示所有exited的容器ID
+</span><span style="color:#09f;font-style:italic"></span>docker ps -a -q -f <span style="color:#033">status</span><span style="color:#555">=</span>exited
 
 
-<span style="color:#09f;font-style:italic"># 显示标准输出日志</span>
-docker logs --follow &lt;container&gt;</code></pre></div>
+<span style="color:#09f;font-style:italic"># 显示标准输出日志
+</span><span style="color:#09f;font-style:italic"></span>docker logs --follow &lt;container&gt;
+
+
+<span style="color:#09f;font-style:italic"># 复制文件
+</span><span style="color:#09f;font-style:italic"></span>docker cp foo.txt &lt;container&gt;:/
+docker cp &lt;container&gt;:/foo.txt /</code></pre></div>
 <h3 id="docker-run">docker run</h3>
 
 <p>docker run 选项详解</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># --rm 容器关闭时自动删除容器, 通常用于运行一次性命令</span>
-<span style="color:#09f;font-style:italic"># -d, —detach 在后台运行(detached模式)并打印容器ID, 如果不指定,容器运行日志会打印到终端</span>
-<span style="color:#09f;font-style:italic"># -p &lt;hostPort&gt;:&lt;containerPort&gt; 建立宿主机到容器的端口映射</span>
-
-<span style="color:#09f;font-style:italic">#  -v &lt;hostDirectory/volume&gt;:&lt;containerDirectory&gt; 建立宿主机到容器的文件目录映射, 如果不指定,则不能持久化保存变更</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># --rm 容器关闭时自动删除容器, 通常用于运行一次性命令
+</span><span style="color:#09f;font-style:italic"># -d, —detach 在后台运行(detached模式)并打印容器ID, 如果不指定,容器运行日志会打印到终端
+</span><span style="color:#09f;font-style:italic"># -p &lt;hostPort&gt;:&lt;containerPort&gt; 建立宿主机到容器的端口映射
+</span><span style="color:#09f;font-style:italic"></span>
+#  -v &lt;hostDirectory/volume&gt;:&lt;containerDirectory&gt; 建立宿主机到容器的文件目录映射, 如果不指定,则不能持久化保存变更</code></pre></div>
 <blockquote>
 <p>上面的docker volume如果不存在会自动创建, 也可以手动创建:
 docker volume create my-container-data</p>
@@ -188,22 +195,22 @@ docker run --net mynet123 --ip 172.18.0.22 -it ubuntu bash</pre></div>
 <p>方式1: 使用-e 参数</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#366">export</span> <span style="color:#033">LOCUST_MODE</span><span style="color:#555">=</span><span style="color:#c30">&#34;master&#34;</span>;printenv |grep LOADS_MODE; docker run -e LOCUST_MODE ...</code></pre></div>
 <p>方式2: 使用 &ndash;env-file参数</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 指定环境变量文件</span>
-docker run --env-file<span style="color:#555">=</span>runtime_env</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 指定环境变量文件
+</span><span style="color:#09f;font-style:italic"></span>docker run --env-file<span style="color:#555">=</span>runtime_env</code></pre></div>
 <h3 id="排查-调试">排查/调试</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看容器日志, 包含已Exited</span>
-docker logs -f &lt;container id/name&gt;
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看容器日志, 包含已Exited
+</span><span style="color:#09f;font-style:italic"></span>docker logs -f &lt;container id/name&gt;
 
-<span style="color:#09f;font-style:italic"># 或者直接登录容器</span>
-docker run xxx -ti bash
+<span style="color:#09f;font-style:italic"># 或者直接登录容器
+</span><span style="color:#09f;font-style:italic"></span>docker run xxx -ti bash
 
-<span style="color:#09f;font-style:italic"># inspect 查看状态/LogPath</span>
-docker inspect xxx</code></pre></div>
+<span style="color:#09f;font-style:italic"># inspect 查看状态/LogPath
+</span><span style="color:#09f;font-style:italic"></span>docker inspect xxx</code></pre></div>
 <h3 id="docker-network">docker network</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    docker port &lt;CONTAINER&gt;
     docker network ls
-    <span style="color:#09f;font-style:italic"># 创建新的bridge 网络</span>
-    docker network create net-demo
+    <span style="color:#09f;font-style:italic"># 创建新的bridge 网络
+</span><span style="color:#09f;font-style:italic"></span>    docker network create net-demo
     docker network create --subnet<span style="color:#555">=</span><span style="color:#f60">172</span>.18.0.0/16 mynet123</code></pre></div>
 <h3 id="docker-volume-数据卷">docker volume/数据卷</h3>
 
@@ -226,31 +233,31 @@ docker inspect xxx</code></pre></div>
 <li>docker system df : 磁盘占用</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker system prune -a
-<span style="color:#09f;font-style:italic"># This will remove:</span>
-<span style="color:#09f;font-style:italic">#        - all stopped containers</span>
-<span style="color:#09f;font-style:italic">#        - all networks not used by at least one container</span>
-<span style="color:#09f;font-style:italic">#        - all images without at least one container associated to them</span>
-<span style="color:#09f;font-style:italic">#        - all build cache</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># This will remove:
+</span><span style="color:#09f;font-style:italic">#        - all stopped containers
+</span><span style="color:#09f;font-style:italic">#        - all networks not used by at least one container
+</span><span style="color:#09f;font-style:italic">#        - all images without at least one container associated to them
+</span><span style="color:#09f;font-style:italic"></span>#        - all build cache</code></pre></div>
 <h2 id="制作镜像">制作镜像</h2>
 
 <h3 id="dockerfile">Dockerfile</h3>
 
 <p>例子</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile">    <span style="color:#09f;font-style:italic"># 基础镜像</span><span style="color:#a00;background-color:#faa">
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile">    # 基础镜像<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    FROM  python:3-onbuild<span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 对外暴露端口</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 对外暴露端口<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    EXPOSE <span style="color:#f60">5000</span><span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 执行命令</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 执行命令<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    CMD: <span style="color:#555">[</span><span style="color:#c30">&#34;python&#34;</span>,<span style="color:#c30">&#34;.app.py&#34;</span><span style="color:#555">]</span><span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 其他</span><span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 运行命令</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 其他<span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 运行命令<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    RUN apt -yqq update<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 把应用添加到容器卷</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 把应用添加到容器卷<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    ADD flask-app /opt/flask-app<span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 设置工作目录</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 设置工作目录<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    WORKDIR /opt/flask-app</code></pre></div>
 <h3 id="docker-build">docker build</h3>
 
@@ -258,12 +265,12 @@ docker inspect xxx</code></pre></div>
 <li>-t &lt;版本标签&gt;</li>
 <li>PATH/URL/. : 通常使用的最后的.代表当前路径</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 构建及运行示例</span>
-docker build -t my-app .
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 构建及运行示例
+</span><span style="color:#09f;font-style:italic"></span>docker build -t my-app .
 docker run -it --rm --name my-running-app my-app
 
-<span style="color:#09f;font-style:italic"># 强制构建/不使用缓存</span>
-docker build --no-cache -t my-app -f Dockerfile .</code></pre></div>
+<span style="color:#09f;font-style:italic"># 强制构建/不使用缓存
+</span><span style="color:#09f;font-style:italic"></span>docker build --no-cache -t my-app -f Dockerfile .</code></pre></div>
 <h3 id="run-entrypoint-cmd的区别">RUN/ENTRYPOINT/CMD的区别</h3>
 
 <ul>
@@ -285,33 +292,33 @@ docker build --no-cache -t my-app -f Dockerfile .</code></pre></div>
 </ul>
 
 <h3 id="传递参数">传递参数</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 通常组合为</span>
-ENTRYPOINT <span style="color:#555">[</span><span style="color:#c30">&#34;/bin/bash&#34;</span>,<span style="color:#c30">&#34;-c&#34;</span>,<span style="color:#c30">&#34;param1&#34;</span><span style="color:#555">]</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 通常组合为
+</span><span style="color:#09f;font-style:italic"></span>ENTRYPOINT <span style="color:#555">[</span><span style="color:#c30">&#34;/bin/bash&#34;</span>,<span style="color:#c30">&#34;-c&#34;</span>,<span style="color:#c30">&#34;param1&#34;</span><span style="color:#555">]</span>
 CMD <span style="color:#555">[</span><span style="color:#c30">&#34;param2&#34;</span>,<span style="color:#c30">&#34;param3&#34;</span><span style="color:#555">]</span></code></pre></div>
 <h3 id="调试">调试</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 对于直接EXITED的容器,可修改入口为</span>
-ENTRYPOINT <span style="color:#555">[</span><span style="color:#c30">&#34;/bin/bash&#34;</span>,<span style="color:#c30">&#34;-c&#34;</span>,<span style="color:#c30">&#34;sleep 1800&#34;</span><span style="color:#555">]</span>
-<span style="color:#09f;font-style:italic"># 容器启动后,再登录容器shell查看日志</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 对于直接EXITED的容器,可修改入口为
+</span><span style="color:#09f;font-style:italic"></span>ENTRYPOINT <span style="color:#555">[</span><span style="color:#c30">&#34;/bin/bash&#34;</span>,<span style="color:#c30">&#34;-c&#34;</span>,<span style="color:#c30">&#34;sleep 1800&#34;</span><span style="color:#555">]</span>
+# 容器启动后,再登录容器shell查看日志</code></pre></div>
 <h2 id="镜像导出-导入">镜像导出/导入</h2>
 
 <h3 id="保存镜像">保存镜像</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 格式:</span> 
-docker save -o &lt;path <span style="color:#069;font-weight:bold">for</span> generated tar file&gt; &lt;image name&gt;
-<span style="color:#09f;font-style:italic"># 压缩</span>
-docker save &lt;docker image name&gt; | gzip &gt; &lt;docker image name&gt;.tar.gz</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 格式: 
+</span><span style="color:#09f;font-style:italic"></span>docker save -o &lt;path <span style="color:#069;font-weight:bold">for</span> generated tar file&gt; &lt;image name&gt;
+<span style="color:#09f;font-style:italic"># 压缩
+</span><span style="color:#09f;font-style:italic"></span>docker save &lt;docker image name&gt; | gzip &gt; &lt;docker image name&gt;.tar.gz</code></pre></div>
 <h3 id="导入镜像">导入镜像</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker load &lt; my-image.tar.gz
-<span style="color:#09f;font-style:italic"># 注: 对于gzip, bzip2, xz的压缩文件,导入时会自动解压</span></code></pre></div>
+# 注: 对于gzip, bzip2, xz的压缩文件,导入时会自动解压</code></pre></div>
 <h2 id="docker-compose">docker-compose</h2>
 
 <p>定义及运行多个容器应用,Python写的一个工具</p>
 
 <p>PS. 原来docker-compose最初也是收购来的</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">    <span style="color:#09f;font-style:italic"># 停止服务</span><span style="color:#a00;background-color:#faa">
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">    # 停止服务<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    docker-compose stop<span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 停止并删除container及数据卷</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 停止并删除container及数据卷<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    docker-compose down -v<span style="color:#a00;background-color:#faa">
-</span><span style="color:#a00;background-color:#faa"></span>    <span style="color:#09f;font-style:italic"># 创建,启动并在后台运行container</span><span style="color:#a00;background-color:#faa">
+</span><span style="color:#a00;background-color:#faa"></span>    # 创建,启动并在后台运行container<span style="color:#a00;background-color:#faa">
 </span><span style="color:#a00;background-color:#faa"></span>    docker-compose up -d</code></pre></div>
 <h3 id="docker-compose-yml">docker-compose.yml</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#bbb">    </span>version:<span style="color:#bbb">
@@ -331,6 +338,7 @@ docker save &lt;docker image name&gt; | gzip &gt; &lt;docker image name&gt;.tar.
 
 <ul>
 <li><a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/">Docker RUN vs CMD vs ENTRYPOINT</a></li>
+<li><a href="https://stackoverflow.com/questions/19335444/how-do-i-assign-a-port-mapping-to-an-existing-docker-container">如何在已启动的容器开启新端口映射</a></li>
 </ul>
     </div>
     <footer class="post-footer">
@@ -425,7 +433,7 @@ docker save &lt;docker image name&gt; | gzip &gt; &lt;docker image name&gt;.tar.
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -442,7 +450,7 @@ docker save &lt;docker image name&gt; | gzip &gt; &lt;docker image name&gt;.tar.
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -533,7 +541,7 @@ docker save &lt;docker image name&gt; | gzip &gt; &lt;docker image name&gt;.tar.
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

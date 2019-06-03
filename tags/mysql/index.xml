@@ -17,7 +17,8 @@
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/mysql-tuning/</guid>
-      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.&lt;/p&gt;</description>
+      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,7 +27,9 @@
       <pubDate>Thu, 11 Jan 2018 09:31:35 +0000</pubDate>
       
       <guid>/blog/mysql/</guid>
-      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;</description>
+      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

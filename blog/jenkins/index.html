@@ -176,8 +176,8 @@ pip install python<span style="color:#555">-</span>jenkins
 server <span style="color:#555">=</span> jenkins<span style="color:#555">.</span>Jenkins(<span style="color:#c30">&#39;http://jenkins.xulizhao.com&#39;</span>, username<span style="color:#555">=</span><span style="color:#c30">&#39;user&#39;</span>, password<span style="color:#555">=</span><span style="color:#c30">&#39;password&#39;</span>)
 last_build_number <span style="color:#555">=</span> server<span style="color:#555">.</span>get_job_info(<span style="color:#c30">&#39;test_job&#39;</span>)[<span style="color:#c30">&#39;lastSuccessfulBuild&#39;</span>][<span style="color:#c30">&#39;number&#39;</span>]</code></pre></div>
 <h3 id="curl方式">curl方式</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 检索最近变更记录</span>
-curl -u xulz:0f945a8f -s <span style="color:#c30">&#34;http://jenkins.xulizhao.com/job/test-job/123/api/xml?wrapper=changes&amp;xpath=//changeSet//comment&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 检索最近变更记录
+</span><span style="color:#09f;font-style:italic"></span>curl -u xulz:0f945a8f -s <span style="color:#c30">&#34;http://jenkins.xulizhao.com/job/test-job/123/api/xml?wrapper=changes&amp;xpath=//changeSet//comment&#34;</span></code></pre></div>
 <p>比较遗憾的是Jenkins 的API Token只适用于构建job,其他接口需要用户名/密码登录.</p>
 
 <ul>
@@ -190,8 +190,8 @@ curl -u xulz:0f945a8f -s <span style="color:#c30">&#34;http://jenkins.xulizhao.c
 <h3 id="android-构建">Android 构建</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">android update project -p &lt;project_path&gt;
 
-<span style="color:#09f;font-style:italic"># 更新SDK</span>
-./tools/android update sdk --no-ui</code></pre></div>
+<span style="color:#09f;font-style:italic"># 更新SDK
+</span><span style="color:#09f;font-style:italic"></span>./tools/android update sdk --no-ui</code></pre></div>
 <h3 id="修改时区">修改时区</h3>
 
 <p>-Duser.timezone=&ldquo;Asia/Chongqing&rdquo;</p>
@@ -305,7 +305,7 @@ curl -u xulz:0f945a8f -s <span style="color:#c30">&#34;http://jenkins.xulizhao.c
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -322,7 +322,7 @@ curl -u xulz:0f945a8f -s <span style="color:#c30">&#34;http://jenkins.xulizhao.c
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -397,7 +397,7 @@ curl -u xulz:0f945a8f -s <span style="color:#c30">&#34;http://jenkins.xulizhao.c
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

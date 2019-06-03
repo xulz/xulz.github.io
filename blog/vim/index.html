@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">929 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -158,15 +158,17 @@
 
 <p>由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.</p>
 
+<p></p>
+
 <h2 id="命令行用法">命令行用法</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 以只读方式打开</span>
-vi -R filename
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 以只读方式打开
+</span><span style="color:#09f;font-style:italic"></span>vi -R filename
 
-<span style="color:#09f;font-style:italic"># 从某行打开</span>
-vi +linenumber file.py
+<span style="color:#09f;font-style:italic"># 从某行打开
+</span><span style="color:#09f;font-style:italic"></span>vi +linenumber file.py
 
-<span style="color:#09f;font-style:italic">#修改当前路径</span>
-gvim -c <span style="color:#c30">&#34;cd ~/workspace&#34;</span></code></pre></div>
+<span style="color:#09f;font-style:italic">#修改当前路径
+</span><span style="color:#09f;font-style:italic"></span>gvim -c <span style="color:#c30">&#34;cd ~/workspace&#34;</span></code></pre></div>
 <h2 id="导航">导航</h2>
 
 <ul>
@@ -244,42 +246,42 @@ gvim -c <span style="color:#c30">&#34;cd ~/workspace&#34;</span></code></pre></d
 </blockquote>
 
 <h2 id="设置命令">设置命令</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 执行命令</span>
-!! 等同于 :.! 或Ctrl-z + <span style="color:#366">fg</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 执行命令
+</span><span style="color:#09f;font-style:italic"></span>!! 等同于 :.! 或Ctrl-z + <span style="color:#366">fg</span>
 
-<span style="color:#09f;font-style:italic">#显示行号/自动缩进/忽略大小写/显示结束行和tab标识/显示换行符</span>
-:set number/ai/ic/list/wm
+<span style="color:#09f;font-style:italic">#显示行号/自动缩进/忽略大小写/显示结束行和tab标识/显示换行符
+</span><span style="color:#09f;font-style:italic"></span>:set number/ai/ic/list/wm
 
-<span style="color:#09f;font-style:italic"># 关闭显示</span>
-<span style="color:#366">set</span> nu!
+<span style="color:#09f;font-style:italic"># 关闭显示
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">set</span> nu!
 :set nonumber
 
-<span style="color:#09f;font-style:italic">#高亮搜索,关闭:noh;实时显示匹配</span>
-:set hlsearch incsearch 简写 <span style="color:#366">set</span> hls is
+<span style="color:#09f;font-style:italic">#高亮搜索,关闭:noh;实时显示匹配
+</span><span style="color:#09f;font-style:italic"></span>:set hlsearch incsearch 简写 <span style="color:#366">set</span> hls is
 
-<span style="color:#09f;font-style:italic"># 忽略大小写</span>
-:set ignorecase smartcase
+<span style="color:#09f;font-style:italic"># 忽略大小写
+</span><span style="color:#09f;font-style:italic"></span>:set ignorecase smartcase
 
-<span style="color:#09f;font-style:italic"># 用sudo保存只读文件(经常用到的一个命令)</span>
-:w !sudo tee %
+<span style="color:#09f;font-style:italic"># 用sudo保存只读文件(经常用到的一个命令)
+</span><span style="color:#09f;font-style:italic"></span>:w !sudo tee %
 
-<span style="color:#09f;font-style:italic"># 设置终端为vi 模式</span>
-:set -o vi
+<span style="color:#09f;font-style:italic"># 设置终端为vi 模式
+</span><span style="color:#09f;font-style:italic"></span>:set -o vi
 
-<span style="color:#09f;font-style:italic">#切换工作路径</span>
-:cd ~/workspace
+<span style="color:#09f;font-style:italic">#切换工作路径
+</span><span style="color:#09f;font-style:italic"></span>:cd ~/workspace
 
-<span style="color:#09f;font-style:italic"># 将当前编辑文件第 # 行至第 # 行的內容保存到文件FILENAME</span>
-:#,#w FILENAME
+<span style="color:#09f;font-style:italic"># 将当前编辑文件第 # 行至第 # 行的內容保存到文件FILENAME
+</span><span style="color:#09f;font-style:italic"></span>:#,#w FILENAME
 
-<span style="color:#09f;font-style:italic"># 读取 FILENAME文件 并将其插入到当前文件的光标位置后面</span>
-:r FILENAME
+<span style="color:#09f;font-style:italic"># 读取 FILENAME文件 并将其插入到当前文件的光标位置后面
+</span><span style="color:#09f;font-style:italic"></span>:r FILENAME
 
-<span style="color:#09f;font-style:italic"># 重复上一次变更</span>
-. <span style="color:#555">(</span>period<span style="color:#555">)</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># 重复上一次变更
+</span><span style="color:#09f;font-style:italic"></span>. <span style="color:#555">(</span>period<span style="color:#555">)</span></code></pre></div>
 <h2 id="编辑内容">编辑内容</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 复制和粘贴</span>
-<span style="color:#c30">&#34;ayy (内容存放在寄存器 &#34;</span><span style="color:#555">)</span> / <span style="color:#c30">&#34;ap</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 复制和粘贴
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#c30">&#34;ayy (内容存放在寄存器 &#34;</span><span style="color:#555">)</span> / <span style="color:#c30">&#34;ap</span></code></pre></div>
 <h3 id="查找">查找</h3>
 
 <p>搜索光标处单词
@@ -299,20 +301,20 @@ gvim -c <span style="color:#c30">&#34;cd ~/workspace&#34;</span></code></pre></d
 <li>search-string 可以是正则表达式或简单的字符串</li>
 <li>g 表示进行全局替换 ( 针对一行可能执行多次替换 )</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 几个例子</span>
-<span style="color:#09f;font-style:italic"># 替换当前文件所有并确认，global</span>
-:%s/old/new/gc
-<span style="color:#09f;font-style:italic"># 列出所有行</span>
-:g/old/p
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 几个例子
+</span><span style="color:#09f;font-style:italic"># 替换当前文件所有并确认，global
+</span><span style="color:#09f;font-style:italic"></span>:%s/old/new/gc
+<span style="color:#09f;font-style:italic"># 列出所有行
+</span><span style="color:#09f;font-style:italic"></span>:g/old/p
 :g/old/s//new/gp
 
-<span style="color:#09f;font-style:italic"># 匹配整个单词</span>
-:s/<span style="color:#c30;font-weight:bold">\&lt;</span>bar<span style="color:#c30;font-weight:bold">\&gt;</span>/baz</code></pre></div>
+<span style="color:#09f;font-style:italic"># 匹配整个单词
+</span><span style="color:#09f;font-style:italic"></span>:s/<span style="color:#c30;font-weight:bold">\&lt;</span>bar<span style="color:#c30;font-weight:bold">\&gt;</span>/baz</code></pre></div>
 <p>批量替换 :</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">:args *.<span style="color:#555">[</span>ch<span style="color:#555">]</span>  <span style="color:#09f;font-style:italic"># 替换所有*.c和*.h文件</span>
-:argdo %s/&lt;my_foo&gt;/My_Foo/ge | update
- <span style="color:#09f;font-style:italic"># e 忽略没有找到的错误</span>
- <span style="color:#09f;font-style:italic"># update 写入修改</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">:args *.<span style="color:#555">[</span>ch<span style="color:#555">]</span>  <span style="color:#09f;font-style:italic"># 替换所有*.c和*.h文件
+</span><span style="color:#09f;font-style:italic"></span>:argdo %s/&lt;my_foo&gt;/My_Foo/ge | update
+ <span style="color:#09f;font-style:italic"># e 忽略没有找到的错误
+</span><span style="color:#09f;font-style:italic"></span> # update 写入修改</code></pre></div>
 <h2 id="定制">定制</h2>
 
 <h3 id="设置字体">设置字体</h3>
@@ -442,7 +444,7 @@ A： apt-get install exuberant-ctags 或在WIndows把ctags.exe放到vim根目录
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -459,7 +461,7 @@ A： apt-get install exuberant-ctags 或在WIndows把ctags.exe放到vim根目录
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -544,7 +546,7 @@ A： apt-get install exuberant-ctags 或在WIndows把ctags.exe放到vim根目录
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

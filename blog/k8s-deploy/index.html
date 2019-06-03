@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1557 字 ~4分钟</span>
+<span class="leancloud-visitors-count">1534 字 ~4分钟</span>
 </span>
       </div>
     </header>
@@ -241,17 +241,17 @@
 <p>已包含于Ansible运行脚本.</p>
 
 <h4 id="docker-阿里云镜像">docker 阿里云镜像</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># step 1: 安装必要的一些系统工具</span>
-    sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
-    <span style="color:#09f;font-style:italic"># step 2: 安装GPG证书</span>
-    curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-    <span style="color:#09f;font-style:italic"># Step 3: 写入软件源信息</span>
-    sudo add-apt-repository <span style="color:#c30">&#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> stable&#34;</span>
-    <span style="color:#09f;font-style:italic"># Step 4: 更新并安装 Docker-CE</span>
-    sudo apt-get -y update
-    <span style="color:#09f;font-style:italic"># 查找Docker-CE的版本: apt-cache madison docker-ce</span>
-    <span style="color:#09f;font-style:italic"># 安装指定版本的Docker-CE</span>
-     sudo apt-get -y install docker-ce<span style="color:#555">=</span><span style="color:#f60">17</span>.03.2~ce-0~ubuntu-xenial</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># step 1: 安装必要的一些系统工具
+</span><span style="color:#09f;font-style:italic"></span>    sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+    <span style="color:#09f;font-style:italic"># step 2: 安装GPG证书
+</span><span style="color:#09f;font-style:italic"></span>    curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+    <span style="color:#09f;font-style:italic"># Step 3: 写入软件源信息
+</span><span style="color:#09f;font-style:italic"></span>    sudo add-apt-repository <span style="color:#c30">&#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> stable&#34;</span>
+    <span style="color:#09f;font-style:italic"># Step 4: 更新并安装 Docker-CE
+</span><span style="color:#09f;font-style:italic"></span>    sudo apt-get -y update
+    <span style="color:#09f;font-style:italic"># 查找Docker-CE的版本: apt-cache madison docker-ce
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 安装指定版本的Docker-CE
+</span><span style="color:#09f;font-style:italic"></span>     sudo apt-get -y install docker-ce<span style="color:#555">=</span><span style="color:#f60">17</span>.03.2~ce-0~ubuntu-xenial</code></pre></div>
 <h4 id="docker镜像-阿里云加速">docker镜像 阿里云加速</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    sudo mkdir -p /etc/docker
     sudo tee /etc/docker/daemon.json <span style="color:#c30">&lt;&lt;-&#39;EOF&#39;
@@ -259,8 +259,8 @@
 </span><span style="color:#c30">      &#34;registry-mirrors&#34;: [&#34;https://nz4awhki.mirror.aliyuncs.com&#34;]
 </span><span style="color:#c30">    }
 </span><span style="color:#c30">    EOF</span>
-    <span style="color:#09f;font-style:italic"># 重启以生效</span>
-    sudo service docker restart</code></pre></div>
+    <span style="color:#09f;font-style:italic"># 重启以生效
+</span><span style="color:#09f;font-style:italic"></span>    sudo service docker restart</code></pre></div>
 <h4 id="kubernetes镜像">kubernetes镜像</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    cat <span style="color:#c30">&lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 </span><span style="color:#c30">    deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main
@@ -290,8 +290,8 @@
 </ol>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -u xulz -b -i inventory/mycluster/hosts.ini cluster.yml --limit moon1
 
-<span style="color:#09f;font-style:italic"># 如果某步骤出错,建议修复后先重试错误,在以上命令后添加</span>
---limit @/Users/xulz/k8s/kubespray/cluster.retry</code></pre></div>
+<span style="color:#09f;font-style:italic"># 如果某步骤出错,建议修复后先重试错误,在以上命令后添加
+</span><span style="color:#09f;font-style:italic"></span>--limit @/Users/xulz/k8s/kubespray/cluster.retry</code></pre></div>
 <h4 id="删除节点">删除节点</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -u xulz -b -i inventory/mycluster/hosts.ini remove-node.yml --limit moon11</code></pre></div>
 <h4 id="添加节点">添加节点</h4>
@@ -324,19 +324,19 @@
 <h4 id="如果升级cluster出错-建议逐个命令调试">如果升级cluster出错,建议逐个命令调试.</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo kubeadm upgrade plan
 
-<span style="color:#09f;font-style:italic"># 参考下面的扩展阅读部分</span> </code></pre></div>
+# 参考下面的扩展阅读部分 </code></pre></div>
 <h3 id="登录kubernetes-dashboard">登录Kubernetes Dashboard</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic">### 创建管理员账号</span>
-    kubectl create -f admin-role.yaml
-    <span style="color:#09f;font-style:italic"># 找到admin-token开头的token名字</span>
-    kubectl  -n kube-system get secret
-    <span style="color:#09f;font-style:italic"># 获取相应的token</span>
-    kubectl -n kube-system get secret admin-token-tmh9v -o <span style="color:#033">jsonpath</span><span style="color:#555">={</span>.data.token<span style="color:#555">}</span>|base64 -d
-    <span style="color:#09f;font-style:italic"># 也可以直接运行 kubectl -n kube-system describe secret admin-token-tmh9v 获取token</span>
-    
-    <span style="color:#09f;font-style:italic"># 访问网址: https://&lt;first_master&gt;:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login</span>
-    <span style="color:#09f;font-style:italic"># 选择以token方式登录, 输入上一步获取的token</span>
-    <span style="color:#09f;font-style:italic"># 登录成功</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic">### 创建管理员账号
+</span><span style="color:#09f;font-style:italic"></span>    kubectl create -f admin-role.yaml
+    <span style="color:#09f;font-style:italic"># 找到admin-token开头的token名字
+</span><span style="color:#09f;font-style:italic"></span>    kubectl  -n kube-system get secret
+    <span style="color:#09f;font-style:italic"># 获取相应的token
+</span><span style="color:#09f;font-style:italic"></span>    kubectl -n kube-system get secret admin-token-tmh9v -o <span style="color:#033">jsonpath</span><span style="color:#555">={</span>.data.token<span style="color:#555">}</span>|base64 -d
+    <span style="color:#09f;font-style:italic"># 也可以直接运行 kubectl -n kube-system describe secret admin-token-tmh9v 获取token
+</span><span style="color:#09f;font-style:italic"></span>    
+    <span style="color:#09f;font-style:italic"># 访问网址: https://&lt;first_master&gt;:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 选择以token方式登录, 输入上一步获取的token
+</span><span style="color:#09f;font-style:italic"></span>    # 登录成功</code></pre></div>
 <blockquote>
 <p>admin-role.yaml的具体内容见<a href="https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/admin-role.yaml">这里</a></p>
 </blockquote>
@@ -448,7 +448,7 @@
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -465,7 +465,7 @@
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -561,7 +561,7 @@
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

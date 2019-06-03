@@ -149,25 +149,27 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">933 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.</p>
 
+<p></p>
+
 <h2 id="安装及配置">安装及配置</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 安全化安装</span>
-    sudo apt install mysql-server
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 安全化安装
+</span><span style="color:#09f;font-style:italic"></span>    sudo apt install mysql-server
     sudo mysql_secure_installation
-    <span style="color:#09f;font-style:italic"># 设置root密码, Percona</span>
-    /usr/bin/mysqladmin -u root password <span style="color:#c30">&#39;new-password&#39;</span>
-    <span style="color:#09f;font-style:italic"># 配置文件</span>
-    /etc/mysql/my.cnf
-    <span style="color:#09f;font-style:italic"># CentOS</span>
-    /etc/sysconfig/mysql
-    <span style="color:#09f;font-style:italic"># Ubuntu</span>
-    /etc/default/mysql</code></pre></div>
+    <span style="color:#09f;font-style:italic"># 设置root密码, Percona
+</span><span style="color:#09f;font-style:italic"></span>    /usr/bin/mysqladmin -u root password <span style="color:#c30">&#39;new-password&#39;</span>
+    <span style="color:#09f;font-style:italic"># 配置文件
+</span><span style="color:#09f;font-style:italic"></span>    /etc/mysql/my.cnf
+    <span style="color:#09f;font-style:italic"># CentOS
+</span><span style="color:#09f;font-style:italic"></span>    /etc/sysconfig/mysql
+    <span style="color:#09f;font-style:italic"># Ubuntu
+</span><span style="color:#09f;font-style:italic"></span>    /etc/default/mysql</code></pre></div>
 <h3 id="授权登录">授权登录</h3>
 
 <blockquote>
@@ -200,15 +202,15 @@ FLUSH <span style="color:#069;font-weight:bold">PRIVILEGES</span>;
 <span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#34;character_set_database&#34;</span>;
 <span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#34;collation_database&#34;</span>;</code></pre></div>
 <h3 id="导出-导入数据">导出/导入数据</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 备份数据</span>
-    mysqldump -d -uroot -p mydb &gt;mydb_schema.sql
-    --no-create-info, -t   <span style="color:#09f;font-style:italic"># 只包含数据</span>
-    --skip-triggers
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 备份数据
+</span><span style="color:#09f;font-style:italic"></span>    mysqldump -d -uroot -p mydb &gt;mydb_schema.sql
+    --no-create-info, -t   <span style="color:#09f;font-style:italic"># 只包含数据
+</span><span style="color:#09f;font-style:italic"></span>    --skip-triggers
     --no-data, -d   
-    <span style="color:#09f;font-style:italic"># 导入数据</span>
-    mysql -h host -u username -p password --default_character_set utf8 database &lt; file.sql
-    <span style="color:#09f;font-style:italic"># Load-data高速导入数据</span>
-    load data <span style="color:#366">local</span> infile /root/out.txt into table table1 fields terminated by <span style="color:#a00;background-color:#faa">&#39;</span>,’ <span style="color:#555">(</span>field1,field2<span style="color:#555">)</span></code></pre></div>
+    <span style="color:#09f;font-style:italic"># 导入数据
+</span><span style="color:#09f;font-style:italic"></span>    mysql -h host -u username -p password --default_character_set utf8 database &lt; file.sql
+    <span style="color:#09f;font-style:italic"># Load-data高速导入数据
+</span><span style="color:#09f;font-style:italic"></span>    load data <span style="color:#366">local</span> infile /root/out.txt into table table1 fields terminated by <span style="color:#a00;background-color:#faa">&#39;</span>,’ <span style="color:#555">(</span>field1,field2<span style="color:#555">)</span></code></pre></div>
 <h3 id="重置丢失的root密码">重置丢失的root密码</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sudo mysqld_safe <span style="color:#09f;font-style:italic">--skip-grant-tables &amp;
 </span><span style="color:#09f;font-style:italic"></span>mysql <span style="color:#555">-</span>u root
@@ -372,7 +374,7 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -389,7 +391,7 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -474,7 +476,7 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

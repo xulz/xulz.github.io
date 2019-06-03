@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">932 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -158,20 +158,22 @@
 
 <p>与之类似还有个Jetty，用的不多就不涉及了.</p>
 
+<p></p>
+
 <h2 id="安装">安装</h2>
 
 <h3 id="ubuntu">Ubuntu</h3>
 
 <p>安装:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt install tomcat8  tomcat8-admin  tomcat8-docs tomcat8-examples
-<span style="color:#09f;font-style:italic"># 常用路径</span>
-/etc/tomcat8/server.xml
+<span style="color:#09f;font-style:italic"># 常用路径
+</span><span style="color:#09f;font-style:italic"></span>/etc/tomcat8/server.xml
 /etc/default/tomcat8
 /var/lib/tomcat8/webapps/ROOT/index.html
     </code></pre></div>
 <p>服務：</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># /etc/systemd/system/tomcat.service</span>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># /etc/systemd/system/tomcat.service
+</span><span style="color:#09f;font-style:italic"></span>
 
 <span style="color:#555">[</span>Unit<span style="color:#555">]</span>
 <span style="color:#033">Description</span><span style="color:#555">=</span>Apache Tomcat Web Application Container
@@ -208,11 +210,11 @@ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.28/bin/apac
 sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components<span style="color:#555">=</span><span style="color:#f60">1</span>
 chown -hR tomcat:tomcat tomcat</code></pre></div>
 <p>服务：</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># vi /etc/systemd/system/tomcat.service</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># vi /etc/systemd/system/tomcat.service
+</span><span style="color:#09f;font-style:italic"></span>
 
-
-<span style="color:#09f;font-style:italic"># Systemd unit file for tomcat</span>
-<span style="color:#555">[</span>Unit<span style="color:#555">]</span>
+<span style="color:#09f;font-style:italic"># Systemd unit file for tomcat
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#555">[</span>Unit<span style="color:#555">]</span>
 <span style="color:#033">Description</span><span style="color:#555">=</span>Apache Tomcat Web Application Container
 <span style="color:#033">After</span><span style="color:#555">=</span>syslog.target network.target
 
@@ -228,22 +230,22 @@ chown -hR tomcat:tomcat tomcat</code></pre></div>
 <span style="color:#033">ExecStart</span><span style="color:#555">=</span>/opt/tomcat/bin/startup.sh
 <span style="color:#033">ExecStop</span><span style="color:#555">=</span>/bin/kill -15 <span style="color:#033">$MAINPID</span>
 
-<span style="color:#09f;font-style:italic">#User=tomcat</span>
-<span style="color:#09f;font-style:italic">#Group=tomcat</span>
-<span style="color:#09f;font-style:italic">#UMask=0007</span>
-<span style="color:#033">RestartSec</span><span style="color:#555">=</span><span style="color:#f60">10</span>
+<span style="color:#09f;font-style:italic">#User=tomcat
+</span><span style="color:#09f;font-style:italic">#Group=tomcat
+</span><span style="color:#09f;font-style:italic">#UMask=0007
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">RestartSec</span><span style="color:#555">=</span><span style="color:#f60">10</span>
 <span style="color:#033">Restart</span><span style="color:#555">=</span>always
 
 <span style="color:#555">[</span>Install<span style="color:#555">]</span>
 <span style="color:#033">WantedBy</span><span style="color:#555">=</span>multi-user.target</code></pre></div>
 <p>服务管理：</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 加载服务</span>
-systemctl daemon-reload
-<span style="color:#09f;font-style:italic"># 启动</span>
-systemctl start tomcat
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 加载服务
+</span><span style="color:#09f;font-style:italic"></span>systemctl daemon-reload
+<span style="color:#09f;font-style:italic"># 启动
+</span><span style="color:#09f;font-style:italic"></span>systemctl start tomcat
 
-<span style="color:#09f;font-style:italic"># 开机启动</span>
-systemctl <span style="color:#366">enable</span> tomcat</code></pre></div>
+<span style="color:#09f;font-style:italic"># 开机启动
+</span><span style="color:#09f;font-style:italic"></span>systemctl <span style="color:#366">enable</span> tomcat</code></pre></div>
 <h2 id="配置">配置</h2>
 
 <h3 id="常用配置">常用配置</h3>
@@ -300,8 +302,8 @@ systemctl <span style="color:#366">enable</span> tomcat</code></pre></div>
     <span style="color:#309;font-weight:bold">&lt;param-value&gt;</span>true<span style="color:#309;font-weight:bold">&lt;/param-value&gt;</span>
     <span style="color:#309;font-weight:bold">&lt;/init-param&gt;</span></code></pre></div>
 <h3 id="压缩日志">压缩日志</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># vi /etc/logrotate.d/tomcat</span>
-/usr/local/tomcat/logs/catalina.out <span style="color:#555">{</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># vi /etc/logrotate.d/tomcat
+</span><span style="color:#09f;font-style:italic"></span>/usr/local/tomcat/logs/catalina.out <span style="color:#555">{</span>
 copytruncate
 daily
 rotate <span style="color:#f60">5</span>
@@ -322,13 +324,13 @@ size 1024M
 </blockquote>
 
 <h3 id="其他">其他</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 查看运行时参数</span>
-    ps aux | grep catalina  <span style="color:#09f;font-style:italic"># 或者</span>
-    jinfo
-    <span style="color:#09f;font-style:italic"># 调试debug</span>
-    <span style="color:#366">set</span> -x
-    <span style="color:#09f;font-style:italic"># 使用pid</span>
-    <span style="color:#033">CATALINA_PID</span><span style="color:#555">=</span><span style="color:#c30">&#34;</span><span style="color:#033">$CATALINA_BASE</span><span style="color:#c30">/bin/catalina.pid&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 查看运行时参数
+</span><span style="color:#09f;font-style:italic"></span>    ps aux | grep catalina  <span style="color:#09f;font-style:italic"># 或者
+</span><span style="color:#09f;font-style:italic"></span>    jinfo
+    <span style="color:#09f;font-style:italic"># 调试debug
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#366">set</span> -x
+    <span style="color:#09f;font-style:italic"># 使用pid
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#033">CATALINA_PID</span><span style="color:#555">=</span><span style="color:#c30">&#34;</span><span style="color:#033">$CATALINA_BASE</span><span style="color:#c30">/bin/catalina.pid&#34;</span></code></pre></div>
 <blockquote>
 <p>AJP( Apache JServ Protocol)的特点是作为Web Server(Apache)和Servlet Container(Tomcat/JBoss)之间的反向代理, 使用二进制协议传输,没有解析开销.</p>
 </blockquote>
@@ -434,7 +436,7 @@ size 1024M
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -451,7 +453,7 @@ size 1024M
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -528,7 +530,7 @@ size 1024M
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

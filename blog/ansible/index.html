@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">465 字 ~1分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -157,6 +157,8 @@
     <p>最早接触Ansible是在15年,后来断断续续用过几次,因为更倾向于所写即所得的Fabric,后者也更轻量级.</p>
 
 <p>每次拾起来都要查文档,记录下常见用法.</p>
+
+<p></p>
 
 <h2 id="基础">基础</h2>
 
@@ -170,21 +172,21 @@
 <li>-u xulz : 切换远程连接用户</li>
 <li>-b/&ndash;become : 等同于之前的sudo</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 复制本地文件到远程</span>
-ansible all -m copy -a <span style="color:#c30">&#39;src=./README.md dest=/tmp&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 复制本地文件到远程
+</span><span style="color:#09f;font-style:italic"></span>ansible all -m copy -a <span style="color:#c30">&#39;src=./README.md dest=/tmp&#39;</span></code></pre></div>
 <h3 id="ansible-console">ansible-console</h3>
 
 <p>交互式shell</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 列出hosts</span>
-list     
-<span style="color:#09f;font-style:italic"># 切换分组</span>
-<span style="color:#366">cd</span> groupA
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 列出hosts
+</span><span style="color:#09f;font-style:italic"></span>list     
+<span style="color:#09f;font-style:italic"># 切换分组
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">cd</span> groupA
 <span style="color:#366">cd</span> db*</code></pre></div>
 <h2 id="配置">配置</h2>
 
 <h3 id="配置选项">配置选项</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># ansible-config命令查看当前配置</span>
-ansible-config view</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># ansible-config命令查看当前配置
+</span><span style="color:#09f;font-style:italic"></span>ansible-config view</code></pre></div>
 <p>以下列顺序查找:</p>
 
 <ul>
@@ -209,34 +211,34 @@ ansible-config view</code></pre></div>
 
 <h2 id="playbook">Playbook</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-palybook playbook.yml
-<span style="color:#09f;font-style:italic"># 运行adhoc命令</span>
-ansible boston -i production -m <span style="color:#366">command</span> -a <span style="color:#c30">&#39;/sbin/reboot&#39;</span>
+<span style="color:#09f;font-style:italic"># 运行adhoc命令
+</span><span style="color:#09f;font-style:italic"></span>ansible boston -i production -m <span style="color:#366">command</span> -a <span style="color:#c30">&#39;/sbin/reboot&#39;</span>
 
-<span style="color:#09f;font-style:italic">### 用法</span>
-* -i/--inventory : 指定参考文件
+<span style="color:#09f;font-style:italic">### 用法
+</span><span style="color:#09f;font-style:italic"></span>* -i/--inventory : 指定参考文件
 
-<span style="color:#09f;font-style:italic">### 减少执行时间</span>
-
+<span style="color:#09f;font-style:italic">### 减少执行时间
+</span><span style="color:#09f;font-style:italic"></span>
 * -l/--limit : 限定子集
 * --tags/--skip-tags : 标签
 * gather_facts: False
 
-<span style="color:#09f;font-style:italic">### 最佳实践</span>
-* 命名任务
+<span style="color:#09f;font-style:italic">### 最佳实践
+</span><span style="color:#09f;font-style:italic"></span>* 命名任务
 * 涉及状态
 * 以角色分组
 
 
 
-<span style="color:#09f;font-style:italic">### ansible-galaxy用法</span>
-
+<span style="color:#09f;font-style:italic">### ansible-galaxy用法
+</span><span style="color:#09f;font-style:italic"></span>
 <span style="color:#c30">```</span>bash
  ansible-galaxy init -p playbooks/roles web</code></pre></div>
 <h3 id="日志及调试">日志及调试</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 打印详细信息到控制台</span>
-ansible-playbook -vvv playbook.yaml
-<span style="color:#09f;font-style:italic"># 查看一些信息</span>
---list-hosts
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 打印详细信息到控制台
+</span><span style="color:#09f;font-style:italic"></span>ansible-playbook -vvv playbook.yaml
+<span style="color:#09f;font-style:italic"># 查看一些信息
+</span><span style="color:#09f;font-style:italic"></span>--list-hosts
 --list-tasks</code></pre></div>
 <p><strong>配置日志文件</strong></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[defaults]
@@ -347,7 +349,7 @@ log_path=/path/to/logfile</pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -364,7 +366,7 @@ log_path=/path/to/logfile</pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -445,7 +447,7 @@ log_path=/path/to/logfile</pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

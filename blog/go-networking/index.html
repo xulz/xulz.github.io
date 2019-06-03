@@ -149,12 +149,14 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">577 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.</p>
+
+<p></p>
 
 <h3 id="系统库模块">系统库模块</h3>
 
@@ -189,13 +191,13 @@
 
 body <span style="color:#555">:=</span> <span style="color:#366">new</span>(bytes.Buffer)
 foo1 <span style="color:#555">:=</span> Foo{<span style="color:#c30">&#34;barTest&#34;</span>}
-json.<span style="color:#c0f">NewEncoder</span>(b).<span style="color:#c0f">Encode</span>(foo1)
-res, _ <span style="color:#555">:=</span> http.<span style="color:#c0f">Post</span>(<span style="color:#c30">&#34;https://httpbin.org/post&#34;</span>, <span style="color:#c30">&#34;application/json; charset=utf-8&#34;</span>, body)
+json.NewEncoder(b).Encode(foo1)
+res, _ <span style="color:#555">:=</span> http.Post(<span style="color:#c30">&#34;https://httpbin.org/post&#34;</span>, <span style="color:#c30">&#34;application/json; charset=utf-8&#34;</span>, body)
 
 foo2 <span style="color:#555">:=</span> <span style="color:#366">new</span>(Foo)  <span style="color:#09f;font-style:italic">// new返回指针
-</span><span style="color:#09f;font-style:italic"></span>json.<span style="color:#c0f">NewDecoder</span>(r.Body).<span style="color:#c0f">Decode</span>(foo2)
+</span><span style="color:#09f;font-style:italic"></span>json.NewDecoder(r.Body).Decode(foo2)
 foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-style:italic">// 或者 var foo3 Foo
-</span><span style="color:#09f;font-style:italic"></span>json.<span style="color:#c0f">NewDecoder</span>(r.Body).<span style="color:#c0f">Decode</span>(<span style="color:#555">&amp;</span>foo3)</code></pre></div>
+</span><span style="color:#09f;font-style:italic"></span>json.NewDecoder(r.Body).Decode(<span style="color:#555">&amp;</span>foo3)</code></pre></div>
 
 <ul>
 <li>*RawMessage:指针,处理嵌套json</li>
@@ -204,7 +206,7 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#09f;font-style:italic">// 接受收到json嵌套格式的响应, {&#34;name&#34;:{&#34;first&#34;:&#34;Michael&#34;,&#34;last&#34;:&#34;Xu&#34;},&#34;gender&#34;:&#34;male&#34;}
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic">//var dat map[string]*json.RawMessage
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">var</span> dat <span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{}
-    json.<span style="color:#c0f">Unmarshal</span>(response, <span style="color:#555">&amp;</span>dat)
+    json.Unmarshal(response, <span style="color:#555">&amp;</span>dat)
     r <span style="color:#555">:=</span> dat[<span style="color:#c30">&#34;name&#34;</span>].(<span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{})
     firstName <span style="color:#555">:=</span> r[<span style="color:#c30">&#34;first&#34;</span>].(<span style="color:#078;font-weight:bold">string</span>)</code></pre></div>
 
@@ -218,55 +220,55 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
 </span><span style="color:#09f;font-style:italic"></span>    client <span style="color:#555">:=</span> <span style="color:#555">&amp;</span>http.Client{Transport: tr}
     payload <span style="color:#555">:=</span> <span style="color:#c30">`{&#34;username&#34;:&#34;xulz&#34;}`</span>
     <span style="color:#09f;font-style:italic">// 创建请求,注:为简单期间忽略了错误检查
-</span><span style="color:#09f;font-style:italic"></span>    req, _ <span style="color:#555">:=</span> http.<span style="color:#c0f">NewRequest</span>(<span style="color:#c30">&#34;POST&#34;</span>, <span style="color:#c30">&#34;https://xulizhao.com/api/login&#34;</span>, bytes.<span style="color:#c0f">NewBuffer</span>([]<span style="color:#366">byte</span>(payload)))
+</span><span style="color:#09f;font-style:italic"></span>    req, _ <span style="color:#555">:=</span> http.NewRequest(<span style="color:#c30">&#34;POST&#34;</span>, <span style="color:#c30">&#34;https://xulizhao.com/api/login&#34;</span>, bytes.NewBuffer([]<span style="color:#366">byte</span>(payload)))
     <span style="color:#09f;font-style:italic">// 定制头信息
-</span><span style="color:#09f;font-style:italic"></span>    req.Header.<span style="color:#c0f">Set</span>(<span style="color:#c30">&#34;Content-Type&#34;</span>, <span style="color:#c30">&#34;application/json&#34;</span>)
-    resp, _ <span style="color:#555">:=</span> client.<span style="color:#c0f">Do</span>(req)
+</span><span style="color:#09f;font-style:italic"></span>    req.Header.Set(<span style="color:#c30">&#34;Content-Type&#34;</span>, <span style="color:#c30">&#34;application/json&#34;</span>)
+    resp, _ <span style="color:#555">:=</span> client.Do(req)
     <span style="color:#09f;font-style:italic">// 记得关闭连接
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">defer</span> resp.Body.<span style="color:#c0f">Close</span>()
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">defer</span> resp.Body.Close()
     <span style="color:#09f;font-style:italic">// 把响应转换为对象
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">var</span> ret LoginResponse
-    <span style="color:#069;font-weight:bold">if</span> err <span style="color:#555">:=</span> json.<span style="color:#c0f">NewDecoder</span>(resp.Body).<span style="color:#c0f">Decode</span>(<span style="color:#555">&amp;</span>ret); err <span style="color:#555">!=</span> <span style="color:#069;font-weight:bold">nil</span> {
-        log.<span style="color:#c0f">Warn</span>(<span style="color:#c30">&#34;error in json decode&#34;</span>, err)
+    <span style="color:#069;font-weight:bold">if</span> err <span style="color:#555">:=</span> json.NewDecoder(resp.Body).Decode(<span style="color:#555">&amp;</span>ret); err <span style="color:#555">!=</span> <span style="color:#069;font-weight:bold">nil</span> {
+        log.Warn(<span style="color:#c30">&#34;error in json decode&#34;</span>, err)
     }</code></pre></div>
 
 <h4 id="tcp的例子">TCP的例子</h4>
 
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#069;font-weight:bold">type</span> LoginReq <span style="color:#069;font-weight:bold">struct</span> {
+<p><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#069;font-weight:bold">type</span> LoginReq <span style="color:#069;font-weight:bold">struct</span> {
         Username          <span style="color:#078;font-weight:bold">string</span> <span style="color:#c30">`json:&#34;username&#34;`</span>
         Password        <span style="color:#078;font-weight:bold">int</span>    <span style="color:#c30">`json:&#34;password`</span>
     }
     <span style="color:#09f;font-style:italic">// 读数据
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">handleRead</span>(conn net.Conn) []<span style="color:#078;font-weight:bold">byte</span> {
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> handleRead(conn net.Conn) []<span style="color:#078;font-weight:bold">byte</span> {
         buf <span style="color:#555">:=</span> <span style="color:#366">make</span>([]<span style="color:#078;font-weight:bold">byte</span>, <span style="color:#f60">1024</span>)
         <span style="color:#09f;font-style:italic">// 注: 返回读到的字节数
-</span><span style="color:#09f;font-style:italic"></span>        rLen, err <span style="color:#555">:=</span> conn.<span style="color:#c0f">Read</span>(buf)
-        <span style="color:#c0f">checkError</span>(err)
+</span><span style="color:#09f;font-style:italic"></span>        rLen, err <span style="color:#555">:=</span> conn.Read(buf)
+        checkError(err)
         r <span style="color:#555">:=</span> buf[:rLen<span style="color:#555">-</span><span style="color:#f60">1</span>]
         <span style="color:#09f;font-style:italic">// 假设前2个字节为实际数据大小
-</span><span style="color:#09f;font-style:italic"></span>        size <span style="color:#555">:=</span> binary.BigEndian.<span style="color:#c0f">Uint32</span>(r[:<span style="color:#f60">2</span>])
-        log.<span style="color:#c0f">Debug</span>(<span style="color:#c30">&#34;Recv:&#34;</span>, <span style="color:#366">string</span>(r))
+</span><span style="color:#09f;font-style:italic"></span>        size <span style="color:#555">:=</span> binary.BigEndian.Uint32(r[:<span style="color:#f60">2</span>])
+        log.Debug(<span style="color:#c30">&#34;Recv:&#34;</span>, <span style="color:#366">string</span>(r))
         <span style="color:#069;font-weight:bold">return</span> r
     }
     <span style="color:#09f;font-style:italic">// 写数据
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">handleWrite</span>(conn net.Conn, cmd []<span style="color:#078;font-weight:bold">byte</span>) {
-        _, err <span style="color:#555">:=</span> conn.<span style="color:#c0f">Write</span>(cmd)
-        log.<span style="color:#c0f">Debug</span>(<span style="color:#c30">&#34;Sent:&#34;</span>, <span style="color:#366">string</span>(cmd))
-        <span style="color:#c0f">checkError</span>(err)
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> handleWrite(conn net.Conn, cmd []<span style="color:#078;font-weight:bold">byte</span>) {
+        _, err <span style="color:#555">:=</span> conn.Write(cmd)
+        log.Debug(<span style="color:#c30">&#34;Sent:&#34;</span>, <span style="color:#366">string</span>(cmd))
+        checkError(err)
     }
     
-    <span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">main</span>() {
+    <span style="color:#069;font-weight:bold">func</span> main() {
         <span style="color:#09f;font-style:italic">// 客户端忽略TLS检查
 </span><span style="color:#09f;font-style:italic"></span>        conf <span style="color:#555">:=</span> <span style="color:#555">&amp;</span>tls.Config{InsecureSkipVerify: <span style="color:#069;font-weight:bold">true</span>}
         server <span style="color:#555">:=</span> ServerHost <span style="color:#555">+</span> <span style="color:#c30">&#34;:&#34;</span> <span style="color:#555">+</span> ServerPort
         <span style="color:#09f;font-style:italic">// 建立TCP连接
-</span><span style="color:#09f;font-style:italic"></span>        conn, err <span style="color:#555">:=</span> tls.<span style="color:#c0f">Dial</span>(<span style="color:#c30">&#34;tcp&#34;</span>, server, conf)
-        <span style="color:#c0f">checkError</span>(err)
-        <span style="color:#069;font-weight:bold">defer</span> conn.<span style="color:#c0f">Close</span>()
-        auth <span style="color:#555">:=</span> <span style="color:#c0f">LoginReq</span>(<span style="color:#c30">&#34;xulz&#34;</span>, <span style="color:#c30">&#34;password&#34;</span>)
-        <span style="color:#c0f">handleWrite</span>(conn, auth)
-        <span style="color:#c0f">handleRead</span>(conn)
-    }</code></pre></div>
+</span><span style="color:#09f;font-style:italic"></span>        conn, err <span style="color:#555">:=</span> tls.Dial(<span style="color:#c30">&#34;tcp&#34;</span>, server, conf)
+        checkError(err)
+        <span style="color:#069;font-weight:bold">defer</span> conn.Close()
+        auth <span style="color:#555">:=</span> LoginReq(<span style="color:#c30">&#34;xulz&#34;</span>, <span style="color:#c30">&#34;password&#34;</span>)
+        handleWrite(conn, auth)
+        handleRead(conn)
+    }</code></pre></div></p>
 
 <h3 id="扩展阅读">扩展阅读</h3>
 
@@ -365,7 +367,7 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -382,7 +384,7 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -454,7 +456,7 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

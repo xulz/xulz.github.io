@@ -22,7 +22,8 @@
 之前几个项目特意使用了以轻量著称的Flask,两者算是各有千秋吧.&lt;/p&gt;
 
 &lt;p&gt;去年Django2.0推出后一直想尝试,正好最近拿来试试.&lt;br /&gt;
-用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.&lt;/p&gt;</description>
+用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -48,7 +49,9 @@
 
 &lt;p&gt;幸运的是近两年主流库/框架都已支持Python3,毕竟发布已经10年多了,在新项目中毫无疑问必须用Python3.&lt;/p&gt;
 
-&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;</description>
+&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,7 +64,9 @@
 
 &lt;p&gt;如果说缺点的话,也只有对它的性能有所抱怨(GIL),不能使用多核CPU.&lt;/p&gt;
 
-&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;</description>
+&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -77,7 +82,9 @@
 &lt;p&gt;[2018.12更新]&lt;br /&gt;
 Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.&lt;br /&gt;
 在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.&lt;br /&gt;
-算了不折腾了,直接上Ansible吧.&lt;/p&gt;</description>
+算了不折腾了,直接上Ansible吧.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -95,7 +102,9 @@ Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍�
       <pubDate>Wed, 13 Dec 2017 07:58:35 +0000</pubDate>
       
       <guid>/blog/python/</guid>
-      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

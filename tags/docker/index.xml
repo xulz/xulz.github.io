@@ -26,7 +26,9 @@
       <pubDate>Fri, 11 May 2018 10:15:55 +0000</pubDate>
       
       <guid>/blog/docker-command/</guid>
-      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;</description>
+      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -50,7 +52,9 @@
 
 &lt;p&gt;Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更高级功能的控制工具,主要特性:&lt;/p&gt;
 
-&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;</description>
+&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

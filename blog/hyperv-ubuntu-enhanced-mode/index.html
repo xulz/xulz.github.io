@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">606 字 ~2分钟</span>
+<span class="leancloud-visitors-count">597 字 ~2分钟</span>
 </span>
       </div>
     </header>
@@ -177,24 +177,24 @@ git clone https://github.com/jterry75/xrdp-init.git ~/xrdp-init
 <span style="color:#366">cd</span> ~/xrdp-init/ubuntu/18.04/
 vi install.sh
 
-<span style="color:#09f;font-style:italic"># 把以下两行注释掉并保存，如下</span>
-<span style="color:#09f;font-style:italic">#rmmod vmw_vsock_vmci_transport</span>
-<span style="color:#09f;font-style:italic">#rmmod vsock</span>
-
-<span style="color:#09f;font-style:italic"># 运行</span>
-sudo chmod +x install.sh
+<span style="color:#09f;font-style:italic"># 把以下两行注释掉并保存，如下
+</span><span style="color:#09f;font-style:italic">#rmmod vmw_vsock_vmci_transport
+</span><span style="color:#09f;font-style:italic">#rmmod vsock
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic"># 运行
+</span><span style="color:#09f;font-style:italic"></span>sudo chmod +x install.sh
 sudo ./install.sh
 sudo reboot
-<span style="color:#09f;font-style:italic"># 重启后，进入该目录再次运行</span>
-sudo ./install.sh
-<span style="color:#09f;font-style:italic"># 之后关闭Ubuntu</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># 重启后，进入该目录再次运行
+</span><span style="color:#09f;font-style:italic"></span>sudo ./install.sh
+# 之后关闭Ubuntu</code></pre></div>
 <p>4.以管理员打开powershell，运行</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ps1" data-lang="ps1">    <span style="color:#366">Set-VM</span> -VMName Ubuntu -EnhancedSessionTransportType HvSocket</code></pre></div>
 <p>5.进入Ubuntu虚拟机，以默认的Xorg方式登录系统。</p>
 
 <p>如果登录失败，进入[Hyper-V Settings]-[User]-[Enhanced Session Mode]设置项，把&rdquo;Use enhanced session mode&rdquo;前的勾选去掉，重新登录Ubuntu并检查日志/var/log/xrdp.log最后的错误。如果是因为私钥读失败，可执行</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 这里修改为你的用户名</span>
-    sudo chown xulz /etc/xrdp/key.pem</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 这里修改为你的用户名
+</span><span style="color:#09f;font-style:italic"></span>    sudo chown xulz /etc/xrdp/key.pem</code></pre></div>
 <h2 id="参考">参考</h2>
 
 <ul>
@@ -297,7 +297,7 @@ sudo ./install.sh
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -314,7 +314,7 @@ sudo ./install.sh
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -378,7 +378,7 @@ sudo ./install.sh
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

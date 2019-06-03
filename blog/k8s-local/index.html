@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">955 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -157,6 +157,8 @@
     <p>本文侧重于入门Kubernetes时的本地开发测试环境搭建,及minikube的使用.</p>
 
 <p>尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.</p>
+
+<p></p>
 
 <h3 id="mac单节点体验">Mac单节点体验</h3>
 
@@ -175,19 +177,19 @@
 <p>验证环境正确:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">注: 进行前需梯子,否则第一步下载localkube可能失败,产生如下错误
 Error creating localkube asset from url: Error opening file asset: open /Users/xulz/.minikube/cache/localkube/localkube-v1.8.0: no such file or directory
-进而导致之后Pod的状态一直是ContainerCreating</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 确保本机已安装VirtualBox</span>
-    minikube start
+进而导致之后Pod的状态一直是ContainerCreating</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 确保本机已安装VirtualBox
+</span><span style="color:#09f;font-style:italic"></span>    minikube start
     kubectl run hello-minikube --image<span style="color:#555">=</span>gcr.io/google_containers/echoserver:1.4 --port<span style="color:#555">=</span><span style="color:#f60">8080</span>
-    <span style="color:#09f;font-style:italic"># 检查Pod是否已运行, 需要从ContainerCreating更新为Running</span>
-    kubectl get pod
-    <span style="color:#09f;font-style:italic"># 如果一直是ContainerCreating, 检查错误原因</span>
-    kubectl describe pods
-    <span style="color:#09f;font-style:italic"># 页面应该可访问</span>
-    curl <span style="color:#069;font-weight:bold">$(</span>minikube service hello-minikube --url<span style="color:#069;font-weight:bold">)</span>
-    <span style="color:#09f;font-style:italic"># 查看Dashboard</span>
-    minikube dashboard
-    <span style="color:#09f;font-style:italic"># 不用时清除</span>
-    kubectl delete deployment hello-minikube
+    <span style="color:#09f;font-style:italic"># 检查Pod是否已运行, 需要从ContainerCreating更新为Running
+</span><span style="color:#09f;font-style:italic"></span>    kubectl get pod
+    <span style="color:#09f;font-style:italic"># 如果一直是ContainerCreating, 检查错误原因
+</span><span style="color:#09f;font-style:italic"></span>    kubectl describe pods
+    <span style="color:#09f;font-style:italic"># 页面应该可访问
+</span><span style="color:#09f;font-style:italic"></span>    curl <span style="color:#069;font-weight:bold">$(</span>minikube service hello-minikube --url<span style="color:#069;font-weight:bold">)</span>
+    <span style="color:#09f;font-style:italic"># 查看Dashboard
+</span><span style="color:#09f;font-style:italic"></span>    minikube dashboard
+    <span style="color:#09f;font-style:italic"># 不用时清除
+</span><span style="color:#09f;font-style:italic"></span>    kubectl delete deployment hello-minikube
     minikube stop</code></pre></div>
 <h3 id="ubuntu多节点">Ubuntu多节点</h3>
 
@@ -199,24 +201,24 @@ Error creating localkube asset from url: Error opening file asset: open /Users/x
 <li><p>kubernetes-core : (Staging环境) 1个Master节点+1个Worker节点</p></li>
 
 <li><p>canonical-kubernetes: (生产环境) 2 masters, 3 workers, 3 etc nodes 及API Load Balance</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 本地安装使用kubectl</span>
-sudo snap install kubectl --classic
-<span style="color:#09f;font-style:italic"># 准备阶段</span>
-sudo snap install conjure-up --classic
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 本地安装使用kubectl
+</span><span style="color:#09f;font-style:italic"></span>sudo snap install kubectl --classic
+<span style="color:#09f;font-style:italic"># 准备阶段
+</span><span style="color:#09f;font-style:italic"></span>sudo snap install conjure-up --classic
 sudo snap install lxd
 newgrp lxd
 sudo usermod -a -G lxd xulz
 /snap/bin/lxd init
-<span style="color:#09f;font-style:italic"># 需要重启机器</span>
-sudo reboot
-<span style="color:#09f;font-style:italic"># 禁用IPv6, conjure-up基于的juju暂时不支持</span>
-lxc network <span style="color:#366">set</span> lxdbr0 ipv6.address none</code></pre></div></li>
+<span style="color:#09f;font-style:italic"># 需要重启机器
+</span><span style="color:#09f;font-style:italic"></span>sudo reboot
+<span style="color:#09f;font-style:italic"># 禁用IPv6, conjure-up基于的juju暂时不支持
+</span><span style="color:#09f;font-style:italic"></span>lxc network <span style="color:#366">set</span> lxdbr0 ipv6.address none</code></pre></div></li>
 </ul>
 
 <p>使用图像界面安装</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    conjure-up kubernetes
-    <span style="color:#09f;font-style:italic"># 对于Docker的虚拟网络插件,这里选择默认的Flannel</span>
-    <span style="color:#09f;font-style:italic"># 安装过程需开启梯子, gcr.io 不可访问</span></code></pre></div>
+    <span style="color:#09f;font-style:italic"># 对于Docker的虚拟网络插件,这里选择默认的Flannel
+</span><span style="color:#09f;font-style:italic"></span>    # 安装过程需开启梯子, gcr.io 不可访问</code></pre></div>
 <blockquote>
 <p>Kubernetes常用网络插件: flannel, calico, weave</p>
 
@@ -227,20 +229,20 @@ lxc network <span style="color:#366">set</span> lxdbr0 ipv6.address none</code><
 
 <p>在查看运行环境及问题排查时常会用到的命令.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    juju controllers
-    <span style="color:#09f;font-style:italic"># Models 有2个是因为包含内置的管理模块default</span>
-    <span style="color:#09f;font-style:italic"># 查看当前的 Controller, Model, User</span>
-    juju whoami
-    <span style="color:#09f;font-style:italic"># 显示当前应用状态</span>
-    juju status
-    <span style="color:#09f;font-style:italic"># 远程登录到master</span>
-    <span style="color:#09f;font-style:italic"># 日志存放在 /var/log/juju/</span>
-    juju ssh kubernetes-master/0
-    <span style="color:#09f;font-style:italic"># 获取当前controller名称</span>
-    juju switch
-    <span style="color:#09f;font-style:italic"># 卸载停止controller</span>
-    juju destroy-controller &lt;上一步得到的名字&gt; --destroy-all-models
-    <span style="color:#09f;font-style:italic"># 单独卸载 model</span>
-    juju destroy-model &lt;model_name&gt;</code></pre></div>
+    <span style="color:#09f;font-style:italic"># Models 有2个是因为包含内置的管理模块default
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 查看当前的 Controller, Model, User
+</span><span style="color:#09f;font-style:italic"></span>    juju whoami
+    <span style="color:#09f;font-style:italic"># 显示当前应用状态
+</span><span style="color:#09f;font-style:italic"></span>    juju status
+    <span style="color:#09f;font-style:italic"># 远程登录到master
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 日志存放在 /var/log/juju/
+</span><span style="color:#09f;font-style:italic"></span>    juju ssh kubernetes-master/0
+    <span style="color:#09f;font-style:italic"># 获取当前controller名称
+</span><span style="color:#09f;font-style:italic"></span>    juju switch
+    <span style="color:#09f;font-style:italic"># 卸载停止controller
+</span><span style="color:#09f;font-style:italic"></span>    juju destroy-controller &lt;上一步得到的名字&gt; --destroy-all-models
+    <span style="color:#09f;font-style:italic"># 单独卸载 model
+</span><span style="color:#09f;font-style:italic"></span>    juju destroy-model &lt;model_name&gt;</code></pre></div>
 <h3 id="资源">资源</h3>
 
 <ul>
@@ -346,7 +348,7 @@ lxc network <span style="color:#366">set</span> lxdbr0 ipv6.address none</code><
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -363,7 +365,7 @@ lxc network <span style="color:#366">set</span> lxdbr0 ipv6.address none</code><
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -431,7 +433,7 @@ lxc network <span style="color:#366">set</span> lxdbr0 ipv6.address none</code><
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

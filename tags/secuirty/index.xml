@@ -23,7 +23,9 @@
 
 &lt;p&gt;之前用的HTTP的验证方式，由于一知半解，这块每次手动配置也会花费一些时间。&lt;/p&gt;
 
-&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;</description>
+&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

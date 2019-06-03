@@ -21,7 +21,9 @@
 
 &lt;p&gt;这两种模型的实现也被看做 消息中间件/MOM(Message-Oriented Middleware),因为这种结构解耦了发送端和接收端,简化了架构.&lt;/p&gt;
 
-&lt;p&gt;另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.&lt;/p&gt;</description>
+&lt;p&gt;另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

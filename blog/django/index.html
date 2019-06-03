@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1259 字 ~3分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -159,32 +159,33 @@
 之前几个项目特意使用了以轻量著称的Flask,两者算是各有千秋吧.</p>
 
 <p>去年Django2.0推出后一直想尝试,正好最近拿来试试.<br />
-用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.</p>
+用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.
+</p>
 
 <h2 id="manage-py命令行工具">manage.py命令行工具</h2>
 
 <p>Django的工具真的好用很多.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 创建项目mysite</span>
-django-admin startproject mysite
-<span style="color:#09f;font-style:italic"># 运行开发服务器,也可指定IP/端口</span>
-<span style="color:#09f;font-style:italic"># python manage.py runserver 0:8000</span>
-python3 manage.py runserver
-<span style="color:#09f;font-style:italic"># 指定配置 --settings SETTINGS</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 创建项目mysite
+</span><span style="color:#09f;font-style:italic"></span>django-admin startproject mysite
+<span style="color:#09f;font-style:italic"># 运行开发服务器,也可指定IP/端口
+</span><span style="color:#09f;font-style:italic"># python manage.py runserver 0:8000
+</span><span style="color:#09f;font-style:italic"></span>python3 manage.py runserver
+<span style="color:#09f;font-style:italic"># 指定配置 --settings SETTINGS
+</span><span style="color:#09f;font-style:italic"></span>
 
+<span style="color:#09f;font-style:italic"># 创建应用
+</span><span style="color:#09f;font-style:italic"></span>python3 manage.py startapp polls
 
-<span style="color:#09f;font-style:italic"># 创建应用</span>
-python3 manage.py startapp polls
-
-<span style="color:#09f;font-style:italic"># 创建超级管理员</span>
-python3 manage.py createsuperuser</code></pre></div>
+<span style="color:#09f;font-style:italic"># 创建超级管理员
+</span><span style="color:#09f;font-style:italic"></span>python3 manage.py createsuperuser</code></pre></div>
 <h3 id="shell交互式命令行">shell交互式命令行</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python3 manage.py shell</code></pre></div>
 <h3 id="升级-migration">升级/migration</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 为 INSTALLED_APPS 创建必要的数据表</span>
-python3 manage.py migrate
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 为 INSTALLED_APPS 创建必要的数据表
+</span><span style="color:#09f;font-style:italic"></span>python3 manage.py migrate
 
-<span style="color:#09f;font-style:italic"># makemigrations命令会检测对模型的修改并生成迁移文件,位于migrations文件夹</span>
-python3 manage.py makemigrations polls</code></pre></div>
+<span style="color:#09f;font-style:italic"># makemigrations命令会检测对模型的修改并生成迁移文件,位于migrations文件夹
+</span><span style="color:#09f;font-style:italic"></span>python3 manage.py makemigrations polls</code></pre></div>
 <h2 id="开发基础">开发基础</h2>
 
 <p>提倡开发可重用的app, 主要基于Model/View/URL 模式.</p>
@@ -192,16 +193,16 @@ python3 manage.py makemigrations polls</code></pre></div>
 <h3 id="app">App</h3>
 
 <p><strong>添加应用</strong></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># mysite/settings.py</span>
-<span style="color:#033">INSTALLED_APPS</span> <span style="color:#555">=</span> <span style="color:#555">[</span>
-    <span style="color:#c30">&#39;polls.apps.PollsConfig&#39;</span>,</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/app.py</span>
-<span style="color:#09f;font-style:italic"># verbose_name 对应页面显示名称</span>
-class PollsConfig<span style="color:#555">(</span>AppConfig<span style="color:#555">)</span>:
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># mysite/settings.py
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">INSTALLED_APPS</span> <span style="color:#555">=</span> <span style="color:#555">[</span>
+    <span style="color:#c30">&#39;polls.apps.PollsConfig&#39;</span>,</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/app.py
+</span><span style="color:#09f;font-style:italic"># verbose_name 对应页面显示名称
+</span><span style="color:#09f;font-style:italic"></span>class PollsConfig<span style="color:#555">(</span>AppConfig<span style="color:#555">)</span>:
     <span style="color:#033">name</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;Polls&#39;</span>
     <span style="color:#033">verbose_name</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;My Polls&#39;</span></code></pre></div>
 <h3 id="model">Model</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/models.py</span>
-class Poll<span style="color:#555">(</span>models.Model<span style="color:#555">)</span>:
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/models.py
+</span><span style="color:#09f;font-style:italic"></span>class Poll<span style="color:#555">(</span>models.Model<span style="color:#555">)</span>:
     <span style="color:#033">name</span> <span style="color:#555">=</span> models.CharField<span style="color:#555">(</span><span style="color:#033">max_length</span><span style="color:#555">=</span><span style="color:#f60">256</span>, <span style="color:#033">verbose_name</span><span style="color:#555">=</span><span style="color:#c30">&#39;Poll Name&#39;</span><span style="color:#555">)</span>
     <span style="color:#033">created</span> <span style="color:#555">=</span> models.DateTimeField<span style="color:#555">(</span><span style="color:#033">auto_now_add</span><span style="color:#555">=</span>True<span style="color:#555">)</span>
     <span style="color:#033">updated</span> <span style="color:#555">=</span> models.DateTimeField<span style="color:#555">(</span><span style="color:#033">auto_now</span><span style="color:#555">=</span>True<span style="color:#555">)</span>
@@ -209,26 +210,26 @@ class Poll<span style="color:#555">(</span>models.Model<span style="color:#555">
     class Meta:
         <span style="color:#033">verbose_name</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;Poll Display Name&#39;</span></code></pre></div>
 <h3 id="view">View</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/views.py</span>
-from django.shortcuts import render,redirect
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/views.py
+</span><span style="color:#09f;font-style:italic"></span>from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-<span style="color:#09f;font-style:italic"># @login_required</span>
-def index<span style="color:#555">(</span>request<span style="color:#555">)</span>:
+<span style="color:#09f;font-style:italic"># @login_required
+</span><span style="color:#09f;font-style:italic"></span>def index<span style="color:#555">(</span>request<span style="color:#555">)</span>:
     <span style="color:#069;font-weight:bold">return</span> HttpResponse<span style="color:#555">(</span><span style="color:#c30">&#34;Welcome.&#34;</span><span style="color:#555">)</span></code></pre></div>
 <h3 id="添加路由-urls">添加路由/urls</h3>
 
 <p>注: Django2.x里的re_path() 等价于之前的url()</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># mysite/urls.py</span>
-<span style="color:#033">urlpatterns</span> <span style="color:#555">=</span> <span style="color:#555">[</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># mysite/urls.py
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">urlpatterns</span> <span style="color:#555">=</span> <span style="color:#555">[</span>
     path<span style="color:#555">(</span><span style="color:#c30">&#39;polls/&#39;</span>, include<span style="color:#555">(</span><span style="color:#c30">&#39;polls.urls&#39;</span><span style="color:#555">))</span>,
     path<span style="color:#555">(</span><span style="color:#c30">&#39;admin/&#39;</span>, admin.site.urls<span style="color:#555">)</span>,</code></pre></div>
 <h2 id="admin定制">Admin定制</h2>
 
 <h3 id="添加model到admin">添加model到Admin</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/admin.py</span>
-class PollsAdmin<span style="color:#555">(</span>admin.ModelAdmin<span style="color:#555">)</span>:
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># polls/admin.py
+</span><span style="color:#09f;font-style:italic"></span>class PollsAdmin<span style="color:#555">(</span>admin.ModelAdmin<span style="color:#555">)</span>:
     <span style="color:#033">list_display</span> <span style="color:#555">=</span> <span style="color:#555">(</span><span style="color:#c30">&#39;name&#39;</span>,<span style="color:#c30">&#39;updated&#39;</span><span style="color:#555">)</span>
     <span style="color:#033">search_fields</span> <span style="color:#555">=</span> <span style="color:#555">[</span><span style="color:#c30">&#39;name&#39;</span><span style="color:#555">]</span>
     <span style="color:#033">fieldsets</span> <span style="color:#555">=</span> <span style="color:#555">[</span>
@@ -238,14 +239,14 @@ class PollsAdmin<span style="color:#555">(</span>admin.ModelAdmin<span style="co
 
 admin.site.register<span style="color:#555">(</span>Polls, PollsAdmin<span style="color:#555">)</span></code></pre></div>
 <h3 id="丰富显示">丰富显示</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 自定义list_filter</span>
-from django.contrib.admin import SimpleListFilter</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 自定义list_filter
+</span><span style="color:#09f;font-style:italic"></span>from django.contrib.admin import SimpleListFilter</code></pre></div>
 <p>内置关联: InlineModelAdmin 的两个子类TabularInline和StackedInline</p>
 
 <h3 id="修改admin显示">修改Admin显示</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># mysite/urls.py</span>
-<span style="color:#09f;font-style:italic"># 以最简方式修改标题等</span>
-admin.site.site_header <span style="color:#555">=</span> <span style="color:#c30">&#39;Test header&#39;</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># mysite/urls.py
+</span><span style="color:#09f;font-style:italic"># 以最简方式修改标题等
+</span><span style="color:#09f;font-style:italic"></span>admin.site.site_header <span style="color:#555">=</span> <span style="color:#c30">&#39;Test header&#39;</span>
 admin.site.site_title <span style="color:#555">=</span> <span style="color:#c30">&#39;Test title&#39;</span>
 admin.site.index_title <span style="color:#555">=</span> <span style="color:#c30">&#39;Test index&#39;</span></code></pre></div>
 <h3 id="admin功能扩展">Admin功能扩展</h3>
@@ -259,8 +260,8 @@ django.forms.formsets</pre></div>
 <h3 id="模板">模板</h3>
 
 <p>在项目文件夹创建templates存放模板文件</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># settings.py</span>
-<span style="color:#033">TEMPLATE_DIR</span> <span style="color:#555">=</span> os.path.join<span style="color:#555">(</span>BASE_DIR, <span style="color:#c30">&#39;templates&#39;</span><span style="color:#555">)</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># settings.py
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">TEMPLATE_DIR</span> <span style="color:#555">=</span> os.path.join<span style="color:#555">(</span>BASE_DIR, <span style="color:#c30">&#39;templates&#39;</span><span style="color:#555">)</span>
 
 <span style="color:#033">TEMPLATES</span> <span style="color:#555">=</span> <span style="color:#555">[</span>
     <span style="color:#555">{</span>
@@ -309,19 +310,19 @@ DEFAULT_FROM_EMAIL <span style="color:#555">=</span> <span style="color:#c30">&#
 生产环境一定要修改settings.py为DEBUG = False</p>
 
 <h3 id="静态文件">静态文件</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># settings.py</span>
-<span style="color:#033">STATIC_ROOT</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;/home/xulz/www/mysite/static/&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># settings.py
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">STATIC_ROOT</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;/home/xulz/www/mysite/static/&#39;</span></code></pre></div>
 <p>之后运行</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 首次部署运行</span>
-<span style="color:#09f;font-style:italic"># 或静态文件更新后运行</span>
-./manage.py collectstatic</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 首次部署运行
+</span><span style="color:#09f;font-style:italic"># 或静态文件更新后运行
+</span><span style="color:#09f;font-style:italic"></span>./manage.py collectstatic</code></pre></div>
 <h3 id="gunicorn">gunicorn</h3>
 
 <p>之前用Apache+wsgi的方式部署,相对麻烦. 这次直接使用gunicorn, 简单到再也不想提Apache.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># -D 常驻进程</span>
-<span style="color:#09f;font-style:italic"># -b 可指定IP/端口</span>
-<span style="color:#09f;font-style:italic"># -w 8 可指定worker进程数</span>
-gunicorn -D mysite.wsgi --log-file<span style="color:#555">=</span>log.txt --access-logfile<span style="color:#555">=</span>access.log --log-level<span style="color:#555">=</span>info</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># -D 常驻进程
+</span><span style="color:#09f;font-style:italic"># -b 可指定IP/端口
+</span><span style="color:#09f;font-style:italic"># -w 8 可指定worker进程数
+</span><span style="color:#09f;font-style:italic"></span>gunicorn -D mysite.wsgi --log-file<span style="color:#555">=</span>log.txt --access-logfile<span style="color:#555">=</span>access.log --log-level<span style="color:#555">=</span>info</code></pre></div>
 <h3 id="nginx">Nginx</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">server <span style="color:#555">{</span>
     listen <span style="color:#f60">8000</span>;
@@ -460,7 +461,7 @@ gunicorn -D mysite.wsgi --log-file<span style="color:#555">=</span>log.txt --acc
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -477,7 +478,7 @@ gunicorn -D mysite.wsgi --log-file<span style="color:#555">=</span>log.txt --acc
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -570,7 +571,7 @@ gunicorn -D mysite.wsgi --log-file<span style="color:#555">=</span>log.txt --acc
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

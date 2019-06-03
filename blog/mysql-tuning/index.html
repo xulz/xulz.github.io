@@ -149,24 +149,25 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">652 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>关于MySQL性能问题查找及优化的点滴.</p>
+    <p>关于MySQL性能问题查找及优化的点滴.
+</p>
 
 <h2 id="常用参数">常用参数</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># /etc/my.cnf</span>
-<span style="color:#555">[</span>mysqld<span style="color:#555">]</span>
-<span style="color:#033">max_connections</span><span style="color:#555">=</span><span style="color:#f60">1000</span>   <span style="color:#09f;font-style:italic"># 最大连接数</span>
-<span style="color:#033">innodb_buffer_pool_size</span><span style="color:#555">=</span>4G  <span style="color:#09f;font-style:italic"># 缓存池大小,建议&lt; 80% 总内存</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># /etc/my.cnf
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#555">[</span>mysqld<span style="color:#555">]</span>
+<span style="color:#033">max_connections</span><span style="color:#555">=</span><span style="color:#f60">1000</span>   <span style="color:#09f;font-style:italic"># 最大连接数
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">innodb_buffer_pool_size</span><span style="color:#555">=</span>4G  <span style="color:#09f;font-style:italic"># 缓存池大小,建议&lt; 80% 总内存
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic"># 时间超过2秒的SQL记录在慢查询日志
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">long_query_time</span><span style="color:#555">=</span><span style="color:#f60">2</span>
 
-<span style="color:#09f;font-style:italic"># 时间超过2秒的SQL记录在慢查询日志</span>
-<span style="color:#033">long_query_time</span><span style="color:#555">=</span><span style="color:#f60">2</span>
-
-<span style="color:#09f;font-style:italic"># 用以下面响应时间分布的收集</span>
-<span style="color:#033">query_response_time_stats</span> <span style="color:#555">=</span> on</code></pre></div>
+<span style="color:#09f;font-style:italic"># 用以下面响应时间分布的收集
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">query_response_time_stats</span> <span style="color:#555">=</span> on</code></pre></div>
 <h3 id="innodb-buffer-pool-size-推荐大小">innodb_buffer_pool_size 推荐大小</h3>
 
 <p>计算RIBPS(Recommended InnoDB Buffer Pool Size)基于所有InnoDB数据大小和额外60%索引大小.</p>
@@ -175,15 +176,15 @@
 <p>实际占用大小为:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">SELECT</span> (PagesData<span style="color:#555">*</span>PageSize)<span style="color:#555">/</span>POWER(<span style="color:#f60">1024</span>,<span style="color:#f60">3</span>) DataGB <span style="color:#069;font-weight:bold">FROM</span> (<span style="color:#069;font-weight:bold">SELECT</span> variable_value PagesData <span style="color:#069;font-weight:bold">FROM</span> information_schema.global_status <span style="color:#069;font-weight:bold">WHERE</span> variable_name<span style="color:#555">=</span><span style="color:#c30">&#39;Innodb_buffer_pool_pages_data&#39;</span>) A,(<span style="color:#069;font-weight:bold">SELECT</span> variable_value PageSize <span style="color:#069;font-weight:bold">FROM</span> information_schema.global_status <span style="color:#069;font-weight:bold">WHERE</span> variable_name<span style="color:#555">=</span><span style="color:#c30">&#39;Innodb_page_size&#39;</span>) B;</code></pre></div>
 <h3 id="利用多核cpu">利用多核CPU</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 无限并发</span>
-<span style="color:#033">innodb_thread_concurrency</span> <span style="color:#555">=</span> <span style="color:#f60">0</span>
-<span style="color:#09f;font-style:italic"># 下面两个值最大设置为64</span>
-innodb_read_io_threads
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 无限并发
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">innodb_thread_concurrency</span> <span style="color:#555">=</span> <span style="color:#f60">0</span>
+<span style="color:#09f;font-style:italic"># 下面两个值最大设置为64
+</span><span style="color:#09f;font-style:italic"></span>innodb_read_io_threads
 innodb_write_io_threads</code></pre></div>
 <h2 id="检查当前慢查询并运行explain">检查当前慢查询并运行EXPLAIN</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysql&gt; SHOW FULL PROCESSLIST;
-<span style="color:#09f;font-style:italic"># 找到上面经常出现的SQL语句</span>
-EXPLAIN SQL-Statement</code></pre></div>
+<span style="color:#09f;font-style:italic"># 找到上面经常出现的SQL语句
+</span><span style="color:#09f;font-style:italic"></span>EXPLAIN SQL-Statement</code></pre></div>
 <blockquote>
 <p>状态sending data意味着正在等待从磁盘或内存读取数据并发送出去,即 reading and filtering data.</p>
 </blockquote>
@@ -195,10 +196,10 @@ EXPLAIN SQL-Statement</code></pre></div>
 <h3 id="安装pmm服务端">安装PMM服务端</h3>
 
 <p>建议使用docker的方式</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 获取镜像</span>
-docker pull percona/pmm-server:latest
-<span style="color:#09f;font-style:italic"># 创建容器</span>
-docker create <span style="color:#c30;font-weight:bold">\
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 获取镜像
+</span><span style="color:#09f;font-style:italic"></span>docker pull percona/pmm-server:latest
+<span style="color:#09f;font-style:italic"># 创建容器
+</span><span style="color:#09f;font-style:italic"></span>docker create <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   -v /opt/prometheus/data <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   -v /opt/consul-data <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   -v /var/lib/mysql <span style="color:#c30;font-weight:bold">\
@@ -206,8 +207,8 @@ docker create <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   --name pmm-data <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   percona/pmm-server:latest /bin/true
 
-<span style="color:#09f;font-style:italic"># 运行</span>
-docker run -d <span style="color:#c30;font-weight:bold">\
+<span style="color:#09f;font-style:italic"># 运行
+</span><span style="color:#09f;font-style:italic"></span>docker run -d <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   -p <span style="color:#f60">80</span>:80 <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   --volumes-from pmm-data <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   --name pmm-server <span style="color:#c30;font-weight:bold">\
@@ -215,15 +216,15 @@ docker run -d <span style="color:#c30;font-weight:bold">\
 </span><span style="color:#c30;font-weight:bold"></span>   percona/pmm-server:latest</code></pre></div>
 <h3 id="配置客户端-在运行mysql的主机">配置客户端 (在运行MySQL的主机)</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y pmm-client
-<span style="color:#09f;font-style:italic"># Ubuntu 先获取</span>
-<span style="color:#09f;font-style:italic"># wget https://www.percona.com/downloads/pmm/1.13.0/binary/debian/xenial/x86_64/pmm-client_1.13.0-1.xenial_amd64.deb</span>
-sudo pmm-admin config --server <span style="color:#f60">192</span>.168.100.1
-<span style="color:#09f;font-style:italic"># 可选项 —server-user  admin —server-password admin</span>
-
+<span style="color:#09f;font-style:italic"># Ubuntu 先获取
+</span><span style="color:#09f;font-style:italic"># wget https://www.percona.com/downloads/pmm/1.13.0/binary/debian/xenial/x86_64/pmm-client_1.13.0-1.xenial_amd64.deb
+</span><span style="color:#09f;font-style:italic"></span>sudo pmm-admin config --server <span style="color:#f60">192</span>.168.100.1
+<span style="color:#09f;font-style:italic"># 可选项 —server-user  admin —server-password admin
+</span><span style="color:#09f;font-style:italic"></span>
 sudo pmm-admin add mysql —user root —password  password
 
-<span style="color:#09f;font-style:italic"># 查看当前状态</span>
-sudo pmm-admin list</code></pre></div>
+<span style="color:#09f;font-style:italic"># 查看当前状态
+</span><span style="color:#09f;font-style:italic"></span>sudo pmm-admin list</code></pre></div>
 <h4 id="pmm-admin使用">pmm-admin使用</h4>
 
 <ul>
@@ -242,12 +243,12 @@ mysql&gt; INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME <span style="color:#c30">&#3
 mysql&gt; INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME <span style="color:#c30">&#39;query_response_time.so&#39;</span>;
 mysql&gt; INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME <span style="color:#c30">&#39;query_response_time.so&#39;</span>;
 
-<span style="color:#09f;font-style:italic"># 检查当前安装插件状态</span>
-mysql&gt; SHOW PLUGINS;</code></pre></div>
+<span style="color:#09f;font-style:italic"># 检查当前安装插件状态
+</span><span style="color:#09f;font-style:italic"></span>mysql&gt; SHOW PLUGINS;</code></pre></div>
 <p><strong>开启数据收集</strong>:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SET GLOBAL <span style="color:#033">query_response_time_stats</span> <span style="color:#555">=</span> <span style="color:#c30">&#39;ON&#39;</span>;
-<span style="color:#09f;font-style:italic"># 检查是否生效</span>
-show variables like <span style="color:#c30">&#39;%query_response_time%&#39;</span>;</code></pre></div>
+<span style="color:#09f;font-style:italic"># 检查是否生效
+</span><span style="color:#09f;font-style:italic"></span>show variables like <span style="color:#c30">&#39;%query_response_time%&#39;</span>;</code></pre></div>
 <h2 id="资源">资源</h2>
 
 <ul>
@@ -347,7 +348,7 @@ show variables like <span style="color:#c30">&#39;%query_response_time%&#39;</sp
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -364,7 +365,7 @@ show variables like <span style="color:#c30">&#39;%query_response_time%&#39;</sp
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -441,7 +442,7 @@ show variables like <span style="color:#c30">&#39;%query_response_time%&#39;</sp
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

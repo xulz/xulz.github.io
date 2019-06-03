@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">244 字 ~1分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -157,6 +157,8 @@
     <p>Go作为最近几年随大数据,Docker而火热起来(依然偏小众)的服务端语言,最近接触下来的感觉是第三方库/框架还是不够稳定和丰富,很多应用场景还没有一个绝对地位的首选库.</p>
 
 <p>偶尔发现<a href="https://go.libhunt.com/">LibHunt</a>还不错,可以在库选型时做些对比.</p>
+
+<p></p>
 
 <h3 id="数据处理">数据处理</h3>
 
@@ -181,16 +183,16 @@
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c30">&#34;github.com/tidwall/gjson&#34;</span>
 )
 <span style="color:#09f;font-style:italic">// UUID示例
-</span><span style="color:#09f;font-style:italic"></span>id <span style="color:#555">:=</span> uuid.<span style="color:#c0f">NewV4</span>().<span style="color:#c0f">String</span>()
+</span><span style="color:#09f;font-style:italic"></span>id <span style="color:#555">:=</span> uuid.NewV4().String()
 
 <span style="color:#09f;font-style:italic">// 支持定义日志级别
-</span><span style="color:#09f;font-style:italic"></span>log.<span style="color:#c0f">SetLevel</span>(log.DebugLevel)
-log.<span style="color:#c0f">Debug</span>(resp.StatusCode)
-log.<span style="color:#c0f">WithFields</span>(log.Fields{<span style="color:#c30">&#34;username&#34;</span>: username}).<span style="color:#c0f">Debug</span>(<span style="color:#c30">&#34;Login info:&#34;</span>)
+</span><span style="color:#09f;font-style:italic"></span>log.SetLevel(log.DebugLevel)
+log.Debug(resp.StatusCode)
+log.WithFields(log.Fields{<span style="color:#c30">&#34;username&#34;</span>: username}).Debug(<span style="color:#c30">&#34;Login info:&#34;</span>)
 
 <span style="color:#09f;font-style:italic">// 用内置json处理会比较繁琐
 </span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">const</span> json = <span style="color:#c30">`{&#34;name&#34;:{&#34;first&#34;:&#34;Michael&#34;,&#34;last&#34;:&#34;Xu&#34;},&#34;age&#34;:30}`</span>
-value <span style="color:#555">:=</span> gjson.<span style="color:#c0f">Get</span>(json, <span style="color:#c30">&#34;name.last&#34;</span>)</code></pre></div>
+value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30">&#34;name.last&#34;</span>)</code></pre></div>
 
 <p>TBC..</p>
     </div>
@@ -284,7 +286,7 @@ value <span style="color:#555">:=</span> gjson.<span style="color:#c0f">Get</spa
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -301,7 +303,7 @@ value <span style="color:#555">:=</span> gjson.<span style="color:#c0f">Get</spa
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -367,7 +369,7 @@ value <span style="color:#555">:=</span> gjson.<span style="color:#c0f">Get</spa
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

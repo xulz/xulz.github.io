@@ -149,12 +149,14 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1323 字 ~3分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>CentOS作为一个开发环境用还是有些繁琐了,今天因为忘了iptables防火墙默认开启,还浪费了些时间找原因.</p>
+
+<p></p>
 
 <p>更郁闷的是用lokkit这个工具新开通一个端口,几分钟之后之前的防火墙设置全没了.</p>
 
@@ -167,14 +169,14 @@
 <blockquote>
 <p>iptables是存放防火墙规则的数据库</p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 检查当前状态</span>
-    iptables -nvL  <span style="color:#09f;font-style:italic"># 或者 service iptables status</span>
-    <span style="color:#09f;font-style:italic"># 关闭防火墙,在非生产环境</span>
-    service iptables save
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 检查当前状态
+</span><span style="color:#09f;font-style:italic"></span>    iptables -nvL  <span style="color:#09f;font-style:italic"># 或者 service iptables status
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 关闭防火墙,在非生产环境
+</span><span style="color:#09f;font-style:italic"></span>    service iptables save
     service iptables stop
     chkconfig iptables off
-    <span style="color:#09f;font-style:italic"># 开启防火墙</span>
-    service iptables start
+    <span style="color:#09f;font-style:italic"># 开启防火墙
+</span><span style="color:#09f;font-style:italic"></span>    service iptables start
     chkconfig iptables on</code></pre></div>
 <h3 id="lokkit">lokkit</h3>
 
@@ -186,8 +188,8 @@ lokkit -p 3389:tcp</pre></div>
 <p>Ubuntu简化工具: Uncomplicated Firewall</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    sudo ufw allow ssh/tcp
     sudo ufw allow <span style="color:#f60">3389</span>/tcp
-    <span style="color:#09f;font-style:italic"># 常用命令</span>
-    sudo ufw logging on
+    <span style="color:#09f;font-style:italic"># 常用命令
+</span><span style="color:#09f;font-style:italic"></span>    sudo ufw logging on
     sudo ufw enable/disable
     sudo ufw status</code></pre></div>
 <h3 id="其他工具">其他工具</h3>
@@ -218,69 +220,69 @@ lokkit -p 3389:tcp</pre></div>
 </ul>
 
 <h3 id="常用命令">常用命令</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 列出所有规则</span>
--S 
-<span style="color:#09f;font-style:italic"># 删除所有规则</span>
--F --flush
-<span style="color:#09f;font-style:italic"># 清除计数</span>
--Z --zero
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 列出所有规则
+</span><span style="color:#09f;font-style:italic"></span>-S 
+<span style="color:#09f;font-style:italic"># 删除所有规则
+</span><span style="color:#09f;font-style:italic"></span>-F --flush
+<span style="color:#09f;font-style:italic"># 清除计数
+</span><span style="color:#09f;font-style:italic"></span>-Z --zero
 
 -L --list
--A  <span style="color:#09f;font-style:italic"># 添加一条规则</span>
--I  <span style="color:#09f;font-style:italic">#在指定位置插入一条规则,默认chain的第一条</span>
-
-<span style="color:#09f;font-style:italic"># 显示行号</span>
---line-numbers 
+-A  <span style="color:#09f;font-style:italic"># 添加一条规则
+</span><span style="color:#09f;font-style:italic"></span>-I  <span style="color:#09f;font-style:italic">#在指定位置插入一条规则,默认chain的第一条
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic"># 显示行号
+</span><span style="color:#09f;font-style:italic"></span>--line-numbers 
 
 -m --match
 -p --protocol
 -i --in-interface</code></pre></div>
 <h3 id="常用规则">常用规则</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 允许本地连接</span>
-iptables -A INPUT -i lo -j ACCEPT
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 允许本地连接
+</span><span style="color:#09f;font-style:italic"></span>iptables -A INPUT -i lo -j ACCEPT
 
-<span style="color:#09f;font-style:italic"># 开启常用服务端口</span>
-iptables -A INPUT -p tcp -m tcp --dport <span style="color:#f60">80</span> -j ACCEPT
+<span style="color:#09f;font-style:italic"># 开启常用服务端口
+</span><span style="color:#09f;font-style:italic"></span>iptables -A INPUT -p tcp -m tcp --dport <span style="color:#f60">80</span> -j ACCEPT
 
 iptables -A INPUT -p tcp -m tcp --dport <span style="color:#f60">22</span> -j ACCEPT
-<span style="color:#09f;font-style:italic"># 或者</span>
-iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport <span style="color:#f60">22</span> -j ACCEPT
+<span style="color:#09f;font-style:italic"># 或者
+</span><span style="color:#09f;font-style:italic"></span>iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport <span style="color:#f60">22</span> -j ACCEPT
 
 
-<span style="color:#09f;font-style:italic"># 允许在server发起建立的outgoing连接上返回数据.</span>
-iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 其他</span>
-<span style="color:#09f;font-style:italic"># 查询对外IP</span>
-w
-<span style="color:#09f;font-style:italic"># 之后可以限定来源IP</span>
-iptables -A INPUT -p tcp -s YOUR_IP_ADDRESS -m tcp --dport <span style="color:#f60">22</span> -j ACCEPT
+<span style="color:#09f;font-style:italic"># 允许在server发起建立的outgoing连接上返回数据.
+</span><span style="color:#09f;font-style:italic"></span>iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 其他
+</span><span style="color:#09f;font-style:italic"># 查询对外IP
+</span><span style="color:#09f;font-style:italic"></span>w
+<span style="color:#09f;font-style:italic"># 之后可以限定来源IP
+</span><span style="color:#09f;font-style:italic"></span>iptables -A INPUT -p tcp -s YOUR_IP_ADDRESS -m tcp --dport <span style="color:#f60">22</span> -j ACCEPT
 
 
-<span style="color:#09f;font-style:italic"># 允许所有outgoing</span>
-iptables -P OUTPUT ACCEPT
-<span style="color:#09f;font-style:italic"># 拒绝其他incoming</span>
-iptables -P INPUT DROP
+<span style="color:#09f;font-style:italic"># 允许所有outgoing
+</span><span style="color:#09f;font-style:italic"></span>iptables -P OUTPUT ACCEPT
+<span style="color:#09f;font-style:italic"># 拒绝其他incoming
+</span><span style="color:#09f;font-style:italic"></span>iptables -P INPUT DROP
 
-<span style="color:#09f;font-style:italic"># 多个端口</span>
-iptables -A INPUT -p tcp -m multiport --dport <span style="color:#f60">80</span>,443 -j ACCEPT</code></pre></div>
+<span style="color:#09f;font-style:italic"># 多个端口
+</span><span style="color:#09f;font-style:italic"></span>iptables -A INPUT -p tcp -m multiport --dport <span style="color:#f60">80</span>,443 -j ACCEPT</code></pre></div>
 <h3 id="规则的保存-备份-恢复">规则的保存/备份/恢复</h3>
 
 <p>注: 用命令配置重启后会失去作用,需要先保存并重启防火墙服务</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#保存规则</span>
-<span style="color:#09f;font-style:italic"># Ubuntu</span>
-apt-get install iptables-persistent
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">#保存规则
+</span><span style="color:#09f;font-style:italic"># Ubuntu
+</span><span style="color:#09f;font-style:italic"></span>apt-get install iptables-persistent
 netfilter-persistent save
 
-<span style="color:#09f;font-style:italic"># CentOS</span>
-service iptables save
-<span style="color:#09f;font-style:italic"># 默认保存到 /etc/sysconfig/iptables</span>
-<span style="color:#09f;font-style:italic"># 等价于     iptables-save | sudo tee /etc/sysconfig/iptables</span>
+<span style="color:#09f;font-style:italic"># CentOS
+</span><span style="color:#09f;font-style:italic"></span>service iptables save
+<span style="color:#09f;font-style:italic"># 默认保存到 /etc/sysconfig/iptables
+</span><span style="color:#09f;font-style:italic"># 等价于     iptables-save | sudo tee /etc/sysconfig/iptables
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic"># CentOS7有可能会开启firewalld, 检查firewalld 运行状态
+</span><span style="color:#09f;font-style:italic"></span>firewall-cmd --state</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 导出规则
+</span><span style="color:#09f;font-style:italic"></span>iptables-save &gt; iptables-export
 
-<span style="color:#09f;font-style:italic"># CentOS7有可能会开启firewalld, 检查firewalld 运行状态</span>
-firewall-cmd --state</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 导出规则</span>
-iptables-save &gt; iptables-export
-
-<span style="color:#09f;font-style:italic">#恢复规则</span>
-iptables-restore &lt; ~/iptables-export</code></pre></div>
+<span style="color:#09f;font-style:italic">#恢复规则
+</span><span style="color:#09f;font-style:italic"></span>iptables-restore &lt; ~/iptables-export</code></pre></div>
 <h3 id="规则使用说明">规则使用说明</h3>
 
 <p>Chain是一组规则的集合,默认内置有几个Chain,包含INPUT,FORWARD,OUTPUT.<br />
@@ -426,7 +428,7 @@ iptables-restore &lt; ~/iptables-export</code></pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -443,7 +445,7 @@ iptables-restore &lt; ~/iptables-export</code></pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -520,7 +522,7 @@ iptables-restore &lt; ~/iptables-export</code></pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

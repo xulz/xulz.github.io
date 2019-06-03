@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">251 字 ~1分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -160,30 +160,32 @@
 
 <p>印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.</p>
 
+<p></p>
+
 <h2 id="安装">安装</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.1.4/flyway-commandline-5.1.4-linux-x64.tar.gz
 tar xzf flyway-commandline-5.1.4-linux-x64.tar.gz
-<span style="color:#09f;font-style:italic"># 可选</span>
-cp mysql-connector-java-5.1.41.jar /opt/flyway-5.1.4/drivers/</code></pre></div>
+<span style="color:#09f;font-style:italic"># 可选
+</span><span style="color:#09f;font-style:italic"></span>cp mysql-connector-java-5.1.41.jar /opt/flyway-5.1.4/drivers/</code></pre></div>
 <h2 id="配置">配置</h2>
 
 <p>主要在conf/flyway.conf文件</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 必须项</span>
-flyway.url<span style="color:#555">=</span>jdbc:mysql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 必须项
+</span><span style="color:#09f;font-style:italic"></span>flyway.url<span style="color:#555">=</span>jdbc:mysql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;
 flyway.user<span style="color:#555">=</span><span style="color:#366">test</span>
 flyway.password<span style="color:#555">=</span><span style="color:#366">test</span>
-<span style="color:#09f;font-style:italic"># 升级数据库脚本位置</span>
-flyway.locations<span style="color:#555">=</span>filesystem:/opt/db/migration/
+<span style="color:#09f;font-style:italic"># 升级数据库脚本位置
+</span><span style="color:#09f;font-style:italic"></span>flyway.locations<span style="color:#555">=</span>filesystem:/opt/db/migration/
 
-<span style="color:#09f;font-style:italic"># 可选</span>
-<span style="color:#09f;font-style:italic"># 用于非空数据库首次使用</span>
-flyway.baselineOnMigrate<span style="color:#555">=</span>true</code></pre></div>
+<span style="color:#09f;font-style:italic"># 可选
+</span><span style="color:#09f;font-style:italic"># 用于非空数据库首次使用
+</span><span style="color:#09f;font-style:italic"></span>flyway.baselineOnMigrate<span style="color:#555">=</span>true</code></pre></div>
 <h2 id="使用">使用</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 清空数据</span>
-./flyway clean
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 清空数据
+</span><span style="color:#09f;font-style:italic"></span>./flyway clean
 
-<span style="color:#09f;font-style:italic"># 升级/迁移数据</span>
-./flyway migrate</code></pre></div>
+<span style="color:#09f;font-style:italic"># 升级/迁移数据
+</span><span style="color:#09f;font-style:italic"></span>./flyway migrate</code></pre></div>
 <h2 id="资源">资源</h2>
 
 <ul>
@@ -282,7 +284,7 @@ flyway.baselineOnMigrate<span style="color:#555">=</span>true</code></pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -299,7 +301,7 @@ flyway.baselineOnMigrate<span style="color:#555">=</span>true</code></pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -364,7 +366,7 @@ flyway.baselineOnMigrate<span style="color:#555">=</span>true</code></pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

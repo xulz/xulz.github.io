@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1370 字 ~3分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -157,6 +157,8 @@
     <p>断断续续接触过加密通讯的一些场景, 随着近两年安全的普及,建站使用https也成为标配.</p>
 
 <p>这篇文章试图汇总下证书这块的知识提纲.</p>
+
+<p></p>
 
 <h2 id="基本概念">基本概念</h2>
 
@@ -208,8 +210,8 @@
 <li>Certificate Revocation List (.crl extension) (CRL Distribution Points)</li>
 <li>Certificate Trust List (.stl)</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 转换pem格式到crt格式</span>
-openssl x509 -outform der -in ca.pem -out ca.crt</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 转换pem格式到crt格式
+</span><span style="color:#09f;font-style:italic"></span>openssl x509 -outform der -in ca.pem -out ca.crt</code></pre></div>
 <h3 id="ssl单向认证和ssl双向认证">SSL单向认证和SSL双向认证</h3>
 
 <ul>
@@ -256,26 +258,26 @@ openssl x509 -outform der -in ca.pem -out ca.crt</code></pre></div>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkcert -install
 mkcert example.com <span style="color:#c30">&#39;*.example.org&#39;</span> <span style="color:#f60">127</span>.0.0.1</code></pre></div>
 <h3 id="openssl使用">openssl使用</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Ubuntu生成自签名服务端证书和私钥</span>
-openssl req -x509 -nodes -days <span style="color:#f60">365</span> -newkey rsa:2048 -keyout /home/xulz/certs/server.key -out /home/xulz/certs/server.crt
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Ubuntu生成自签名服务端证书和私钥
+</span><span style="color:#09f;font-style:italic"></span>openssl req -x509 -nodes -days <span style="color:#f60">365</span> -newkey rsa:2048 -keyout /home/xulz/certs/server.key -out /home/xulz/certs/server.crt
 
-<span style="color:#09f;font-style:italic"># 生成证书和密钥到一个文件</span>
-openssl req -x509 -nodes -days <span style="color:#f60">365</span> -new -keyout /home/xulz/certs/mail.pem -out /home/xulz/certs/mail.pem
+<span style="color:#09f;font-style:italic"># 生成证书和密钥到一个文件
+</span><span style="color:#09f;font-style:italic"></span>openssl req -x509 -nodes -days <span style="color:#f60">365</span> -new -keyout /home/xulz/certs/mail.pem -out /home/xulz/certs/mail.pem
 
-<span style="color:#09f;font-style:italic">#key和cert分开创建</span>
-openssl genrsa <span style="color:#f60">2048</span> -out key.pem
-openssl req -x509 -nodes -days <span style="color:#f60">365</span> -new -key key.pem -out cert.pem</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 其他命令示例</span>
-<span style="color:#09f;font-style:italic"># 产生私钥</span>
-openssl genrsa  -aes256 <span style="color:#f60">4096</span> -out key.pem
+<span style="color:#09f;font-style:italic">#key和cert分开创建
+</span><span style="color:#09f;font-style:italic"></span>openssl genrsa <span style="color:#f60">2048</span> -out key.pem
+openssl req -x509 -nodes -days <span style="color:#f60">365</span> -new -key key.pem -out cert.pem</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 其他命令示例
+</span><span style="color:#09f;font-style:italic"># 产生私钥
+</span><span style="color:#09f;font-style:italic"></span>openssl genrsa  -aes256 <span style="color:#f60">4096</span> -out key.pem
 
-<span style="color:#09f;font-style:italic"># 产生不被密码保护的密钥</span>
-openssl genrsa <span style="color:#f60">4096</span> -out key.pem
+<span style="color:#09f;font-style:italic"># 产生不被密码保护的密钥
+</span><span style="color:#09f;font-style:italic"></span>openssl genrsa <span style="color:#f60">4096</span> -out key.pem
 
-<span style="color:#09f;font-style:italic"># 使用新版genpkey命令</span>
-openssl genpkey -algorithm RSA -out key.pem -aes-256-cbc -pkeyopt rsa_keygen_bits:4096
+<span style="color:#09f;font-style:italic"># 使用新版genpkey命令
+</span><span style="color:#09f;font-style:italic"></span>openssl genpkey -algorithm RSA -out key.pem -aes-256-cbc -pkeyopt rsa_keygen_bits:4096
 
-<span style="color:#09f;font-style:italic"># 改用更强算法加密</span>
-openssl pkcs12 -in weak.p12 -nodes -out decrypted.pem
+<span style="color:#09f;font-style:italic"># 改用更强算法加密
+</span><span style="color:#09f;font-style:italic"></span>openssl pkcs12 -in weak.p12 -nodes -out decrypted.pem
 openssl pkcs12 -export -in decrypted.pem -keypbe AES-128-CBC -certpbe AES-128-CBC -out strong.p12</code></pre></div>
 <p><strong>openssl req命令行参数</strong></p>
 
@@ -298,8 +300,8 @@ openssl pkcs12 -export -in decrypted.pem -keypbe AES-128-CBC -certpbe AES-128-CB
 <h3 id="keytool">keytool</h3>
 
 <p>Linux/Mac中OpenSSL的证书和密钥管理工具</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 产生密钥对</span>
-keytool -genkeypair -alias test123 -keystore test123.pfx -storepass test123 -validity <span style="color:#f60">365</span> - keyalg RSA -keysize <span style="color:#f60">2048</span> -storetype pkcs12</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 产生密钥对
+</span><span style="color:#09f;font-style:italic"></span>keytool -genkeypair -alias test123 -keystore test123.pfx -storepass test123 -validity <span style="color:#f60">365</span> - keyalg RSA -keysize <span style="color:#f60">2048</span> -storetype pkcs12</code></pre></div>
 <h2 id="misc">Misc</h2>
 
 <h3 id="工具">工具</h3>
@@ -454,7 +456,7 @@ keytool -genkeypair -alias test123 -keystore test123.pfx -storepass test123 -val
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -471,7 +473,7 @@ keytool -genkeypair -alias test123 -keystore test123.pfx -storepass test123 -val
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -562,7 +564,7 @@ keytool -genkeypair -alias test123 -keystore test123.pfx -storepass test123 -val
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

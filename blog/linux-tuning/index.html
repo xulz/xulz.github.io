@@ -149,12 +149,14 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1553 字 ~4分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.</p>
+
+<p></p>
 
 <h2 id="性能基本调优">性能基本调优</h2>
 
@@ -165,11 +167,11 @@
 <h3 id="内核参数设置">内核参数设置</h3>
 
 <p>sysctl命令可以用来实时的读取/修改内核参数</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 显示所有可用内核参数</span>
-    sysctl -a
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 显示所有可用内核参数
+</span><span style="color:#09f;font-style:italic"></span>    sysctl -a
     
-    <span style="color:#09f;font-style:italic"># 加载/etc/sysctl.conf的参数</span>
-    sysctl -p</code></pre></div>
+    <span style="color:#09f;font-style:italic"># 加载/etc/sysctl.conf的参数
+</span><span style="color:#09f;font-style:italic"></span>    sysctl -p</code></pre></div>
 <h3 id="提高文件描述符限制">提高文件描述符限制</h3>
 
 <p>soft limit类似于warning, hard limit是真实的最大值限制.</p>
@@ -177,33 +179,33 @@
 <p>默认的1024偏小, 有两种方式修改:</p>
 
 <h4 id="临时设置">临时设置</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 查看当前值</span>
-    <span style="color:#366">ulimit</span> -n
-    <span style="color:#09f;font-style:italic"># 临时增加</span>
-    <span style="color:#366">ulimit</span> -n <span style="color:#f60">65535</span>
-    <span style="color:#09f;font-style:italic"># 单个进程的限制为soft limit</span>
-    <span style="color:#09f;font-style:italic"># hard limit应小于当前系统打开的文件描述符</span>
-    <span style="color:#09f;font-style:italic"># 相应增加nr_open</span>
-    <span style="color:#366">echo</span> <span style="color:#f60">2000000</span> &gt; /proc/sys/fs/nr_open
-    <span style="color:#09f;font-style:italic"># 系统级限制, 上限为nr_open</span>
-    <span style="color:#366">echo</span> <span style="color:#f60">1000000</span> &gt; /proc/sys/fs/file-max</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 查看当前值
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#366">ulimit</span> -n
+    <span style="color:#09f;font-style:italic"># 临时增加
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#366">ulimit</span> -n <span style="color:#f60">65535</span>
+    <span style="color:#09f;font-style:italic"># 单个进程的限制为soft limit
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># hard limit应小于当前系统打开的文件描述符
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 相应增加nr_open
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#366">echo</span> <span style="color:#f60">2000000</span> &gt; /proc/sys/fs/nr_open
+    <span style="color:#09f;font-style:italic"># 系统级限制, 上限为nr_open
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#366">echo</span> <span style="color:#f60">1000000</span> &gt; /proc/sys/fs/file-max</code></pre></div>
 <h4 id="systemd服务设置">SystemD服务设置</h4>
 
 <p>在CentOS7使用SystemD启动的服务不同于CentOS6, 对/etc/security/limits.conf的设置不会生效.</p>
 
 <p>需要修改/etc/systemd/system.conf或/etc/systemd/system.conf.d/tomcat.conf.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 对应下面几项</span>
-<span style="color:#033">DefaultLimitCORE</span><span style="color:#555">=</span>infinity
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 对应下面几项
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">DefaultLimitCORE</span><span style="color:#555">=</span>infinity
 <span style="color:#033">DefaultLimitNOFILE</span><span style="color:#555">=</span><span style="color:#f60">102400</span>
 <span style="color:#033">DefaultLimitNPROC</span><span style="color:#555">=</span><span style="color:#f60">102400</span></code></pre></div>
 <p>常用的命令:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看当前进程的限制</span>
-cat /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>/limits
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看当前进程的限制
+</span><span style="color:#09f;font-style:italic"></span>cat /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>/limits
 
-<span style="color:#09f;font-style:italic"># 查看当前进程句柄数</span>
-lsof -p <span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>|wc -l
-<span style="color:#09f;font-style:italic">## 或者使用</span>
-ls /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>/fd|wc -l</code></pre></div>
+<span style="color:#09f;font-style:italic"># 查看当前进程句柄数
+</span><span style="color:#09f;font-style:italic"></span>lsof -p <span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>|wc -l
+<span style="color:#09f;font-style:italic">## 或者使用
+</span><span style="color:#09f;font-style:italic"></span>ls /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span style="color:#069;font-weight:bold">)</span>/fd|wc -l</code></pre></div>
 <h4 id="永久设置">永久设置</h4>
 
 <p>修改 /etc/security/limits.conf,重启以生效.</p>
@@ -214,16 +216,16 @@ ls /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span styl
     # 系统级内核句柄限制
     fs.file-max = 1000000</code></pre></div>
 <h4 id="查看当前描述符情况">查看当前描述符情况</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 列出打开/占用的文件描述符</span>
-    cat /proc/sys/fs/file-nr
-    <span style="color:#09f;font-style:italic"># 三个值分别代表 占用/未使用/最大可用值</span>
-    <span style="color:#09f;font-style:italic"># 注: lsof只会列出进程占用</span>
-    lsof | wc -l
-    <span style="color:#09f;font-style:italic"># 要得到线程占用,需要使用</span>
-    ps -eLf
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 列出打开/占用的文件描述符
+</span><span style="color:#09f;font-style:italic"></span>    cat /proc/sys/fs/file-nr
+    <span style="color:#09f;font-style:italic"># 三个值分别代表 占用/未使用/最大可用值
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 注: lsof只会列出进程占用
+</span><span style="color:#09f;font-style:italic"></span>    lsof | wc -l
+    <span style="color:#09f;font-style:italic"># 要得到线程占用,需要使用
+</span><span style="color:#09f;font-style:italic"></span>    ps -eLf
     
-    <span style="color:#09f;font-style:italic"># 查看某进程限制</span>
-    cat /proc/<span style="color:#555">[</span>Process ID<span style="color:#555">]</span>/limits</code></pre></div>
+    <span style="color:#09f;font-style:italic"># 查看某进程限制
+</span><span style="color:#09f;font-style:italic"></span>    cat /proc/<span style="color:#555">[</span>Process ID<span style="color:#555">]</span>/limits</code></pre></div>
 <h3 id="增加可用端口数">增加可用端口数</h3>
 
 <p>默认28000, net.ipv4.ip_local_port_range</p>
@@ -231,10 +233,10 @@ ls /proc/<span style="color:#069;font-weight:bold">$(</span>pgrep java<span styl
 <p>如果Nginx作代理,需要增加端口范围,否则会出现错误: Cannot assign requested address .</p>
 
 <p>IPv4端口可用数:端口号是16位无符号整数,即65535</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 实时生效</span>
-    <span style="color:#366">echo</span> <span style="color:#f60">12000</span> <span style="color:#f60">64000</span> &gt; /proc/sys/net/ipv4/ip_local_port_range
-    <span style="color:#09f;font-style:italic"># 永久生效</span>
-    sysctl -w net.ipv4.ip_local_port_range<span style="color:#555">=</span><span style="color:#c30">&#34;12000 64000&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 实时生效
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#366">echo</span> <span style="color:#f60">12000</span> <span style="color:#f60">64000</span> &gt; /proc/sys/net/ipv4/ip_local_port_range
+    <span style="color:#09f;font-style:italic"># 永久生效
+</span><span style="color:#09f;font-style:italic"></span>    sysctl -w net.ipv4.ip_local_port_range<span style="color:#555">=</span><span style="color:#c30">&#34;12000 64000&#34;</span></code></pre></div>
 <h3 id="可选-最大线程数">可选:最大线程数</h3>
 
 <p>一般不需要设置</p>
@@ -327,10 +329,17 @@ ethtool --show-rxfh-indir eth1</pre></div>
 
 <p>开源的性能分析工具,基于perf和ftrace.</p>
 
+
 <figure>
-    <img src="http://www.brendangregg.com/Perf/linux_observability_tools.png"/> <figcaption>
-            <h4>Linux Performance Observability Tools</h4>
-        </figcaption>
+    
+        <img src="http://www.brendangregg.com/Perf/linux_observability_tools.png" />
+    
+    
+    <figcaption>
+        <h4>Linux Performance Observability Tools</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -442,7 +451,7 @@ ethtool --show-rxfh-indir eth1</pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -459,7 +468,7 @@ ethtool --show-rxfh-indir eth1</pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -557,7 +566,7 @@ ethtool --show-rxfh-indir eth1</pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

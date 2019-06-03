@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1124 字 ~3分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -158,6 +158,8 @@
 
 <blockquote>
 <p>吐槽:官方的管理工具pgAdmin真难用啊, 命令也没有MySQL易记.</p>
+
+<p></p>
 </blockquote>
 
 <h2 id="配置">配置</h2>
@@ -183,10 +185,10 @@
 <p>配置文件位置： /etc/postgresql/10/main/pg_hba.conf</p>
 
 <h2 id="常用命令">常用命令</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 连接服务器</span>
-    psql -h hostname database user
-    <span style="color:#09f;font-style:italic"># 创建数据库</span>
-    sudo -u postgres createuser xulz -s
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 连接服务器
+</span><span style="color:#09f;font-style:italic"></span>    psql -h hostname database user
+    <span style="color:#09f;font-style:italic"># 创建数据库
+</span><span style="color:#09f;font-style:italic"></span>    sudo -u postgres createuser xulz -s
     sudo -u postgres createdb mydb
     &gt; createuser
          -E  --encrypted <span style="color:#555">(</span>store password<span style="color:#555">)</span>
@@ -230,22 +232,22 @@
  -F, --format=c|t|p       output file format (custom, tar, plain text)     
  -f, --file=FILENAME      output file name</pre></div>
 <h4 id="sql格式文件备份">SQL格式文件备份</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## 备份</span>
-pg_dump dbname -f db_bak.sql
-<span style="color:#09f;font-style:italic"># 或者</span>
-pg_dump -Fp dbname  &gt; db_bak.sql
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## 备份
+</span><span style="color:#09f;font-style:italic"></span>pg_dump dbname -f db_bak.sql
+<span style="color:#09f;font-style:italic"># 或者
+</span><span style="color:#09f;font-style:italic"></span>pg_dump -Fp dbname  &gt; db_bak.sql
 
 
-<span style="color:#09f;font-style:italic">## psql命令还原</span>
-psql -U username -f db_bak.sql dbname 
-<span style="color:#09f;font-style:italic"># 或者直接在psql终端还原</span>
-<span style="color:#033">postgres</span><span style="color:#555">=</span><span style="color:#09f;font-style:italic"># \i db_bak.sql</span></code></pre></div>
+<span style="color:#09f;font-style:italic">## psql命令还原
+</span><span style="color:#09f;font-style:italic"></span>psql -U username -f db_bak.sql dbname 
+<span style="color:#09f;font-style:italic"># 或者直接在psql终端还原
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">postgres</span><span style="color:#555">=</span># <span style="color:#c30;font-weight:bold">\i</span> db_bak.sql</code></pre></div>
 <h4 id="自定义格式和tar格式备份">自定义格式和tar格式备份</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pg_dump -Fc dbname -f filename 
-<span style="color:#09f;font-style:italic"># 还原</span>
-pg_restore -Fc -d dbname filename
+<span style="color:#09f;font-style:italic"># 还原
+</span><span style="color:#09f;font-style:italic"></span>pg_restore -Fc -d dbname filename
 
-<span style="color:#09f;font-style:italic"># tar格式与此类似，-Ft</span></code></pre></div>
+# tar格式与此类似，-Ft</code></pre></div>
 <p>注： pg_dumpall 用于集群级别备份，使用psql命令还原。</p>
 
 <h3 id="从数据库删除所有表">从数据库删除所有表</h3>
@@ -279,12 +281,12 @@ r RECORD;
 <h3 id="主要参数调优">主要参数调优</h3>
 
 <p>参考 <a href="https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server">官方wiki</a> 或<a href="https://www.revsys.com/writings/postgresql-performance.html">Performance Tuning PostgreSQL</a></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## postgres.conf</span>
-<span style="color:#09f;font-style:italic"># 通常设置为几百连接</span>
-<span style="color:#033">max_connections</span> <span style="color:#555">=</span> &lt;num&gt;
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## postgres.conf
+</span><span style="color:#09f;font-style:italic"># 通常设置为几百连接
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">max_connections</span> <span style="color:#555">=</span> &lt;num&gt;
 
-<span style="color:#09f;font-style:italic"># 1/4 ~ 1/3内存</span>
-<span style="color:#033">shared_buffers</span> <span style="color:#555">=</span> &lt;num&gt;</code></pre></div>
+<span style="color:#09f;font-style:italic"># 1/4 ~ 1/3内存
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#033">shared_buffers</span> <span style="color:#555">=</span> &lt;num&gt;</code></pre></div>
 <h3 id="explain">Explain</h3>
 
 <ul>
@@ -358,6 +360,7 @@ pg_stat_statements.track = all</code></pre></div></li>
 <li><a href="https://wiki-bsse.ethz.ch/display/ITDOC/Check+size+of+tables+and+objects+in+PostgreSQL+database">查看表/对象大小</a></li>
 <li><a href="http://okigiveup.net/what-postgresql-tells-you-about-its-performance/">What PostgreSQL Tells You About Its Performance</a></li>
 <li><a href="http://www.pgadmin.org/">pgAdmin</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04">How To Install and Use PostgreSQL on Ubuntu 18.04</a></li>
 </ul>
     </div>
     <footer class="post-footer">
@@ -450,7 +453,7 @@ pg_stat_statements.track = all</code></pre></div></li>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -467,7 +470,7 @@ pg_stat_statements.track = all</code></pre></div></li>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -551,7 +554,7 @@ pg_stat_statements.track = all</code></pre></div></li>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

@@ -55,7 +55,9 @@
 
 &lt;p&gt;由于云主机几乎没有资源占用率,实际上新版WordPress有很大改进,在插件优化之后,安装前后资源占用几乎没有变化.&lt;/p&gt;
 
-&lt;p&gt;之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.&lt;/p&gt;</description>
+&lt;p&gt;之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -68,7 +70,9 @@
 
 &lt;p&gt;比如常用的文章目录,归档页,搜索功能等. 文章目录折腾下来已经可用了,搜索折腾了一半,实在没时间调试放弃了.见&lt;a href=&#34;/2017/start&#34;&gt;新博客&lt;/a&gt;这篇记录文章.&lt;/p&gt;
 
-&lt;p&gt;本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.&lt;/p&gt;</description>
+&lt;p&gt;本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -79,7 +83,9 @@
       <guid>/play/blog-ghost/</guid>
       <description>&lt;p&gt;本博客基于Ghost开源博客平台搭建,系统基于Node.js开发.&lt;/p&gt;
 
-&lt;p&gt;主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).&lt;/p&gt;</description>
+&lt;p&gt;主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

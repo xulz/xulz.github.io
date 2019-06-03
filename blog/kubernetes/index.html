@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">656 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -165,6 +165,8 @@
 <li><a href="https://xulizhao.com/blog/k8s-command" target="_blank" rel="noopener">kubectl命令汇总</a></li>
 <li><a href="https://xulizhao.com/blog/k8s-namespace" target="_blank" rel="noopener">Kubernetes命名空间的应用</a></li>
 </ul>
+
+<p></p>
 
 <p>一些其他笔记.</p>
 
@@ -205,10 +207,10 @@
 <p>在新版本的Kubernetes中建议使用ReplicaSet来取代ReplicationController。</p>
 
 <p>将kubectl的 &ndash;record 的 flag 设置为 true可以在 annotation 中记录当前命令创建或者升级了该资源。</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 检查 Deployment 升级的历史记录</span>
-kubectl rollout <span style="color:#366">history</span> deployment/nginx-deployment
-<span style="color:#09f;font-style:italic"># 单个变更的详情</span>
-kubectl rollout <span style="color:#366">history</span> deployment/nginx-deployment --revision<span style="color:#555">=</span><span style="color:#f60">2</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 检查 Deployment 升级的历史记录
+</span><span style="color:#09f;font-style:italic"></span>kubectl rollout <span style="color:#366">history</span> deployment/nginx-deployment
+<span style="color:#09f;font-style:italic"># 单个变更的详情
+</span><span style="color:#09f;font-style:italic"></span>kubectl rollout <span style="color:#366">history</span> deployment/nginx-deployment --revision<span style="color:#555">=</span><span style="color:#f60">2</span></code></pre></div>
 <h2 id="集群资源管理">集群资源管理</h2>
 
 <h3 id="label">Label</h3>
@@ -320,7 +322,7 @@ kubectl rollout <span style="color:#366">history</span> deployment/nginx-deploym
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -337,7 +339,7 @@ kubectl rollout <span style="color:#366">history</span> deployment/nginx-deploym
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -406,7 +408,7 @@ kubectl rollout <span style="color:#366">history</span> deployment/nginx-deploym
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

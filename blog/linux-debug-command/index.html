@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">2701 字 ~6分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -158,14 +158,16 @@
 
 <p>记录在这里方便查阅.</p>
 
+<p></p>
+
 <h2 id="资源统计">资源统计</h2>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    yum install sysstat
     mpstat -P ALL <span style="color:#f60">1</span>
     pidstat <span style="color:#f60">1</span>
     top -p &lt;pid
     
-    <span style="color:#09f;font-style:italic">## 内存,IO相关</span>
-    free -m
+    <span style="color:#09f;font-style:italic">## 内存,IO相关
+</span><span style="color:#09f;font-style:italic"></span>    free -m
     vmstat <span style="color:#f60">1</span>
     iostat -xz <span style="color:#f60">1</span></code></pre></div>
 <h3 id="top-htop">top/htop</h3>
@@ -179,8 +181,8 @@
 </ul>
 
 <h3 id="watch">watch</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒更新一次内存变化</span>
-watch free -h</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒更新一次内存变化
+</span><span style="color:#09f;font-style:italic"></span>watch free -h</code></pre></div>
 <h3 id="sar">sar</h3>
 
 <p>sar是System Activity Reporter（系统活动情况报告）的缩写</p>
@@ -231,10 +233,10 @@ Blk\_read, Blk\_wrtn: 指示自从系统启动之后数据块读/写的合计数
 <h3 id="mpstat">mpstat</h3>
 
 <p>mpstat是MultiProcessor Statistics的缩写，是实时系统监控工具。其报告与CPU的一些统计信息，这些信息存放在/proc/stat文件中。在多CPUs系统里，其不但能查看所有CPU的平均状况信息，而且能够查看特定CPU的信息。</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒显示一次</span>
-mpstat <span style="color:#f60">2</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒显示一次
+</span><span style="color:#09f;font-style:italic"></span>mpstat <span style="color:#f60">2</span>
 mpstat -P ALL
-mpstat -P <span style="color:#f60">0</span> <span style="color:#f60">3</span> <span style="color:#f60">3</span>   <span style="color:#09f;font-style:italic"># 对第一块CPU，每隔3秒监控一次，重复3次。</span></code></pre></div>
+mpstat -P <span style="color:#f60">0</span> <span style="color:#f60">3</span> <span style="color:#f60">3</span>   # 对第一块CPU，每隔3秒监控一次，重复3次。</code></pre></div>
 <p>关键字段解释：
 LOC :Local interrupt Timer</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">CPU CPU 编号,all 那行是所有CPU的平均统计值。
@@ -261,47 +263,47 @@ si 软中断太高: cat /proc/interrupts</pre></div>
 <h2 id="文件-进程类">文件/进程类</h2>
 
 <h3 id="ps">ps</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看用户线程数</span>
-ps -fLu xulz
-<span style="color:#09f;font-style:italic"># 根据pid找到process</span>
-ps -p &lt;pid -o <span style="color:#033">comm</span><span style="color:#555">=</span>
-<span style="color:#09f;font-style:italic"># 运行队列</span>
-ps -eo stat,pid,user,command | egrep <span style="color:#c30">&#34;^STAT|^D|^R&#34;</span>
-<span style="color:#09f;font-style:italic"># D : Uninterruptible sleep (usually IO)</span>
-<span style="color:#09f;font-style:italic"># R : Running or runnable (on run queue)</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看用户线程数
+</span><span style="color:#09f;font-style:italic"></span>ps -fLu xulz
+<span style="color:#09f;font-style:italic"># 根据pid找到process
+</span><span style="color:#09f;font-style:italic"></span>ps -p &lt;pid -o <span style="color:#033">comm</span><span style="color:#555">=</span>
+<span style="color:#09f;font-style:italic"># 运行队列
+</span><span style="color:#09f;font-style:italic"></span>ps -eo stat,pid,user,command | egrep <span style="color:#c30">&#34;^STAT|^D|^R&#34;</span>
+<span style="color:#09f;font-style:italic"># D : Uninterruptible sleep (usually IO)
+</span><span style="color:#09f;font-style:italic"></span># R : Running or runnable <span style="color:#555">(</span>on run queue<span style="color:#555">)</span></code></pre></div>
 <h3 id="进程检索-管理">进程检索/管理</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># 显示进程树</span>
- pstree -p
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># 显示进程树
+</span><span style="color:#09f;font-style:italic"></span> pstree -p
  
  pgrep</code></pre></div>
 <p>kill/pkill用法:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 默认用SIGTERM (terminate)信号终止进程</span>
-<span style="color:#366">kill</span> &lt;porcess_id
-<span style="color:#09f;font-style:italic"># 列出可用(不带SIG前缀的)信号名</span>
-<span style="color:#366">kill</span> -l
-<span style="color:#09f;font-style:italic"># 立即终止进程</span>
-<span style="color:#366">kill</span> -9|KILL &lt;process_id
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 默认用SIGTERM (terminate)信号终止进程
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">kill</span> &lt;porcess_id
+<span style="color:#09f;font-style:italic"># 列出可用(不带SIG前缀的)信号名
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">kill</span> -l
+<span style="color:#09f;font-style:italic"># 立即终止进程
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">kill</span> -9|KILL &lt;process_id
 
-<span style="color:#09f;font-style:italic"># 根据进程名称(而不是id)</span>
-pkill &lt;process_name
+<span style="color:#09f;font-style:italic"># 根据进程名称(而不是id)
+</span><span style="color:#09f;font-style:italic"></span>pkill &lt;process_name
 pkill -f <span style="color:#c30">&#34;command_name&#34;</span></code></pre></div>
 <h3 id="lsof">lsof</h3>
 
 <p>列出文件打开情况</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看某进程打开连接</span>
-lsof -i -a -p <span style="color:#c30">`</span>pidof firefox<span style="color:#c30">`</span>
-<span style="color:#09f;font-style:italic"># 或者</span>
-ss -nap | grep <span style="color:#069;font-weight:bold">$(</span>pidof firefox<span style="color:#069;font-weight:bold">)</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看某进程打开连接
+</span><span style="color:#09f;font-style:italic"></span>lsof -i -a -p <span style="color:#c30">`</span>pidof firefox<span style="color:#c30">`</span>
+<span style="color:#09f;font-style:italic"># 或者
+</span><span style="color:#09f;font-style:italic"></span>ss -nap | grep <span style="color:#069;font-weight:bold">$(</span>pidof firefox<span style="color:#069;font-weight:bold">)</span>
 
-<span style="color:#09f;font-style:italic"># 查看端口占用 lsof -i :portNumber</span>
-lsof -i :22</code></pre></div>
+<span style="color:#09f;font-style:italic"># 查看端口占用 lsof -i :portNumber
+</span><span style="color:#09f;font-style:italic"></span>lsof -i :22</code></pre></div>
 <h3 id="taskset">taskset</h3>
 
 <p>set or retrieve a process&rsquo;s CPU affinity</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示当前进程的 affinity</span>
-taskset -c -p <span style="color:#f60">1162</span>  
-<span style="color:#09f;font-style:italic"># 设置进程的affinity</span>
-taskset -c <span style="color:#f60">0</span>,1 -p <span style="color:#f60">1162</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示当前进程的 affinity
+</span><span style="color:#09f;font-style:italic"></span>taskset -c -p <span style="color:#f60">1162</span>  
+<span style="color:#09f;font-style:italic"># 设置进程的affinity
+</span><span style="color:#09f;font-style:italic"></span>taskset -c <span style="color:#f60">0</span>,1 -p <span style="color:#f60">1162</span>
 
 taskset -c <span style="color:#f60">1</span> </code></pre></div>
 <h3 id="proc">proc</h3>
@@ -309,23 +311,23 @@ taskset -c <span style="color:#f60">1</span> </code></pre></div>
 <p>Process information pseudo-filesystem</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> man proc
  /proc/&lt;pid/status
- /proc/&lt;pid/statm   <span style="color:#09f;font-style:italic">#Memory</span></code></pre></div>
+ /proc/&lt;pid/statm   #Memory</code></pre></div>
 <h3 id="valgrind">valgrind</h3>
 
 <p>查内存泄漏</p>
 
 <h2 id="网络类">网络类</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示所有打开连接</span>
-ss -l  
-<span style="color:#09f;font-style:italic"># 或者</span>
-netstat -tlpn
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示所有打开连接
+</span><span style="color:#09f;font-style:italic"></span>ss -l  
+<span style="color:#09f;font-style:italic"># 或者
+</span><span style="color:#09f;font-style:italic"></span>netstat -tlpn
 netstat -anp
-<span style="color:#09f;font-style:italic"># 或者</span>
-lsof -i
-<span style="color:#09f;font-style:italic"># 更精确的方式显示打开的网络端口</span>
-nmap -sT -O localhost
-<span style="color:#09f;font-style:italic"># 如果遇到未知服务打开端口:</span>
-cat /etc/services | grep <span style="color:#f60">834</span></code></pre></div>
+<span style="color:#09f;font-style:italic"># 或者
+</span><span style="color:#09f;font-style:italic"></span>lsof -i
+<span style="color:#09f;font-style:italic"># 更精确的方式显示打开的网络端口
+</span><span style="color:#09f;font-style:italic"></span>nmap -sT -O localhost
+<span style="color:#09f;font-style:italic"># 如果遇到未知服务打开端口:
+</span><span style="color:#09f;font-style:italic"></span>cat /etc/services | grep <span style="color:#f60">834</span></code></pre></div>
 <h3 id="网络连接监控ss">网络连接监控ss</h3>
 
 <p>socket stats</p>
@@ -339,13 +341,13 @@ cat /etc/services | grep <span style="color:#f60">834</span></code></pre></div>
 <li>-a/&ndash;all: 显示监听和非监听连接</li>
 <li>-n: 显示IP</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示所有TCP</span>
- netstat -nat
- <span style="color:#09f;font-style:italic">#Windows</span>
- netstat -aon | more
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示所有TCP
+</span><span style="color:#09f;font-style:italic"></span> netstat -nat
+ <span style="color:#09f;font-style:italic">#Windows
+</span><span style="color:#09f;font-style:italic"></span> netstat -aon | more
  
- <span style="color:#09f;font-style:italic"># 显示建立的TCP连接</span>
- netstat -np | grep ESTABLISHED | wc -l
+ <span style="color:#09f;font-style:italic"># 显示建立的TCP连接
+</span><span style="color:#09f;font-style:italic"></span> netstat -np | grep ESTABLISHED | wc -l
  netstat -nat | grep <span style="color:#c30">&#39;ESTABLISHED&#39;</span>
  netstat -s |grep <span style="color:#c30">&#39;connections established&#39;</span>  </code></pre></div>
 <h3 id="curl">cURL</h3>
@@ -357,8 +359,8 @@ cat /etc/services | grep <span style="color:#f60">834</span></code></pre></div>
 -F, --form &lt;name=content
 -x, --proxy 代理设置
 -X, --request &lt;command&lt;/command 指定类型
--I, --head 只显示响应头，在响应体较大时很有用</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在内网查看外网IP</span>
-curl ifconfig.me</code></pre></div>
+-I, --head 只显示响应头，在响应体较大时很有用</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在内网查看外网IP
+</span><span style="color:#09f;font-style:italic"></span>curl ifconfig.me</code></pre></div>
 <h3 id="wget">wget</h3>
 
 <h3 id="域名解析">域名解析</h3>
@@ -366,21 +368,21 @@ curl ifconfig.me</code></pre></div>
 dig xulizhao.com
 dnstracer
 dig +trace xulizhao.com
-<span style="color:#09f;font-style:italic"># 查找域名服务器</span>
-less /etc/resolv.conf
+<span style="color:#09f;font-style:italic"># 查找域名服务器
+</span><span style="color:#09f;font-style:italic"></span>less /etc/resolv.conf
 
 nmcli device show &lt;interfacename| grep IP4.DNS</code></pre></div>
 <p>Windows从IP得到hostname: ping -a 10.10.10.10</p>
 
 <h4 id="修改dns">修改DNS</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## Ubuntu</span>
-vi /etc/network/interfaces
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## Ubuntu
+</span><span style="color:#09f;font-style:italic"></span>vi /etc/network/interfaces
 dns-nameservers <span style="color:#f60">8</span>.8.8.8
-<span style="color:#09f;font-style:italic"># 重启服务</span>
-/etc/init.d/networking restart
+<span style="color:#09f;font-style:italic"># 重启服务
+</span><span style="color:#09f;font-style:italic"></span>/etc/init.d/networking restart
 
-<span style="color:#09f;font-style:italic">## CentOS</span>
-vi /etc/resolv.conf
+<span style="color:#09f;font-style:italic">## CentOS
+</span><span style="color:#09f;font-style:italic"></span>vi /etc/resolv.conf
 nameserver <span style="color:#f60">8</span>.8.8.8</code></pre></div>
 <h3 id="网络调试traceroute-mtr">网络调试traceroute/mtr</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mtr可以看做traceroute的加强版
@@ -392,10 +394,10 @@ RTT: round trip time ;
 <h3 id="网络数据统计iftop">网络数据统计iftop</h3>
 
 <p>r 代表receive</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 某网口带宽占用</span>
-iftop -i eth1
-<span style="color:#09f;font-style:italic"># 子网数据流</span>
-iftop -F <span style="color:#f60">192</span>.168.1.0/24</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 某网口带宽占用
+</span><span style="color:#09f;font-style:italic"></span>iftop -i eth1
+<span style="color:#09f;font-style:italic"># 子网数据流
+</span><span style="color:#09f;font-style:italic"></span>iftop -F <span style="color:#f60">192</span>.168.1.0/24</code></pre></div>
 <h3 id="网络模拟tc-netem">网络模拟tc/netem</h3>
 
 <p>模拟网络延迟,丢包,重复,乱序等</p>
@@ -412,7 +414,12 @@ iftop -F <span style="color:#f60">192</span>.168.1.0/24</code></pre></div>
 <ul>
 <li><a href="https://www.ivarch.com/programs/pv.shtml">pv</a> : 管道进度监控</li>
 </ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 相当于cat
+</span><span style="color:#09f;font-style:italic"># 监控某进程文件
+</span><span style="color:#09f;font-style:italic"></span>pv -d &lt;pid&gt;
 
+<span style="color:#09f;font-style:italic"># 管道命名
+</span><span style="color:#09f;font-style:italic"></span>pv -cN gzip</code></pre></div>
 <h2 id="扩展阅读">扩展阅读</h2>
 
 <ul>
@@ -512,7 +519,7 @@ iftop -F <span style="color:#f60">192</span>.168.1.0/24</code></pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -529,7 +536,7 @@ iftop -F <span style="color:#f60">192</span>.168.1.0/24</code></pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -627,7 +634,7 @@ iftop -F <span style="color:#f60">192</span>.168.1.0/24</code></pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

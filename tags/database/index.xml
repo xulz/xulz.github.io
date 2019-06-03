@@ -21,7 +21,9 @@
 
 &lt;p&gt;今年偶然看到网上有&lt;a href=&#34;https://github.com/Vonng/ddia&#34;&gt;中译版&lt;/a&gt;,惭愧的是到了年底,最近几个月才读来.&lt;/p&gt;
 
-&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;</description>
+&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,7 +32,8 @@
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/mysql-tuning/</guid>
-      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.&lt;/p&gt;</description>
+      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -43,7 +46,9 @@
 
 &lt;p&gt;所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.&lt;/p&gt;
 
-&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;</description>
+&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -52,7 +57,9 @@
       <pubDate>Thu, 11 Jan 2018 09:31:35 +0000</pubDate>
       
       <guid>/blog/mysql/</guid>
-      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;</description>
+      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

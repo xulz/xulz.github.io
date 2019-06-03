@@ -19,7 +19,9 @@
       <guid>/blog/cloud-native/</guid>
       <description>&lt;p&gt;最早注意到云原生这个概念是某次看文章说Kubernetes是作为CNCF(云原生计算基金会)的主要项目来开发的,该基金会属于Linux基金会旗下,还包括被熟知的prometheus,istio等开源项目, 似乎可以理解为Kubernetes生态系统.&lt;/p&gt;
 
-&lt;p&gt;至此Kubernetes把&lt;a href=&#34;/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;</description>
+&lt;p&gt;至此Kubernetes把&lt;a href=&#34;/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,7 +30,9 @@
       <pubDate>Thu, 28 Dec 2017 07:38:18 +0000</pubDate>
       
       <guid>/blog/microservices/</guid>
-      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;</description>
+      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

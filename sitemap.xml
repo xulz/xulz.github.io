@@ -2,6 +2,86 @@
 <search>
     
      <entry>
+        <title>开源反向代理及负载均衡Envoy初探</title>
+        <url>/blog/envoy-proxy/</url>
+        <categories>
+          <category>tech</category>
+        </categories>
+        <tags>
+          <tag>microservice</tag>
+        </tags>
+        <content type="html"> Envoy是Lyft于2017年开源的网络反向代理工具,现属于CNCF基金会的毕业项目.
+和Nginx和HAProxy相比,功能更强大,开源更彻底(提供的许多功能是其他产品的付费功能).
+更重要的是作为新兴代理,与微服务紧密结合,可以做入口代理/边缘代理/中间代理等. 流行的Service Mesh框架istio就是基于Envoy构建而成.
+Envoy本身用C&#43;&#43;开发,并发模型与Nginx类似,具有很高的处理性能.
+本文尽量脱离微服务和Service Mesh,聚焦于Envoy代理本身所提供的丰富功能.
+
+部署和使用 官方提供两种部署方式.
+本地编译 在Ubuntu 18.04下编译,具体参考官方说明.
+安装bazel参考这里
+# 安装依赖 apt-get install ninja-build # 本地编译 bazel build //source/exe:envoy-static 编译后的文件位于 /bazel-bin/source/exe/envoy-static
+使用docker容器的方式 快速验证
+docker pull envoyproxy/envoy-dev:8d1ad35aa724962f64f7535531e408c9a93d364c docker run --rm -d -p 10000:10000 envoyproxy/envoy-dev:8d1ad35aa724962f64f7535531e408c9a93d364c # 默认使用10000端口 curl -v localhost:10000 定制和扩展 基于配置规则创建自己的envoy.yaml
+# Dockfile FROM envoyproxy/envoy-dev:8d1ad35aa724962f64f7535531e408c9a93d364c COPY envoy.yaml /etc/envoy/envoy.yaml 构建新的定制镜像
+docker build -t envoy:v1 . # 9901为管理端口 docker run -d --name envoy -p 9901:9901 -p 10000:10000 envoy:v1 curl -v localhost:10000 配置 静态配置文件默认位于 /etc/envoy/envoy.yaml
+动态配置 动态配置支持文件和API(配置服务器)两种方式.
+基于文件的动态配置 参考文档: 动态配置路由
+配置服务器实现 官方提供了Go和Java两个默认实现
+监控和统计 参考文档: Envoy&#43;Prometheus&#43;Grafana实现/Demo代码
+分流/蓝绿发布/流量复制 Traffic mirroring/shadowing: 用于生产环境服务的验证测试, 镜像功能发送一部分生产流量副本到镜像服务,镜像请求采用fire&amp;amp;forgot模式,响应被丢弃.
+参考  官方:流量迁移和分离 流量复制示例  扩展阅读 与其他代理的比较  与其他主流代理的比较 traefik反向代理/负载均衡: Go实现,支持kubernetes编排服务和etcd/consul服务注册  学习资源  kata在线实验环境 基础 learnenvoy: 不再维护  应用  eBay是如何将 Envoy 作为边缘代理的   将硬件负载均衡器替换为软件解决方案,在每个集群的边缘上有一个“north-south”网关，用来管理所有针对外部的传入和传出流量.
+</content>
+    </entry>
+    
+     <entry>
+        <title>bazel构建工具</title>
+        <url>/blog/bazel-build/</url>
+        <categories>
+          <category>tech</category>
+        </categories>
+        <tags>
+          <tag>build</tag>
+        </tags>
+        <content type="html"> Bazel是Google开源的一个构建系统,主要支持分布式缓存和增量编译,使得大项目的构建更快速, 主要用于C&#43;&#43;,Java,Go等服务端项目构建.
+有一个与之类似的快速构建系统Buck(Facebook开源)则更关注于Android和iOS客户端的构建. 两者都倾向于mono repo(而非基于项目的仓库)的构建.
+之前看了眼官方教程,觉得过于复杂没有引起兴趣. 最近看到在B站代码和envoy都作为标配,所以再做些深入了解.
+
+使用基础 在项目的根目录下创建WORKSPACE和BUILD文件.
+工作区/WORKSPACE配置 bazel有工作区的概念, 该文件配置加载bazel环境需要的规则和依赖,可以为空.
+### BUILD配置 构建项目信息配置文件,语法类似于python.
+java_binary( name = &amp;#34;ProjectRunner&amp;#34;, srcs = [&amp;#34;src/main/java/com/example/ProjectRunner.java&amp;#34;], main_class = &amp;#34;com.example.ProjectRunner&amp;#34;, deps = [&amp;#34;:greeter&amp;#34;], ) java_library( name = &amp;#34;greeter&amp;#34;, srcs = [&amp;#34;src/main/java/com/example/Greeting.java&amp;#34;], visibility = [&amp;#34;//src/main/java/com/example/cmdline:__pkg__&amp;#34;], ) visibility = level属性改变目标的可见范围, 在上面的例子中需要改变默认当前BUILD的限制,因为用到了其他BUILD配置.
+构建命令 bazel build //:ProjectRunner 构建后将生成一些输出目录的符号链接,如bazel-bin和bazel-out.
+可部署 # 默认不会包含依赖,而采用加入CLASSPATH的方式确保本地可以运行 bazel build //src/main/java/com/example/cmdline:runner # jar tf bazel-bin/src/main/java/com/example/cmdline/runner.jar # 如果要求可部署,需要加_deploy后缀 bazel build //src/main/java/com/example/cmdline:runner_deploy.jar Go项目构建 WORKSPACE文件 加载Go规则,使用gazelle自动生成/更新BUILD文件.
+load(&amp;#34;@bazel_tools//tools/build_defs/repo:http.bzl&amp;#34;, &amp;#34;http_archive&amp;#34;) http_archive( name = &amp;#34;io_bazel_rules_go&amp;#34;, urls = [&amp;#34;https://github.com/bazelbuild/rules_go/releases/download/0.18.5/rules_go-0.18.5.tar.gz&amp;#34;], sha256 = &amp;#34;a82a352bffae6bee4e95f68a8d80a70e87f42c4741e6a448bec11998fcc82329&amp;#34;, ) http_archive( name = &amp;#34;bazel_gazelle&amp;#34;, urls = [&amp;#34;https://github.com/bazelbuild/bazel-gazelle/releases/download/0.17.0/bazel-gazelle-0.17.0.tar.gz&amp;#34;], sha256 = &amp;#34;3c681998538231a2d24d0c07ed5a7658cb72bfb5fd4bf9911157c0e9ac6a2687&amp;#34;, ) load(&amp;#34;@io_bazel_rules_go//go:deps.bzl&amp;#34;, &amp;#34;go_rules_dependencies&amp;#34;, &amp;#34;go_register_toolchains&amp;#34;) go_rules_dependencies() go_register_toolchains() load(&amp;#34;@bazel_gazelle//:deps.bzl&amp;#34;, &amp;#34;gazelle_dependencies&amp;#34;) gazelle_dependencies() BUILD配置文件 添加
+load(&amp;#34;@bazel_gazelle//:def.bzl&amp;#34;, &amp;#34;gazelle&amp;#34;) # 更新为对应项目名 gazelle( name = &amp;#34;gazelle&amp;#34;, prefix = &amp;#34;bazeltest&amp;#34;, ) 生成配置文件
+ bazel run //:gazelle
+ 注: 在我本地测试时,没有自动生成go_binary相关配置, 则需要更新配置如下:
+load(&amp;#34;@io_bazel_rules_go//go:def.bzl&amp;#34;, &amp;#34;go_binary&amp;#34;,&amp;#34;go_library&amp;#34;, &amp;#34;go_test&amp;#34;) go_binary( name = &amp;#34;bazeltest&amp;#34;, srcs = [&amp;#34;main.go&amp;#34;], deps = [&amp;#34;:go_default_library&amp;#34;], # embed = [&amp;#34;:go_default_library&amp;#34;], # visibility = [&amp;#34;//visibility:public&amp;#34;], # out = &amp;#34;cmd&amp;#34;, ) 构建 # // 来表示当前项目的根目录， ... 表示当前路径下所有的包 bazel build //... # 指定目标 bazel build //cmd/bazeltest 扩展阅读  官方教程Java/C&#43;&#43; 使用 Bazel 构建 Golang 项目 用 Bazel / Buck 构建大型项目 </content>
+    </entry>
+    
+     <entry>
+        <title>Go依赖库管理初探</title>
+        <url>/blog/go-mod/</url>
+        <categories>
+          <category>tech</category>
+        </categories>
+        <tags>
+          <tag>go</tag>
+        </tags>
+        <content type="html"> Go作为一个新语言,其依赖管理系统一直不够完善,官方直到去年才在1.11加入modules(也叫vgo). 在此之前社区不满官方的官僚,还有过一阵激烈的讨论,讨论流行第三方库dep的不被采纳而官方自造轮子.
+最近在项目首次使用了modules系统,但还是采用的兼容的vendor模式. 总体用下来还不错,一些github库也已经使用该方式.
+下面简要列下常见用法.
+
+开启该选项 环境变量设置为开启状态: GO111MODULE=on
+如果使用Goland IDE, 到项目 [settings]-[Go modules(vgo)]- 勾选 &amp;ldquo;Enable Go modules(vgo) integration&amp;rdquo;
+使用 主要通过命令 go mod 实现, 具体用法参考 go help mod
+常用命令 # 列出当前模块和它的所有依赖库 go list -m all lists # 列出详细依赖信息 go list -m -json all # 查看某库的可用版本 go list -m -versions github.com/BurntSushi/toml # 删除不用的依赖 go mod tidy 使用vendor管理本项目依赖 注: 需要说明的,这些依赖只包含本项目用到的直接依赖, 第三方库的自身依赖由它本身维护.
+# 生成本地依赖 go mod vendor # 构建时指定vendor go build -mod=vendor #或者  GOFLAGS=-mod=环境变量信息 语义化版本维护库 semantic import versioning的支持.
+# 把模块路径定义为类似 rsc.io/quote/v3 的格式 版本管理 vendor目录和go.mod , go.sum文件都应该提交至版本库.
+扩展阅读  官方博客介绍 官方wiki介绍 </content>
+    </entry>
+    
+     <entry>
         <title>Go in Action 学习笔记</title>
         <url>/blog/go-in-action/</url>
         <categories>
@@ -13,7 +93,7 @@
         <content type="html"> 初学Go时主要读的&amp;lt;Go语言圣经&amp;gt;,正式中文版叫&amp;lt;Go程序设计语言&amp;gt;, 由于当时写的代码还很少,实际上很多是不太懂的或后来也忘了.
 之后想读些其他书时,本来想读的&amp;lt;Go编程实战&amp;gt;在豆瓣的评分偏低,便一直没读. 在写过一些代码后,偶然再读这本书,发现其实战意义很高,是很好的一本进阶书.
 由此看来豆瓣的评分只能当个参考,需要读读看是不是适合自己.
-做了些简单的笔记. 顺便说, 第一作者的Ultimate Go虽然是英文视频,讲的也很好很深入,有需要的可联系我.
+ 做了些简单的笔记. 顺便说, 第一作者的Ultimate Go虽然是英文视频,讲的也很好很深入,有需要的可联系我.
 读书笔记 Go特点和约定 在Go语言中，所有的变量都以值的方式传递。
 命名惯例: 如果接口类型只包含一个方法，那么这个类型的名字以er结尾。
 将工厂函数命名为New是Go语言的一个习惯。
@@ -63,9 +143,8 @@ range迭代切片,返回的第二个值是对应元素值的副本
 据我所知Instagram,Mozilla等高流量/大公司都在使用.
 之前几个项目特意使用了以轻量著称的Flask,两者算是各有千秋吧.
 去年Django2.0推出后一直想尝试,正好最近拿来试试.
-用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.
-manage.py命令行工具 Django的工具真的好用很多.
-# 创建项目mysite django-admin startproject mysite # 运行开发服务器,也可指定IP/端口 # python manage.py runserver 0:8000 python3 manage.py runserver # 指定配置 --settings SETTINGS # 创建应用 python3 manage.py startapp polls # 创建超级管理员 python3 manage.py createsuperuser shell交互式命令行 python3 manage.py shell 升级/migration # 为 INSTALLED_APPS 创建必要的数据表 python3 manage.py migrate # makemigrations命令会检测对模型的修改并生成迁移文件,位于migrations文件夹 python3 manage.py makemigrations polls 开发基础 提倡开发可重用的app, 主要基于Model/View/URL 模式.
+用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记. manage.py命令行工具 Django的工具真的好用很多.
+# 创建项目mysite django-admin startproject mysite # 运行开发服务器,也可指定IP/端口 # python manage.py runserver 0:8000 python3 manage.py runserver # 指定配置 --settings SETTINGS  # 创建应用 python3 manage.py startapp polls # 创建超级管理员 python3 manage.py createsuperuser shell交互式命令行 python3 manage.py shell 升级/migration # 为 INSTALLED_APPS 创建必要的数据表 python3 manage.py migrate # makemigrations命令会检测对模型的修改并生成迁移文件,位于migrations文件夹 python3 manage.py makemigrations polls 开发基础 提倡开发可重用的app, 主要基于Model/View/URL 模式.
 App 添加应用
 # mysite/settings.py INSTALLED_APPS = [ &amp;#39;polls.apps.PollsConfig&amp;#39;,# polls/app.py # verbose_name 对应页面显示名称 class PollsConfig(AppConfig): name = &amp;#39;Polls&amp;#39; verbose_name = &amp;#39;My Polls&amp;#39; Model # polls/models.py class Poll(models.Model): name = models.CharField(max_length=256, verbose_name=&amp;#39;Poll Name&amp;#39;) created = models.DateTimeField(auto_now_add=True) updated = models.DateTimeField(auto_now=True) class Meta: verbose_name = &amp;#39;Poll Display Name&amp;#39; View # polls/views.py from django.shortcuts import render,redirect from django.http import HttpResponse from django.contrib.auth.decorators import login_required # @login_required def index(request): return HttpResponse(&amp;#34;Welcome.&amp;#34;) 添加路由/urls 注: Django2.x里的re_path() 等价于之前的url()
 # mysite/urls.py urlpatterns = [ path(&amp;#39;polls/&amp;#39;, include(&amp;#39;polls.urls&amp;#39;)), path(&amp;#39;admin/&amp;#39;, admin.site.urls), Admin定制 添加model到Admin # polls/admin.py class PollsAdmin(admin.ModelAdmin): list_display = (&amp;#39;name&amp;#39;,&amp;#39;updated&amp;#39;) search_fields = [&amp;#39;name&amp;#39;] fieldsets = [ (None, {&amp;#39;fields&amp;#39;: [&amp;#39;name&amp;#39;]}), ] admin.site.register(Polls, PollsAdmin) 丰富显示 # 自定义list_filter from django.contrib.admin import SimpleListFilter 内置关联: InlineModelAdmin 的两个子类TabularInline和StackedInline
@@ -99,6 +178,7 @@ admin/base.html admin/index.html admin/change_form.html admin/change_list.html �
         <content type="html"> Mindset是一本讲思维模式的书,作者是斯坦福大学心理学教授, 与其说这是一本心理学或成功学著作, 更重要的这是一本很好的教育理念的书, 当然对于个人的成长也是很有帮助的.
 好多年前看到有人推荐这边书,当时只知道英文名字,英文版读起来也很慢. 后来才知道原来已有中译版, 人邮的&amp;lt;心理定向与成功 &amp;gt;,中信的&amp;lt;看见成长的自己 &amp;gt;和最新后浪的&amp;lt;终身成长&amp;gt;其实都是这本书.
 之前只看了开头几章, 也许好书你很难错过,因为总会看到有人推荐,于是最近开始继续阅读.
+
 概要 本书以作者10多年的研究表明我们获得的成功并不是能力和天赋决定的，更受到我们在追求目标的过程中展现的思维模式的影响。
 我们通常具有两种思维模式中的一种：固定型或成长型，它们体现了应对成功与失败、成绩与挑战时的两种基本心态。
 你认为才智和努力哪个重要，能力能否通过努力改变，决定了你是会满足于既有成果还是会积极探索新知。只有用正确的思维模式看待问题，才能更好地达成人生和职业目标。
@@ -138,12 +218,13 @@ admin/base.html admin/index.html admin/change_form.html admin/change_list.html �
         <content type="html"> 用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.
 所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.
 这也是此文/这次实践的目的所在.
+
 前提条件 禁用swap sudo swapoff -a # 永久性禁用 # 编辑/etc/fstab并注释掉swap那一行 保留端口 Master节点
    组件 端口 注释     API server 6443 可重新定义   etcd 2379-2380    Kubelet API 10250    kube-scheduler 10251    kube-controller-manage 10252     注: 2 CPU&#43;
 Worker节点
    组件 端口 注释     Kubelet API 6443    NodePort Services 30000-32767 可重新定义    Docker 容器运行时默认使用docker
 安装说明 kubeadm, kubelet, kubectl  kubeadm: 集群引导命令行 kubelet: 集群每个节点都有(Node Agent),用于启动Pod/容器等 kubectl: 交互式集群管理命令行  注: kubelet的版本号不应该超过API server
-# Ubuntu apt-get update &amp;amp;&amp;amp; apt-get install -y apt-transport-https curl curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - cat &amp;lt;&amp;lt;EOF &amp;gt;/etc/apt/sources.list.d/kubernetes.list deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main EOF apt-get update apt-get install -y kubelet kubeadm kubectl apt-mark hold kubelet kubeadm kubectl kubeadm init # 可以先运行下面命令检查到gcr.io的连接性 # kubeadm config images pull # 解决etcd pull失败的问题 docker pull xulz/coreos-etcd:v3.2.24 docker tag xulz/coreos-etcd:v3.2.24 gcr.mirrors.ustc.edu.cn/google-containers/etcd:3.2.24 kubeadm init --kubernetes-version=v1.13.1 --image-repository=gcr.mirrors.ustc.edu.cn/google-containers --pod-network-cidr=192.168.0.0/16 # --image-repository 指定镜像mirror,默认k8s.gcr.io # 也可以通过配置文件的形式 imageRepository: &amp;lt;private-registry&amp;gt; # root用户运行 export KUBECONFIG=/etc/kubernetes/admin.conf # 记录下关于 kubeadm join的输出用于添加节点 注: token用户master和加入节点间的双向认证,需保密. 也可用 kubeadm token命令管理token.
+# Ubuntu apt-get update &amp;amp;&amp;amp; apt-get install -y apt-transport-https curl curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - cat &amp;lt;&amp;lt;EOF &amp;gt;/etc/apt/sources.list.d/kubernetes.list deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main EOF apt-get update apt-get install -y kubelet kubeadm kubectl apt-mark hold kubelet kubeadm kubectl kubeadm init # 可以先运行下面命令检查到gcr.io的连接性 # kubeadm config images pull # 解决etcd pull失败的问题 docker pull xulz/coreos-etcd:v3.2.24 docker tag xulz/coreos-etcd:v3.2.24 gcr.mirrors.ustc.edu.cn/google-containers/etcd:3.2.24 kubeadm init --kubernetes-version=v1.13.1 --image-repository=gcr.mirrors.ustc.edu.cn/google-containers --pod-network-cidr=192.168.0.0/16 # --image-repository 指定镜像mirror,默认k8s.gcr.io # 也可以通过配置文件的形式 imageRepository: &amp;lt;private-registry&amp;gt;  # root用户运行 export KUBECONFIG=/etc/kubernetes/admin.conf # 记录下关于 kubeadm join的输出用于添加节点 注: token用户master和加入节点间的双向认证,需保密. 也可用 kubeadm token命令管理token.
 # kubelet环境变量 # /var/lib/kubelet/kubeadm-flags.env # kubelet配置文件 # /var/lib/kubelet/config.yaml 安装Pod网络插件 pod networking provider
 这里使用的CNI network plugin是Calico,它需要提供CIDR(默认使用192.168.0.0/16), 已经在上步的init提供.
 # 先获取本地镜像并tag docker pull xulz/calico-node:v3.3.2 docker tag xulz/calico-node:v3.3.2 quay.io/calico/node:v3.3.2 docker pull xulz/calico-cni:v3.3.2 docker tag xulz/calico-cni:v3.3.2 quay.io/calico/cni:v3.3.2 docker pull quay.mirrors.ustc.edu.cn/calico/typha:v3.3.2 docker tag quay.mirrors.ustc.edu.cn/calico/typha:v3.3.2 quay.io/calico/typha:v3.3.2 以Calico为例:
@@ -189,6 +270,7 @@ wget https://tuna.moe/oh-my-tuna/oh-my-tuna.py python oh-my-tuna.py 科大的补
           <tag>read</tag><tag>classic</tag>
         </tags>
         <content type="html"> 最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.
+
 之前拿毛笔应该是上小学期间了,印象比较深的时写的字没有一个被标红圈的(写的好),也打击了当时学习的热情. 毕业后也尝试改进自己写字的优美程度(写好字一直是我的一个痛点),多年前从图书大厦买了田英章的硬笔行书技法,当时不得要领只是摹写,加上硬笔练得少后来便荒废了.
 幸运的时现在互联网知识传播已很发达,于是通过知乎/公众号/电子书/视频做了简单的系统认知, 因此学起来也算走了些捷径. 同事推荐的&amp;lt;田蕴章每日一题每日一字&amp;gt;也让我受益良多.
 毛笔比硬笔的好处是仪式感更强, 对写字的认识和要求体会也更深. 重要的是功利心态比较轻,更多作为放松身心的方式.
@@ -213,6 +295,7 @@ wget https://tuna.moe/oh-my-tuna/oh-my-tuna.py python oh-my-tuna.py 科大的补
         </tags>
         <content type="html"> 平时用的最多的系统是Windows10和Ubuntu,如果说苹果系统MacOS有什么让我离不开的特性的话,iTerm2绝对排第一.
 可这个经常使用的免费终端居然有一些我不知道的好用功能,特记录与此.
+
 友好特性 Split Panels 我经常用到tmux,居然忽视了该功能.
 右键就可以看到.
 快捷键: Cmd&#43;d 垂直分割/ Cmd&#43;Shift&#43;d 水平分割
@@ -237,6 +320,7 @@ Paste History Cmd &#43; Shift &#43; h
         </tags>
         <content type="html"> LaTeX最广泛的用途应该是在学术领域写论文, 其实在排版(尤其公式,格式)上也胜过Word很多,绝对专业.
 最近为了在本地生成一个PDF,做了一些了解.
+
 简介 TeX -&amp;gt; LaTeX -&amp;gt; XeLaTex
 XeLaTeX 是基于TeX的一个专业排字系统, 对于Unicode 和 OpenType字体的支持很好. 可以用来创建好看的PDF文档.
 编辑器和编译 TeXLive应该是第一选择,文件安装包有点大(3个G),推荐在清华开源镜像下载.
@@ -251,7 +335,7 @@ CTeX-kit 是一系列 TeX/LaTeX/ConTeXt 宏包的集合, 相关脚本和资源�
 中文字体 .tex文件配置
 \setCJKmainfont[AutoFakeBold=true]{AdobeSongStd-Light} \setCJKsansfont{AdobeHeitiStd-Regular} \setCJKmonofont{AdobeFangsongStd-Regular} 中易宋体(SimSun)和华文宋体(STSong)分别是 Windows 和 Mac OS X 默认的简体中文宋体.
 通常也会用到Adobe中文字体,可到以下网址下载:
- 字体库下载 fontsmarket  # 查看当前系统中文字体 # Mac直接使用系统的Font Book/字体册 # 找到对应字体按Command&#43;i键,就会显示字体的详细信息,postScript即字体名 fc-list;lang=zh-cn 扩展阅读  ctan官方包仓库 Travis-CI与Latex构建开源中文PDF 中科大论文模板 </content>
+ 字体库下载 fontsmarket  # 查看当前系统中文字体 # Mac直接使用系统的Font Book/字体册 # 找到对应字体按Command&#43;i键,就会显示字体的详细信息,postScript即字体名  fc-list;lang=zh-cn 扩展阅读  ctan官方包仓库 Travis-CI与Latex构建开源中文PDF 中科大论文模板 </content>
     </entry>
     
      <entry>
@@ -266,6 +350,7 @@ CTeX-kit 是一系列 TeX/LaTeX/ConTeXt 宏包的集合, 相关脚本和资源�
         <content type="html"> 在实际应用中存在一个Kubernetes集群中多个部署环境的问题,比如存在dev,qa,stage等.
 如果部署在一个集群会省去不少运维成本且节省资源占用.
 通常这会用到命名空间的特性.
+
 Namespaces 命名空间 命名空间可以被看做virtual cluster/虚拟集群.
 默认存在default和kube-system两个命名空间.
 用户的普通应用默认是在default下，与集群管理相关的为整个集群提供服务的应用一般部署在kube-system的namespace下.
@@ -290,6 +375,7 @@ kind:NamespaceapiVersion:v1metadata:name:dev-spacelabels:name:dev-space  kubectl
 Python3在两年前及更早时的库支持和应用范围确实不太好,有选择困难症的同学都转去Go语言了:) .
 幸运的是近两年主流库/框架都已支持Python3,毕竟发布已经10年多了,在新项目中毫无疑问必须用Python3.
 之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.
+
 string和unicode Python 2 的 str 是 bytes, Python 3 的 str 是 unicode.
 # 字符串和二进制转换 unicode_string.encode() # 默认utf-8 byte_string.decode() # split现在是bytes的方法 # requests.get(xxx).content返回bytes类型 your_content.split(b&amp;#39;,&amp;#39;) # base64编码后返回字节类型,转换为str base64.b64encode(some_bytes).decode() 语法变化  使用print() except语句  有用的技巧 使用命令行参数提示兼容性问题:
  python2 -3参数 提示warning python3 -bb参数 提示字符串处理差异  # 判断当前运行版本 PY3 = sys.version_info[0] == 3# 安装pip3 python3 -m ensurepip 兼容2和3 除非迫不得已,应该只支持Python3
@@ -309,6 +395,7 @@ string和unicode Python 2 的 str 是 bytes, Python 3 的 str 是 unicode.
         <content type="html"> 去年就看到总有人推荐这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.
 今年偶然看到网上有中译版,惭愧的是到了年底,最近几个月才读来.
 书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.
+
 暂时还剩第三部分没读完,先记些凌乱的笔记.
 数据密集型:
  数据是主要挑战,涉及数据量,数据复杂度和数据变化速度. 于此对应的是计算密集型.  第一部分:数据系统基础 数据系统设计的基本思想
@@ -520,13 +607,14 @@ Lambda架构
 遇到的问题是不知哪里的配置错误，我的证书自动更新有问题，每次都是遇到证书已经过期，网站彻底不能访问了，必须要手动更新。
 之前用的HTTP的验证方式，由于一知半解，这块每次手动配置也会花费一些时间。
 今天重读了官方文档，才发现有一些细节的使用，其实可以做到一劳永逸。
+
 安装 curl https://get.acme.sh |sudo sh # 默认安装在~/.acme.sh/ # 每天0点自动检测是否过期，并会通过cronjob自动更新证书 生成证书 支持两种验证方式。
 注：记得带上www.mydomain.com这种形式的域名。
 HTTP 我之前一直用这种，相比DNS方式还是麻烦些。
 acme.sh --issue -d mydomain.com -d www.mydomain.com --webroot /home/xulz/wwwroot/mydomain.com/ # 之前都不知道还可以指定nginx智能识别 acme.sh --issue -d mydomain.com --nginx DNS 这个是真的自动化了。
 # 以阿里云为例 # 下面的信息存在~/.acme.sh/account.conf，也可以手动修改 export Ali_Key=&amp;#34;sdfsdfsdfljlbj&amp;#34; export Ali_Secret=&amp;#34;jlsdflanljkljlfdsaklkjflsa&amp;#34; acme.sh --issue --dns dns_ali -d mydomain.com -d www.mydomain.com 安装证书 这步常被忽略。
 注： 默认生成的证书都放在安装目录下: ~/.acme.sh/, 请不要直接使用此目录下的文件
-# 注：Nginx 的配置 ssl_certificate 需要使用 /etc/nginx/ssl/fullchain.cer acme.sh --installcert -d &amp;lt;domain&amp;gt;.com \  --key-file /etc/nginx/ssl/&amp;lt;domain&amp;gt;.key \  --fullchain-file /etc/nginx/ssl/fullchain.cer \  --reloadcmd &amp;#34;service nginx force-reload&amp;#34; 其他 # 更新acme.sh # V2版本已支持wildcard证书 acme.sh --upgrade # 调试，打印更详细信息 acme.sh --issue ... --debug </content>
+# 注：Nginx 的配置 ssl_certificate 需要使用 /etc/nginx/ssl/fullchain.cer  acme.sh --installcert -d &amp;lt;domain&amp;gt;.com \  --key-file /etc/nginx/ssl/&amp;lt;domain&amp;gt;.key \  --fullchain-file /etc/nginx/ssl/fullchain.cer \  --reloadcmd &amp;#34;service nginx force-reload&amp;#34; 其他 # 更新acme.sh # V2版本已支持wildcard证书 acme.sh --upgrade # 调试，打印更详细信息 acme.sh --issue ... --debug </content>
     </entry>
     
      <entry>
@@ -539,6 +627,7 @@ acme.sh --issue -d mydomain.com -d www.mydomain.com --webroot /home/xulz/wwwroot
           <tag>java</tag><tag>performance</tag>
         </tags>
         <content type="html"> 曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。
+
 Hotspot JVM 这里的JVM特指Oracle的 Hotspot JVM.
 由 class loader, the runtime data areas（含heap）, 和execution engine（含GC和JIT）三部分组成。
 Heap主要用于对象数据的存放。
@@ -605,6 +694,7 @@ Thread Stack Size Java 8 64bit 默认1024k. 每个线程启动时JVM为该线程
         </tags>
         <content type="html"> 看完美团的分享觉得不过瘾，继续学习其他大厂的分享。
 不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。
+
 阿里分享 2013年为了双11提前预演而诞生,该服务已提供在阿里云PTS铂金版。
  系统稳定性保障核武器——全链路压测 双11核武器——全链路压测详解  可用性及单机压测问题 系统可用性问题 经常由下面一些不确定性因素引起：
  系统容量 业务性能 基础设施瓶颈 中间件瓶颈 系统直接的依赖影响  传统线上单机与单系统压测的四种方式  模拟调用者压测生产环境：读请求&#43;写请求（需要特定处理） 流量录制和回放：快速率回放对单机压测  从流量分配的角度，将流量集中到某台机器（这两种方式要求访问流量不能太小）：
@@ -657,6 +747,7 @@ Thread Stack Size Java 8 64bit 默认1024k. 每个线程启动时JVM为该线程
 现在大公司普遍的分布式架构，云计算的应用，容器的使用也可以提供更有力的资源调度。但全链路压测最重要的工作在于需要架构，开发团队的支持和适配工作。
 没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。
 印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。
+
  文章笔记摘要
  背景 要解决的问题  验证峰值流量下服务的稳定性和伸缩性 验证新上线功能的稳定性 进行降级、报警等故障演练 对线上服务进行更准确的容量评估  压力测试方式的几个阶段  对线上的单机或集群发起服务调用 将线上流量进行录制，然后在单台机器上进行回放 通过修改权重的方式进行引流压测 全链路压测  全链路压测介绍 基于线上真实环境和实际业务场景，通过模拟海量的用户请求，对整个系统进行压力测试。
 主要特征：
@@ -719,13 +810,12 @@ Ubuntu/Linux下常用软件  图像编辑： GIMP （[编辑]-[首选项]-[界�
         <tags>
           <tag>database</tag><tag>mysql</tag>
         </tags>
-        <content type="html"> 关于MySQL性能问题查找及优化的点滴.
-常用参数 # /etc/my.cnf [mysqld] max_connections=1000 # 最大连接数 innodb_buffer_pool_size=4G # 缓存池大小,建议&amp;lt; 80% 总内存 # 时间超过2秒的SQL记录在慢查询日志 long_query_time=2 # 用以下面响应时间分布的收集 query_response_time_stats = on innodb_buffer_pool_size 推荐大小 计算RIBPS(Recommended InnoDB Buffer Pool Size)基于所有InnoDB数据大小和额外60%索引大小.
+        <content type="html"> 关于MySQL性能问题查找及优化的点滴. 常用参数 # /etc/my.cnf [mysqld] max_connections=1000 # 最大连接数 innodb_buffer_pool_size=4G # 缓存池大小,建议&amp;lt; 80% 总内存  # 时间超过2秒的SQL记录在慢查询日志 long_query_time=2 # 用以下面响应时间分布的收集 query_response_time_stats = on innodb_buffer_pool_size 推荐大小 计算RIBPS(Recommended InnoDB Buffer Pool Size)基于所有InnoDB数据大小和额外60%索引大小.
 SELECT CEILING(Total_InnoDB_Bytes*1.6/POWER(1024,3)) RIBPS FROM (SELECT SUM(data_length&#43;index_length) Total_InnoDB_Bytes FROM information_schema.tables WHERE engine=&amp;#39;InnoDB&amp;#39;) A; 实际占用大小为:
 SELECT (PagesData*PageSize)/POWER(1024,3) DataGB FROM (SELECT variable_value PagesData FROM information_schema.global_status WHERE variable_name=&amp;#39;Innodb_buffer_pool_pages_data&amp;#39;) A,(SELECT variable_value PageSize FROM information_schema.global_status WHERE variable_name=&amp;#39;Innodb_page_size&amp;#39;) B; 利用多核CPU # 无限并发 innodb_thread_concurrency = 0 # 下面两个值最大设置为64 innodb_read_io_threads innodb_write_io_threads 检查当前慢查询并运行EXPLAIN mysql&amp;gt; SHOW FULL PROCESSLIST; # 找到上面经常出现的SQL语句 EXPLAIN SQL-Statement  状态sending data意味着正在等待从磁盘或内存读取数据并发送出去,即 reading and filtering data.
  PMM的MySQL Query Response Time仪表盘 PMM(Percona Monitoring and Management)的开源监控工具还是很好用的.
 安装PMM服务端 建议使用docker的方式
-# 获取镜像 docker pull percona/pmm-server:latest # 创建容器 docker create \  -v /opt/prometheus/data \  -v /opt/consul-data \  -v /var/lib/mysql \  -v /var/lib/grafana \  --name pmm-data \  percona/pmm-server:latest /bin/true # 运行 docker run -d \  -p 80:80 \  --volumes-from pmm-data \  --name pmm-server \  --restart always \  percona/pmm-server:latest 配置客户端 (在运行MySQL的主机) yum install -y pmm-client # Ubuntu 先获取 # wget https://www.percona.com/downloads/pmm/1.13.0/binary/debian/xenial/x86_64/pmm-client_1.13.0-1.xenial_amd64.deb sudo pmm-admin config --server 192.168.100.1 # 可选项 —server-user admin —server-password admin sudo pmm-admin add mysql —user root —password password # 查看当前状态 sudo pmm-admin list pmm-admin使用  pmm-admin ping pmm-admin config pmm-admin info pmm-admin stop —all pmm-admin uninstall  设置以记录Response Time分布 安装必要的插件:
+# 获取镜像 docker pull percona/pmm-server:latest # 创建容器 docker create \  -v /opt/prometheus/data \  -v /opt/consul-data \  -v /var/lib/mysql \  -v /var/lib/grafana \  --name pmm-data \  percona/pmm-server:latest /bin/true # 运行 docker run -d \  -p 80:80 \  --volumes-from pmm-data \  --name pmm-server \  --restart always \  percona/pmm-server:latest 配置客户端 (在运行MySQL的主机) yum install -y pmm-client # Ubuntu 先获取 # wget https://www.percona.com/downloads/pmm/1.13.0/binary/debian/xenial/x86_64/pmm-client_1.13.0-1.xenial_amd64.deb sudo pmm-admin config --server 192.168.100.1 # 可选项 —server-user admin —server-password admin  sudo pmm-admin add mysql —user root —password password # 查看当前状态 sudo pmm-admin list pmm-admin使用  pmm-admin ping pmm-admin config pmm-admin info pmm-admin stop —all pmm-admin uninstall  设置以记录Response Time分布 安装必要的插件:
 mysql&amp;gt; INSTALL PLUGIN QUERY_RESPONSE_TIME_AUDIT SONAME &amp;#39;query_response_time.so&amp;#39;; mysql&amp;gt; INSTALL PLUGIN QUERY_RESPONSE_TIME SONAME &amp;#39;query_response_time.so&amp;#39;; mysql&amp;gt; INSTALL PLUGIN QUERY_RESPONSE_TIME_READ SONAME &amp;#39;query_response_time.so&amp;#39;; mysql&amp;gt; INSTALL PLUGIN QUERY_RESPONSE_TIME_WRITE SONAME &amp;#39;query_response_time.so&amp;#39;; # 检查当前安装插件状态 mysql&amp;gt; SHOW PLUGINS; 开启数据收集:
 SET GLOBAL query_response_time_stats = &amp;#39;ON&amp;#39;; # 检查是否生效 show variables like &amp;#39;%query_response_time%&amp;#39;; 资源  EXPLAIN执行计划讲解 PMM Server官方文档 </content>
     </entry>
@@ -742,6 +832,7 @@ SET GLOBAL query_response_time_stats = &amp;#39;ON&amp;#39;; # 检查是否生�
         <content type="html"> 最近折腾部署一年前的一个应用,发现一些由于一些细节已经忘记,常常可能多花费几个小时去重新解决问题的过程. 而有的过程之前写过KB,关键字一搜索就出来能省不少时间.
 所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.
 印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.
+
 安装 wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.1.4/flyway-commandline-5.1.4-linux-x64.tar.gz tar xzf flyway-commandline-5.1.4-linux-x64.tar.gz # 可选 cp mysql-connector-java-5.1.41.jar /opt/flyway-5.1.4/drivers/ 配置 主要在conf/flyway.conf文件
 # 必须项 flyway.url=jdbc:mysql://&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;/&amp;lt;database&amp;gt; flyway.user=test flyway.password=test # 升级数据库脚本位置 flyway.locations=filesystem:/opt/db/migration/ # 可选 # 用于非空数据库首次使用 flyway.baselineOnMigrate=true 使用 # 清空数据 ./flyway clean # 升级/迁移数据 ./flyway migrate 资源  Flyway官网 </content>
     </entry>
@@ -758,8 +849,10 @@ SET GLOBAL query_response_time_stats = &amp;#39;ON&amp;#39;; # 检查是否生�
         <content type="html"> 最近尝试用Go重写以前Python的一个工具,感觉一直工作于Hard模式,可是又不想轻易的放弃Golang的实践,因为遇到一些问题最终变成从入门到放弃.
 还好一周周坚持了下来,虽然遇到一个问题可能会解决多半天甚至一天多时间,还是有所学的.
 今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.
+
 敲重点 运行是一定打开 -race 命令行参数 该标记会打印产生读写冲突/数据竞争的错误及stacktrace, 避免到生产环境才发现问题.
 绝对是提早排查的利器, 也算Go的优势之一 :)
+其他应用: 该参数也可以加在test,build,run等命令, 由于生成带检测的build会消耗更多内存和CPU,建议生产环境不要部署或只部署其中一台节点.
 并发Map 默认的map是不支持并发读写的, 如果违法了后果很严重,主程序直接异常退出,通常会看到如下的错误:
  fatal error: concurrent map writes
  解决方式有三个:
@@ -778,6 +871,7 @@ SET GLOBAL query_response_time_stats = &amp;#39;ON&amp;#39;; # 检查是否生�
         <content type="html"> 经常会遇到系统中使用Message Queue/消息队列的情况, 与此类似的模型还有 pubsub/发布订阅模式(publisher/subscriber).
 这两种模型的实现也被看做 消息中间件/MOM(Message-Oriented Middleware),因为这种结构解耦了发送端和接收端,简化了架构.
 另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.
+
 现在有很多流行的开源实现, 对于消息有常用的三种标准:
  AMQP: Advanced Message Queuing Protocol STOMP: Streaming Text Oriented Messaging Protocol MQTT/ MQ Telemetry Transport: 轻量级协议,IoT标准  其他
  XMPP/Extensible Messaging and Presence Protocol: 基于XML的通讯协议  前两个基于HTTP, 后一个基于TCP/IP.
@@ -797,6 +891,7 @@ SET GLOBAL query_response_time_stats = &amp;#39;ON&amp;#39;; # 检查是否生�
           <tag>network</tag>
         </tags>
         <content type="html"> 好记性不如烂笔头, 网络基础知识备忘.
+
 OSI 7层模型 OSI/开放式系统互联通讯参考
  7: 应用层: HTTP,FTP,Telnet, SSH, SMTP, POP3 6: 表达层 5: 会话层 4: 传输层: TCP 3: 网络层: IP 2: 数据链路层: 以太网,WiFi,GPRS 1: 物理层 : 数据帧传输,包括网卡,集线器,主机适配器等  注: OSI参考模型不是一个标准,也没有提供实现方法,而且概念性框架.
 TCP/IP协议集 互联网基础协议, 可以被认为是简化版OSI模型
@@ -837,6 +932,7 @@ ip netns 管理Network Namespace ip link 管理layer2网络 ip addr 管理layer3
         </tags>
         <content type="html"> 最早注意到云原生这个概念是某次看文章说Kubernetes是作为CNCF(云原生计算基金会)的主要项目来开发的,该基金会属于Linux基金会旗下,还包括被熟知的prometheus,istio等开源项目, 似乎可以理解为Kubernetes生态系统.
 至此Kubernetes把微服务,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.
+
 云原生计算 提到云计算,现在主流的分类及代表是:
  IaaS/基础设施:AWS,OpenStack PaaS/平台: Heroku, Cloud Foundry SaaS/软件,应用:  从云计算的角度看, 云原生计算可被看做是最新发展阶段.云原生/Cloud Native的代表技术:
  容器 服务网格 微服务 不可变基础设施 声明式API  相比传统应用架构, 云原生具备的优势是:
@@ -861,9 +957,9 @@ ip netns 管理Network Namespace ip link 管理layer2网络 ip addr 管理layer3
 # 创建CA证书 openssl req -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days 365 -out ca.crt # 生成CSR openssl req -newkey rsa:4096 -nodes -sha256 -keyout yourdomain.com.key -out yourdomain.com.csr # 生成域名证书 penssl x509 -req -days 365 -in yourdomain.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out yourdomain.com.crt # 复制证书到服务器 ssh yourdomain.com &amp;#34;mkdir -p /data/cert&amp;#34; scp yourdomain.com*.pem yourdomain.com:/data/cert vi ~/harbor/harbor.cfg 编辑如下内容:
 hostname = yourdomain.com ui_url_protocol = https ssl_cert = /data/cert/yourdomain.com.crt ssl_cert_key = /data/cert/yourdomain.com.key 之后重启harbor服务:
 ./prepare docker-compose down docker-compose up -d 配置docker客户端进程https 解决错误:&amp;ldquo;Error response from daemon: Get v1/_ping: x509: certificate signed by unknown authority&amp;rdquo;
-cd /etc/docker/certs.d/yourdomain.com # 复制上一节生成的ca.crt到此 # 产生客户端证书 openssl genrsa -out client.key 4096 openssl req -new -x509 -text -key client.key -out client.cert 最终目录结构如下: tree /etc/docker/certs.d/yourdomain.com
+cd /etc/docker/certs.d/yourdomain.com # 复制上一节生成的ca.crt到此  # 产生客户端证书 openssl genrsa -out client.key 4096 openssl req -new -x509 -text -key client.key -out client.cert 最终目录结构如下: tree /etc/docker/certs.d/yourdomain.com
 . ├── ca.crt ├── client.cert └── client.key Ubuntu可能需要更新系统证书:
-cp youdomain.com.crt /usr/local/share/ca-certificates/ update-ca-certificates 为kubernetes节点设置验证 # 在其中一台节点登录私有仓库 docker login reg.server # 会更新$HOME/.docker/config.json # 复制到其他节点 nodes=$(kubectl get nodes -o jsonpath=&amp;#39;{range.items[*].metadata}{.name} {end}&amp;#39;) for n in $nodes; do scp ~/.docker/config.json root@$n:/root/.docker/config.json; done 备注 Web UI 默认用户名/密码: admin/Harbor12345
+cp youdomain.com.crt /usr/local/share/ca-certificates/ update-ca-certificates 为kubernetes节点设置验证 # 在其中一台节点登录私有仓库 docker login reg.server # 会更新$HOME/.docker/config.json  # 复制到其他节点 nodes=$(kubectl get nodes -o jsonpath=&amp;#39;{range.items[*].metadata}{.name} {end}&amp;#39;) for n in $nodes; do scp ~/.docker/config.json root@$n:/root/.docker/config.json; done 备注 Web UI 默认用户名/密码: admin/Harbor12345
 推送本地镜像到该仓库 docker login yourdomain.com docker tag myimg:mytag yourdomain.com/pt/myimg:mytag docker push yourdomain.com/myproject/myimg:mytag Docker Notary Harbor可以和Notary结合, Notary是一个内容数字签名服务,保证分发的内容/镜像可信.
 资源  官网 安装配置向导 https配置向导 k8s镜像文档  </content>
     </entry>
@@ -879,6 +975,7 @@ cp youdomain.com.crt /usr/local/share/ca-certificates/ update-ca-certificates �
         </tags>
         <content type="html"> 断断续续接触过加密通讯的一些场景, 随着近两年安全的普及,建站使用https也成为标配.
 这篇文章试图汇总下证书这块的知识提纲.
+
 基本概念 认证和鉴权 经常容易混淆的两个概念.
  Authentication: 验证你是你所说的人,即通讯中某端的身份识别机制. 通常用于访问控制 Authorization: 验证你被许可你正在试图做的事. 用于用户识别访问权限  客户端证书 通常用户客户端/用户身份识别.
 Client Certificate Authentication 用于相互的认证机制.
@@ -915,6 +1012,7 @@ openssl genrsa [-out filename] [-passout arg] [-des] [-des3] [-idea] [-f4] [-3] 
         <content type="html"> 作为一个Python粉,一直在各种场合使用这个语言,最近也在试图从Python2彻底切换到Python3.
 如果说缺点的话,也只有对它的性能有所抱怨(GIL),不能使用多核CPU.
 这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.
+
 注: 具体类别以个人喜好排序
 开发类 必备  Requests :用的最久和最多的库  Web开发  Flask :轻量级微框架 Django :全栈框架 Pyramid :想用却没太多实战  Flask相关  Flask-SQLAlchemy  REST服务  Eve: 基于Flask的灵活RESTful服务 Django REST framework Falcon: 高性能微服务框架  数据库  peewee : 轻量级ORM SQLAlchemy : 标配ORM  Driver/驱动  PyMySQL : 纯python实现的MySQL客户端 psycopg2: 最常用PostgreSQL客户端 asyncpg: 支持asyncio的PostgreSQL客户端 cx_Oracle: Oracle客户端  I/O 多线程  Curio : 协程库,aysncio的其他版本  功能增强  schedule: 类似cron的任务安排 ElastAlert : Elasticsearch提醒 Celery : 异步消息/任务队列 rq: 精简版任务队列,基于Redis  图像处理  Pillow  加密  cryptography  网络抓取  Scrapy/Portia web前端 pyspider  语言规范  YAPF : 格式化及规范 常用设计模式  客户端  Click: 命令行工具 PyInstaller : 安装打包 Kivy: 跨平台/手机产品原型设计  运维相关 生产部署  Gunicorn : WSGI HTTP Server  自动化/运维  Fabric : 轻量部署 Ansible Boto 3: AWS运维  监控  psutil:进程和系统监控 psdash: 基于psutil和flask的web端  测试 测试库/框架  pytest : 基础测试框架 Faker : 假数据生成 易出错输入字符集 PyAutoGUI: GUI自动化,操作鼠标/键盘  性能测试  Locust  数据科学 数据处理  pandas openpyxl : Excel操作 q: 在csv上运行SQL  可视化  Matplotlib : 最早接触的绘图库 Bokeh : 交互式可视化  工具  HTTPie : 增强易用版curl httpbin/官方站 : 请求/响应服务,学习HTTP协议
  cookiecutter:项目开发模板
@@ -936,9 +1034,12 @@ openssl genrsa [-out filename] [-passout arg] [-des] [-des3] [-idea] [-f4] [-3] 
 Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.
 在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.
 算了不折腾了,直接上Ansible吧.
+
 Fabric2 # 如果要同时安装两个版本,建议使用下面方式安装新版本 pip install fabric2 TODO
 Fabric v1 因为默认会安装新版v2,需要指定具体的版本号
-pip install Fabric==1.14.0 fab命令行  -u User : 以该用户远程登录 -R ROLES : 以该角色执行任务 -l : 列出可执行任务 -P : 切换为并行执行 -H : 用,分割的远程主机列表 -f PATH : 加载python模块  # 执行参数化任务 fab mytask:arg1,arg2 fabfile.py的写法 常用接口 from fabric.api import * run(&amp;#39;pwd&amp;#39;) # 忽略错误 with settings(warn_only=True): sudo(&amp;#39;cat /etc/passwd&amp;#39;) 文件操作 from fabric.operations import put,get from fabric.contrib import files put(&amp;#39;/home/xulz/test1.txt&amp;#39;, &amp;#39;/home/ubuntu/tmp/&amp;#39;) get(&amp;#39;/home/ubuntu/remote.txt&amp;#39;,&amp;#39;/home/xulz/tmp/&amp;#39;) files.append(&amp;#34;/home/xulz/test.txt&amp;#34;, &amp;#34;new line&amp;#34;) 灵活调用 from fabric.api import execute from fabric.api import env env.user = &amp;#39;xulz&amp;#39; env.roledefs = { &amp;#39;db&amp;#39;: { &amp;#39;hosts&amp;#39;: [&amp;#39;192.168.1.1&amp;#39;] } } @roles(&amp;#39;db&amp;#39;) def my_func(arg1,arg2) pass def my_task(): execute(my_func,arg1,arg2) 其他 from fabric.colors import red, green 资源  官网 </content>
+pip install Fabric==1.14.1 Q: 如果遇到错误: CTR mode needs counter parameter, not IV
+A: 需要升级paramiko库 &amp;gt; sudo pip install -U paramiko
+fab命令行  -u User : 以该用户远程登录 -R ROLES : 以该角色执行任务 -l : 列出可执行任务 -P : 切换为并行执行 -H : 用,分割的远程主机列表 -f PATH : 加载python模块  # 执行参数化任务 fab mytask:arg1,arg2 fabfile.py的写法 常用接口 from fabric.api import * run(&amp;#39;pwd&amp;#39;) # 忽略错误 with settings(warn_only=True): sudo(&amp;#39;cat /etc/passwd&amp;#39;) 文件操作 from fabric.operations import put,get from fabric.contrib import files put(&amp;#39;/home/xulz/test1.txt&amp;#39;, &amp;#39;/home/ubuntu/tmp/&amp;#39;) get(&amp;#39;/home/ubuntu/remote.txt&amp;#39;,&amp;#39;/home/xulz/tmp/&amp;#39;) files.append(&amp;#34;/home/xulz/test.txt&amp;#34;, &amp;#34;new line&amp;#34;) 灵活调用 from fabric.api import execute from fabric.api import env env.user = &amp;#39;xulz&amp;#39; env.roledefs = { &amp;#39;db&amp;#39;: { &amp;#39;hosts&amp;#39;: [&amp;#39;192.168.1.1&amp;#39;] } } @roles(&amp;#39;db&amp;#39;) def my_func(arg1,arg2) pass def my_task(): execute(my_func,arg1,arg2) 其他 from fabric.colors import red, green 资源  官网 </content>
     </entry>
     
      <entry>
@@ -952,12 +1053,13 @@ pip install Fabric==1.14.0 fab命令行  -u User : 以该用户远程登录 -R R
         </tags>
         <content type="html"> VI/VIM作为Nix环境的常用编辑器,有一些常用命令/用法.
 由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.
+
 命令行用法 # 以只读方式打开 vi -R filename # 从某行打开 vi &#43;linenumber file.py #修改当前路径 gvim -c &amp;#34;cd ~/workspace&amp;#34; 导航  切换Tab: Ngt (N是页码) 跳转到某行 ：NG或Ngg或:N (N代表行数)  常用快捷键    快捷键 说明     zz 移动当前行到屏幕中间   zt 移动当前行到屏幕顶部   zb 移动当前行到屏幕底部   Ctrl-y 上移屏幕一行, 只   Ctrl-e 下移屏幕一行   Ctrl-u 向上移动光标屏幕1/2页面   Ctrl-d 向上移动光标屏幕1/2页面   Ctrl-b 向前翻页,光标移到最后一行   Ctrl-f 向后翻页,光标移到第一行   Ctrl&#43;C 或 Ctrl&#43;[ Esc     &amp;lsquo;zt&amp;rsquo;, &amp;lsquo;zz&amp;rsquo; 和 &amp;lsquo;zb&amp;rsquo; 会保持当前光标位置, 但移动视野使其在屏幕的&amp;rsquo;t&amp;rsquo;op, &amp;lsquo;z&amp;rsquo; center, 或 &amp;lsquo;b&amp;rsquo;ottom 位置.
 &amp;lsquo;H&amp;rsquo;ighest, &amp;rsquo;M&amp;rsquo;iddle, &amp;lsquo;L&amp;rsquo;ower 屏幕行
  设置命令 # 执行命令 !! 等同于 :.! 或Ctrl-z &#43; fg #显示行号/自动缩进/忽略大小写/显示结束行和tab标识/显示换行符 :set number/ai/ic/list/wm # 关闭显示 set nu! :set nonumber #高亮搜索,关闭:noh;实时显示匹配 :set hlsearch incsearch 简写 set hls is # 忽略大小写 :set ignorecase smartcase # 用sudo保存只读文件(经常用到的一个命令) :w !sudo tee % # 设置终端为vi 模式 :set -o vi #切换工作路径 :cd ~/workspace # 将当前编辑文件第 # 行至第 # 行的內容保存到文件FILENAME :#,#w FILENAME # 读取 FILENAME文件 并将其插入到当前文件的光标位置后面 :r FILENAME # 重复上一次变更 . (period) 编辑内容 # 复制和粘贴 &amp;#34;ayy (内容存放在寄存器 &amp;#34;) / &amp;#34;ap 查找 搜索光标处单词 * *(向前) 或#(向后) * q/ 或/Ctrl-f (== find) * /之后用上下方向键
 替换  :[address]s/search-string/replacement-string[/g]
   address 为一个行号或者是用逗号隔开的两个行号。句点 (.) 代表当前行。可以使用标记或者搜索字符串表示行号。 %代表当前文件 search-string 可以是正则表达式或简单的字符串 g 表示进行全局替换 ( 针对一行可能执行多次替换 )  # 几个例子 # 替换当前文件所有并确认，global :%s/old/new/gc # 列出所有行 :g/old/p :g/old/s//new/gp # 匹配整个单词 :s/\&amp;lt;bar\&amp;gt;/baz 批量替换 :
-:args *.[ch] # 替换所有*.c和*.h文件 :argdo %s/&amp;lt;my_foo&amp;gt;/My_Foo/ge | update # e 忽略没有找到的错误 # update 写入修改 定制 设置字体  Linux: set guifont=DejaVu Sans Mono 10 Windows :set guifont=DejaVu Sans Mono:h10  Troubleshooting Q: 终端显示颜色失败 A: export TERM=xterm-256color
+:args *.[ch] # 替换所有*.c和*.h文件 :argdo %s/&amp;lt;my_foo&amp;gt;/My_Foo/ge | update # e 忽略没有找到的错误  # update 写入修改 定制 设置字体  Linux: set guifont=DejaVu Sans Mono 10 Windows :set guifont=DejaVu Sans Mono:h10  Troubleshooting Q: 终端显示颜色失败 A: export TERM=xterm-256color
 Q： Ubuntu下中文菜单不能显示 A： $sudo cp /usr/share/vim/vim72/lang/{menu_zh_cn.utf-8.vim,menu_zh_cn.utf8.vim}
 Q：使用Taglist(Ctag)报错  A： apt-get install exuberant-ctags 或在WIndows把ctags.exe放到vim根目录
 扩展学习 工具扩展  spf13-vim Maximum For Mac  学习资源  How I Boosted My Vim Cheat Sheet 入门图解 </content>
@@ -974,13 +1076,14 @@ Q：使用Taglist(Ctag)报错  A： apt-get install exuberant-ctags 或在WIndow
         </tags>
         <content type="html"> 最早接触Ansible是在15年,后来断断续续用过几次,因为更倾向于所写即所得的Fabric,后者也更轻量级.
 每次拾起来都要查文档,记录下常见用法.
+
 基础 ansible命令行用法 ansible  [options]
  -m ping : 使用模块 -a/&amp;ndash;args &amp;ldquo;&amp;hellip;&amp;rdquo;: 模块参数 -u xulz : 切换远程连接用户 -b/&amp;ndash;become : 等同于之前的sudo  # 复制本地文件到远程 ansible all -m copy -a &amp;#39;src=./README.md dest=/tmp&amp;#39; ansible-console 交互式shell
 # 列出hosts list # 切换分组 cd groupA cd db* 配置 配置选项 # ansible-config命令查看当前配置 ansible-config view 以下列顺序查找:
  ANSIBLE_CONFIG 环境变量 当前路径的ansible.cfg 文件 ~/.ansible.cfg 系统配置 /etc/ansible/ansible.cfg (默认)  Ansible Configuration Settings
 服务器信息配置  /etc/ansible/hosts (类似ini格式:以;作为注释,[header]作为分组) inventory文件  注: 可以使用正则匹配指定主机
 Working with Inventory
-Playbook ansible-palybook playbook.yml # 运行adhoc命令 ansible boston -i production -m command -a &amp;#39;/sbin/reboot&amp;#39; ### 用法 * -i/--inventory : 指定参考文件 ### 减少执行时间 * -l/--limit : 限定子集 * --tags/--skip-tags : 标签 * gather_facts: False ### 最佳实践 * 命名任务 * 涉及状态 * 以角色分组 ### ansible-galaxy用法 ```bash ansible-galaxy init -p playbooks/roles web 日志及调试 # 打印详细信息到控制台 ansible-playbook -vvv playbook.yaml # 查看一些信息 --list-hosts --list-tasks 配置日志文件
+Playbook ansible-palybook playbook.yml # 运行adhoc命令 ansible boston -i production -m command -a &amp;#39;/sbin/reboot&amp;#39; ### 用法 * -i/--inventory : 指定参考文件 ### 减少执行时间  * -l/--limit : 限定子集 * --tags/--skip-tags : 标签 * gather_facts: False ### 最佳实践 * 命名任务 * 涉及状态 * 以角色分组 ### ansible-galaxy用法  ```bash ansible-galaxy init -p playbooks/roles web 日志及调试 # 打印详细信息到控制台 ansible-playbook -vvv playbook.yaml # 查看一些信息 --list-hosts --list-tasks 配置日志文件
 [defaults] log_path=/path/to/logfile 其他工具 ansible-vault 加密secret
 ansible-doc 插件文档
 Rollback https://github.com/ansistrano/rollback
@@ -997,15 +1100,16 @@ Rollback https://github.com/ansistrano/rollback
           <tag>docker</tag><tag>ops</tag>
         </tags>
         <content type="html"> 实际使用中，docker的命令还是很多的，这里单列出来方便查询。
-常用命令 # 停止所有运行的containers docker stop $(docker ps -q) # 删除所有容器 docker rm $(docker ps -a -q) # 显示所有exited的容器ID docker ps -a -q -f status=exited # 显示标准输出日志 docker logs --follow &amp;lt;container&amp;gt; docker run docker run 选项详解
-# --rm 容器关闭时自动删除容器, 通常用于运行一次性命令 # -d, —detach 在后台运行(detached模式)并打印容器ID, 如果不指定,容器运行日志会打印到终端 # -p &amp;lt;hostPort&amp;gt;:&amp;lt;containerPort&amp;gt; 建立宿主机到容器的端口映射 # -v &amp;lt;hostDirectory/volume&amp;gt;:&amp;lt;containerDirectory&amp;gt; 建立宿主机到容器的文件目录映射, 如果不指定,则不能持久化保存变更  上面的docker volume如果不存在会自动创建, 也可以手动创建: docker volume create my-container-data
+
+常用命令 # 停止所有运行的containers docker stop $(docker ps -q) # 删除所有容器 docker rm $(docker ps -a -q) # 显示所有exited的容器ID docker ps -a -q -f status=exited # 显示标准输出日志 docker logs --follow &amp;lt;container&amp;gt; # 复制文件 docker cp foo.txt &amp;lt;container&amp;gt;:/ docker cp &amp;lt;container&amp;gt;:/foo.txt / docker run docker run 选项详解
+# --rm 容器关闭时自动删除容器, 通常用于运行一次性命令 # -d, —detach 在后台运行(detached模式)并打印容器ID, 如果不指定,容器运行日志会打印到终端 # -p &amp;lt;hostPort&amp;gt;:&amp;lt;containerPort&amp;gt; 建立宿主机到容器的端口映射  # -v &amp;lt;hostDirectory/volume&amp;gt;:&amp;lt;containerDirectory&amp;gt; 建立宿主机到容器的文件目录映射, 如果不指定,则不能持久化保存变更  上面的docker volume如果不存在会自动创建, 也可以手动创建: docker volume create my-container-data
  # 指定网络 docker run --net mynet123 --ip 172.18.0.22 -it ubuntu bash 从Host传递环境变量到Container 方式1: 使用-e 参数
 export LOCUST_MODE=&amp;#34;master&amp;#34;;printenv |grep LOADS_MODE; docker run -e LOCUST_MODE ... 方式2: 使用 &amp;ndash;env-file参数
-# 指定环境变量文件 docker run --env-file=runtime_env 排查/调试 # 查看容器日志, 包含已Exited docker logs -f &amp;lt;container id/name&amp;gt; # 或者直接登录容器 docker run xxx -ti bash # inspect 查看状态/LogPath docker inspect xxx docker network docker port &amp;lt;CONTAINER&amp;gt; docker network ls # 创建新的bridge 网络 docker network create net-demo docker network create --subnet=172.18.0.0/16 mynet123 docker volume/数据卷  docker volume ls  docker system  docker system prune : 删除不用的数据  -a, &amp;ndash;all : 删除所有不用镜像而不仅仅悬挂的 -f, &amp;ndash;force &amp;ndash;volumes : 不用的卷也删除 &amp;ndash;filter &amp;ldquo;key=value&amp;rdquo;  docker system info : 系统信息 docker system df : 磁盘占用  docker system prune -a # This will remove: # - all stopped containers # - all networks not used by at least one container # - all images without at least one container associated to them # - all build cache 制作镜像 Dockerfile 例子
+# 指定环境变量文件 docker run --env-file=runtime_env 排查/调试 # 查看容器日志, 包含已Exited docker logs -f &amp;lt;container id/name&amp;gt; # 或者直接登录容器 docker run xxx -ti bash # inspect 查看状态/LogPath docker inspect xxx docker network docker port &amp;lt;CONTAINER&amp;gt; docker network ls # 创建新的bridge 网络  docker network create net-demo docker network create --subnet=172.18.0.0/16 mynet123 docker volume/数据卷  docker volume ls  docker system  docker system prune : 删除不用的数据  -a, &amp;ndash;all : 删除所有不用镜像而不仅仅悬挂的 -f, &amp;ndash;force &amp;ndash;volumes : 不用的卷也删除 &amp;ndash;filter &amp;ldquo;key=value&amp;rdquo;  docker system info : 系统信息 docker system df : 磁盘占用  docker system prune -a # This will remove: # - all stopped containers # - all networks not used by at least one container # - all images without at least one container associated to them # - all build cache 制作镜像 Dockerfile 例子
 # 基础镜像 FROM python:3-onbuild # 对外暴露端口 EXPOSE 5000 # 执行命令 CMD: [&amp;#34;python&amp;#34;,&amp;#34;.app.py&amp;#34;]   # 其他 # 运行命令 RUN apt -yqq update  # 把应用添加到容器卷 ADD flask-app /opt/flask-app # 设置工作目录 WORKDIR /opt/flask-app docker build  -t &amp;lt;版本标签&amp;gt; PATH/URL/. : 通常使用的最后的.代表当前路径  # 构建及运行示例 docker build -t my-app . docker run -it --rm --name my-running-app my-app # 强制构建/不使用缓存 docker build --no-cache -t my-app -f Dockerfile . RUN/ENTRYPOINT/CMD的区别  RUN: 构建新镜像层 ENTRYPOINT: 总是需要执行命令时使用,使容器可执行 CMD: 需要提供默认命令,参数可以被覆盖  两种形式:shell和exec
  shell形式   : 会调用/bin/sh -c 并执行shell处理 exce形式  [&amp;ldquo;executable&amp;rdquo;,&amp;ldquo;param1&amp;rdquo;]  直接调用executable,例如 /bin/bash写作 ENTRYPOINT [&amp;ldquo;/bin/bash&amp;rdquo;,&amp;ldquo;-c&amp;rdquo;,&amp;ldquo;echo Hello, $name&amp;rdquo;] 更多用于 CMD和 ENTRYPOINT   传递参数 # 通常组合为 ENTRYPOINT [&amp;#34;/bin/bash&amp;#34;,&amp;#34;-c&amp;#34;,&amp;#34;param1&amp;#34;] CMD [&amp;#34;param2&amp;#34;,&amp;#34;param3&amp;#34;] 调试 # 对于直接EXITED的容器,可修改入口为 ENTRYPOINT [&amp;#34;/bin/bash&amp;#34;,&amp;#34;-c&amp;#34;,&amp;#34;sleep 1800&amp;#34;] # 容器启动后,再登录容器shell查看日志 镜像导出/导入 保存镜像 # 格式: docker save -o &amp;lt;path for generated tar file&amp;gt; &amp;lt;image name&amp;gt; # 压缩 docker save &amp;lt;docker image name&amp;gt; | gzip &amp;gt; &amp;lt;docker image name&amp;gt;.tar.gz 导入镜像 docker load &amp;lt; my-image.tar.gz # 注: 对于gzip, bzip2, xz的压缩文件,导入时会自动解压 docker-compose 定义及运行多个容器应用,Python写的一个工具
 PS. 原来docker-compose最初也是收购来的
-# 停止服务 docker-compose stop # 停止并删除container及数据卷 docker-compose down -v # 创建,启动并在后台运行container docker-compose up -d docker-compose.yml version:services:&amp;lt;service_name&amp;gt;:image:command:ports:volumes: 技巧  所有命令的Container ID可以仅使用前2/4位  扩展阅读  Docker RUN vs CMD vs ENTRYPOINT </content>
+# 停止服务 docker-compose stop # 停止并删除container及数据卷 docker-compose down -v # 创建,启动并在后台运行container docker-compose up -d docker-compose.yml version:services:&amp;lt;service_name&amp;gt;:image:command:ports:volumes: 技巧  所有命令的Container ID可以仅使用前2/4位  扩展阅读  Docker RUN vs CMD vs ENTRYPOINT 如何在已启动的容器开启新端口映射 </content>
     </entry>
     
      <entry>
@@ -1024,7 +1128,7 @@ centos7-java8 &amp;gt; centos7-java8-tomcat8
  基于操作系统的定制基础镜像 新用户创建准备 安装运行时 配置 应用层  定义.dockerignore 使用WORKDIR 注意顺序，依照构建过程（不变的在前） 缩减镜像尺寸 镜像的选择：
 Ubuntu &amp;gt; openjdk:8-alpine &amp;gt; tomcat:8.5-alpine
 常用清除命令
-# Alpine apk add --no-cache curl # CentOS yum clean all # Ubuntu rm -rf /var/lib/apt/lists/* 使用Health Check HEALTHCHECK CMD curl --fail http://localhost || exit 1 --interval=10s --timeout=10s --start-period=30s # 检查状态 docker ps response Java应用性能优化 JVM 应该指定 -Xmx
+# Alpine  apk add --no-cache curl # CentOS  yum clean all # Ubuntu  rm -rf /var/lib/apt/lists/* 使用Health Check HEALTHCHECK CMD curl --fail http://localhost || exit 1 --interval=10s --timeout=10s --start-period=30s # 检查状态  docker ps response Java应用性能优化 JVM 应该指定 -Xmx
 默认使用宿主机的25%或1G(取较小值)
 使用docker资源限制  &amp;ndash;memory &amp;ndash;memory-reservation &amp;ndash;cpus  如果CPU被限制，需要同时设置 -XX:ParallelGCThreads
 日志处理 不建议写到容器的RW层，应该发送到数据卷（NAS/SAN）或使用 Docker Log Drivers.
@@ -1051,10 +1155,10 @@ ctop
 主要步骤 1.下载Ubuntu 18.04（或16.04）镜像
 2.在Hyper-V创建新虚拟机，可以选择&amp;rdquo;Generation 2/2代。 创建完成之后，在虚拟机[设置]-[硬件]-[安全],把&amp;rdquo;Enable Secure Boot&amp;rdquo;前的勾选去掉。
 3.虚拟机安装完成之后，进入Ubuntu系统，在终端执行下列命令：
-sudo apt-get update sudo apt install git git clone https://github.com/jterry75/xrdp-init.git ~/xrdp-init cd ~/xrdp-init/ubuntu/18.04/ vi install.sh # 把以下两行注释掉并保存，如下 #rmmod vmw_vsock_vmci_transport #rmmod vsock # 运行 sudo chmod &#43;x install.sh sudo ./install.sh sudo reboot # 重启后，进入该目录再次运行 sudo ./install.sh # 之后关闭Ubuntu 4.以管理员打开powershell，运行
+sudo apt-get update sudo apt install git git clone https://github.com/jterry75/xrdp-init.git ~/xrdp-init cd ~/xrdp-init/ubuntu/18.04/ vi install.sh # 把以下两行注释掉并保存，如下 #rmmod vmw_vsock_vmci_transport #rmmod vsock  # 运行 sudo chmod &#43;x install.sh sudo ./install.sh sudo reboot # 重启后，进入该目录再次运行 sudo ./install.sh # 之后关闭Ubuntu 4.以管理员打开powershell，运行
 Set-VM -VMName Ubuntu -EnhancedSessionTransportType HvSocket 5.进入Ubuntu虚拟机，以默认的Xorg方式登录系统。
 如果登录失败，进入[Hyper-V Settings]-[User]-[Enhanced Session Mode]设置项，把&amp;rdquo;Use enhanced session mode&amp;rdquo;前的勾选去掉，重新登录Ubuntu并检查日志/var/log/xrdp.log最后的错误。如果是因为私钥读失败，可执行
-# 这里修改为你的用户名 sudo chown xulz /etc/xrdp/key.pem 参考  Windows 10: A guide how to run Ubuntu 18.04 in Enhanced Mode in Hyper-V   </content>
+# 这里修改为你的用户名  sudo chown xulz /etc/xrdp/key.pem 参考  Windows 10: A guide how to run Ubuntu 18.04 in Enhanced Mode in Hyper-V   </content>
     </entry>
     
      <entry>
@@ -1106,7 +1210,7 @@ Kubespray部署实战 说明 由于国内网络访问docker.com及镜像, kubern
 部署节点前提 cp inventory/sample inventory/mycluster 根据自己的节点信息修改inventory/mycluster/hosts.ini
 我的例子
 moon1 ansible_ssh_host=10.20.30.101  moon2 ansible_ssh_host=10.20.30.102  moon3 ansible_ssh_host=10.20.30.103 moon4 ansible_ssh_host=10.20.30.104  moon5 ansible_ssh_host=10.20.30.105  moon6 ansible_ssh_host=10.20.30.106  [kube-master] moon1 moon2 [etcd] moon1 moon2 moon3 [kube-node] moon2 moon3 moon4 moon5 moon6 [k8s-cluster:children] kube-master kube-node 国内镜像及加速的常见步骤 已包含于Ansible运行脚本.
-docker 阿里云镜像 # step 1: 安装必要的一些系统工具 sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common # step 2: 安装GPG证书 curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - # Step 3: 写入软件源信息 sudo add-apt-repository &amp;#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs)stable&amp;#34; # Step 4: 更新并安装 Docker-CE sudo apt-get -y update # 查找Docker-CE的版本: apt-cache madison docker-ce # 安装指定版本的Docker-CE sudo apt-get -y install docker-ce=17.03.2~ce-0~ubuntu-xenial docker镜像 阿里云加速 sudo mkdir -p /etc/docker sudo tee /etc/docker/daemon.json &amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39; { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://nz4awhki.mirror.aliyuncs.com&amp;#34;] } EOF # 重启以生效 sudo service docker restart kubernetes镜像 cat &amp;lt;&amp;lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main EOF gcr.io和quay.io镜像 将相关镜像URL里
+docker 阿里云镜像 # step 1: 安装必要的一些系统工具  sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common # step 2: 安装GPG证书  curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - # Step 3: 写入软件源信息  sudo add-apt-repository &amp;#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs)stable&amp;#34; # Step 4: 更新并安装 Docker-CE  sudo apt-get -y update # 查找Docker-CE的版本: apt-cache madison docker-ce  # 安装指定版本的Docker-CE  sudo apt-get -y install docker-ce=17.03.2~ce-0~ubuntu-xenial docker镜像 阿里云加速 sudo mkdir -p /etc/docker sudo tee /etc/docker/daemon.json &amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39; { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://nz4awhki.mirror.aliyuncs.com&amp;#34;] } EOF # 重启以生效  sudo service docker restart kubernetes镜像 cat &amp;lt;&amp;lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main EOF gcr.io和quay.io镜像 将相关镜像URL里
  gcr.io部分替换为gcr.mirrors.ustc.edu.cn quay.io部分替换为quay.mirrors.ustc.edu.cn  注1: 国内网络的问题也可以通过手动下载相关镜像并重新tag的方式解决. 注2: gcr.io的镜像列表见 官方网站
 运行Ansible Playbook命令 首次运行,建议:
  开启详情日志: -v
@@ -1117,7 +1221,7 @@ docker 阿里云镜像 # step 1: 安装必要的一些系统工具 sudo apt-get 
  运行kubectl xxx命令报错: The connection to the server localhost:8080 was refused - did you specify the right host or port? 解决方式: 添加 KUBECONFIG 环境变量
 vi ~/.bashrc export KUBECONFIG=/etc/kubernetes/admin.conf 在准备阶段报错: &amp;ldquo;assertion&amp;rdquo;: &amp;ldquo;ansible_swaptotal_mb == 0” 解决方式: 需要关闭swap
 sudo swapoff -a 运行kubectl 命令报错: Unable to connect to the server: x509: certificate is valid for &amp;hellip;, not &amp;hellip; 解决方式: 参考Invalid x509 certificate for kubernetes master
-如果升级cluster出错,建议逐个命令调试. sudo kubeadm upgrade plan # 参考下面的扩展阅读部分  登录Kubernetes Dashboard ### 创建管理员账号 kubectl create -f admin-role.yaml # 找到admin-token开头的token名字 kubectl -n kube-system get secret # 获取相应的token kubectl -n kube-system get secret admin-token-tmh9v -o jsonpath={.data.token}|base64 -d # 也可以直接运行 kubectl -n kube-system describe secret admin-token-tmh9v 获取token # 访问网址: https://&amp;lt;first_master&amp;gt;:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login # 选择以token方式登录, 输入上一步获取的token # 登录成功  admin-role.yaml的具体内容见这里
+如果升级cluster出错,建议逐个命令调试. sudo kubeadm upgrade plan # 参考下面的扩展阅读部分  登录Kubernetes Dashboard ### 创建管理员账号  kubectl create -f admin-role.yaml # 找到admin-token开头的token名字  kubectl -n kube-system get secret # 获取相应的token  kubectl -n kube-system get secret admin-token-tmh9v -o jsonpath={.data.token}|base64 -d # 也可以直接运行 kubectl -n kube-system describe secret admin-token-tmh9v 获取token  # 访问网址: https://&amp;lt;first_master&amp;gt;:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login  # 选择以token方式登录, 输入上一步获取的token  # 登录成功  admin-role.yaml的具体内容见这里
  关于Dashboard的说明 Dashborad支持token和kubeconfig两种认证登录方式，而kubeconfig的方式也需要token字段。
 默认命名空间有: default, kube-public, kube-system
 扩展阅读  Kubernetes The Hard Way: 例子基于GCP(Google Cloud Platform) kubespray官网 Kubernetes - Upgrading Cluster  </content>
@@ -1134,18 +1238,19 @@ sudo swapoff -a 运行kubectl 命令报错: Unable to connect to the server: x50
         </tags>
         <content type="html"> 本文侧重于入门Kubernetes时的本地开发测试环境搭建,及minikube的使用.
 尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.
+
 Mac单节点体验 先安装相应的几个工具:
  下载Minikube: minikube-darwin-amd64 kuberctl   后续命令:
 chmod &#43;x minikube-darwin-amd64 mv minikube-darwin-amd64 /usr/local/bin/minikube brew install kubectl 验证环境正确:
-注: 进行前需梯子,否则第一步下载localkube可能失败,产生如下错误 Error creating localkube asset from url: Error opening file asset: open /Users/xulz/.minikube/cache/localkube/localkube-v1.8.0: no such file or directory 进而导致之后Pod的状态一直是ContainerCreating# 确保本机已安装VirtualBox minikube start kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080 # 检查Pod是否已运行, 需要从ContainerCreating更新为Running kubectl get pod # 如果一直是ContainerCreating, 检查错误原因 kubectl describe pods # 页面应该可访问 curl $(minikube service hello-minikube --url) # 查看Dashboard minikube dashboard # 不用时清除 kubectl delete deployment hello-minikube minikube stop Ubuntu多节点 使用工具conjure-up搭建本地测试/开发环境, 本身基于juju部署工具.
+注: 进行前需梯子,否则第一步下载localkube可能失败,产生如下错误 Error creating localkube asset from url: Error opening file asset: open /Users/xulz/.minikube/cache/localkube/localkube-v1.8.0: no such file or directory 进而导致之后Pod的状态一直是ContainerCreating# 确保本机已安装VirtualBox  minikube start kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080 # 检查Pod是否已运行, 需要从ContainerCreating更新为Running  kubectl get pod # 如果一直是ContainerCreating, 检查错误原因  kubectl describe pods # 页面应该可访问  curl $(minikube service hello-minikube --url) # 查看Dashboard  minikube dashboard # 不用时清除  kubectl delete deployment hello-minikube minikube stop Ubuntu多节点 使用工具conjure-up搭建本地测试/开发环境, 本身基于juju部署工具.
 官方支持2种部署模式:
  kubernetes-core : (Staging环境) 1个Master节点&#43;1个Worker节点
  canonical-kubernetes: (生产环境) 2 masters, 3 workers, 3 etc nodes 及API Load Balance
 # 本地安装使用kubectl sudo snap install kubectl --classic # 准备阶段 sudo snap install conjure-up --classic sudo snap install lxd newgrp lxd sudo usermod -a -G lxd xulz /snap/bin/lxd init # 需要重启机器 sudo reboot # 禁用IPv6, conjure-up基于的juju暂时不支持 lxc network set lxdbr0 ipv6.address none  使用图像界面安装
-conjure-up kubernetes # 对于Docker的虚拟网络插件,这里选择默认的Flannel # 安装过程需开启梯子, gcr.io 不可访问  Kubernetes常用网络插件: flannel, calico, weave
+conjure-up kubernetes # 对于Docker的虚拟网络插件,这里选择默认的Flannel  # 安装过程需开启梯子, gcr.io 不可访问  Kubernetes常用网络插件: flannel, calico, weave
 这里的网络也称作SDN(软件定义网络), 通常基于CNI: Container Network Interface/容器网络接口
  juju常用命令 在查看运行环境及问题排查时常会用到的命令.
-juju controllers # Models 有2个是因为包含内置的管理模块default # 查看当前的 Controller, Model, User juju whoami # 显示当前应用状态 juju status # 远程登录到master # 日志存放在 /var/log/juju/ juju ssh kubernetes-master/0 # 获取当前controller名称 juju switch # 卸载停止controller juju destroy-controller &amp;lt;上一步得到的名字&amp;gt; --destroy-all-models # 单独卸载 model juju destroy-model &amp;lt;model_name&amp;gt; 资源  Running Kubernetes Locally via Minikube LXD入门介绍 k8s国内镜像介绍 gcr.io/google-containers Hub镜像   注: gcr(Google Container Registry)的URL结构是gcr.io/{PROJECT_ID}/{image}:tag,在国内不可访问，请使用以上镜像．
+juju controllers # Models 有2个是因为包含内置的管理模块default  # 查看当前的 Controller, Model, User  juju whoami # 显示当前应用状态  juju status # 远程登录到master  # 日志存放在 /var/log/juju/  juju ssh kubernetes-master/0 # 获取当前controller名称  juju switch # 卸载停止controller  juju destroy-controller &amp;lt;上一步得到的名字&amp;gt; --destroy-all-models # 单独卸载 model  juju destroy-model &amp;lt;model_name&amp;gt; 资源  Running Kubernetes Locally via Minikube LXD入门介绍 k8s国内镜像介绍 gcr.io/google-containers Hub镜像   注: gcr(Google Container Registry)的URL结构是gcr.io/{PROJECT_ID}/{image}:tag,在国内不可访问，请使用以上镜像．
 </content>
     </entry>
     
@@ -1162,7 +1267,9 @@ juju controllers # Models 有2个是因为包含内置的管理模块default # �
 说到Web网页自动化测试，事实上的唯一标准就是基于WebDriver/Selenium的实现了。
  说明: WebDriver 等同于Selenium2
  WebDriver 介绍 WebDriver 是一个跨浏览器的网站自动化测试API，主要包含以下几方面
- Browser Control： navigation, snapshotting, window control, override geolocation User input simulation： mouse, keyborad, file uploads, altert handling Web stuff： find/query elements, evaluate JavaScript, manipulate cookies   页面对象模型 页面对象模型是挺早就有的一个概念，现在也是实现的一个通用标准/最佳实践.
+ Browser Control： navigation, snapshotting, window control, override geolocation User input simulation： mouse, keyborad, file uploads, altert handling Web stuff： find/query elements, evaluate JavaScript, manipulate cookies
+
+  页面对象模型 页面对象模型是挺早就有的一个概念，现在也是实现的一个通用标准/最佳实践.
 他的思想是应该暴露你要交互的服务而不是具体实现，即你的测试方法不应该包含最底层的WebDriver API。
 如果某些复杂UI的层次结构只是用来组织UI，应该与page对象分离开。断言也应该与页面对象分离。
 同时“页面”对象并不意味着为每个页面建立一个这样的对象，比如页面有重要意义的元素可以独立为一个page对象。
@@ -1245,7 +1352,7 @@ pip install ipython ipython 如果在本地没有运行环境,又想打开一个
         <content type="html"> 今天看了Django开发者的一篇文章,关于web安全的子项目, 其中提到了一个用于检测用户密码是否安全的API.
 不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.
 对普通用户,提供两个主要的网页查询功能:
- 你邮件账户的密码是否已泄漏[1] 你正在使用的密码是否存在于泄漏数据库及被其他用户泄漏的次数[2]  通过API用Python检测的例子 import hashlib password = &amp;#39;swordfish&amp;#39; digest = hashlib.sha1(password.encode(&amp;#39;utf-8&amp;#39;)).hexdigest().upper() print(digest) # 4F57181DCAADE980555F2CE6755CA425F00658BE 然后访问 https://api.pwnedpasswords.com/range/4F571  (URL最后的参数是以上哈希摘要的前5位)
+ 你邮件账户的密码是否已泄漏[1] 你正在使用的密码是否存在于泄漏数据库及被其他用户泄漏的次数[2]   通过API用Python检测的例子 import hashlib password = &amp;#39;swordfish&amp;#39; digest = hashlib.sha1(password.encode(&amp;#39;utf-8&amp;#39;)).hexdigest().upper() print(digest) # 4F57181DCAADE980555F2CE6755CA425F00658BE 然后访问 https://api.pwnedpasswords.com/range/4F571  (URL最后的参数是以上哈希摘要的前5位)
 在响应内容中搜索以上哈希摘要的剩余字符 81DCAADE980555F2CE6755CA425F00658BE
 如果检索到,则冒号:后面的数字就是被泄漏的次数, 如果成百上千了,一定要修改你的密码.
 密码基本原则  密码分级: 根据是否涉及支付和隐私,最起码分成强密码和弱密码两类,强密码定期更新(每年). 如果是一次性注册网站, 使用固定的弱密码. 不要使用其他人也常用的弱密码或容易猜到的内容. 强密码定义: 8位及以上,包含大小写字母,数字和符号   注: 其实很早之前使用过2次这个网站,记录下让更多人知道.
@@ -1270,8 +1377,9 @@ WordPress 又回到WordPress,其实是为了让写博客这件事变得简单. �
 例如静态博客, 需要git版本管理,每次修改需要commit/push, Hexo需要generate/deploy(虽然这一步在Github Pages可以hook自动化),有时候还需要clean,而生成静态页面/rsync并不像Hugo那么智能高效.
 由于云主机几乎没有资源占用率,实际上新版WordPress有很大改进,在插件优化之后,安装前后资源占用几乎没有变化.
 之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.
+
 在Ubuntu16上安装可参考DO上的这篇文章.
-# 安装php7环境 sudo apt-get install php-fpm php-mysql sudo apt-get install php7.0-mysql php7.0-curl php7.0-gd php7.0-mbstring php7.0-mcrypt php7.0-xml php7.0-xmlrpc sudo systemctl restart php7.0-fpm # Nginx更新用户 vi /etc/nginx/nginx.conf user www-data; # 默认nginx # 调试用,查看当前php用户组 ps aux | grep php # 文件夹权限 sudo chown -R xulz:www-data /var/www/html sudo find /var/www/html -type d -exec chmod g&#43;s {} \; sudo chmod g&#43;w /var/www/html/wp-content sudo chmod -R g&#43;w /var/www/html/wp-content/themes sudo chmod -R g&#43;w /var/www/html/wp-content/plugins</content>
+# 安装php7环境  sudo apt-get install php-fpm php-mysql sudo apt-get install php7.0-mysql php7.0-curl php7.0-gd php7.0-mbstring php7.0-mcrypt php7.0-xml php7.0-xmlrpc sudo systemctl restart php7.0-fpm # Nginx更新用户  vi /etc/nginx/nginx.conf user www-data; # 默认nginx  # 调试用,查看当前php用户组  ps aux | grep php # 文件夹权限  sudo chown -R xulz:www-data /var/www/html sudo find /var/www/html -type d -exec chmod g&#43;s {} \; sudo chmod g&#43;w /var/www/html/wp-content sudo chmod -R g&#43;w /var/www/html/wp-content/themes sudo chmod -R g&#43;w /var/www/html/wp-content/plugins</content>
     </entry>
     
      <entry>
@@ -1284,6 +1392,7 @@ WordPress 又回到WordPress,其实是为了让写博客这件事变得简单. �
           
         </tags>
         <content type="html"> 这里主要记录Linux系统的默认shell Bash用法.
+
 快捷键 当前命令编辑 Ctrl &#43; A : 光标移到开头
 Ctrl &#43; E : 光标移到结尾
 Ctrl &#43; U : 删除整行
@@ -1314,6 +1423,7 @@ Bash 脚本 # 调试 set -x # 出错后退出 set -e 常用变量 # 显示当前
           
         </tags>
         <content type="html"> Linux的文件检索或者日志文件关键字搜索应该是很常用的工作场景, 这里汇总常见的命令用法.
+
 find # 只查找特定文件 find . -type f -name &amp;#39;*.py&amp;#39; # 只查找特定文件 find . -type f -name &amp;#39;*.py&amp;#39; # 在所有目录查找特定文件名 find / -type f -name httpd.conf # 忽略大小写 find . -iname # 忽略目录 find / -xdev -type f -size &#43;100M find / -size &#43;100M -not -path &amp;#39;/proc/*&amp;#39; 查找大文件 find . -type f -size &#43;100M -exec ls -lh {} \; | awk &amp;#39;{ print $8 &amp;#34;: &amp;#34; $5 }&amp;#39; # 支持文件名含空格 find $1 -type f -exec stat --format &amp;#39;%Y :%y %n&amp;#39; {} \; | sort -nr | cut -d: -f2- | head # 执行更快 find $1 -type f | xargs stat --format &amp;#39;%Y :%y %n&amp;#39; | sort -nr | cut -d: -f2- | head # 最常用  统计代码行数 find . -name ‘.py’ | xargs wc -l (find ./ -name &amp;#39;.py&amp;#39; -print0 | xargs -0 cat)|wc -l # 注: -print0 | xargs -0 == -X 规避特殊字符 grep/egrep  grep [OPTIONS] PATTERN [FILE&amp;hellip;] grep [OPTIONS] &amp;ldquo;text string to search” directory-path
  -w # 匹配单词 -i # 忽略大小写 -color -R, -r #recursively, 递归的查找子文件夹 -n # 显示行号 -a, --text # 把二进制文件当作text处理 --exclude: --exclude=*.o --include: --include=*.{c,h} # 只检索匹配的文件 --exclude-dir: --exclude-dir={dir1,dir2,*.dst} --include-dir: -o # 只显示匹配行 -l # 只显示匹配文件名 | # 匹配多个 显示上下文 -B num # 显示匹配前多少行 -A num # 显示匹配后多少行 # 示例 grep -B 3 -A 2 foo README.txt # 如果显示相同行的上下文,可使用 -C num # 或者 -n 查找某时间区间 grep &amp;#34;31/Mar/2002:19:3[1-5]&amp;#34; logfile egrep &amp;#39;^[^ ]&#43; (0[89]|1[0-9]|2[012]):&amp;#39; # awk的方式 awk -v from=&amp;#34;12:52:33&amp;#34; -v to &amp;#34;12:59:33&amp;#34; &amp;#39;$1&amp;gt;=from &amp;amp;&amp;amp; $1&amp;lt;=to&amp;#39; foo.log awk &amp;#39;$0 &amp;gt;= &amp;#34;13/05/13 07:50&amp;#34; &amp;amp;&amp;amp; $0 &amp;lt;= &amp;#34;13/05/23 01:58&amp;#34;&amp;#39; # sed的方式 sed -rne &amp;#39;/&amp;lt;timestamp&amp;gt;/,/&amp;lt;timestamp&amp;gt;/ p&amp;#39; &amp;lt;file&amp;gt; # 示例 sed -n &amp;#39;/Feb 23 13:55/,/Feb 23 14:00/p&amp;#39; /var/log/mail.log sed -n &amp;#39;/Feb 21 23:08:19/,/Feb 21 23:08:23/p&amp;#39; daemon.log awk/sed awk &amp;#39;NR&amp;gt;=10&amp;amp;&amp;amp;NR&amp;lt;=20&amp;#39; in.log &amp;gt; out.log sed -n &amp;#39;100,1000 p&amp;#39; in.log &amp;gt; out.log sed  sed -i &amp;rsquo;s/foo/bar/gI&amp;rsquo; hello.txt
   -i 直接替换原文 -i.bak 同时保存备份 s 替换 / 分割符，也常用&#43;代替 g 全局替换而不是第一项 I 不区分大小写  sort/uniq/cut/tr sort  -n 以数字而非字母排序 -h 更可读的方式显示 -r 倒序排列 -k 5 第五列 -t, &amp;ndash;field-separator=SEP # 指定分隔符 -s, &amp;ndash;stable # 稳定排序,用于多列排序  uniq  -u 只显示唯一行 -d 只显示重复行 -c 显示重复次数  cut  -d&amp;rsquo;:&amp;rsquo; 以冒号为分隔符,默认分隔符为tab -f1-4 选取1~4列  tr 转换/替换/删除字符 tr -d &amp;#39;input-characters&amp;#39; # 删除字符 tr -s &amp;#39;\n&amp;#39; # 把重复字符压缩为一个,s代表squeeze tr &amp;#34;[:lower:]&amp;#34; &amp;#34;[:upper:]&amp;#34; &amp;lt; filename # 转换大小写 tr -cd &amp;#34;[:print:]&amp;#34; &amp;lt; filename # 取消非打印字符, c代表complement 扩展 xargs  xargs [options] [command] 构造参数列表然后执行. 将标准输入或管道转换为命令行的参数,如果省略command则默认使用echo. 通常用作替代find的-exec参数,因为xargs如果出错不会停止执行.
@@ -1333,6 +1443,7 @@ find # 只查找特定文件 find . -type f -name &amp;#39;*.py&amp;#39; # 只�
         <content type="html"> 单元测试最初流行是从JUnit,而他的发明者Kent Beck大神的经典名作&amp;lt;测试驱动开发&amp;gt;这本小书却引领了TDD的风潮,产生了xUnit各个语言系列.
 初次接触pytest,感觉不像个xUnit,因为既看不到对TestCase的继承,也找不到Setup/Teardown这些建立/销毁函数.当然这些基本功能肯定是支持的.
 pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.
+
 py.test 用法 pytest提供丰富的命令行参数.
 pytest -h # 其他用法 -q, --quiet -s --capture=no --cache-show --cache-clear 下面以测试过程为序,展开各过程主要用法.
 配置 pytest配置文件: pytest.ini|tox.ini|setup.cfg
@@ -1370,6 +1481,7 @@ fixture的用法 @pytest.fixture()
           
         </tags>
         <content type="html"> Linux系統命令, 完成一些常見任務.
+
 常用命令使用帮助 用示例方式的简化版man手册, tldr
 sudo npm install -g tldr 用户管理 # 添加用户 sudo useradd -m xulz sudo passwd xulz sudo权限 # 创建sudo组用户 useradd -aG sudo xulz # 添加到sudo gpasswd -a xulz sudo # Ubuntu gpasswd -a xulz wheel # CentOS # sudo免密码输入 echo &amp;#34;xulz ALL=(ALL) NOPASSWD:ALL&amp;#34; | sudo tee /etc/sudoers.d/nopass  更改UID(user)和GID(group) usermod -u 2001 xulz groupmod -g 2001 xulz # 注: 以上命令仅修改home目录,其他目录需手动执行 文件管理 # 创建HOME目录 mkhomedir_helper xulz # 输出全路径 readlink -f myfile # 创建软链接 # f 代表重写原链接 # T 代表把链接当做普通文件 ln -sfT path/to/file path/to/symlink 文件内容浏览 less head tail tail -f &amp;lt;file_name&amp;gt; 权限 chown chmod 删除除某文件外的所有文件 # 如果要删除文件夹,更新为 -type d -r find . ! -name &amp;#39;file.txt&amp;#39; -type f -exec rm -f {} &#43; # 或者 # enable extglob shopt -s extglob rm -rf -- !(file.txt) mc 目录浏览和文件管理 # 类似 total command Server必备 同步系统时间 # CentOS yum install ntp systemctl enable ntpd.service # CentOS 7.x # chkconfig ntpd on # CentOS 6.x ntpdate pool.ntp.org # Ubuntu apt install ntp service ntp restart 进程管理 nohup 不挂断地运行命令。
 运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。
@@ -1388,19 +1500,20 @@ sudo npm install -g tldr 用户管理 # 添加用户 sudo useradd -m xulz sudo p
           <tag>linux</tag>
         </tags>
         <content type="html"> Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.
+
 性能基本调优 通常涉及到/etc/sysctl.conf和/etc/security/limits.conf配置文件的修改.
 也可使用命令修改,使用sysctl -p 立即生效.
 内核参数设置 sysctl命令可以用来实时的读取/修改内核参数
-# 显示所有可用内核参数 sysctl -a # 加载/etc/sysctl.conf的参数 sysctl -p 提高文件描述符限制 soft limit类似于warning, hard limit是真实的最大值限制.
+# 显示所有可用内核参数  sysctl -a # 加载/etc/sysctl.conf的参数  sysctl -p 提高文件描述符限制 soft limit类似于warning, hard limit是真实的最大值限制.
 默认的1024偏小, 有两种方式修改:
-临时设置 # 查看当前值 ulimit -n # 临时增加 ulimit -n 65535 # 单个进程的限制为soft limit # hard limit应小于当前系统打开的文件描述符 # 相应增加nr_open echo 2000000 &amp;gt; /proc/sys/fs/nr_open # 系统级限制, 上限为nr_open echo 1000000 &amp;gt; /proc/sys/fs/file-max SystemD服务设置 在CentOS7使用SystemD启动的服务不同于CentOS6, 对/etc/security/limits.conf的设置不会生效.
+临时设置 # 查看当前值  ulimit -n # 临时增加  ulimit -n 65535 # 单个进程的限制为soft limit  # hard limit应小于当前系统打开的文件描述符  # 相应增加nr_open  echo 2000000 &amp;gt; /proc/sys/fs/nr_open # 系统级限制, 上限为nr_open  echo 1000000 &amp;gt; /proc/sys/fs/file-max SystemD服务设置 在CentOS7使用SystemD启动的服务不同于CentOS6, 对/etc/security/limits.conf的设置不会生效.
 需要修改/etc/systemd/system.conf或/etc/systemd/system.conf.d/tomcat.conf.
 # 对应下面几项 DefaultLimitCORE=infinity DefaultLimitNOFILE=102400 DefaultLimitNPROC=102400 常用的命令:
 # 查看当前进程的限制 cat /proc/$(pgrep java)/limits # 查看当前进程句柄数 lsof -p $(pgrep java)|wc -l ## 或者使用 ls /proc/$(pgrep java)/fd|wc -l 永久设置 修改 /etc/security/limits.conf,重启以生效.
-* soft nofile 65535 * hard nofile 65535 root soft nofile 65535 root hard nofile 65535 # 系统级内核句柄限制 fs.file-max = 1000000 查看当前描述符情况 # 列出打开/占用的文件描述符 cat /proc/sys/fs/file-nr # 三个值分别代表 占用/未使用/最大可用值 # 注: lsof只会列出进程占用 lsof | wc -l # 要得到线程占用,需要使用 ps -eLf # 查看某进程限制 cat /proc/[Process ID]/limits 增加可用端口数 默认28000, net.ipv4.ip_local_port_range
+* soft nofile 65535 * hard nofile 65535 root soft nofile 65535 root hard nofile 65535 # 系统级内核句柄限制 fs.file-max = 1000000 查看当前描述符情况 # 列出打开/占用的文件描述符  cat /proc/sys/fs/file-nr # 三个值分别代表 占用/未使用/最大可用值  # 注: lsof只会列出进程占用  lsof | wc -l # 要得到线程占用,需要使用  ps -eLf # 查看某进程限制  cat /proc/[Process ID]/limits 增加可用端口数 默认28000, net.ipv4.ip_local_port_range
 如果Nginx作代理,需要增加端口范围,否则会出现错误: Cannot assign requested address .
 IPv4端口可用数:端口号是16位无符号整数,即65535
-# 实时生效 echo 12000 64000 &amp;gt; /proc/sys/net/ipv4/ip_local_port_range # 永久生效 sysctl -w net.ipv4.ip_local_port_range=&amp;#34;12000 64000&amp;#34; 可选:最大线程数 一般不需要设置
+# 实时生效  echo 12000 64000 &amp;gt; /proc/sys/net/ipv4/ip_local_port_range # 永久生效  sysctl -w net.ipv4.ip_local_port_range=&amp;#34;12000 64000&amp;#34; 可选:最大线程数 一般不需要设置
 # 默认31299 echo 100000 &amp;gt; /proc/sys/kernel/threads-max 查看当前线程数:
  top, then hit H to view threads top -H htop  网络调优 通用网络参数 /etc/sysctl.conf # 系统网络设置 # 生效值取系统和下面TCP设置值的最大值 net.core.rmem_max = 16777216 net.core.wmem_max = 16777216 TCP/IP调优 Backlog Queue 最大连接数队列. 可选, 查看kernel日志决定是否需要调整
 net.core.somaxconn net.core.netdev_max_backlog = 300000 网络缓冲区大小 # TCP读取缓冲区 # 格式: 最小值/默认值/最大值 字节数 # cat /proc/sys/net/ipv4/tcp_rmem net.ipv4.tcp_rmem = 4096 87380 16777216 # 发送缓冲区 net.ipv4.tcp_wmem = 4096 65536 16777216 # TCP内存, 对应 low/pressure/high 页大小(4K) net.ipv4.tcp_mem = 786432 2097152 3145728 UDP调优 默认比较受限
@@ -1427,6 +1540,7 @@ TCP/UDP参数  Socket receive buffer size: Socket send and receive sizes are dyn
           
         </tags>
         <content type="html"> Nginx在部署服务时经常被用到, 大多时候是作为代理使用. 如果用户量比较大就涉及到一些调优, 本文做一些分类记录.
+
 以下部分主要基于两个主要配置文件:nginx.conf和conf.d/default.conf展开.
 Worker Processes # 默认为1, 应更新为一个CPU核心一个worker # 查看CPU核数 $grep ^processor /proc/cpuinfo | wc -l worker_processes auto; # 文件句柄数,默认跟随系统设置 worker_rlimit_nofile 100000; # 事件驱动部分 events { # 每个worker允许的连接数, 默认512 worker_connections 65536; use epoll; multi_accept on; } HTTP和TCP优化 http{ sendfile on; tcp_nopush on; tcp_nodelay on; } 文件访问优化 # 访问日志使用缓冲或关闭 # 如果日志文件路径包含变量，需要打开open_log_file_cache以提高性能 access_log buffer=size flush=time # 多使用缓存和压缩 # 但是图片不应该开启压缩 Keepalive Connections  client保活 upstream保活
 http { # 以下两项为client保活配置 # 默认100, 一个keep-alive服务的最大请求数,超出后关闭连接 keepalive_requests 102400; keepalive_timeout 65;
@@ -1447,6 +1561,7 @@ http { # 以下两项为client保活配置 # 默认100, 一个keep-alive服务�
 之前零散的看到分布式系统的一些文章,接下来总结下主要内容,也打算读几本书系统的学习下.
 今天先看看这些经典论文及衍生的开源系统.
 按时间顺序/影响力最大的应该就是谷歌的老三篇了,即 GFS &#43; MapReduce &#43; BigTable.
+
 论文列表  2003 Google File System/GFS 2004 Google MapReduce: Simplified Data Processing on Large Clusters 2006 Google The Bigtable &amp;ndash; A Distributed Storage System for Structured Data 2007 Amazon Dynamo 2010 Yahoo S4: distributed stream computing platform 2012 Google Spanner:Google&amp;rsquo;s Globally-Distributed Database 2012 Google F1 &amp;ndash; The Fault-Tolerant Distributed RDBMS Supporting Google&amp;rsquo;s Ad Business  对应的开源产品  GFS &#43; MapReduce &#43; BitTable : 对应Hadoop的HDFS和HBase S4(Simple Scalable Streaming System): Twitter开源的实时流计算Storm/继承者Heron Dynamo: Facebook开源的Cassandra, 之后出现了高性能C&#43;&#43;版本ScyllaDB (兼容Cassandra协议,KVM作者开发) SSTable &#43; LSM Tree(BigTable背后技术) : Google开源实现LevelDB和Facebook的分支RocksDB NoSQL(Not only SQL): 基于BigTable的实现, 主要有HBase/MongoDB/Cassandra NewSQL: 基于Spanner/F1的实现, 主要有 TiDB/CockroachDB   特点: Cassandra强调AP ，Hbase强调CP, Spanner 支持分布式事务
  其他概念  LSM: Log-Structured Merge SSTable: Sorted Strings Table paxos/raft : 一致性算法 HTAP: Hybrid transactional/analytical processing WAL: Write Ahead Logging MVCC(Multi-Version Concurrency Control): 多版本并发控制  资源 一些中文翻译和相关网页
  厦大中文版本 OpenOpen中文版本 </content>
@@ -1465,6 +1580,7 @@ http { # 以下两项为client保活配置 # 默认100, 一个keep-alive服务�
 NodeJS的是伴随Chrome的V8 Engine而出现,由于JS群众基础及高性能而快速发展,本质是它使用类似Nginx的事件循环模型可以处理极高的并发请求.异步IO及基于NodeJS的第三方库都提供的异步版本,使得较简单的编程模型带来极高的性能, JavaScipt这一应用于前端开发的古老语言焕发出新的生机.
 早期前端开发的JavaScript由于要处理浏览器版本兼容且语言本身问题,充斥着丑陋的代码. 伴随着JQuery及第三方框架/库的流行,JavaScript也变得优美起来.
 前端开发三剑客: HTML &#43; CSS &#43; JavaScript这些年随着新标准的发展也比我最初接触时强大易用多了, 一切事物还真得以发展的眼光看待,技术领域尤其容不得偏见.
+
 因为偶尔会忘记,下面记些简单的笔记:
 NodeJS Node是一个JS应用的平台,而不是框架. 尤其适用于数据密集型实时服务和大并发量/小数据块的长连接场景.
  匿名函数调用也被称为回调(a.k.a callback) steams是随时间进行的数据分发  Node版本 稳定版本: 6.x /最新版本: 9.x
@@ -1495,7 +1611,8 @@ JS语言增强  TypeScript CoffeeScript  资源  MDN学习资源  CSS CSS扩展�
         <content type="html"> 可能过于追求完美,使用Ghost博客两个多月,感觉功能还是过于简单,许多常用的功能用户早就提了Issue,官方却认为不是核心.
 比如常用的文章目录,归档页,搜索功能等. 文章目录折腾下来已经可用了,搜索折腾了一半,实在没时间调试放弃了.见新博客这篇记录文章.
 本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo&#43;NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.
-安装及配置 npm install hexo-cli -g hexo init blog cd blog npm install hexo server ## 产生静态文件，默认存放于 public hexo generate # 部署,我使用rsync的方式 hexo deploy 常用功能 主要参考./theme/next/_config.yml相应注释按步骤操作。
+
+安装及配置 npm install hexo-cli -g hexo init blog cd blog npm install hexo server ## 产生静态文件，默认存放于 public  hexo generate # 部署,我使用rsync的方式  hexo deploy 常用功能 主要参考./theme/next/_config.yml相应注释按步骤操作。
  RSS 调整主题scheme以获取不同的展示效果 增加搜索功能 使用rsync部署  // package.json { &amp;#34;name&amp;#34;: &amp;#34;hexo-site&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.0&amp;#34;, &amp;#34;private&amp;#34;: true, &amp;#34;hexo&amp;#34;: { &amp;#34;version&amp;#34;: &amp;#34;3.5.0&amp;#34; }, &amp;#34;dependencies&amp;#34;: { &amp;#34;hexo&amp;#34;: &amp;#34;^3.2.0&amp;#34;, &amp;#34;hexo-algolia&amp;#34;: &amp;#34;^1.2.4&amp;#34;, &amp;#34;hexo-deployer-rsync&amp;#34;: &amp;#34;^0.1.3&amp;#34;, &amp;#34;hexo-generator-archive&amp;#34;: &amp;#34;^0.1.4&amp;#34;, &amp;#34;hexo-generator-category&amp;#34;: &amp;#34;^0.1.3&amp;#34;, &amp;#34;hexo-generator-feed&amp;#34;: &amp;#34;^1.2.2&amp;#34;, &amp;#34;hexo-generator-index&amp;#34;: &amp;#34;^0.2.0&amp;#34;, &amp;#34;hexo-generator-tag&amp;#34;: &amp;#34;^0.2.0&amp;#34;, &amp;#34;hexo-migrator-ghost&amp;#34;: &amp;#34;^0.1.0&amp;#34;, &amp;#34;hexo-renderer-ejs&amp;#34;: &amp;#34;^0.3.0&amp;#34;, &amp;#34;hexo-renderer-marked&amp;#34;: &amp;#34;^0.3.0&amp;#34;, &amp;#34;hexo-renderer-stylus&amp;#34;: &amp;#34;^0.3.1&amp;#34;, &amp;#34;hexo-server&amp;#34;: &amp;#34;^0.2.0&amp;#34; } } 一些增强功能的展示 大部分功能只需要在配置中修改，非常易用。
 {% note success %}
 Success 说明文本
@@ -1521,7 +1638,8 @@ info 说明文本
         </tags>
         <content type="html"> Linux的强大之一是丰富的命令系统,尤其在调试服务端应用时.
 记录在这里方便查阅.
-资源统计 yum install sysstat mpstat -P ALL 1 pidstat 1 top -p &amp;lt;pid ## 内存,IO相关 free -m vmstat 1 iostat -xz 1 top/htop 名称解释
+
+资源统计 yum install sysstat mpstat -P ALL 1 pidstat 1 top -p &amp;lt;pid ## 内存,IO相关  free -m vmstat 1 iostat -xz 1 top/htop 名称解释
  RSS: Resident Set Size VmRSS: 进程除了swap外使用的物理内存大小 VmSwap: swap大小  watch # 每隔2秒更新一次内存变化 watch free -h sar sar是System Activity Reporter（系统活动情况报告）的缩写
 sar -n DEV 1 sar -n TCP,ETCP 1 vmstat vmstat是Virtual Meomory Statistics（虚拟内存统计）的缩写，可实时动态监视操作系统的虚拟内存、进程、CPU活动。
  cs: 代表 context switches in: 代表 interrupts  iostat 使用-x参数我们可以获得更多统计信息
@@ -1532,19 +1650,19 @@ iostat [-c|-d] [-k] [-t] [间隔描述] [检测次数]
 -c : 仅显示cpu的状态 -d : 仅显示存储设备的状态，不可以和-c一起使用 -k : 默认显示的是读入读出的block信息，用-k可以改成KB大小来显示 -t : 显示日期 -p device | ALL : device为某个设备或者某个分区，如果使用ALL，就表示要显示所有分区和设备的信息 CPU 占用情况包括四块内容 %user：显示user level (applications)时，CPU的占用情况。 %nice：显示user level在 nice priority 时，CPU 的占用情况。 %sys: 显示 system level (kernel)时，CPU 的占用情况。 %idle: 显示CPU 空闲时间所占比例。 磁盘使用报告分成以下几个部分： Device: 块设备的名字 tps: 该设备每秒 I/O 传输的次数。多个 I/O 请求可以组合为一个，每个 I/O 请求传输的字节数不同，因此可以将多个 I/O 请求合并为一个。 Blk\_read/s, Blk\_wrtn/s: 表示从该设备每秒读写的数据块数量。块的大小可以不同，如1024, 2048 或 4048 字节，这取决于 partition 的大小。 Blk\_read, Blk\_wrtn: 指示自从系统启动之后数据块读/写的合计数。也可以查看这几个文件/proc/stat，/proc/partitions，/proc/diskstats的内容。 mpstat mpstat是MultiProcessor Statistics的缩写，是实时系统监控工具。其报告与CPU的一些统计信息，这些信息存放在/proc/stat文件中。在多CPUs系统里，其不但能查看所有CPU的平均状况信息，而且能够查看特定CPU的信息。
 # 每隔2秒显示一次 mpstat 2 mpstat -P ALL mpstat -P 0 3 3 # 对第一块CPU，每隔3秒监控一次，重复3次。 关键字段解释： LOC :Local interrupt Timer
 CPU CPU 编号,all 那行是所有CPU的平均统计值。 %user 在监控的时间间隔内，用户级进程（运用程序）占用的CPU时间百分比。 %nice 在监控的时间间隔内，nice值为负的用户级进程所占用的CPU时间百分比。 %sys 在监控的时间间隔内，系统及进程（内核）占用的CPU使用率。该时间包括了系统处理软、硬中断所花的时间。 %iowait 在监控的时间间隔内，等待硬盘I/O的时间，CPU的闲置时间百分比。 %irq 在监控的时间间隔内,CPU服务硬中断的所占的时间百分比。 %soft 在监控的时间间隔内，CPU服务软中断的所占的时间百分比。 %idle 在监控的时间间隔内，CPU闲置时间所占用的时间百分比，不包括等待磁盘IO请求的时间。 其中最重要的字段是%idle,%iowait。如果%idle 说明CPU的负载不高。如果%iowait，说明存在I/O竞争。 也可以使用输出重定向保存mpstat对CPU的监控数据，用作CPU历史使用率分析。 si 软中断太高: cat /proc/interrupts uptime dmesg 内核日志  dmesg | tail
- 文件/进程类 ps # 查看用户线程数 ps -fLu xulz # 根据pid找到process ps -p &amp;lt;pid -o comm= # 运行队列 ps -eo stat,pid,user,command | egrep &amp;#34;^STAT|^D|^R&amp;#34; # D : Uninterruptible sleep (usually IO) # R : Running or runnable (on run queue) 进程检索/管理 # 显示进程树 pstree -p pgrep kill/pkill用法:
+ 文件/进程类 ps # 查看用户线程数 ps -fLu xulz # 根据pid找到process ps -p &amp;lt;pid -o comm= # 运行队列 ps -eo stat,pid,user,command | egrep &amp;#34;^STAT|^D|^R&amp;#34; # D : Uninterruptible sleep (usually IO) # R : Running or runnable (on run queue) 进程检索/管理 # 显示进程树  pstree -p pgrep kill/pkill用法:
 # 默认用SIGTERM (terminate)信号终止进程 kill &amp;lt;porcess_id # 列出可用(不带SIG前缀的)信号名 kill -l # 立即终止进程 kill -9|KILL &amp;lt;process_id # 根据进程名称(而不是id) pkill &amp;lt;process_name pkill -f &amp;#34;command_name&amp;#34; lsof 列出文件打开情况
 # 查看某进程打开连接 lsof -i -a -p `pidof firefox` # 或者 ss -nap | grep $(pidof firefox) # 查看端口占用 lsof -i :portNumber lsof -i :22 taskset set or retrieve a process&amp;rsquo;s CPU affinity
 # 显示当前进程的 affinity taskset -c -p 1162 # 设置进程的affinity taskset -c 0,1 -p 1162 taskset -c 1  proc Process information pseudo-filesystem
 man proc /proc/&amp;lt;pid/status /proc/&amp;lt;pid/statm #Memory valgrind 查内存泄漏
 网络类 # 显示所有打开连接 ss -l # 或者 netstat -tlpn netstat -anp # 或者 lsof -i # 更精确的方式显示打开的网络端口 nmap -sT -O localhost # 如果遇到未知服务打开端口: cat /etc/services | grep 834 网络连接监控ss socket stats
 ss -s ss -lp | grep 8080 netstat 常用选项:
- -a/&amp;ndash;all: 显示监听和非监听连接 -n: 显示IP  # 显示所有TCP netstat -nat #Windows netstat -aon | more # 显示建立的TCP连接 netstat -np | grep ESTABLISHED | wc -l netstat -nat | grep &amp;#39;ESTABLISHED&amp;#39; netstat -s |grep &amp;#39;connections established&amp;#39;  cURL 命令行文件传输工具.
+ -a/&amp;ndash;all: 显示监听和非监听连接 -n: 显示IP  # 显示所有TCP  netstat -nat #Windows  netstat -aon | more # 显示建立的TCP连接  netstat -np | grep ESTABLISHED | wc -l netstat -nat | grep &amp;#39;ESTABLISHED&amp;#39; netstat -s |grep &amp;#39;connections established&amp;#39;  cURL 命令行文件传输工具.
 常用选项:
 -d, --data 使用类型 application/x-www-form-urlencoded做POST -F, --form &amp;lt;name=content -x, --proxy 代理设置 -X, --request &amp;lt;command&amp;lt;/command 指定类型 -I, --head 只显示响应头，在响应体较大时很有用# 在内网查看外网IP curl ifconfig.me wget 域名解析 nslookup www.google.com dig xulizhao.com dnstracer dig &#43;trace xulizhao.com # 查找域名服务器 less /etc/resolv.conf nmcli device show &amp;lt;interfacename| grep IP4.DNS Windows从IP得到hostname: ping -a 10.10.10.10
 修改DNS ## Ubuntu vi /etc/network/interfaces dns-nameservers 8.8.8.8 # 重启服务 /etc/init.d/networking restart ## CentOS vi /etc/resolv.conf nameserver 8.8.8.8 网络调试traceroute/mtr mtr可以看做traceroute的加强版 显示数据包在IP网络经过的路由器的IP地址,一直达到默认或用参数指定的追踪限制（maximum_hops）才结束追踪. [Windows] tracert 响应格式: Hop RTT1 RTT2 RTT3 Domain Name [IP Address] 每个hop发送三个包, * 代表丢包 使用ICMP协议 (同ping); RTT: round trip time ; 延时突然增加并持续的增加通常意味着问题; 网络数据统计iftop r 代表receive
 # 某网口带宽占用 iftop -i eth1 # 子网数据流 iftop -F 192.168.1.0/24 网络模拟tc/netem 模拟网络延迟,丢包,重复,乱序等
-软件调试类  strace/dtruss: 系统调用跟踪工具 ltrace：查询库调用  辅助类  pv : 管道进度监控  扩展阅读  如何用curl做API接口测试 Linux 工具快速教程 ss命令详解 traceroute解释1/2 </content>
+软件调试类  strace/dtruss: 系统调用跟踪工具 ltrace：查询库调用  辅助类  pv : 管道进度监控  # 相当于cat # 监控某进程文件 pv -d &amp;lt;pid&amp;gt; # 管道命名 pv -cN gzip 扩展阅读  如何用curl做API接口测试 Linux 工具快速教程 ss命令详解 traceroute解释1/2 </content>
     </entry>
     
      <entry>
@@ -1557,6 +1675,7 @@ ss -s ss -lp | grep 8080 netstat 常用选项:
           
         </tags>
         <content type="html"> 最流行的内存数据库,Redis可以理解为Remote Dictionary Service.
+
 基本配置 # 默认端口 6379 # 配置文件 /etc/redis/redis.conf bind 0.0.0.0 # 运行远程访问,开发环境 redis-cli # 常用命令 ping # 检查连通性 -h &amp;lt;host&amp;gt; -p &amp;lt;port&amp;gt; shutdown flushall 清数据库 INFO SLAVEOF NO ONE / hostname port CONFIG SET protected-mode no 集群/高可用 Redis Cluster 提供自动分片(sharding)和部分高可用
 可用性：只要集群中大多数master可达、且失效的master至少有一个slave可达时，集群都可以继续提供服务
 # 两种安装方式 # Ruby脚本方式 yum install ruby -y yum install rubygems gem install redis # 自带脚本 cd utils/create-cluster/ # 编辑create-cluster文件,更新35行 HOSTS=&amp;#34;$HOSTS &amp;lt;YOUR_SERVER_IP&amp;gt;:$PORT&amp;#34; ./create-cluster start ./create-cluster create # 停止/卸载 ./create-cluster stop ./create-cluster clean ## 密码认证 config set masterauth p@ssw0rd config set requirepass p@ssw0rd config rewrite # 带参数 --masterauth p@ssw0rd --requirepass p@ssw0rd Redis Sentinel 提供高可用及以下功能:
@@ -1577,8 +1696,9 @@ ss -s ss -lp | grep 8080 netstat 常用选项:
           <tag>ops</tag><tag>mysql</tag><tag>database</tag>
         </tags>
         <content type="html"> 最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.
-安装及配置 # 安全化安装 sudo apt install mysql-server sudo mysql_secure_installation # 设置root密码, Percona /usr/bin/mysqladmin -u root password &amp;#39;new-password&amp;#39; # 配置文件 /etc/mysql/my.cnf # CentOS /etc/sysconfig/mysql # Ubuntu /etc/default/mysql 授权登录  GRANT ALL PRIVILEGES ON dbname.* TO &amp;lsquo;USERNAME&amp;rsquo;@&amp;lsquo;IP&amp;rsquo; IDENTIFIED BY &amp;lsquo;PASSWORD&amp;rsquo;;
-  grant与on之间是各种权限，例如:insert,select,update等 on之后是数据库名和表名,第一个_表示所有的数据库，第二个_表示所有的表 ＠后可以跟域名或IP地址(%代表所有地址)，identified by后面的是登录用的密码，可以省略，即缺省密码或者叫空密码  常用命令 CREATE USER &amp;#39;newuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;; select current_user(); -- 授予权限需要以 root@localhost 登录 -- 创建数据库并授权 CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci; GRANT ALL ON wordpress.* TO &amp;#39;wordpressuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;; FLUSH PRIVILEGES; -- 创建相同结构 CREATE TABLE new_table LIKE old_table; -- 同时复制数据 INSERT INTO new_table SELECT * FROM old_table; -- 显示所有索引 SHOW INDEX FROM yourtable; -- 字符集 CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`; show variables like &amp;#34;character_set_database&amp;#34;; show variables like &amp;#34;collation_database&amp;#34;; 导出/导入数据 # 备份数据 mysqldump -d -uroot -p mydb &amp;gt;mydb_schema.sql --no-create-info, -t # 只包含数据 --skip-triggers --no-data, -d # 导入数据 mysql -h host -u username -p password --default_character_set utf8 database &amp;lt; file.sql # Load-data高速导入数据 load data local infile /root/out.txt into table table1 fields terminated by &amp;#39;,’ (field1,field2) 重置丢失的root密码 sudo mysqld_safe --skip-grant-tables &amp;amp; mysql -u root use mysql; update user set password=PASSWORD(&amp;#34;newpass&amp;#34;) where User=&amp;#39;root&amp;#39;; flush privileges; mysql-python的使用  mysql-python 需要的mysql_config 包含在 libmysqlclient-dev 或 libmysqld-dev sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+
+安装及配置 # 安全化安装  sudo apt install mysql-server sudo mysql_secure_installation # 设置root密码, Percona  /usr/bin/mysqladmin -u root password &amp;#39;new-password&amp;#39; # 配置文件  /etc/mysql/my.cnf # CentOS  /etc/sysconfig/mysql # Ubuntu  /etc/default/mysql 授权登录  GRANT ALL PRIVILEGES ON dbname.* TO &amp;lsquo;USERNAME&amp;rsquo;@&amp;lsquo;IP&amp;rsquo; IDENTIFIED BY &amp;lsquo;PASSWORD&amp;rsquo;;
+  grant与on之间是各种权限，例如:insert,select,update等 on之后是数据库名和表名,第一个_表示所有的数据库，第二个_表示所有的表 ＠后可以跟域名或IP地址(%代表所有地址)，identified by后面的是登录用的密码，可以省略，即缺省密码或者叫空密码  常用命令 CREATE USER &amp;#39;newuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;; select current_user(); -- 授予权限需要以 root@localhost 登录 -- 创建数据库并授权 CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci; GRANT ALL ON wordpress.* TO &amp;#39;wordpressuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;; FLUSH PRIVILEGES; -- 创建相同结构 CREATE TABLE new_table LIKE old_table; -- 同时复制数据 INSERT INTO new_table SELECT * FROM old_table; -- 显示所有索引 SHOW INDEX FROM yourtable; -- 字符集 CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`; show variables like &amp;#34;character_set_database&amp;#34;; show variables like &amp;#34;collation_database&amp;#34;; 导出/导入数据 # 备份数据  mysqldump -d -uroot -p mydb &amp;gt;mydb_schema.sql --no-create-info, -t # 只包含数据  --skip-triggers --no-data, -d # 导入数据  mysql -h host -u username -p password --default_character_set utf8 database &amp;lt; file.sql # Load-data高速导入数据  load data local infile /root/out.txt into table table1 fields terminated by &amp;#39;,’ (field1,field2) 重置丢失的root密码 sudo mysqld_safe --skip-grant-tables &amp;amp; mysql -u root use mysql; update user set password=PASSWORD(&amp;#34;newpass&amp;#34;) where User=&amp;#39;root&amp;#39;; flush privileges; mysql-python的使用  mysql-python 需要的mysql_config 包含在 libmysqlclient-dev 或 libmysqld-dev sudo apt-get install mysql-server mysql-client libmysqlclient-dev
  性能 慢查询 -- 配置 show variables like &amp;#39;%slow_query%&amp;#39;; SET GLOBAL log_output = &amp;#39;FILE,TABLE&amp;#39;; select * from mysql.slow_log; -- 或者 mysql&amp;gt; SET GLOBAL slow_query_log = &amp;#39;ON&amp;#39;; mysql&amp;gt; SET GLOBAL slow_query_log_file = &amp;#39;/var/log/mysql/localhost-slow.log&amp;#39;; mysql&amp;gt; SET GLOBAL log_queries_not_using_indexes = &amp;#39;ON&amp;#39;; mysql&amp;gt; SET SESSION long_query_time = 1; -- 配置文件: long_query_time = 1 mysql&amp;gt; SET SESSION min_examined_row_limit = 100; 工具  自带工具: mysqldumpslow -t 5 -s at /var/log/mysql/localhost-slow.log 第三方：pt-query-digest  其他命令 select @@global.max_connections; show variables like ‘max_connections’; SELECT * FROM information_schema.STATISTICS WHERE TABLE_SCHEMA = DATABASE() 集群及高可用 Percona XtraDB Cluster 推荐至少3节点,每个节点包含全部数据的复制.主要作为读操作的扩展方案,写操作不会成倍scale.实现基于单实例并加入了写复制(同步). 限制:复制只支持InnoDB存储引擎, 系统表复制只支持DDL.写吞吐量由最差的节点决定.不支持Lock查询 用Connector/J实现负载均衡 Failover协议是“Multi-Host”链接模式中最基础的协议，“load balancing”、“replication”、“farbic”协议都基于Failover协议。 中间件 实现透明访问分布式数据库集群中的各个分库分表
  ProxySQL : High-performance MySQL proxy kingshard  一些工具  vitess: 工具集,youtube在用 orchestrator: MySQL replication topology management and HA mysql_utils:Pinterest MySQL Management Tools  资源  MySQL Yum Repository Percona Server for MySQL </content>
     </entry>
@@ -1594,9 +1714,10 @@ ss -s ss -lp | grep 8080 netstat 常用选项:
         </tags>
         <content type="html"> PostgreSQL是2017年流行度上升最快的数据库.
  吐槽:官方的管理工具pgAdmin真难用啊, 命令也没有MySQL易记.
+
  配置  端口: 5432 默认用户: postgres 配置默认目录: /var/lib/pgsql/   pg_hba.conf控制认证方式
  默认认证方式: ident,以当前登录的系统用户为数据库用户名连接 密码认证: md5 无密码: trust 使用Linux系统账号: peer(仅限于本地连接)  Ubuntu配置 配置文件位置： /etc/postgresql/10/main/pg_hba.conf
-常用命令 # 连接服务器 psql -h hostname database user # 创建数据库 sudo -u postgres createuser xulz -s sudo -u postgres createdb mydb &amp;gt; createuser -E --encrypted (store password) -s --superuser -P --pwprompt &amp;gt; createdb &amp;gt; dropdb -W -U postgres -h localhost your_db_name PSQL:
+常用命令 # 连接服务器  psql -h hostname database user # 创建数据库  sudo -u postgres createuser xulz -s sudo -u postgres createdb mydb &amp;gt; createuser -E --encrypted (store password) -s --superuser -P --pwprompt &amp;gt; createdb &amp;gt; dropdb -W -U postgres -h localhost your_db_name PSQL:
 -- 连接  sudo -u postgres psql -- 创建用户  CREATE USER xulz WITH PASSWORD &amp;#39;password&amp;#39;; -- 更改密码  ALTER USER &amp;#34;user_name&amp;#34; WITH PASSWORD &amp;#39;new_password&amp;#39;; -- 修改postgres密码  alter user postgres password &amp;#39;postgres&amp;#39;; #或者　\password postgres -- 用户授权  grant all privileges on database db1 to user1; -- 重命名数据库  ALTER DATABASE people RENAME TO &amp;#34;customers&amp;#34;; PSQL Command:
 \dt list tables \du list users \password user_name \dn list schemas \l list database \? \c[onnect] {[DBNAME|- USER|- HOST|- PORT|-] | conninfo} #Connection 关闭所有session连接 SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = &amp;#39;dbname&amp;#39; AND pid &amp;lt;&amp;gt; pg_backend_pid(); -- 避免关闭当前连接 REVOKE CONNECT ON DATABASE dbname FROM PUBLIC, username; -- Revoke CONNECT权限以避免创建新连接 备份和还原 这里主要指逻辑备份（而不是物理备份）。
 pg_dump的几个主要选项：
@@ -1608,7 +1729,7 @@ DO $$ DECLARE r RECORD; BEGIN -- 注意替换current_schema为要删除的schema
  数据库: pg_stat_database 表: pg_stat_all_tables tup : rows 查询 : pg_stat_statements 需要先enable plugin  编辑postgres.conf
 shared_preload_libraries = &amp;#39;pg_stat_statements&amp;#39; pg_stat_statements.track = all  表监控
 SELECT sum(idx_scan)/(sum(idx_scan) &#43; sum(seq_scan)) as idx_scan_ratio FROM pg_stat_all_tables WHERE schemaname=‘public&amp;#39;; SELECT relname,idx_scan::float/(idx_scan&#43;seq_scan&#43;1) as idx_scan_ratio FROM pg_stat_all_tables WHERE schemaname=&amp;#39;public&amp;#39; ORDER BY idx_scan_ratio ASC; Troubleshooting  死锁问题检查  SELECT * FROM pg_stat_activity WHERE datname = &amp;#39;deadlock database ID’; -- 找到waiting字段, procpid找到对应的列值 SELECT pg_cancel_backend (&amp;#39;死锁的procpid值&amp;#39;);  在Mac下使用pip安装psycopg2时报错:&amp;ldquo;pg_config executable not found&amp;rdquo;  解决: export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin
-与MySQL比较  更完整的事务支持 更快的列添加 更好的多核CPU支持  资源  查看表/对象大小 What PostgreSQL Tells You About Its Performance pgAdmin </content>
+与MySQL比较  更完整的事务支持 更快的列添加 更好的多核CPU支持  资源  查看表/对象大小 What PostgreSQL Tells You About Its Performance pgAdmin How To Install and Use PostgreSQL on Ubuntu 18.04 </content>
     </entry>
     
      <entry>
@@ -1621,16 +1742,17 @@ SELECT sum(idx_scan)/(sum(idx_scan) &#43; sum(seq_scan)) as idx_scan_ratio FROM 
           
         </tags>
         <content type="html"> CentOS作为一个开发环境用还是有些繁琐了,今天因为忘了iptables防火墙默认开启,还浪费了些时间找原因.
+
 更郁闷的是用lokkit这个工具新开通一个端口,几分钟之后之前的防火墙设置全没了.
 Docker啊,赶紧给团队统一起来吧,折腾环境太无聊了.
 防火墙概要 iptables  iptables是存放防火墙规则的数据库
- # 检查当前状态 iptables -nvL # 或者 service iptables status # 关闭防火墙,在非生产环境 service iptables save service iptables stop chkconfig iptables off # 开启防火墙 service iptables start chkconfig iptables on lokkit CentOS简化命令行工具
+ # 检查当前状态  iptables -nvL # 或者 service iptables status  # 关闭防火墙,在非生产环境  service iptables save service iptables stop chkconfig iptables off # 开启防火墙  service iptables start chkconfig iptables on lokkit CentOS简化命令行工具
 # 允许某端口 lokkit -p 3389:tcp ufw Ubuntu简化工具: Uncomplicated Firewall
-sudo ufw allow ssh/tcp sudo ufw allow 3389/tcp # 常用命令 sudo ufw logging on sudo ufw enable/disable sudo ufw status 其他工具  fail2ban: python工具,根据正则匹配日志错误并触发iptables动作  GUI工具
+sudo ufw allow ssh/tcp sudo ufw allow 3389/tcp # 常用命令  sudo ufw logging on sudo ufw enable/disable sudo ufw status 其他工具  fail2ban: python工具,根据正则匹配日志错误并触发iptables动作  GUI工具
  Gufw FirewallBuilder: 强大而复杂  iptables详解 iptables使用表结构管理防火墙规则, 底层实际上调用Linux内核的netfilter框架.
 几种表类型:
- Filter: 防火墙过滤 NAT: 地址转换 Mangle: 改变数据包IP头信息或增加标记 Raw: 用于连接追踪,保持连接会话关系/状态 Security: SELinux相关  常用命令 # 列出所有规则 -S # 删除所有规则 -F --flush # 清除计数 -Z --zero -L --list -A # 添加一条规则 -I #在指定位置插入一条规则,默认chain的第一条 # 显示行号 --line-numbers -m --match -p --protocol -i --in-interface 常用规则 # 允许本地连接 iptables -A INPUT -i lo -j ACCEPT # 开启常用服务端口 iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT # 或者 iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT # 允许在server发起建立的outgoing连接上返回数据. iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT# 其他 # 查询对外IP w # 之后可以限定来源IP iptables -A INPUT -p tcp -s YOUR_IP_ADDRESS -m tcp --dport 22 -j ACCEPT # 允许所有outgoing iptables -P OUTPUT ACCEPT # 拒绝其他incoming iptables -P INPUT DROP # 多个端口 iptables -A INPUT -p tcp -m multiport --dport 80,443 -j ACCEPT 规则的保存/备份/恢复 注: 用命令配置重启后会失去作用,需要先保存并重启防火墙服务
-#保存规则 # Ubuntu apt-get install iptables-persistent netfilter-persistent save # CentOS service iptables save # 默认保存到 /etc/sysconfig/iptables # 等价于 iptables-save | sudo tee /etc/sysconfig/iptables # CentOS7有可能会开启firewalld, 检查firewalld 运行状态 firewall-cmd --state# 导出规则 iptables-save &amp;gt; iptables-export #恢复规则 iptables-restore &amp;lt; ~/iptables-export 规则使用说明 Chain是一组规则的集合,默认内置有几个Chain,包含INPUT,FORWARD,OUTPUT.
+ Filter: 防火墙过滤 NAT: 地址转换 Mangle: 改变数据包IP头信息或增加标记 Raw: 用于连接追踪,保持连接会话关系/状态 Security: SELinux相关  常用命令 # 列出所有规则 -S # 删除所有规则 -F --flush # 清除计数 -Z --zero -L --list -A # 添加一条规则 -I #在指定位置插入一条规则,默认chain的第一条  # 显示行号 --line-numbers -m --match -p --protocol -i --in-interface 常用规则 # 允许本地连接 iptables -A INPUT -i lo -j ACCEPT # 开启常用服务端口 iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT # 或者 iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT # 允许在server发起建立的outgoing连接上返回数据. iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT# 其他 # 查询对外IP w # 之后可以限定来源IP iptables -A INPUT -p tcp -s YOUR_IP_ADDRESS -m tcp --dport 22 -j ACCEPT # 允许所有outgoing iptables -P OUTPUT ACCEPT # 拒绝其他incoming iptables -P INPUT DROP # 多个端口 iptables -A INPUT -p tcp -m multiport --dport 80,443 -j ACCEPT 规则的保存/备份/恢复 注: 用命令配置重启后会失去作用,需要先保存并重启防火墙服务
+#保存规则 # Ubuntu apt-get install iptables-persistent netfilter-persistent save # CentOS service iptables save # 默认保存到 /etc/sysconfig/iptables # 等价于 iptables-save | sudo tee /etc/sysconfig/iptables  # CentOS7有可能会开启firewalld, 检查firewalld 运行状态 firewall-cmd --state# 导出规则 iptables-save &amp;gt; iptables-export #恢复规则 iptables-restore &amp;lt; ~/iptables-export 规则使用说明 Chain是一组规则的集合,默认内置有几个Chain,包含INPUT,FORWARD,OUTPUT.
 每个Chain有一个默认的policy, ACCEPT/DROP/REJECT
 用户可以自定义新的Chain(必须通过jump到达),比如Docker启动容器时会默认创建几个.
 Chain可以理解为有顺序的一系列规则,由上到下挨个匹配,没有匹配则使用默认策略.
@@ -1654,11 +1776,12 @@ Chain可以理解为有顺序的一系列规则,由上到下挨个匹配,没有�
         </tags>
         <content type="html"> Tomcat是最常用的Java部署容器，在我最初接触Java时就是主流，特点就是稳定.
 与之类似还有个Jetty，用的不多就不涉及了.
+
 安装 Ubuntu 安装:
 apt install tomcat8 tomcat8-admin tomcat8-docs tomcat8-examples # 常用路径 /etc/tomcat8/server.xml /etc/default/tomcat8 /var/lib/tomcat8/webapps/ROOT/index.html  服務：
-# /etc/systemd/system/tomcat.service [Unit] Description=Apache Tomcat Web Application Container After=network.target [Service] Type=forking Environment=JAVA_HOME=/usr/java/default Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid Environment=CATALINA_HOME=/opt/tomcat Environment=CATALINA_BASE=/opt/tomcat Environment=&amp;#39;CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:&#43;UseParallelGC&amp;#39; Environment=&amp;#39;JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom&amp;#39; ExecStart=/opt/tomcat/bin/startup.sh ExecStop=/opt/tomcat/bin/shutdown.sh User=tomcat Group=tomcat UMask=0007 RestartSec=10 Restart=always [Install] WantedBy=multi-user.target CentOS 安装:
+# /etc/systemd/system/tomcat.service  [Unit] Description=Apache Tomcat Web Application Container After=network.target [Service] Type=forking Environment=JAVA_HOME=/usr/java/default Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid Environment=CATALINA_HOME=/opt/tomcat Environment=CATALINA_BASE=/opt/tomcat Environment=&amp;#39;CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:&#43;UseParallelGC&amp;#39; Environment=&amp;#39;JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom&amp;#39; ExecStart=/opt/tomcat/bin/startup.sh ExecStop=/opt/tomcat/bin/shutdown.sh User=tomcat Group=tomcat UMask=0007 RestartSec=10 Restart=always [Install] WantedBy=multi-user.target CentOS 安装:
 groupadd tomcat useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat cd /opt/ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.28/bin/apache-tomcat-8.5.28.tar.gz sudo tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1 chown -hR tomcat:tomcat tomcat 服务：
-# vi /etc/systemd/system/tomcat.service # Systemd unit file for tomcat [Unit] Description=Apache Tomcat Web Application Container After=syslog.target network.target [Service] Type=forking Environment=JAVA_HOME=/usr/java/default Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid Environment=CATALINA_HOME=/opt/tomcat Environment=CATALINA_BASE=/opt/tomcat Environment=&amp;#39;CATALINA_OPTS=-Xms512M -Xmx2048M -server&amp;#39; ExecStart=/opt/tomcat/bin/startup.sh ExecStop=/bin/kill -15 $MAINPID #User=tomcat #Group=tomcat #UMask=0007 RestartSec=10 Restart=always [Install] WantedBy=multi-user.target 服务管理：
+# vi /etc/systemd/system/tomcat.service  # Systemd unit file for tomcat [Unit] Description=Apache Tomcat Web Application Container After=syslog.target network.target [Service] Type=forking Environment=JAVA_HOME=/usr/java/default Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid Environment=CATALINA_HOME=/opt/tomcat Environment=CATALINA_BASE=/opt/tomcat Environment=&amp;#39;CATALINA_OPTS=-Xms512M -Xmx2048M -server&amp;#39; ExecStart=/opt/tomcat/bin/startup.sh ExecStop=/bin/kill -15 $MAINPID #User=tomcat #Group=tomcat #UMask=0007 RestartSec=10 Restart=always [Install] WantedBy=multi-user.target 服务管理：
 # 加载服务 systemctl daemon-reload # 启动 systemctl start tomcat # 开机启动 systemctl enable tomcat 配置 常用配置 以最常用的HTTP Connector为例, 最关键的几个参数是：
  maxThreads ： 能同时处理的请求数, 默认200有些偏小。 acceptCount ： 请求队列最大值,处理不过来就放到这个队列,队列满之后会拒绝请求. 默认100有些偏小. maxConnections ： 服务器接受并处理的最大连接数,超出后新连接会被阻塞.对于BIO连接器默认=maxThreads, NIO连接器默认10000.   Connector的实现主要是BIO,NIO,NIO2 其中BIO是大多数版本的默认实现，但是在最新版Tomcat8.5，已经不再支持BIO
  开启HTTPS 关于SSL/TLS,建议使用Nginx反向代理配置而不使用Tomcat.
@@ -1669,7 +1792,7 @@ Tomcat开启TLS后,性能会有所下降(CPU占用更高).官方推荐使用APR,
 JAVA_OPTS=&amp;#34; -Xmx6g -XX:&#43;PrintGC -XX:&#43;PrintGCDetails -XX:&#43;PrintHeapAtGC -Xloggc:/usr/local/tomcat/logs/gc.log -XX:&#43;HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/usr/local/tomcat/logs/ &amp;#34; 开启远程监控JMX CATALINA_OPTS=&amp;#34; -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=1616 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=10.120.1.99 &amp;#34; 开启目录列表 default servlet 负责处理静态资源和目录列表
 &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;listings&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;true&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; 压缩日志 # vi /etc/logrotate.d/tomcat /usr/local/tomcat/logs/catalina.out { copytruncate daily rotate 5 dateext compress missingok size 1024M } 调试：
  logrotate -d -f /etc/logrotate.d/tomcat
- -d = 开启调试模式 -f = 强制循环日志   其他 # 查看运行时参数 ps aux | grep catalina # 或者 jinfo # 调试debug set -x # 使用pid CATALINA_PID=&amp;#34;$CATALINA_BASE/bin/catalina.pid&amp;#34;  AJP( Apache JServ Protocol)的特点是作为Web Server(Apache)和Servlet Container(Tomcat/JBoss)之间的反向代理, 使用二进制协议传输,没有解析开销.
+ -d = 开启调试模式 -f = 强制循环日志   其他 # 查看运行时参数  ps aux | grep catalina # 或者  jinfo # 调试debug  set -x # 使用pid  CATALINA_PID=&amp;#34;$CATALINA_BASE/bin/catalina.pid&amp;#34;  AJP( Apache JServ Protocol)的特点是作为Web Server(Apache)和Servlet Container(Tomcat/JBoss)之间的反向代理, 使用二进制协议传输,没有解析开销.
  资源链接  Tocmat7 HTTP Connector Choosing Tomcat Connectors @2014 PPT Jetty How to rotate the Tomcat catalina log file </content>
     </entry>
     
@@ -1685,7 +1808,8 @@ JAVA_OPTS=&amp;#34; -Xmx6g -XX:&#43;PrintGC -XX:&#43;PrintGCDetails -XX:&#43;Pri
         <content type="html"> 这里的网络分析工具可以归为两大类:
  网络代理: 用的最多的是 Fiddler
  分析工具: 比较熟悉的是Wireshark
-  代理类 Fiddler 以Android客户端抓包为例,主要步骤为:
+  
+代理类 Fiddler 以Android客户端抓包为例,主要步骤为:
  [Tools]-[Options], 检查Connections和HTTPS选项,开启代理模式
  安卓浏览器访问 :8888, 下载并安装根证书
  设置安卓WIFI代理为以上地址和端口
@@ -1721,6 +1845,7 @@ adb exec-out &amp;#34;tcpdump -i any -U -w - 2&amp;gt;/dev/null&amp;#34; | wires
         </tags>
         <content type="html"> 2017很快就要过去了,也顺便整理下散落在印象笔记的一些片段.
 监控系统本来是运维的一个重要组成,因为工作需要也接触了一些开源的监控系统, 下面简要的聊聊我所知道的.
+
 接触监控系统历史 开始接触监控系统是在之前公司时通过运维的Nagios访问一些数据,这个古老的系统之前有很高的占有率, 能很好的提供系统级检测和告警, 感觉界面易用性差些.后来偶然看到Cacti这个网络监控的界面,感觉清爽了许多.
 第一个用起来的Munin也是同样基于RRDTool的,当时起码能满足系统和Java应用的性能监控需求.
 之后了解到新浪在用Zabbix这个大而全的方案,而且提供了不少扩展. 我对这个复杂的系统有些抵触,并没有使用.
@@ -1735,8 +1860,8 @@ InfluxData提供的开源方案 开源的几个产品简称TICK. 相对于付费
 我主要使用的Telegraf和InfluxDB, 后两者感觉易用性太差.
 展示这部分使用Grafana替代,它自带基本的告警.
  Telegraf : 性能数据的收集,插件支持丰富 InfluxDB: 核心的时序数据库,负责存储 Chronograf : 前端图形化展示 Kapacitor: 流数据处理,异常检测并触发报警  Telegraf备忘 # 安装 sudo dpkg -i telegraf_*_amd64.deb # Ubuntu sudo yum localinstall telegraf-*.rpm # CentOS # 常用插件 procstat/ netstat/ jolokia/ postgres/ statsd # 测试配置 telegraf -config /etc/telegraf/telegraf.conf -input-filter processes -test # 启动服务 sudo service telegraf start InfluxDB备忘 几个概念:
- measurement : 概念上对应SQL表,主索引是时间戳 tags : 对应表列,有索引 fields : 对应表列,无索引  # 查看日志 sudo journalctl -u influxdb.service # 命令行工具 influx ## 性能提高 # 走UDP协议 # insert走批量接口 # 如果内存够大,增加 LRU大小 InfluxQL 类SQL查询
-SHOW MEASUREMENTS LIST SERIES # 查询 select * from mem where host=&amp;#39;moon&amp;#39; select \* from /.\*/ order by time desc limit 3 SHOW TAG VALUES FROM &amp;#34;mem&amp;#34; WITH KEY = &amp;#34;host&amp;#34; # 删除 drop measurement mem delete from com\_load\_avg_one where time &amp;lt; now() -1h # 时间查询, 格式now() 或者2016-11-01 HH:MM:SS # 注: 操作符和时间之间需要 空格; 时间串需要使用 单引号 &amp;#34;; 如果不指定时间,默认为 00:00:00 # 正则匹配, 支持 measurements 和 tags /.\*abc.\* / # 包含字符串 /^abc/ # 以指定字符串为开头 /[ab]/ #包含 a 或 b # WHERE子语句, =~ 匹配, !~ 不匹配  Grafana # 启动服务 systemctl start grafana-server # 默认地址 http://127.0.0.1:3000/ # 默认用户名/密码:admin/admin # 配置文件 /etc/grafana/grafana.ini Java应用的监控  Tomcat大部分通过插件形式监控 Jolokia: Remote JMX with JSON over HTTP Servo : Netflix的一个Java库,JMX的方式 jmxtrans: 也是通过JMX的方式  其他方案  StatsD: 这已经成为事实上的通用协议,聚合功能很强大. 作为插件配合telegraf工作 bosun : StackExchnage出品,侧重于告警 Cabot NetData: 轻量级极简监控 monit: 轻量级监控  资源链接  Grafana/一些数据库Dashboards InfluxDB Prometheus : SoundCloud开源的Graphite的替代品/ Prometheus与其他系统比较 Open-Falcon Graphite Sensu Zabbix RRDtool / Cacti / Munin Nagios 大家族  Nagios / 扩展 nagios-herald 客户端AgentNSClient&#43;&#43; 分支/继任Icinga 2  </content>
+ measurement : 概念上对应SQL表,主索引是时间戳 tags : 对应表列,有索引 fields : 对应表列,无索引  # 查看日志  sudo journalctl -u influxdb.service # 命令行工具  influx ## 性能提高  # 走UDP协议  # insert走批量接口  # 如果内存够大,增加 LRU大小 InfluxQL 类SQL查询
+SHOW MEASUREMENTS LIST SERIES # 查询 select * from mem where host=&amp;#39;moon&amp;#39; select \* from /.\*/ order by time desc limit 3 SHOW TAG VALUES FROM &amp;#34;mem&amp;#34; WITH KEY = &amp;#34;host&amp;#34; # 删除 drop measurement mem delete from com\_load\_avg_one where time &amp;lt; now() -1h # 时间查询, 格式now() 或者2016-11-01 HH:MM:SS  # 注: 操作符和时间之间需要 空格; 时间串需要使用 单引号 &amp;#34;; 如果不指定时间,默认为 00:00:00  # 正则匹配, 支持 measurements 和 tags  /.\*abc.\* / # 包含字符串  /^abc/ # 以指定字符串为开头  /[ab]/ #包含 a 或 b  # WHERE子语句, =~ 匹配, !~ 不匹配   Grafana # 启动服务  systemctl start grafana-server # 默认地址 http://127.0.0.1:3000/  # 默认用户名/密码:admin/admin  # 配置文件 /etc/grafana/grafana.ini Java应用的监控  Tomcat大部分通过插件形式监控 Jolokia: Remote JMX with JSON over HTTP Servo : Netflix的一个Java库,JMX的方式 jmxtrans: 也是通过JMX的方式  其他方案  StatsD: 这已经成为事实上的通用协议,聚合功能很强大. 作为插件配合telegraf工作 bosun : StackExchnage出品,侧重于告警 Cabot NetData: 轻量级极简监控 monit: 轻量级监控  资源链接  Grafana/一些数据库Dashboards InfluxDB Prometheus : SoundCloud开源的Graphite的替代品/ Prometheus与其他系统比较 Open-Falcon Graphite Sensu Zabbix RRDtool / Cacti / Munin Nagios 大家族  Nagios / 扩展 nagios-herald 客户端AgentNSClient&#43;&#43; 分支/继任Icinga 2  </content>
     </entry>
     
      <entry>
@@ -1749,6 +1874,7 @@ SHOW MEASUREMENTS LIST SERIES # 查询 select * from mem where host=&amp;#39;moo
           <tag>kubernetes</tag><tag>cloud</tag><tag>architecture</tag>
         </tags>
         <content type="html"> 微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.
+
 从最早的&amp;rdquo;单体应用&amp;rdquo;到&amp;rdquo;SOA(面向服务的架构)&amp;ldquo;再到&amp;rdquo;微服务架构&amp;rdquo;,这些新东西都是大公司搞出来的最佳实践.
 软件界的真理是没有银弹,所以如果要上微服务,你就得在部署,测试和监控等其他地方做的更好(自动化),否则系统的复杂度伴随分布式系统反而上升了,得不偿失.
  不得不说ThoughtWorks搞敏捷,微服务这些新概念真的很六,但是中小公司得沉住气,晚点上车
@@ -1778,6 +1904,7 @@ SHOW MEASUREMENTS LIST SERIES # 查询 select * from mem where host=&amp;#39;moo
         <content type="html"> 有些工具真的很能提高效率, 比如oh-my-zsh这个扩展(zsh本身比bash更强大).
 纵观软件世界,一个软件系统能流行起来很大原因是其生态是不是够丰富和繁荣,比如容器docker,Spring框架.
 oh-my-zsh提供了丰富的插件及主题,是我的装机必备. 在这里记录下常用设置.
+
 安装及扩展 安装zsh和on-my-zsh sudo apt install zsh sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; 安装插件 # Ubuntu sudo apt install zsh-syntax-highlighting autojump # Mac brew install zsh-syntax-highlighting autojump 安装插件管理工具 antigen
 https://github.com/zsh-users/antigen # Ubuntu sudo apt-get install zsh-antigen # Mac brew install antigen 更友好的显示 使用powerline
 sudo apt install powerline # 或者用pip安装 pip install --user powerline-status 常用配置 根据偏好修改 ~/.zshrc
@@ -1796,8 +1923,10 @@ sudo apt install powerline # 或者用pip安装 pip install --user powerline-sta
           <tag>go</tag>
         </tags>
         <content type="html"> 接触Go有段时间了，感觉有几个学习资源很有帮助：
- 官方Go指南 : 边写边学, 最轻松简单的方式 系统的学习: 推荐书 ， 我是先看的中文电子版之后买的实体书。 官方文档&amp;rdquo;Effective Go/实效Go编程&amp;rdquo; : 理解Go的必读文档   自己的体会是如果只看不写，等写代码时会发现实际没记住多少。这些好资料有的地方需要多看几遍，再结合平时多写代码去理解。
-下面是一些Go语言学习笔记，作为学习的汇总。
+ 官方Go指南 : 边写边学, 最轻松简单的方式 系统的学习: 推荐书 ， 我是先看的中文电子版之后买的实体书。 官方文档&amp;rdquo;Effective Go/实效Go编程&amp;rdquo; : 理解Go的必读文档
+
+自己的体会是如果只看不写，等写代码时会发现实际没记住多少。这些好资料有的地方需要多看几遍，再结合平时多写代码去理解。
+  下面是一些Go语言学习笔记，作为学习的汇总。
 本地运行Go指南 go get github.com/Go-zh/tour/gotour gotour  如果以上命令失败,访问中文在线版本
  本地运行Go文档 go get golang.org/x/tools/cmd/godoc godoc -http=:6060 //之后用浏览器访问 http://127.0.0.1:6060/doc/ new和make函数  new返回指针,make返回值
  new(T) : 为类型T的新对象申请零值内存并返回内存地址,(不初始化内存)的好处是不需要初始化函数.
@@ -1816,7 +1945,9 @@ sudo apt install powerline # 或者用pip安装 pip install --user powerline-sta
           <tag>go</tag>
         </tags>
         <content type="html"> 用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.
-系统库模块  net : TCP连接 net.Conn net/http : HTTP处理 crypto/tls : SSL/TLS处理网络数据处理 encoding/json encoding/binary  JSON的要点  Go对象与JSON转换：  Marshal : 把对象编码为JSON数据格式 Unmarshal： 把JSON数据解码为Go 对象  streams形式的JSON数据读写(Reader/Writer)：  NewDecoder 从输入读取并编码 NewEncoder 编码并写入输出   type Foo struct { Bar string } body := new(bytes.Buffer) foo1 := Foo{&amp;#34;barTest&amp;#34;} json.NewEncoder(b).Encode(foo1) res, _ := http.Post(&amp;#34;https://httpbin.org/post&amp;#34;, &amp;#34;application/json; charset=utf-8&amp;#34;, body) foo2 := new(Foo) // new返回指针 json.NewDecoder(r.Body).Decode(foo2) foo3 := Foo{} // 或者 var foo3 Foo json.NewDecoder(r.Body).Decode(&amp;amp;foo3)  *RawMessage:指针,处理嵌套json  // 接受收到json嵌套格式的响应, {&amp;#34;name&amp;#34;:{&amp;#34;first&amp;#34;:&amp;#34;Michael&amp;#34;,&amp;#34;last&amp;#34;:&amp;#34;Xu&amp;#34;},&amp;#34;gender&amp;#34;:&amp;#34;male&amp;#34;}  //var dat map[string]*json.RawMessage  var dat map[string]interface{} json.Unmarshal(response, &amp;amp;dat) r := dat[&amp;#34;name&amp;#34;].(map[string]interface{}) firstName := r[&amp;#34;first&amp;#34;].(string) 代码示例 HTTP的例子 // 忽略HTTPS证书检查,因为本地用的自签名  tr := &amp;amp;http.Transport{TLSClientConfig: &amp;amp;tls.Config{InsecureSkipVerify: true}} // 自定义客户端  client := &amp;amp;http.Client{Transport: tr} payload := `{&amp;#34;username&amp;#34;:&amp;#34;xulz&amp;#34;}` // 创建请求,注:为简单期间忽略了错误检查  req, _ := http.NewRequest(&amp;#34;POST&amp;#34;, &amp;#34;https://xulizhao.com/api/login&amp;#34;, bytes.NewBuffer([]byte(payload))) // 定制头信息  req.Header.Set(&amp;#34;Content-Type&amp;#34;, &amp;#34;application/json&amp;#34;) resp, _ := client.Do(req) // 记得关闭连接  defer resp.Body.Close() // 把响应转换为对象  var ret LoginResponse if err := json.NewDecoder(resp.Body).Decode(&amp;amp;ret); err != nil { log.Warn(&amp;#34;error in json decode&amp;#34;, err) } TCP的例子 type LoginReq struct { Username string `json:&amp;#34;username&amp;#34;` Password int `json:&amp;#34;password` } // 读数据  func handleRead(conn net.Conn) []byte { buf := make([]byte, 1024) // 注: 返回读到的字节数  rLen, err := conn.Read(buf) checkError(err) r := buf[:rLen-1] // 假设前2个字节为实际数据大小  size := binary.BigEndian.Uint32(r[:2]) log.Debug(&amp;#34;Recv:&amp;#34;, string(r)) return r } // 写数据  func handleWrite(conn net.Conn, cmd []byte) { _, err := conn.Write(cmd) log.Debug(&amp;#34;Sent:&amp;#34;, string(cmd)) checkError(err) } func main() { // 客户端忽略TLS检查  conf := &amp;amp;tls.Config{InsecureSkipVerify: true} server := ServerHost &#43; &amp;#34;:&amp;#34; &#43; ServerPort // 建立TCP连接  conn, err := tls.Dial(&amp;#34;tcp&amp;#34;, server, conf) checkError(err) defer conn.Close() auth := LoginReq(&amp;#34;xulz&amp;#34;, &amp;#34;password&amp;#34;) handleWrite(conn, auth) handleRead(conn) } 扩展阅读  json的用法讲解 官方博客, 代码示例 Go socket编程实践 </content>
+
+系统库模块  net : TCP连接 net.Conn net/http : HTTP处理 crypto/tls : SSL/TLS处理网络数据处理 encoding/json encoding/binary  JSON的要点  Go对象与JSON转换：  Marshal : 把对象编码为JSON数据格式 Unmarshal： 把JSON数据解码为Go 对象  streams形式的JSON数据读写(Reader/Writer)：  NewDecoder 从输入读取并编码 NewEncoder 编码并写入输出   type Foo struct { Bar string } body := new(bytes.Buffer) foo1 := Foo{&amp;#34;barTest&amp;#34;} json.NewEncoder(b).Encode(foo1) res, _ := http.Post(&amp;#34;https://httpbin.org/post&amp;#34;, &amp;#34;application/json; charset=utf-8&amp;#34;, body) foo2 := new(Foo) // new返回指针 json.NewDecoder(r.Body).Decode(foo2) foo3 := Foo{} // 或者 var foo3 Foo json.NewDecoder(r.Body).Decode(&amp;amp;foo3)  *RawMessage:指针,处理嵌套json  // 接受收到json嵌套格式的响应, {&amp;#34;name&amp;#34;:{&amp;#34;first&amp;#34;:&amp;#34;Michael&amp;#34;,&amp;#34;last&amp;#34;:&amp;#34;Xu&amp;#34;},&amp;#34;gender&amp;#34;:&amp;#34;male&amp;#34;}  //var dat map[string]*json.RawMessage  var dat map[string]interface{} json.Unmarshal(response, &amp;amp;dat) r := dat[&amp;#34;name&amp;#34;].(map[string]interface{}) firstName := r[&amp;#34;first&amp;#34;].(string) 代码示例 HTTP的例子 // 忽略HTTPS证书检查,因为本地用的自签名  tr := &amp;amp;http.Transport{TLSClientConfig: &amp;amp;tls.Config{InsecureSkipVerify: true}} // 自定义客户端  client := &amp;amp;http.Client{Transport: tr} payload := `{&amp;#34;username&amp;#34;:&amp;#34;xulz&amp;#34;}` // 创建请求,注:为简单期间忽略了错误检查  req, _ := http.NewRequest(&amp;#34;POST&amp;#34;, &amp;#34;https://xulizhao.com/api/login&amp;#34;, bytes.NewBuffer([]byte(payload))) // 定制头信息  req.Header.Set(&amp;#34;Content-Type&amp;#34;, &amp;#34;application/json&amp;#34;) resp, _ := client.Do(req) // 记得关闭连接  defer resp.Body.Close() // 把响应转换为对象  var ret LoginResponse if err := json.NewDecoder(resp.Body).Decode(&amp;amp;ret); err != nil { log.Warn(&amp;#34;error in json decode&amp;#34;, err) } TCP的例子 type LoginReq struct { Username string `json:&amp;#34;username&amp;#34;` Password int `json:&amp;#34;password` } // 读数据  func handleRead(conn net.Conn) []byte { buf := make([]byte, 1024) // 注: 返回读到的字节数  rLen, err := conn.Read(buf) checkError(err) r := buf[:rLen-1] // 假设前2个字节为实际数据大小  size := binary.BigEndian.Uint32(r[:2]) log.Debug(&amp;#34;Recv:&amp;#34;, string(r)) return r } // 写数据  func handleWrite(conn net.Conn, cmd []byte) { _, err := conn.Write(cmd) log.Debug(&amp;#34;Sent:&amp;#34;, string(cmd)) checkError(err) } func main() { // 客户端忽略TLS检查  conf := &amp;amp;tls.Config{InsecureSkipVerify: true} server := ServerHost &#43; &amp;#34;:&amp;#34; &#43; ServerPort // 建立TCP连接  conn, err := tls.Dial(&amp;#34;tcp&amp;#34;, server, conf) checkError(err) defer conn.Close() auth := LoginReq(&amp;#34;xulz&amp;#34;, &amp;#34;password&amp;#34;) handleWrite(conn, auth) handleRead(conn) }
+扩展阅读  json的用法讲解 官方博客, 代码示例 Go socket编程实践 </content>
     </entry>
     
      <entry>
@@ -1832,6 +1963,7 @@ sudo apt install powerline # 或者用pip安装 pip install --user powerline-sta
 后来时不时有人安利IntelliJ,我试用后体会不深,再说商业版很贵(早期没有社区版),没有继续使用.
 做Python开发后,慢慢从Eclipse&#43;PyDev逐渐切换到PyCharm,感觉这才是IDE的样子,也就是足够智能.
 之后越来越喜欢全家桶,IDEA,DataGrip,GoLand, 毕竟操作习惯了,而且我每次安装完必须给界面换成Darcula的黑色主题.
+
  话说最早喜欢JetBrains家的产品可以追溯到他出品的RSS阅读器:Omea Reader
  说这些只想分享鼓励更多人使用这个全球最好用的IDE系列.
 下面是一些使用技巧,也许你已经知道.
@@ -1851,6 +1983,7 @@ sudo apt install powerline # 或者用pip安装 pip install --user powerline-sta
         </tags>
         <content type="html"> 由于之前主要用的是Python这类动态语言,切换到Go还有些不适应.
 这些出错信息看的一头雾水,记下来供参考.
+
 坑1: invalid memory address or nil pointer dereference 场景: 用http包给指定的api发送POST一段json数据
 原因: 我使用的URL是自签名的https服务,需要声明忽略SSL检查
 tr := &amp;amp;http.Transport{TLSClientConfig:&amp;amp;tls.Config{InsecureSkipVerify:true},} client := &amp;amp;http.Client{Transport:tr}</content>
@@ -1867,7 +2000,8 @@ tr := &amp;amp;http.Transport{TLSClientConfig:&amp;amp;tls.Config{InsecureSkipVe
         </tags>
         <content type="html"> Kubernetes(缩写为k8s)是最流行的开源容器管理平台, 现在也是事实上的容器编排调度标准.
 打算写系列的相关文章,记录自己的学习过程.
- Kubernetes部署篇:本地开发测试环境搭建 Kubernetes部署篇:Kubespray方式自动化 用kubeadm手动搭建Kubernetes集群 kubectl命令汇总 Kubernetes命名空间的应用  一些其他笔记.
+ Kubernetes部署篇:本地开发测试环境搭建 Kubernetes部署篇:Kubespray方式自动化 用kubeadm手动搭建Kubernetes集群 kubectl命令汇总 Kubernetes命名空间的应用  
+一些其他笔记.
 最佳实践  不要设置比必要的默认值 不要使用裸Pod, 使用Deployment,ReplicaSet,Job 使用前提前创建Service, 使用域名 善用label 容器镜像不要使用:latest标签 (默认的imagePullPolicy是IfNotPresent,即本地不存在镜像时才pull) 灵活使用目录, kubectl apply/create -f  快速创建单容器的部署/服务: kubectl run/expose  缩写    缩写 描述     CRD Custom Resource Definition, k8s 1.7引入    运行应用 Deployment 为 Pod 和 ReplicaSet 提供了一个声明式定义(declarative)方法，用来替代以前的ReplicationController 来方便的管理应用。
 在新版本的Kubernetes中建议使用ReplicaSet来取代ReplicationController。
 将kubectl的 &amp;ndash;record 的 flag 设置为 true可以在 annotation 中记录当前命令创建或者升级了该资源。
@@ -1888,14 +2022,16 @@ tr := &amp;amp;http.Transport{TLSClientConfig:&amp;amp;tls.Config{InsecureSkipVe
 它能给开发,测试,运维各团队提供一个统一的运行环境, 这点很实用.
 Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更高级功能的控制工具,主要特性:
 (1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链
+
  补充: 关于虚拟化的主流分类
  操作系统(服务器)级别的虚拟化: 在硬件层之上做Hypervisor,内核级隔离. 常见的有VMWare vsphere, XEN,KVM, Hyper-V
  进程(容器)级别的虚拟化: Docker 和LXC(Linux Container)
    配置国内镜像 国内使用前Docker的第一件事,必须先配置国内镜像加速器,否则下载容器镜像龟速(最近安装docker也不用了)
  中科大镜像(推荐):docker CE源使用手册/Docker HUB源使用手册 Aliyun DaoCloud : 需要先注册 Docker 中国官方镜像加速:运行了几个月就不可用了,够坑爹的😤  使用示例：
-# 如果想永久保存，编辑/etc/docker/daemon.json并添加 { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;] } # 必须重启服务以生效 sudo service docker restart 安装  Ubuntu Guide Docker CE for Mac Docker CE for Windows  Ubuntu环境安装 # 安装Docker sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - sudo add-apt-repository &amp;#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs)stable&amp;#34; sudo apt-get -y update sudo apt-get -y install docker-ce # 安装docker-compose sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose sudo chmod &#43;x /usr/local/bin/docker-compose 基础命令  docker docker-compose : 编排 docker-machine (Docker Toolbox已过时,不推荐使用)  # 把当前用户添加到docker组 sudo usermod -aG docker xulz ## docker docker run # 在新容器运行命令 docker start # 启动容器 # 查看所有容器 docker ps -a docker ps -a --no-trunc # 显示完整的命令 # 查看所有镜像 docker images docker stop/rm xxx # 删除 docker rm &amp;lt;container_id&amp;gt; docker rmi &amp;lt;image_id&amp;gt; # 加载镜像 docker load &amp;lt; &amp;lt;image_file&amp;gt; # 复制文件到容器 docker cp source_file &amp;lt;container_name&amp;gt;:destination # 切换到容器终端 docker exec -it container_name /bin/bash # 在后台启动 docker start `docker ps -q -l` # restart it in the background docker attach `docker ps -q -l` # reattach the terminal &amp;amp; stdin # Detatch: Ctrl&#43;p &#43; Ctrl&#43;q ## 常用compose命令 docker-compose up —build docker-compose ps docker-compose stop ## docker-machine docker-machine ip docker-machine env Docker Hub 到hub.docker.com注册自己的ID, 提供一个私有仓库及不限共有仓库．
+# 如果想永久保存，编辑/etc/docker/daemon.json并添加  { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://docker.mirrors.ustc.edu.cn/&amp;#34;] } # 必须重启服务以生效  sudo service docker restart 安装  Ubuntu Guide Docker CE for Mac Docker CE for Windows  Ubuntu环境安装 # 安装Docker  sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - sudo add-apt-repository &amp;#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs)stable&amp;#34; sudo apt-get -y update sudo apt-get -y install docker-ce # 安装docker-compose  sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose sudo chmod &#43;x /usr/local/bin/docker-compose CentOS离线安装 依赖库: libcgroup和device-mapper-*
+# 离线包下载: http://rpmfind.net/linux/rpm2html/search.php rpm -ivh clibcgroup-* rpm -ivh device-mapper-* --force --nodeps # 追加一行到/etc/fstab none /sys/fs/cgroup cgroup defaults 0 0 # 重启以生效 shutdown -r now # 启动cgroup service cgconfig start # 下载docker: https://yum.dockerproject.org/repo/main/centos/6/Packages/ rpm -ivh docker-engine-*.rpm service docker start 基础命令  docker docker-compose : 编排 docker-machine (Docker Toolbox已过时,不推荐使用)  # 把当前用户添加到docker组  sudo usermod -aG docker xulz ## docker  docker run # 在新容器运行命令  docker start # 启动容器  # 查看所有容器  docker ps -a docker ps -a --no-trunc # 显示完整的命令  # 查看所有镜像  docker images docker stop/rm xxx # 删除  docker rm &amp;lt;container_id&amp;gt; docker rmi &amp;lt;image_id&amp;gt; # 加载镜像  docker load &amp;lt; &amp;lt;image_file&amp;gt; # 复制文件到容器  docker cp source_file &amp;lt;container_name&amp;gt;:destination # 切换到容器终端  docker exec -it container_name /bin/bash # 在后台启动  docker start `docker ps -q -l` # restart it in the background  docker attach `docker ps -q -l` # reattach the terminal &amp;amp; stdin  # Detatch: Ctrl&#43;p &#43; Ctrl&#43;q  ## 常用compose命令  docker-compose up —build docker-compose ps docker-compose stop ## docker-machine  docker-machine ip docker-machine env Docker Hub 到hub.docker.com注册自己的ID, 提供一个私有仓库及不限共有仓库．
 今天为了国内访问kubernetes的学习项目方便，建立了一个镜像，步骤如下：
-# 需要先在网页创建仓库 # 再命令行登录hub docker login docker pull gcr.io/google-samples/kubernetes-bootcamp:v1 docker tag gcr.io/google-samples/kubernetes-bootcamp:v1 xulz/kubernetes-bootcamp:v1 docker push xulz/kubernetes-bootcamp:v1 用Docker部署Flask Web App的示例 主要用到的配置文件:
+# 需要先在网页创建仓库  # 再命令行登录hub  docker login docker pull gcr.io/google-samples/kubernetes-bootcamp:v1 docker tag gcr.io/google-samples/kubernetes-bootcamp:v1 xulz/kubernetes-bootcamp:v1 docker push xulz/kubernetes-bootcamp:v1 用Docker部署Flask Web App的示例 主要用到的配置文件:
  Dockerfile : 存放自动化的创建镜像的全部指令&amp;gt; docker build docker-compose.yml : 创建多个容器的模板文件,主要包含services,volumns,network .env : 设置环境变量 .dockerignore : 忽略文件  扩展  Portainer : Docker管理 Web界面 docker-compose-ui: Docker Compose Web界面  与Vagrant比较  docker-compose exec CONTAINER /bin/sh == vagrant ssh docker cp == vagrant scp  资源参考  Docker从入门到实践 Docker入门教程-英文 Awesome Docker Docker Cheat Sheet </content>
     </entry>
     
@@ -1910,7 +2046,7 @@ Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更
         </tags>
         <content type="html">  用法  tmux ls : list sessions tmux attach -t 0 : -t 代表“target” , 0 是session名 tmux kill-session -t 0 : 结束会话 tmux source ~/.tmux.conf : 重新加载配置 复制和粘贴: 使用Shift临时禁用tmux,然后Ctrl&#43;Shift&#43;C  常用快捷键    Key Description     C-b (Ctrl-b) Send the prefix key   M (Alt, meta key)    prefix c new-window   prefix &amp;ldquo; split-window   prefix % split-window -h   prefix z resize-pane -Z   prefix $ Rename the current session   prefix , Rename the current window   prefix M-1 select-layout even-horizontal   prefix M-2 select-layout even-vertical   prefix M-3 select-layout main-horizontal   prefix M-4 select-layout main-vertical   prefix M-5 select-layout tiled    流行配置 如果懒得折腾，有个流行的通用配置已经够用。见一套常用配置
 cd git clone https://github.com/gpakosz/.tmux.git ln -s -f .tmux/.tmux.conf cp .tmux/.tmux.conf.local . # 编辑～/.tmux.conf.local 以定制自己的新需求 使用会话保存和恢复插件 我精彩使用自动保存和恢复的功能，用到了插件管理和几个插件。 使用步骤如下：
-# 1. 安装 Plugin Manager git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm # 2. 编辑 .tmux.conf 或.tmux.conf.local set -g @plugin &amp;#39;tmux-plugins/tpm&amp;#39; set -g @plugin &amp;#39;tmux-plugins/tmux-resurrect&amp;#39; set -g @plugin &amp;#39;tmux-plugins/tmux-continuum&amp;#39; set -g @continuum-restore &amp;#39;on&amp;#39; run &amp;#39;~/.tmux/plugins/tpm/tpm&amp;#39; # 3. 安装配置里的插件 prefix &#43; I # 大写的I代表Install prefix &#43; U # 更新插件 # 4. 重启后恢复会话 prefix &#43; Ctrl-s # 保存 prefix &#43; Ctrl-r # 恢复 其他插件 # .tmux.conf set -g @plugin &amp;#39;tmux-plugins/tmux-sensible&amp;#39; # 常用配置 set -g @plugin &amp;#39;tmux-plugins/tmux-yank&amp;#39; # 复制/粘贴  Vim Tmux Navigator Tmuxinator 也是用于管理会话的  小技巧 技巧1: 总是保留一个会话 终端启动时先运行 tmux attach -t base || tmux new -s base
+# 1. 安装 Plugin Manager git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm # 2. 编辑 .tmux.conf 或.tmux.conf.local set -g @plugin &amp;#39;tmux-plugins/tpm&amp;#39; set -g @plugin &amp;#39;tmux-plugins/tmux-resurrect&amp;#39; set -g @plugin &amp;#39;tmux-plugins/tmux-continuum&amp;#39; set -g @continuum-restore &amp;#39;on&amp;#39; run &amp;#39;~/.tmux/plugins/tpm/tpm&amp;#39; # 3. 安装配置里的插件 prefix &#43; I # 大写的I代表Install prefix &#43; U # 更新插件  # 4. 重启后恢复会话 prefix &#43; Ctrl-s # 保存 prefix &#43; Ctrl-r # 恢复 其他插件 # .tmux.conf set -g @plugin &amp;#39;tmux-plugins/tmux-sensible&amp;#39; # 常用配置 set -g @plugin &amp;#39;tmux-plugins/tmux-yank&amp;#39; # 复制/粘贴  Vim Tmux Navigator Tmuxinator 也是用于管理会话的  小技巧 技巧1: 总是保留一个会话 终端启动时先运行 tmux attach -t base || tmux new -s base
 技巧2: 多面板命令同步 把当前输入发送到当前窗口的所有面板 setw synchronise-panes
 技巧3: 缩放 prefix &#43; z放大当前面板, 再次输入恢复。
 资源及参考  Manual 10 Killer Tmux Tips  </content>
@@ -1927,6 +2063,7 @@ cd git clone https://github.com/gpakosz/.tmux.git ln -s -f .tmux/.tmux.conf cp .
         </tags>
         <content type="html"> Go作为最近几年随大数据,Docker而火热起来(依然偏小众)的服务端语言,最近接触下来的感觉是第三方库/框架还是不够稳定和丰富,很多应用场景还没有一个绝对地位的首选库.
 偶尔发现LibHunt还不错,可以在库选型时做些对比.
+
 数据处理  go.uuid gjson  系统扩展  logrus  import ( // UUID生成,支持v1~v4  &amp;#34;github.com/satori/go.uuid&amp;#34; // logging/日志扩展必备  // 使用别名 log替代系统模块  log &amp;#34;github.com/sirupsen/logrus&amp;#34; //JSON Parser,尤其适用于嵌套多层的json  &amp;#34;github.com/tidwall/gjson&amp;#34; ) // UUID示例 id := uuid.NewV4().String() // 支持定义日志级别 log.SetLevel(log.DebugLevel) log.Debug(resp.StatusCode) log.WithFields(log.Fields{&amp;#34;username&amp;#34;: username}).Debug(&amp;#34;Login info:&amp;#34;) // 用内置json处理会比较繁琐 const json = `{&amp;#34;name&amp;#34;:{&amp;#34;first&amp;#34;:&amp;#34;Michael&amp;#34;,&amp;#34;last&amp;#34;:&amp;#34;Xu&amp;#34;},&amp;#34;age&amp;#34;:30}` value := gjson.Get(json, &amp;#34;name.last&amp;#34;) TBC..
 </content>
     </entry>
@@ -1941,6 +2078,7 @@ cd git clone https://github.com/gpakosz/.tmux.git ln -s -f .tmux/.tmux.conf cp .
           
         </tags>
         <content type="html"> 经常和Linux服务器打交道就离不开SSH.
+
 常用命令 # 生成key ssh-keygen -t rsa -C &amp;#34;admin[at]xulizhao.com&amp;#34; # 删除无效的公钥,通常由于变更IP造成 ssh-keygen -f &amp;#34;~.ssh/known_hosts&amp;#34; -R 8.8.8.8 # 复制公钥信息到粘贴板 xclip -selection clipboard &amp;lt; ~/.ssh/id_rsa.pub # 如果服务器没有开启SSH服务, 需要先安装 apt install openssh-server # 打印DEBUG信息用以调试 ssh -v ... # 远程运行本地脚本 ssh xulz@moon bash &amp;lt; /path/to/local/script.sh 目录结构 一般ssh相关文件存放在~/.ssh目录, Windows在 %userprofile%/.ssh
  公钥: id_rsa.pub
  私钥: id_rsa
@@ -1990,6 +2128,7 @@ vi /etc/nginx/conf.d/default.conf # 修改proxy_read_timeout的值 location / { 
           <tag>python</tag>
         </tags>
         <content type="html"> Python开发环境问题记录.
+
 镜像加速 在国内访问官方的库比较慢，建议使用国内的镜像站。
 mkdir ~/.pip vi ~/.pip/pip.conf [global] timeout = 6000 index-url = https://pypi.douban.com/simple/ [install] use-mirrors = true mirrors = https://pypi.douban.com/ 清华镜像 # 临时使用 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pipenv # 设为默认, 修改 # ~/pip/pip.conf (Linux) # %APPDATA%\pip\pip.ini (Windows 10) # $HOME/Library/Application Support/pip/pip.conf (macOS) [global] index-url = https://pypi.tuna.tsinghua.edu.cn/simple Anaconda镜像
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --set show_channel_urls yes # 第三方源 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ 在Mac上同时安装Python2和Python3 缘起: 在High Sierra 10.12及更高版本,给系统自带的Python2安装一些第三方库(如gevent)会因为系统开启SIP导致失败.
@@ -2029,6 +2168,7 @@ Python API调用 无认证 import requests api_url = &amp;#34;http://jenkins.xul
           <tag>go</tag>
         </tags>
         <content type="html"> 简单记录下Go语言开发环境的搭建和基本用法.
+
 安装 如果要使用系统命令安装:
 # Ubuntu apt install golang # Mac brew install golang 如果想安装最新版本的话,可以直接到镜像站下载系统对应版本或者参考Ubuntu安装最新版.
 如果在Linux的话解压缩之后需要设置下环境变量:
@@ -2037,7 +2177,7 @@ GOPATH 默认位置为 $HOME/go, 该目录用来在标准Go目录之外存放get
 go env 查看当前环境变量
  Go扩展包的下载 如果要编译一个开源项目,在国内的环境下, go get 的方式通常会因为访问 golang.org/x 而失败.
 绕过方式为手动下载依赖:
-cd $GOPATH/src mkdir -p golang.org/x cd golang.org/x # 通常下边几个库就够用了,具体以错误提示相应的下载 git clone https://github.com/golang/net.git git clone https://github.com/golang/sys.git git clone https://github.com/golang/crypto.git 常用命令 # 运行 go run hello.go # 编译并指定运行环境 GOOS=linux GOARCH=amd64 go build -o hello hello.go # 打包 go install hello.go # 格式化, -w:直接覆盖原代码,不输出到控制台 gofmt -w hello.go ## 查看文档 godoc fmt 依赖管理 可以通过Dep这个工具来管理项目依赖.
+cd $GOPATH/src mkdir -p golang.org/x cd golang.org/x # 通常下边几个库就够用了,具体以错误提示相应的下载  git clone https://github.com/golang/net.git git clone https://github.com/golang/sys.git git clone https://github.com/golang/crypto.git 常用命令 # 运行  go run hello.go # 编译并指定运行环境  GOOS=linux GOARCH=amd64 go build -o hello hello.go # 打包  go install hello.go # 格式化, -w:直接覆盖原代码,不输出到控制台  gofmt -w hello.go ## 查看文档  godoc fmt 依赖管理 可以通过Dep这个工具来管理项目依赖.
 # Mac安装 brew install dep # 或者Linux curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh dep init # 会在项目目录创建依赖配置文件Gopkg.toml [[constraint]] branch = &amp;#34;master&amp;#34; name = &amp;#34;golang.org/x/net&amp;#34;</content>
     </entry>
     
@@ -2051,11 +2191,13 @@ cd $GOPATH/src mkdir -p golang.org/x cd golang.org/x # 通常下边几个库就�
           
         </tags>
         <content type="html"> 学习资源 如果是新手,强烈推荐阅读Git简明教程, 进阶必读 Pro Git中文版
-Git常用命令 新建项目仓库 # 把当前项目加入git版本管理 git init # 提交文件变更 echo &amp;#34;xulz&amp;#34; &amp;gt;&amp;gt; contributors.txt git add contributors.txt git commit -m &amp;#39;Initial commit with contributors&amp;#39; 推送变更 # 关联远程仓库 git remote add origin git@github.com:xulz/test.git # 推送本地变更到远程仓库 git push -u origin master # 以上简写为$ git push git push -u origin --all # pushes up the repo and its refs for the first time git push -u origin --tags # pushes up any tags# push遇到错误 ! [rejected] master -&amp;gt; master (non-fast-forward) # 风险: 可能会造成remote丢失提交 git push --force --set-upstream origin master 基本配置 # 列出当前项目主要配置 git config --list # 编辑当前项目配置文件 vi .git/config # 修改全局配置 vi ~/.gitconfig  Branch 分支 分支的习惯用法:
+Git常用命令 
+新建项目仓库 # 把当前项目加入git版本管理  git init # 提交文件变更  echo &amp;#34;xulz&amp;#34; &amp;gt;&amp;gt; contributors.txt git add contributors.txt git commit -m &amp;#39;Initial commit with contributors&amp;#39; 推送变更 # 关联远程仓库  git remote add origin git@github.com:xulz/test.git # 推送本地变更到远程仓库  git push -u origin master # 以上简写为$ git push  git push -u origin --all # pushes up the repo and its refs for the first time  git push -u origin --tags # pushes up any tags# push遇到错误 ! [rejected] master -&amp;gt; master (non-fast-forward) # 风险: 可能会造成remote丢失提交 git push --force --set-upstream origin master 基本配置 # 列出当前项目主要配置  git config --list # 编辑当前项目配置文件  vi .git/config # 修改全局配置  vi ~/.gitconfig  Branch 分支 分支的习惯用法:
 origin/master 应该始终保持生产环境可用的状态,即可部署.
 origin/develop 代表最新的code, 是nightly测试的重点. 如果稳定到可以release,需要为新发布创建新tag,并merge回 master.
-常用命令 # 同步远程分支 git fetch # 列出所有分支 git branch -a # 切换分支 git checkout new_branch # push到远程 git push --set-upstream origin new_branch Fork同步上游仓库 # 查看当前远程仓库 git remote -v git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git # 获取更新 git fetch upstream git checkout master git merge upstream/master Tag 标签 推荐为每次软件发布创建标签.
-# 为当前版本创建tag git tag v1.0.0</content>
+常用命令 # 同步远程分支  git fetch # 列出所有分支  git branch -a # 切换分支  git checkout new_branch # push到远程  git push --set-upstream origin new_branch Fork同步上游仓库 # 查看当前远程仓库 git remote -v git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git # 获取更新 git fetch upstream git checkout master git merge upstream/master Tag 标签 推荐为每次软件发布创建标签.
+# 为当前版本创建tag git tag v1.0.0 ## Git工作流
+ Git 工作流程 </content>
     </entry>
     
      <entry>
@@ -2069,11 +2211,12 @@ origin/develop 代表最新的code, 是nightly测试的重点. 如果稳定到�
         </tags>
         <content type="html"> 本博客基于Ghost开源博客平台搭建,系统基于Node.js开发.
 主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).
+
 说下安装完需要定制的部分,供参考:
 代码高亮 由于经常使用代码片段,用PrismJS添加了代码高亮,主要使用了Code injection功能,可参考网上这篇文章.
 开启评论 系统没有评论功能,集成了第三方的Disqus,整合方式参考这里.
 使用HTTPS 最近关联域名后启用了HTTPS.
-ghost config url https://xulizhao.com ghost setup nginx ssl # 之后需要更新Ngxin的配置并reload # 使用Let&amp;#39;s Encrypt的免费证书,这个自动获取证书acme.sh脚本太好用了 文章目录 折腾了多半天,添加了文章目录(TOC).
+ghost config url https://xulizhao.com ghost setup nginx ssl # 之后需要更新Ngxin的配置并reload  # 使用Let&amp;#39;s Encrypt的免费证书,这个自动获取证书acme.sh脚本太好用了 文章目录 折腾了多半天,添加了文章目录(TOC).
 主要使用了jQuery-TOC插件,并仿照floating-header做了一个新图层
 cd &amp;lt;GHOST_DIR&amp;gt;/content/themes/casper/assets/js wget https://github.com/idiotWu/jQuery-TOC/raw/master/dist/jquery.toc.min.js cd ../.. // 修改 default.hbs,在fitvids以下添加一行引入  &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;{{asset &amp;#34;js/jquery.fitvids.js&amp;#34;}}&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;{{asset &amp;#34;js/jquery.toc.min.js&amp;#34;}}&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; // vi assets/css/screen.css .sidebar { visibility: visible; position: fixed; right: 0; top: 300px; z-index: 1000; display: flex; align-items: center; width: 300px; border-bottom: rgba(0,0,0,0.06) 1px solid; background: rgba(255,255,255,0.95); } // 手机不显示文章目录 @media screen and (max-width: 600px) { #toc { visibility: hidden; } } // vi post.hbs &amp;lt;div id=&amp;#34;toc&amp;#34; class=&amp;#34;sidebar&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; // 在结束标记前添加{{/post}} // 在脚本部分的ready部分添加 $(document).ready(function () {  $(&amp;#39;#toc&amp;#39;).initTOC({ selector: &amp;#39;h1, h2, h3, h4&amp;#39;, scope: &amp;#39;.post-full-content&amp;#39;, overwrite: false, prefix: &amp;#39;toc&amp;#39; });  PS:
 从博客开始流行时的第三方博客平台到后来自己搭建Wordpress,最近几年又流行的基于github静态建站都有所尝试, 可是似乎脱离了建站的初心: 记录成长历程,练习表达.
@@ -2115,7 +2258,7 @@ Leader选举算法 (分布式选举算法使用ZAB,是Paxos的变种)
 配置 设置根目录： ZOOKEEPER_HOME
 日志文件： zookeeper.out
 集群推荐不少于3台，推荐奇数个节点,只要超过半数的节点OK(有效参与选举的节点数过半), ZooKeeper就能正常服务. 最好分布在不同的物理机上。
-# server.N, 在zoo.cfg指定的dataDir目录下建立以服务器节点对应的myid文件,并更新内容为N initLimit=5 syncLimit=2 server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888# Ubuntu 随系统启动 apt-get install zookeeperd 性能 性能: 在读大于写时性能更好(读写10:1)
+# server.N, 在zoo.cfg指定的dataDir目录下建立以服务器节点对应的myid文件,并更新内容为N  initLimit=5 syncLimit=2 server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888# Ubuntu 随系统启动 apt-get install zookeeperd 性能 性能: 在读大于写时性能更好(读写10:1)
 注：来自腾讯广告团队分享
 问题：如果读写操作频繁，则Zookeeper server很容易不堪重负。
 workaround：用C&#43;&#43;写了一个proxy，定期load Zookeeper数据，代替Zookeeper处理读操作，把写操作proxy给后面的Zookeeper。
@@ -2134,6 +2277,7 @@ workaround：用C&#43;&#43;写了一个proxy，定期load Zookeeper数据，代�
         <content type="html"> &amp;ldquo;书籍是人类的好朋友&amp;rdquo;,这是句真理. 在如今信息爆炸,碎片充斥的年代,一年读十几/几十本书已成奢谈.
 在手机上碎片阅读李笑来老师的书可追溯到几年前的&amp;lt;把时间当作朋友&amp;gt;,去年是&amp;lt;成长-YC创业课读书笔记&amp;gt;, 最近还在读的是&amp;lt;新生-七年就是一辈子&amp;gt;.
 笑来老师的书部部精品,还有正版免费可读,你还奢求什么.
+
 新生里的话题有的在成长已经提过,最近读到人成长和计算机升级的类比,觉得很是经典.
 计算机硬件的升级对应人身体的锻炼,保持健康更新; 而更频繁的软件升级则对应人脑的学习成长提高. 如果人拒绝学习提高,和老古董电脑就没啥区别了,想来也是每个人不乐意看到的.
 近十几年的计算机行业高速发展,极大的改变了人的生活方式,带来了社会的巨大进步. 这个行业汇聚着许多顶级聪明的人, 有优秀的产品可用, 开源的代码可学习.

@@ -17,7 +17,9 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/jvm/</guid>
-      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;</description>
+      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,7 +30,9 @@
       <guid>/blog/more-load-test-note/</guid>
       <description>&lt;p&gt;看完美团的分享觉得不过瘾，继续学习其他大厂的分享。&lt;/p&gt;
 
-&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;</description>
+&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,7 +41,7 @@
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/meituan-load-test-note/</guid>
-      <description>&lt;p&gt;今天读了美团技术团队新发布的全链路压测平台Quake在美团中的实践，做个笔记。&lt;/p&gt;
+      <description>&lt;p&gt;今天读了美团技术团队新发布的&lt;a href=&#34;https://tech.meituan.com/2018/09/27/quake-introduction.html&#34;&gt;全链路压测平台Quake在美团中的实践&lt;/a&gt;，做个笔记。&lt;/p&gt;
 
 &lt;p&gt;先说下总的读后感:&lt;/p&gt;
 
@@ -47,7 +51,9 @@
 
 &lt;p&gt;没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。&lt;/p&gt;
 
-&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;</description>
+&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

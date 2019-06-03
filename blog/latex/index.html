@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">812 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -157,6 +157,8 @@
     <p>LaTeX最广泛的用途应该是在学术领域写论文, 其实在排版(尤其公式,格式)上也胜过Word很多,绝对专业.</p>
 
 <p>最近为了在本地生成一个PDF,做了一些了解.</p>
+
+<p></p>
 
 <h2 id="简介">简介</h2>
 
@@ -178,22 +180,22 @@
 <p>最初我使用了简易版的BasicTeX, 使用起来很繁琐,需要安装大量的包/样式.</p>
 
 <p>如果直接安装TextLive Full可忽略该阶段.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在使用前需要先更新PATH</span>
-<span style="color:#366">export</span> <span style="color:#033">PATH</span><span style="color:#555">=</span>/usr/local/texlive/2018basic/bin/x86_64-darwin:<span style="color:#033">$PATH</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在使用前需要先更新PATH
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">export</span> <span style="color:#033">PATH</span><span style="color:#555">=</span>/usr/local/texlive/2018basic/bin/x86_64-darwin:<span style="color:#033">$PATH</span>
 
-<span style="color:#09f;font-style:italic"># 使用包管理工具 tlmgr</span>
-sudo tlmgr update --self --repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
+<span style="color:#09f;font-style:italic"># 使用包管理工具 tlmgr
+</span><span style="color:#09f;font-style:italic"></span>sudo tlmgr update --self --repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
 sudo tlmgr install latexmk --repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
 sudo tlmgr install ctex
 
-<span style="color:#09f;font-style:italic"># 其他常用依赖</span>
-cjk  cjkpunct  zhnumber  environ  trimspaces subfigure  multirow tocbibind  placeins  datatool</code></pre></div>
+<span style="color:#09f;font-style:italic"># 其他常用依赖
+</span><span style="color:#09f;font-style:italic"></span>cjk  cjkpunct  zhnumber  environ  trimspaces subfigure  multirow tocbibind  placeins  datatool</code></pre></div>
 <p><strong>解决错误</strong></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 如果遇到类似下列错误</span>
-<span style="color:#09f;font-style:italic"># LaTeX Error: File `ctexbook.cls&#39; not found</span>
-<span style="color:#09f;font-style:italic"># LaTeX Error: File &#39;&#39;picins.sty&#39;&#39; not Found</span>
-<span style="color:#09f;font-style:italic"># 安装相应包</span>
-sudo tlmgr install picins</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 如果遇到类似下列错误
+</span><span style="color:#09f;font-style:italic"># LaTeX Error: File `ctexbook.cls&#39; not found
+</span><span style="color:#09f;font-style:italic"># LaTeX Error: File &#39;&#39;picins.sty&#39;&#39; not Found
+</span><span style="color:#09f;font-style:italic"># 安装相应包
+</span><span style="color:#09f;font-style:italic"></span>sudo tlmgr install picins</code></pre></div>
 <p>对Mac来说文件安装在/usr/local/texlive/2018basic/texmf-dist/tex/latex/, 因此也可以通过创建文件夹, 把样式复制到相应文件夹, 或者直接复制到文档目录下.</p>
 
 <p><strong>资源链接</strong></p>
@@ -227,10 +229,10 @@ sudo tlmgr install picins</code></pre></div>
 <li><a href="https://github.com/dolbydu/font/tree/master/unicode">字体库下载</a></li>
 <li><a href="https://www.fontsmarket.com">fontsmarket</a></li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看当前系统中文字体</span>
-<span style="color:#09f;font-style:italic"># Mac直接使用系统的Font Book/字体册</span>
-<span style="color:#09f;font-style:italic"># 找到对应字体按Command+i键,就会显示字体的详细信息,postScript即字体名</span>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看当前系统中文字体
+</span><span style="color:#09f;font-style:italic"># Mac直接使用系统的Font Book/字体册
+</span><span style="color:#09f;font-style:italic"># 找到对应字体按Command+i键,就会显示字体的详细信息,postScript即字体名
+</span><span style="color:#09f;font-style:italic"></span>
 fc-list;<span style="color:#033">lang</span><span style="color:#555">=</span>zh-cn</code></pre></div>
 <h2 id="扩展阅读">扩展阅读</h2>
 
@@ -330,7 +332,7 @@ fc-list;<span style="color:#033">lang</span><span style="color:#555">=</span>zh-
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -347,7 +349,7 @@ fc-list;<span style="color:#033">lang</span><span style="color:#555">=</span>zh-
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -419,7 +421,7 @@ fc-list;<span style="color:#033">lang</span><span style="color:#555">=</span>zh-
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

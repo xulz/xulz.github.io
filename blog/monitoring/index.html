@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1551 字 ~4分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -157,6 +157,8 @@
     <p>2017很快就要过去了,也顺便整理下散落在印象笔记的一些片段.</p>
 
 <p>监控系统本来是运维的一个重要组成,因为工作需要也接触了一些开源的监控系统, 下面简要的聊聊我所知道的.</p>
+
+<p></p>
 
 <h3 id="接触监控系统历史">接触监控系统历史</h3>
 
@@ -214,14 +216,14 @@
 </ul>
 
 <h5 id="telegraf备忘">Telegraf备忘</h5>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 安装</span>
-sudo dpkg -i telegraf_*_amd64.deb  <span style="color:#09f;font-style:italic"># Ubuntu</span>
-sudo yum localinstall telegraf-*.rpm  <span style="color:#09f;font-style:italic"># CentOS</span>
-<span style="color:#09f;font-style:italic"># 常用插件 procstat/ netstat/ jolokia/ postgres/ statsd</span>
-<span style="color:#09f;font-style:italic"># 测试配置</span>
-telegraf -config /etc/telegraf/telegraf.conf -input-filter processes -test
-<span style="color:#09f;font-style:italic"># 启动服务</span>
-sudo service telegraf start</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 安装
+</span><span style="color:#09f;font-style:italic"></span>sudo dpkg -i telegraf_*_amd64.deb  <span style="color:#09f;font-style:italic"># Ubuntu
+</span><span style="color:#09f;font-style:italic"></span>sudo yum localinstall telegraf-*.rpm  <span style="color:#09f;font-style:italic"># CentOS
+</span><span style="color:#09f;font-style:italic"># 常用插件 procstat/ netstat/ jolokia/ postgres/ statsd
+</span><span style="color:#09f;font-style:italic"># 测试配置
+</span><span style="color:#09f;font-style:italic"></span>telegraf -config /etc/telegraf/telegraf.conf -input-filter processes -test
+<span style="color:#09f;font-style:italic"># 启动服务
+</span><span style="color:#09f;font-style:italic"></span>sudo service telegraf start</code></pre></div>
 <h5 id="influxdb备忘">InfluxDB备忘</h5>
 
 <p>几个概念:</p>
@@ -231,14 +233,14 @@ sudo service telegraf start</code></pre></div>
 <li>tags : 对应表列,有索引</li>
 <li>fields : 对应表列,无索引</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 查看日志</span>
-    sudo journalctl -u influxdb.service
-    <span style="color:#09f;font-style:italic"># 命令行工具</span>
-    influx
-    <span style="color:#09f;font-style:italic">## 性能提高</span>
-    <span style="color:#09f;font-style:italic"># 走UDP协议</span>
-    <span style="color:#09f;font-style:italic"># insert走批量接口</span>
-    <span style="color:#09f;font-style:italic"># 如果内存够大,增加 LRU大小</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 查看日志
+</span><span style="color:#09f;font-style:italic"></span>    sudo journalctl -u influxdb.service
+    <span style="color:#09f;font-style:italic"># 命令行工具
+</span><span style="color:#09f;font-style:italic"></span>    influx
+    <span style="color:#09f;font-style:italic">## 性能提高
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 走UDP协议
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># insert走批量接口
+</span><span style="color:#09f;font-style:italic"></span>    # 如果内存够大,增加 LRU大小</code></pre></div>
 <h5 id="influxql">InfluxQL</h5>
 
 <p>类SQL查询</p>
@@ -246,35 +248,35 @@ sudo service telegraf start</code></pre></div>
 
 LIST SERIES
   
-<span style="color:#09f;font-style:italic"># 查询</span>
-<span style="color:#069;font-weight:bold">select</span> * from mem where <span style="color:#033">host</span><span style="color:#555">=</span><span style="color:#c30">&#39;moon&#39;</span>
+<span style="color:#09f;font-style:italic"># 查询
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">select</span> * from mem where <span style="color:#033">host</span><span style="color:#555">=</span><span style="color:#c30">&#39;moon&#39;</span>
 <span style="color:#069;font-weight:bold">select</span> <span style="color:#c30;font-weight:bold">\*</span> from /.<span style="color:#c30;font-weight:bold">\*</span>/ order by <span style="color:#366">time</span> desc limit <span style="color:#f60">3</span>
 SHOW TAG VALUES FROM <span style="color:#c30">&#34;mem&#34;</span> WITH <span style="color:#033">KEY</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;host&#34;</span>
   
-<span style="color:#09f;font-style:italic"># 删除</span>
-drop measurement mem
+<span style="color:#09f;font-style:italic"># 删除
+</span><span style="color:#09f;font-style:italic"></span>drop measurement mem
 delete from com<span style="color:#c30;font-weight:bold">\_</span>load<span style="color:#c30;font-weight:bold">\_</span>avg_one where <span style="color:#366">time</span> &lt; now<span style="color:#555">()</span> -1h
   
-<span style="color:#09f;font-style:italic"># 时间查询, 格式now() 或者2016-11-01 HH:MM:SS</span>
-  
-<span style="color:#09f;font-style:italic"># 注: 操作符和时间之间需要 空格; 时间串需要使用 单引号 &#34;; 如果不指定时间,默认为 00:00:00</span>
-  
-<span style="color:#09f;font-style:italic"># 正则匹配, 支持 measurements 和 tags</span>
-  
-/.<span style="color:#c30;font-weight:bold">\*</span>abc.<span style="color:#c30;font-weight:bold">\*</span> / <span style="color:#09f;font-style:italic"># 包含字符串</span>
-  
-/^abc/ <span style="color:#09f;font-style:italic"># 以指定字符串为开头</span>
-  
-/<span style="color:#555">[</span>ab<span style="color:#555">]</span>/ <span style="color:#09f;font-style:italic">#包含 a 或 b</span>
-  
-<span style="color:#09f;font-style:italic"># WHERE子语句, =~ 匹配, !~ 不匹配</span>
-  </code></pre></div>
+<span style="color:#09f;font-style:italic"># 时间查询, 格式now() 或者2016-11-01 HH:MM:SS
+</span><span style="color:#09f;font-style:italic"></span>  
+<span style="color:#09f;font-style:italic"># 注: 操作符和时间之间需要 空格; 时间串需要使用 单引号 &#34;; 如果不指定时间,默认为 00:00:00
+</span><span style="color:#09f;font-style:italic"></span>  
+<span style="color:#09f;font-style:italic"># 正则匹配, 支持 measurements 和 tags
+</span><span style="color:#09f;font-style:italic"></span>  
+/.<span style="color:#c30;font-weight:bold">\*</span>abc.<span style="color:#c30;font-weight:bold">\*</span> / <span style="color:#09f;font-style:italic"># 包含字符串
+</span><span style="color:#09f;font-style:italic"></span>  
+/^abc/ <span style="color:#09f;font-style:italic"># 以指定字符串为开头
+</span><span style="color:#09f;font-style:italic"></span>  
+/<span style="color:#555">[</span>ab<span style="color:#555">]</span>/ <span style="color:#09f;font-style:italic">#包含 a 或 b
+</span><span style="color:#09f;font-style:italic"></span>  
+<span style="color:#09f;font-style:italic"># WHERE子语句, =~ 匹配, !~ 不匹配
+</span><span style="color:#09f;font-style:italic"></span>  </code></pre></div>
 <h3 id="grafana">Grafana</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 启动服务</span>
-    systemctl start grafana-server
-    <span style="color:#09f;font-style:italic"># 默认地址 http://127.0.0.1:3000/</span>
-    <span style="color:#09f;font-style:italic"># 默认用户名/密码:admin/admin</span>
-    <span style="color:#09f;font-style:italic"># 配置文件 /etc/grafana/grafana.ini</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 启动服务
+</span><span style="color:#09f;font-style:italic"></span>    systemctl start grafana-server
+    <span style="color:#09f;font-style:italic"># 默认地址 http://127.0.0.1:3000/
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 默认用户名/密码:admin/admin
+</span><span style="color:#09f;font-style:italic"></span>    # 配置文件 /etc/grafana/grafana.ini</code></pre></div>
 <h3 id="java应用的监控">Java应用的监控</h3>
 
 <ul>
@@ -396,7 +398,7 @@ delete from com<span style="color:#c30;font-weight:bold">\_</span>load<span styl
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -413,7 +415,7 @@ delete from com<span style="color:#c30;font-weight:bold">\_</span>load<span styl
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -492,7 +494,7 @@ delete from com<span style="color:#c30;font-weight:bold">\_</span>load<span styl
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

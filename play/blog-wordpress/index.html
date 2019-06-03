@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">698 字 ~2分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -176,20 +176,22 @@
 
 <p>之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.</p>
 
+<p></p>
+
 <p>在Ubuntu16上安装可参考DO上的<a href="https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-on-ubuntu-16-04">这篇文章</a>.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 安装php7环境</span>
-    sudo apt-get install php-fpm php-mysql
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 安装php7环境
+</span><span style="color:#09f;font-style:italic"></span>    sudo apt-get install php-fpm php-mysql
     sudo apt-get install php7.0-mysql php7.0-curl php7.0-gd php7.0-mbstring php7.0-mcrypt php7.0-xml php7.0-xmlrpc
     sudo systemctl restart php7.0-fpm
     
-    <span style="color:#09f;font-style:italic"># Nginx更新用户</span>
-    vi /etc/nginx/nginx.conf
-    user www-data; <span style="color:#09f;font-style:italic"># 默认nginx</span>
-    <span style="color:#09f;font-style:italic"># 调试用,查看当前php用户组</span>
-    ps aux | grep php
+    <span style="color:#09f;font-style:italic"># Nginx更新用户
+</span><span style="color:#09f;font-style:italic"></span>    vi /etc/nginx/nginx.conf
+    user www-data; <span style="color:#09f;font-style:italic"># 默认nginx
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 调试用,查看当前php用户组
+</span><span style="color:#09f;font-style:italic"></span>    ps aux | grep php
     
-    <span style="color:#09f;font-style:italic"># 文件夹权限</span>
-    sudo chown -R xulz:www-data /var/www/html
+    <span style="color:#09f;font-style:italic"># 文件夹权限
+</span><span style="color:#09f;font-style:italic"></span>    sudo chown -R xulz:www-data /var/www/html
     sudo find /var/www/html -type d -exec chmod g+s <span style="color:#555">{}</span> <span style="color:#c30;font-weight:bold">\;</span>
     sudo chmod g+w /var/www/html/wp-content
     sudo chmod -R g+w /var/www/html/wp-content/themes
@@ -277,7 +279,7 @@
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -294,7 +296,7 @@
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -357,7 +359,7 @@
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

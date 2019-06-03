@@ -149,12 +149,14 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1511 字 ~4分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。</p>
+
+<p></p>
 
 <h2 id="hotspot-jvm">Hotspot JVM</h2>
 
@@ -267,11 +269,11 @@ java -XX:+PrintFlagsFinal -version</p>
 <h3 id="oom问题">OOM问题</h3>
 
 <p>针对Tomcat</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 检索gc日志</span>
-grep <span style="color:#c30">&#39;java.lang.OutOfMemoryError: GC overhead limit exceeded&#39;</span> catalina.2016-10-25.log
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 检索gc日志
+</span><span style="color:#09f;font-style:italic"></span>grep <span style="color:#c30">&#39;java.lang.OutOfMemoryError: GC overhead limit exceeded&#39;</span> catalina.2016-10-25.log
 
-<span style="color:#09f;font-style:italic"># 记录heap dump，setenv.sh</span>
-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath<span style="color:#555">=</span>/usr/local/tomcat/logs/</code></pre></div>
+<span style="color:#09f;font-style:italic"># 记录heap dump，setenv.sh
+</span><span style="color:#09f;font-style:italic"></span>XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath<span style="color:#555">=</span>/usr/local/tomcat/logs/</code></pre></div>
 <h2 id="gc日志">GC日志</h2>
 
 <h3 id="参数设置">参数设置</h3>
@@ -460,7 +462,7 @@ XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath<span style="color:#555">=</span>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -477,7 +479,7 @@ XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath<span style="color:#555">=</span>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -566,7 +568,7 @@ XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath<span style="color:#555">=</span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

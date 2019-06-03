@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">419 字 ~1分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -159,6 +159,8 @@
 <p>如果部署在一个集群会省去不少运维成本且节省资源占用.</p>
 
 <p>通常这会用到命名空间的特性.</p>
+
+<p></p>
 
 <h2 id="namespaces-命名空间">Namespaces 命名空间</h2>
 
@@ -181,24 +183,24 @@
 <p>kubectl create -f namespace-dev.yml</p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get ns
-<span style="color:#09f;font-style:italic"># 指定命名空间</span>
-kubectl -n &lt;namespace&gt;
+<span style="color:#09f;font-style:italic"># 指定命名空间
+</span><span style="color:#09f;font-style:italic"></span>kubectl -n &lt;namespace&gt;
 kubectl get services —namespace<span style="color:#555">=</span>&lt;my-space&gt;</code></pre></div>
 <h2 id="给命名空间指派context-上下文">给命名空间指派context/上下文</h2>
 
 <p>一旦切换上下文, kubectl命令的执行(增改删)会在该命名空间运行.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 绑定命名空间和上下文的关系</span>
-kubectl config set-context dev --namespace<span style="color:#555">=</span>dev --cluster<span style="color:#555">=</span>minikube --user<span style="color:#555">=</span>minukube
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 绑定命名空间和上下文的关系
+</span><span style="color:#09f;font-style:italic"></span>kubectl config set-context dev --namespace<span style="color:#555">=</span>dev --cluster<span style="color:#555">=</span>minikube --user<span style="color:#555">=</span>minukube
 
 
-<span style="color:#09f;font-style:italic"># 切换到Dev context</span>
-kubectl config use-context dev
+<span style="color:#09f;font-style:italic"># 切换到Dev context
+</span><span style="color:#09f;font-style:italic"></span>kubectl config use-context dev
 
-<span style="color:#09f;font-style:italic"># 核实当前context</span>
-kubectl config current-context
+<span style="color:#09f;font-style:italic"># 核实当前context
+</span><span style="color:#09f;font-style:italic"></span>kubectl config current-context
 
-<span style="color:#09f;font-style:italic"># Delete dev namespace</span>
-kubectl delete namespaces dev</code></pre></div>
+<span style="color:#09f;font-style:italic"># Delete dev namespace
+</span><span style="color:#09f;font-style:italic"></span>kubectl delete namespaces dev</code></pre></div>
 <h2 id="扩展阅读">扩展阅读</h2>
 
 <ul>
@@ -296,7 +298,7 @@ kubectl delete namespaces dev</code></pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -313,7 +315,7 @@ kubectl delete namespaces dev</code></pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -377,7 +379,7 @@ kubectl delete namespaces dev</code></pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">

@@ -149,7 +149,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">444 字 ~1分钟</span>
+<span class="leancloud-visitors-count">0 字 ~0分钟</span>
 </span>
       </div>
     </header>
@@ -160,30 +160,32 @@
 
 <h1 id="git常用命令">Git常用命令</h1>
 
+<p></p>
+
 <h2 id="新建项目仓库">新建项目仓库</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 把当前项目加入git版本管理</span>
-    git init
-    <span style="color:#09f;font-style:italic"># 提交文件变更</span>
-    <span style="color:#366">echo</span> <span style="color:#c30">&#34;xulz&#34;</span> &gt;&gt; contributors.txt
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 把当前项目加入git版本管理
+</span><span style="color:#09f;font-style:italic"></span>    git init
+    <span style="color:#09f;font-style:italic"># 提交文件变更
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#366">echo</span> <span style="color:#c30">&#34;xulz&#34;</span> &gt;&gt; contributors.txt
     git add contributors.txt
     git commit -m <span style="color:#c30">&#39;Initial commit with contributors&#39;</span></code></pre></div>
 <h2 id="推送变更">推送变更</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 关联远程仓库</span>
-    git remote add origin git@github.com:xulz/test.git
-    <span style="color:#09f;font-style:italic"># 推送本地变更到远程仓库</span>
-    git push -u origin master
-    <span style="color:#09f;font-style:italic"># 以上简写为$ git push</span>
-    git push -u origin --all <span style="color:#09f;font-style:italic"># pushes up the repo and its refs for the first time</span>
-    git push -u origin --tags <span style="color:#09f;font-style:italic"># pushes up any tags</span></code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># push遇到错误 ! [rejected]        master -&gt; master (non-fast-forward)</span>
-<span style="color:#09f;font-style:italic"># 风险: 可能会造成remote丢失提交</span>
-git push --force --set-upstream origin master</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 关联远程仓库
+</span><span style="color:#09f;font-style:italic"></span>    git remote add origin git@github.com:xulz/test.git
+    <span style="color:#09f;font-style:italic"># 推送本地变更到远程仓库
+</span><span style="color:#09f;font-style:italic"></span>    git push -u origin master
+    <span style="color:#09f;font-style:italic"># 以上简写为$ git push
+</span><span style="color:#09f;font-style:italic"></span>    git push -u origin --all <span style="color:#09f;font-style:italic"># pushes up the repo and its refs for the first time
+</span><span style="color:#09f;font-style:italic"></span>    git push -u origin --tags # pushes up any tags</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># push遇到错误 ! [rejected]        master -&gt; master (non-fast-forward)
+</span><span style="color:#09f;font-style:italic"># 风险: 可能会造成remote丢失提交
+</span><span style="color:#09f;font-style:italic"></span>git push --force --set-upstream origin master</code></pre></div>
 <h2 id="基本配置">基本配置</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 列出当前项目主要配置</span>
-    git config --list
-    <span style="color:#09f;font-style:italic"># 编辑当前项目配置文件</span>
-    vi .git/config
-    <span style="color:#09f;font-style:italic"># 修改全局配置</span>
-    vi ~/.gitconfig </code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 列出当前项目主要配置
+</span><span style="color:#09f;font-style:italic"></span>    git config --list
+    <span style="color:#09f;font-style:italic"># 编辑当前项目配置文件
+</span><span style="color:#09f;font-style:italic"></span>    vi .git/config
+    <span style="color:#09f;font-style:italic"># 修改全局配置
+</span><span style="color:#09f;font-style:italic"></span>    vi ~/.gitconfig </code></pre></div>
 <h2 id="branch-分支">Branch 分支</h2>
 
 <p>分支的习惯用法:</p>
@@ -193,20 +195,20 @@ git push --force --set-upstream origin master</code></pre></div>
 <p><strong>origin/develop</strong> 代表最新的code, 是nightly测试的重点. 如果稳定到可以release,需要为新发布创建新tag,并merge回 master.</p>
 
 <h3 id="常用命令">常用命令</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 同步远程分支</span>
-    git fetch
-    <span style="color:#09f;font-style:italic"># 列出所有分支</span>
-    git branch -a
-    <span style="color:#09f;font-style:italic"># 切换分支</span>
-    git checkout new_branch
-    <span style="color:#09f;font-style:italic"># push到远程</span>
-    git push --set-upstream origin new_branch</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 同步远程分支
+</span><span style="color:#09f;font-style:italic"></span>    git fetch
+    <span style="color:#09f;font-style:italic"># 列出所有分支
+</span><span style="color:#09f;font-style:italic"></span>    git branch -a
+    <span style="color:#09f;font-style:italic"># 切换分支
+</span><span style="color:#09f;font-style:italic"></span>    git checkout new_branch
+    <span style="color:#09f;font-style:italic"># push到远程
+</span><span style="color:#09f;font-style:italic"></span>    git push --set-upstream origin new_branch</code></pre></div>
 <h3 id="fork同步上游仓库">Fork同步上游仓库</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看当前远程仓库</span>
-git remote -v
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看当前远程仓库
+</span><span style="color:#09f;font-style:italic"></span>git remote -v
 git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
-<span style="color:#09f;font-style:italic"># 获取更新</span>
-git fetch upstream
+<span style="color:#09f;font-style:italic"># 获取更新
+</span><span style="color:#09f;font-style:italic"></span>git fetch upstream
 git checkout master
 git merge upstream/master</code></pre></div>
 <h3 id="tag-标签">Tag 标签</h3>
@@ -214,6 +216,11 @@ git merge upstream/master</code></pre></div>
 <p>推荐为每次软件发布创建标签.</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 为当前版本创建tag
 git tag v1.0.0</pre></div>
+<p>## Git工作流</p>
+
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">Git 工作流程</a></li>
+</ul>
     </div>
     <footer class="post-footer">
      
@@ -297,7 +304,7 @@ git tag v1.0.0</pre></div>
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="/post/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -314,7 +321,7 @@ git tag v1.0.0</pre></div>
     <div class="site-state-item site-state-tags">
         <a href="/tags/">
          
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">39</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -385,7 +392,7 @@ git tag v1.0.0</pre></div>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.54.0</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
   </a>
 </div>
 <div class="theme-info">
