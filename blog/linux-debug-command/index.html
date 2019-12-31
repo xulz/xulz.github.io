@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Linux调试命令/工具 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/linux-debug-command/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/linux-debug-command/" itemprop="url">
         Linux调试命令/工具
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-01-14">
     2018-01-14
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">Tech</span>
       </a>
       &nbsp; 
@@ -149,71 +148,56 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">2777 字 ~6分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>Linux的强大之一是丰富的命令系统,尤其在调试服务端应用时.</p>
-
 <p>记录在这里方便查阅.</p>
+<h2 id="heading">资源统计</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install sysstat
+mpstat -P ALL 1
+pidstat 1
+top -p &lt;pid
 
-<p></p>
-
-<h2 id="资源统计">资源统计</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    yum install sysstat
-    mpstat -P ALL <span style="color:#f60">1</span>
-    pidstat <span style="color:#f60">1</span>
-    top -p &lt;pid
-    
-    <span style="color:#09f;font-style:italic">## 内存,IO相关
-</span><span style="color:#09f;font-style:italic"></span>    free -m
-    vmstat <span style="color:#f60">1</span>
-    iostat -xz <span style="color:#f60">1</span></code></pre></div>
-<h3 id="top-htop">top/htop</h3>
-
+<span style="color:#09f;font-style:italic">## 内存,IO相关</span>
+free -m
+vmstat 1
+iostat -xz 1
+</code></pre></div><h3 id="tophtop">top/htop</h3>
 <p>名称解释</p>
-
 <ul>
 <li>RSS: Resident Set Size</li>
 <li>VmRSS: 进程除了swap外使用的物理内存大小</li>
 <li>VmSwap: swap大小</li>
 </ul>
-
 <h3 id="watch">watch</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒更新一次内存变化
-</span><span style="color:#09f;font-style:italic"></span>watch free -h</code></pre></div>
-<h3 id="sar">sar</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒更新一次内存变化</span>
+watch free -h
 
+</code></pre></div><h3 id="sar">sar</h3>
 <p>sar是System Activity Reporter（系统活动情况报告）的缩写</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sar -n DEV 1
-sar -n TCP,ETCP 1</pre></div>
-<h3 id="vmstat">vmstat</h3>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sar -n DEV 1
+sar -n TCP,ETCP 1
+</code></pre></div><h3 id="vmstat">vmstat</h3>
 <p>vmstat是Virtual Meomory Statistics（虚拟内存统计）的缩写，可实时动态监视操作系统的虚拟内存、进程、CPU活动。</p>
-
 <ul>
 <li>cs: 代表 context switches</li>
 <li>in: 代表 interrupts</li>
 </ul>
-
 <h3 id="iostat">iostat</h3>
-
 <p>使用-x参数我们可以获得更多统计信息</p>
-
 <ul>
-<li>rrqm/s：每秒这个设备相关的读取请求有多少被Merge了(当系统调用需要读取数据的 时候，VFS将请求发到各个FS，如果FS发现不同的读取请求读取的是相同Block的数据，FS会将这个请求合并Merge);wrqm/s：每秒这个 设备相关的写入请求有多少被Merge了。<br /></li>
+<li>rrqm/s：每秒这个设备相关的读取请求有多少被Merge了(当系统调用需要读取数据的 时候，VFS将请求发到各个FS，如果FS发现不同的读取请求读取的是相同Block的数据，FS会将这个请求合并Merge);wrqm/s：每秒这个 设备相关的写入请求有多少被Merge了。</li>
 <li>rsec/s：每秒读取的扇区数;wsec/： 每秒写入的扇区数。r/s：The number of read requests that were issued to the device per second;w/s：The number of write requests that were issued to the device per second;</li>
 <li>await：每一个IO请求的处理的平均时间(单位是微秒)。这里可以理解为IO的响应时 间，一般地系统IO响应时间应该低于5ms，如果大于10ms就比较大了。</li>
-<li>%util：在统计时间内所有处理IO时间，除以总共统计时间。例如，如果统计间隔1秒，该 设备有0.8秒在处理IO，而0.2秒闲置，那么该设备的%util = 0.<sup>8</sup>&frasl;<sub>1</sub> = 80%，所以该参数暗示了设备的繁忙程度。一般地，如果该参数是100%表示设备已经接近满负荷运行了(当然如果是多磁盘，即使%util是100%，因 为磁盘的并发能力，所以磁盘使用未必就到了瓶颈)。</li>
+<li>%util：在统计时间内所有处理IO时间，除以总共统计时间。例如，如果统计间隔1秒，该 设备有0.8秒在处理IO，而0.2秒闲置，那么该设备的%util = 0.8/1 = 80%，所以该参数暗示了设备的繁忙程度。一般地，如果该参数是100%表示设备已经接近满负荷运行了(当然如果是多磁盘，即使%util是100%，因 为磁盘的并发能力，所以磁盘使用未必就到了瓶颈)。</li>
 </ul>
-
 <p><strong>命令参数</strong></p>
-
 <p>iostat [-c|-d] [-k] [-t] [间隔描述] [检测次数]</p>
-
 <p>参 数：</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">-c : 仅显示cpu的状态
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-c : 仅显示cpu的状态
 -d : 仅显示存储设备的状态，不可以和-c一起使用
 -k : 默认显示的是读入读出的block信息，用-k可以改成KB大小来显示
 -t : 显示日期
@@ -229,17 +213,18 @@ CPU 占用情况包括四块内容
 Device: 块设备的名字
 tps: 该设备每秒 I/O 传输的次数。多个 I/O 请求可以组合为一个，每个 I/O 请求传输的字节数不同，因此可以将多个 I/O 请求合并为一个。
 Blk\_read/s, Blk\_wrtn/s: 表示从该设备每秒读写的数据块数量。块的大小可以不同，如1024, 2048 或 4048 字节，这取决于 partition 的大小。
-Blk\_read, Blk\_wrtn: 指示自从系统启动之后数据块读/写的合计数。也可以查看这几个文件/proc/stat，/proc/partitions，/proc/diskstats的内容。</pre></div>
-<h3 id="mpstat">mpstat</h3>
+Blk\_read, Blk\_wrtn: 指示自从系统启动之后数据块读/写的合计数。也可以查看这几个文件/proc/stat，/proc/partitions，/proc/diskstats的内容。
 
+
+</code></pre></div><h3 id="mpstat">mpstat</h3>
 <p>mpstat是MultiProcessor Statistics的缩写，是实时系统监控工具。其报告与CPU的一些统计信息，这些信息存放在/proc/stat文件中。在多CPUs系统里，其不但能查看所有CPU的平均状况信息，而且能够查看特定CPU的信息。</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒显示一次
-</span><span style="color:#09f;font-style:italic"></span>mpstat <span style="color:#f60">2</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 每隔2秒显示一次</span>
+mpstat 2
 mpstat -P ALL
-mpstat -P <span style="color:#f60">0</span> <span style="color:#f60">3</span> <span style="color:#f60">3</span>   # 对第一块CPU，每隔3秒监控一次，重复3次。</code></pre></div>
-<p>关键字段解释：
+mpstat -P <span style="color:#f60">0</span> <span style="color:#f60">3</span> <span style="color:#f60">3</span>   <span style="color:#09f;font-style:italic"># 对第一块CPU，每隔3秒监控一次，重复3次。</span>
+</code></pre></div><p>关键字段解释： 
 LOC :Local interrupt Timer</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">CPU CPU 编号,all 那行是所有CPU的平均统计值。
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CPU CPU 编号,all 那行是所有CPU的平均统计值。
 
 %user 在监控的时间间隔内，用户级进程（运用程序）占用的CPU时间百分比。
 %nice 在监控的时间间隔内，nice值为负的用户级进程所占用的CPU时间百分比。
@@ -251,177 +236,167 @@ LOC :Local interrupt Timer</p>
 
 其中最重要的字段是%idle,%iowait。如果%idle 说明CPU的负载不高。如果%iowait，说明存在I/O竞争。 也可以使用输出重定向保存mpstat对CPU的监控数据，用作CPU历史使用率分析。
 
-si 软中断太高: cat /proc/interrupts</pre></div>
-<h3 id="uptime">uptime</h3>
-
-<h3 id="dmesg-内核日志">dmesg 内核日志</h3>
-
+si 软中断太高: cat /proc/interrupts
+</code></pre></div><h3 id="uptime">uptime</h3>
+<h3 id="dmesg-">dmesg 内核日志</h3>
 <blockquote>
 <p>dmesg | tail</p>
 </blockquote>
-
-<h2 id="文件-进程类">文件/进程类</h2>
-
+<h2 id="heading-1">文件/进程类</h2>
 <h3 id="ps">ps</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看用户线程数
-</span><span style="color:#09f;font-style:italic"></span>ps -fLu xulz
-<span style="color:#09f;font-style:italic"># 根据pid找到process
-</span><span style="color:#09f;font-style:italic"></span>ps -p &lt;pid -o <span style="color:#033">comm</span><span style="color:#555">=</span>
-<span style="color:#09f;font-style:italic"># 运行队列
-</span><span style="color:#09f;font-style:italic"></span>ps -eo stat,pid,user,command | egrep <span style="color:#c30">&#34;^STAT|^D|^R&#34;</span>
-<span style="color:#09f;font-style:italic"># D : Uninterruptible sleep (usually IO)
-</span><span style="color:#09f;font-style:italic"></span># R : Running or runnable <span style="color:#555">(</span>on run queue<span style="color:#555">)</span></code></pre></div>
-<h3 id="进程检索-管理">进程检索/管理</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># 显示进程树
-</span><span style="color:#09f;font-style:italic"></span> pstree -p
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看用户线程数</span>
+ps -fLu xulz
+<span style="color:#09f;font-style:italic"># 根据pid找到process</span>
+ps -p &lt;pid -o <span style="color:#033">comm</span><span style="color:#555">=</span>
+
+<span style="color:#09f;font-style:italic"># 显示不截断内容ww</span>
+ps auxww
+ps aux | less -+S
+ps aux | most -w
+<span style="color:#09f;font-style:italic"># 运行队列</span>
+ps -eo stat,pid,user,command | egrep <span style="color:#c30">&#34;^STAT|^D|^R&#34;</span>
+<span style="color:#09f;font-style:italic"># D : Uninterruptible sleep (usually IO)</span>
+<span style="color:#09f;font-style:italic"># R : Running or runnable (on run queue)</span>
+</code></pre></div><h3 id="heading-2">进程检索/管理</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#09f;font-style:italic"># 显示进程树</span>
+ pstree -p
  
- pgrep</code></pre></div>
-<p>kill/pkill用法:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 默认用SIGTERM (terminate)信号终止进程
-</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">kill</span> &lt;porcess_id
-<span style="color:#09f;font-style:italic"># 列出可用(不带SIG前缀的)信号名
-</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">kill</span> -l
-<span style="color:#09f;font-style:italic"># 立即终止进程
-</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">kill</span> -9|KILL &lt;process_id
+ pgrep
+</code></pre></div><p>kill/pkill用法:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 默认用SIGTERM (terminate)信号终止进程</span>
+<span style="color:#366">kill</span> &lt;porcess_id
+<span style="color:#09f;font-style:italic"># 列出可用(不带SIG前缀的)信号名</span>
+<span style="color:#366">kill</span> -l
+<span style="color:#09f;font-style:italic"># 立即终止进程</span>
+<span style="color:#366">kill</span> -9|KILL &lt;process_id
 
-<span style="color:#09f;font-style:italic"># 根据进程名称(而不是id)
-</span><span style="color:#09f;font-style:italic"></span>pkill &lt;process_name
-pkill -f <span style="color:#c30">&#34;command_name&#34;</span></code></pre></div>
-<h3 id="lsof">lsof</h3>
-
+<span style="color:#09f;font-style:italic"># 根据进程名称(而不是id)</span>
+pkill &lt;process_name
+pkill -f <span style="color:#c30">&#34;command_name&#34;</span>
+</code></pre></div><h3 id="lsof">lsof</h3>
 <p>列出文件打开情况</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看某进程打开连接
-</span><span style="color:#09f;font-style:italic"></span>lsof -i -a -p <span style="color:#c30">`</span>pidof firefox<span style="color:#c30">`</span>
-<span style="color:#09f;font-style:italic"># 或者
-</span><span style="color:#09f;font-style:italic"></span>ss -nap | grep <span style="color:#069;font-weight:bold">$(</span>pidof firefox<span style="color:#069;font-weight:bold">)</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 查看某进程打开连接</span>
+lsof -i -a -p <span style="color:#c30">`</span>pidof firefox<span style="color:#c30">`</span>
+<span style="color:#09f;font-style:italic"># 或者</span>
+ss -nap | grep <span style="color:#069;font-weight:bold">$(</span>pidof firefox<span style="color:#069;font-weight:bold">)</span>
 
-<span style="color:#09f;font-style:italic"># 查看端口占用 lsof -i :portNumber
-</span><span style="color:#09f;font-style:italic"></span>lsof -i :22</code></pre></div>
-<h3 id="taskset">taskset</h3>
+<span style="color:#09f;font-style:italic"># 查看端口占用 lsof -i :portNumber</span>
+lsof -i :22
+</code></pre></div><h3 id="taskset">taskset</h3>
+<p>set or retrieve a process's CPU affinity</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示当前进程的 affinity</span>
+taskset -c -p <span style="color:#f60">1162</span>  
+<span style="color:#09f;font-style:italic"># 设置进程的affinity</span>
+taskset -c 0,1 -p 1162
 
-<p>set or retrieve a process&rsquo;s CPU affinity</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示当前进程的 affinity
-</span><span style="color:#09f;font-style:italic"></span>taskset -c -p <span style="color:#f60">1162</span>  
-<span style="color:#09f;font-style:italic"># 设置进程的affinity
-</span><span style="color:#09f;font-style:italic"></span>taskset -c <span style="color:#f60">0</span>,1 -p <span style="color:#f60">1162</span>
-
-taskset -c <span style="color:#f60">1</span> </code></pre></div>
-<h3 id="proc">proc</h3>
-
+taskset -c <span style="color:#f60">1</span> 
+</code></pre></div><h3 id="proc">proc</h3>
 <p>Process information pseudo-filesystem</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> man proc
  /proc/&lt;pid/status
- /proc/&lt;pid/statm   #Memory</code></pre></div>
-<h3 id="valgrind">valgrind</h3>
-
+ /proc/&lt;pid/statm   <span style="color:#09f;font-style:italic">#Memory</span>
+</code></pre></div><h3 id="valgrind">valgrind</h3>
 <p>查内存泄漏</p>
-
-<h2 id="网络类">网络类</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示所有打开连接
-</span><span style="color:#09f;font-style:italic"></span>ss -l  
-<span style="color:#09f;font-style:italic"># 或者
-</span><span style="color:#09f;font-style:italic"></span>netstat -tlpn
+<h2 id="heading-3">网络类</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示所有打开连接</span>
+ss -l  
+<span style="color:#09f;font-style:italic"># 或者</span>
+netstat -tlpn
 netstat -anp
-<span style="color:#09f;font-style:italic"># 或者
-</span><span style="color:#09f;font-style:italic"></span>lsof -i
-<span style="color:#09f;font-style:italic"># 更精确的方式显示打开的网络端口
-</span><span style="color:#09f;font-style:italic"></span>nmap -sT -O localhost
-<span style="color:#09f;font-style:italic"># 如果遇到未知服务打开端口:
-</span><span style="color:#09f;font-style:italic"></span>cat /etc/services | grep <span style="color:#f60">834</span></code></pre></div>
-<h3 id="网络连接监控ss">网络连接监控ss</h3>
-
+<span style="color:#09f;font-style:italic"># 或者</span>
+lsof -i
+<span style="color:#09f;font-style:italic"># 更精确的方式显示打开的网络端口</span>
+nmap -sT -O localhost
+<span style="color:#09f;font-style:italic"># 如果遇到未知服务打开端口:</span>
+cat /etc/services | grep 834
+</code></pre></div><h3 id="ss">网络连接监控ss</h3>
 <p>socket stats</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> ss -s
- ss -lp | grep <span style="color:#f60">8080</span></code></pre></div>
-<h3 id="netstat">netstat</h3>
-
+ ss -lp | grep 8080
+</code></pre></div><h3 id="netstat">netstat</h3>
 <p>常用选项:</p>
-
 <ul>
 <li>-a/&ndash;all: 显示监听和非监听连接</li>
 <li>-n: 显示IP</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 显示所有TCP
-</span><span style="color:#09f;font-style:italic"></span> netstat -nat
- <span style="color:#09f;font-style:italic">#Windows
-</span><span style="color:#09f;font-style:italic"></span> netstat -aon | more
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># CentOS 7需要先安装</span>
+yum install net-tools
+<span style="color:#09f;font-style:italic"># 显示所有TCP</span>
+ netstat -nat
+ <span style="color:#09f;font-style:italic">#Windows</span>
+ netstat -aon | more
  
- <span style="color:#09f;font-style:italic"># 显示建立的TCP连接
-</span><span style="color:#09f;font-style:italic"></span> netstat -np | grep ESTABLISHED | wc -l
+ <span style="color:#09f;font-style:italic"># 显示建立的TCP连接</span>
+ netstat -np | grep ESTABLISHED | wc -l
  netstat -nat | grep <span style="color:#c30">&#39;ESTABLISHED&#39;</span>
- netstat -s |grep <span style="color:#c30">&#39;connections established&#39;</span>  </code></pre></div>
-<h3 id="curl">cURL</h3>
-
+ netstat -s |grep <span style="color:#c30">&#39;connections established&#39;</span>  
+</code></pre></div><h3 id="curl">cURL</h3>
 <p>命令行文件传输工具.</p>
-
 <p>常用选项:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">-d, --data 使用类型 application/x-www-form-urlencoded做POST
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-d, --data 使用类型 application/x-www-form-urlencoded做POST
 -F, --form &lt;name=content
 -x, --proxy 代理设置
 -X, --request &lt;command&lt;/command 指定类型
--I, --head 只显示响应头，在响应体较大时很有用</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在内网查看外网IP
-</span><span style="color:#09f;font-style:italic"></span>curl ifconfig.me</code></pre></div>
-<h3 id="wget">wget</h3>
-
-<h3 id="域名解析">域名解析</h3>
+-I, --head 只显示响应头，在响应体较大时很有用
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 在内网查看外网IP</span>
+curl ifconfig.me
+</code></pre></div><h3 id="wget">wget</h3>
+<h3 id="heading-4">域名解析</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nslookup www.google.com
 dig xulizhao.com
 dnstracer
 dig +trace xulizhao.com
-<span style="color:#09f;font-style:italic"># 查找域名服务器
-</span><span style="color:#09f;font-style:italic"></span>less /etc/resolv.conf
+<span style="color:#09f;font-style:italic"># 查找域名服务器</span>
+less /etc/resolv.conf
 
-nmcli device show &lt;interfacename| grep IP4.DNS</code></pre></div>
-<p>Windows从IP得到hostname: ping -a 10.10.10.10</p>
+nmcli device show &lt;interfacename| grep IP4.DNS
+</code></pre></div><p>Windows从IP得到hostname: ping -a 10.10.10.10</p>
+<h4 id="dns">修改DNS</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## Ubuntu</span>
+vi /etc/network/interfaces
+dns-nameservers 8.8.8.8
+<span style="color:#09f;font-style:italic"># 重启服务</span>
+/etc/init.d/networking restart
 
-<h4 id="修改dns">修改DNS</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic">## Ubuntu
-</span><span style="color:#09f;font-style:italic"></span>vi /etc/network/interfaces
-dns-nameservers <span style="color:#f60">8</span>.8.8.8
-<span style="color:#09f;font-style:italic"># 重启服务
-</span><span style="color:#09f;font-style:italic"></span>/etc/init.d/networking restart
-
-<span style="color:#09f;font-style:italic">## CentOS
-</span><span style="color:#09f;font-style:italic"></span>vi /etc/resolv.conf
-nameserver <span style="color:#f60">8</span>.8.8.8</code></pre></div>
-<h3 id="网络调试traceroute-mtr">网络调试traceroute/mtr</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mtr可以看做traceroute的加强版
+<span style="color:#09f;font-style:italic">## CentOS</span>
+vi /etc/resolv.conf
+nameserver 8.8.8.8
+</code></pre></div><h3 id="traceroutemtr">网络调试traceroute/mtr</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mtr可以看做traceroute的加强版
 显示数据包在IP网络经过的路由器的IP地址,一直达到默认或用参数指定的追踪限制（maximum_hops）才结束追踪. [Windows] tracert
 响应格式: Hop RTT1 RTT2 RTT3 Domain Name [IP Address] 每个hop发送三个包, * 代表丢包
 使用ICMP协议 (同ping);
 RTT: round trip time ;
-延时突然增加并持续的增加通常意味着问题;</pre></div>
-<h3 id="网络数据统计iftop">网络数据统计iftop</h3>
-
+延时突然增加并持续的增加通常意味着问题;
+</code></pre></div><h3 id="iftop">网络数据统计iftop</h3>
 <p>r 代表receive</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 某网口带宽占用
-</span><span style="color:#09f;font-style:italic"></span>iftop -i eth1
-<span style="color:#09f;font-style:italic"># 子网数据流
-</span><span style="color:#09f;font-style:italic"></span>iftop -F <span style="color:#f60">192</span>.168.1.0/24</code></pre></div>
-<h3 id="网络模拟tc-netem">网络模拟tc/netem</h3>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 某网口带宽占用</span>
+iftop -i eth1
+<span style="color:#09f;font-style:italic"># 子网数据流</span>
+iftop -F 192.168.1.0/24
+</code></pre></div><h3 id="tcnetem">网络模拟tc/netem</h3>
 <p>模拟网络延迟,丢包,重复,乱序等</p>
-
-<h2 id="软件调试类">软件调试类</h2>
-
+<h2 id="heading-5">软件调试类</h2>
 <ul>
 <li>strace/dtruss: 系统调用跟踪工具</li>
 <li>ltrace：查询库调用</li>
 </ul>
-
-<h2 id="辅助类">辅助类</h2>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ strace -p &lt;pid&gt; -c
+ -p 指定进程ID
+ -c  汇总输出
+</code></pre></div><h2 id="heading-6">辅助类</h2>
 <ul>
 <li><a href="https://www.ivarch.com/programs/pv.shtml">pv</a> : 管道进度监控</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 相当于cat
-</span><span style="color:#09f;font-style:italic"># 监控某进程文件
-</span><span style="color:#09f;font-style:italic"></span>pv -d &lt;pid&gt;
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 相当于cat</span>
+<span style="color:#09f;font-style:italic"># 监控某进程文件</span>
+pv -d &lt;pid&gt;
 
-<span style="color:#09f;font-style:italic"># 管道命名
-</span><span style="color:#09f;font-style:italic"></span>pv -cN gzip</code></pre></div>
-<h2 id="扩展阅读">扩展阅读</h2>
+<span style="color:#09f;font-style:italic"># 管道命名</span>
+pv -cN gzip
 
+
+</code></pre></div><h2 id="heading-7">扩展阅读</h2>
 <ul>
 <li><a href="http://www.codingpedia.org/ama/how-to-test-a-rest-api-from-command-line-with-curl/">如何用curl做API接口测试</a></li>
 <li><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html">Linux 工具快速教程</a></li>
@@ -431,10 +406,42 @@ RTT: round trip time ;
     </div>
     <footer class="post-footer">
      
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/linux-debug-command/" >https://xulizhao.com/blog/linux-debug-command/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
  
 <div class="post-tags">     
      
-    <a href="/tags/linux" rel="tag" title="linux">#linux#</a>
+    <a href="https://xulizhao.com/tags/linux" rel="tag" title="linux">#linux#</a>
     
 </div>
 
@@ -443,38 +450,21 @@ RTT: round trip time ;
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/redis/" rel="next" title="Redis">
-        <i class="fa fa-chevron-left"></i> Redis
+        <a href="https://xulizhao.com/docs/" rel="next" title="在线文档">
+        <i class="fa fa-chevron-left"></i> 在线文档
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/docs/" rel="prev" title="在线文档">
-        在线文档 <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/redis/" rel="prev" title="Redis">
+        Redis <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -509,22 +499,23 @@ RTT: round trip time ;
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -534,9 +525,9 @@ RTT: round trip time ;
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -544,25 +535,9 @@ RTT: round trip time ;
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -572,48 +547,45 @@ RTT: round trip time ;
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#资源统计">资源统计</a>
-<ul>
-<li><a href="#top-htop">top/htop</a></li>
-<li><a href="#watch">watch</a></li>
-<li><a href="#sar">sar</a></li>
-<li><a href="#vmstat">vmstat</a></li>
-<li><a href="#iostat">iostat</a></li>
-<li><a href="#mpstat">mpstat</a></li>
-<li><a href="#uptime">uptime</a></li>
-<li><a href="#dmesg-内核日志">dmesg 内核日志</a></li>
-</ul></li>
-<li><a href="#文件-进程类">文件/进程类</a>
-<ul>
-<li><a href="#ps">ps</a></li>
-<li><a href="#进程检索-管理">进程检索/管理</a></li>
-<li><a href="#lsof">lsof</a></li>
-<li><a href="#taskset">taskset</a></li>
-<li><a href="#proc">proc</a></li>
-<li><a href="#valgrind">valgrind</a></li>
-</ul></li>
-<li><a href="#网络类">网络类</a>
-<ul>
-<li><a href="#网络连接监控ss">网络连接监控ss</a></li>
-<li><a href="#netstat">netstat</a></li>
-<li><a href="#curl">cURL</a></li>
-<li><a href="#wget">wget</a></li>
-<li><a href="#域名解析">域名解析</a>
-<ul>
-<li><a href="#修改dns">修改DNS</a></li>
-</ul></li>
-<li><a href="#网络调试traceroute-mtr">网络调试traceroute/mtr</a></li>
-<li><a href="#网络数据统计iftop">网络数据统计iftop</a></li>
-<li><a href="#网络模拟tc-netem">网络模拟tc/netem</a></li>
-</ul></li>
-<li><a href="#软件调试类">软件调试类</a></li>
-<li><a href="#辅助类">辅助类</a></li>
-<li><a href="#扩展阅读">扩展阅读</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">资源统计</a>
+      <ul>
+        <li><a href="#tophtop">top/htop</a></li>
+        <li><a href="#watch">watch</a></li>
+        <li><a href="#sar">sar</a></li>
+        <li><a href="#vmstat">vmstat</a></li>
+        <li><a href="#iostat">iostat</a></li>
+        <li><a href="#mpstat">mpstat</a></li>
+        <li><a href="#uptime">uptime</a></li>
+        <li><a href="#dmesg-">dmesg 内核日志</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-1">文件/进程类</a>
+      <ul>
+        <li><a href="#ps">ps</a></li>
+        <li><a href="#heading-2">进程检索/管理</a></li>
+        <li><a href="#lsof">lsof</a></li>
+        <li><a href="#taskset">taskset</a></li>
+        <li><a href="#proc">proc</a></li>
+        <li><a href="#valgrind">valgrind</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">网络类</a>
+      <ul>
+        <li><a href="#ss">网络连接监控ss</a></li>
+        <li><a href="#netstat">netstat</a></li>
+        <li><a href="#curl">cURL</a></li>
+        <li><a href="#wget">wget</a></li>
+        <li><a href="#heading-4">域名解析</a></li>
+        <li><a href="#traceroutemtr">网络调试traceroute/mtr</a></li>
+        <li><a href="#iftop">网络数据统计iftop</a></li>
+        <li><a href="#tcnetem">网络模拟tc/netem</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">软件调试类</a></li>
+    <li><a href="#heading-6">辅助类</a></li>
+    <li><a href="#heading-7">扩展阅读</a></li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -627,18 +599,18 @@ RTT: round trip time ;
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -647,36 +619,58 @@ RTT: round trip time ;
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

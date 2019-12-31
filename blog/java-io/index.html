@@ -1,0 +1,509 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Java I/O学习 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Java I/O学习">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Java I/O学习 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/java-io/" itemprop="url">
+        Java I/O学习
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-26">
+    2018-09-26
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">819 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Java系列记录文章.</p>
+<h2 id="heading">文件操作</h2>
+<ul>
+<li>包 java.nio.file</li>
+</ul>
+<p>常用类及方法：</p>
+<ul>
+<li>Files
+<ul>
+<li>readAllBytes</li>
+<li>readAllLines</li>
+<li>write(Path,,StandardOpenOption.CREATE)</li>
+<li>newInputStream/newOutputStream</li>
+</ul>
+</li>
+<li>Paths 和Path
+<ul>
+<li>Paths.get</li>
+<li>getName</li>
+<li>getParent</li>
+<li>deleteIfExists</li>
+</ul>
+</li>
+<li>File
+<ul>
+<li>toPath</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#09f;font-style:italic">// 当前路径
+</span><span style="color:#09f;font-style:italic"></span>String currentDir <span style="color:#555">=</span> System<span style="color:#555">.</span><span style="color:#309">getProperty</span><span style="color:#555">(</span><span style="color:#c30">&#34;user.dir&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+<span style="color:#09f;font-style:italic">// ls
+</span><span style="color:#09f;font-style:italic"></span>Files<span style="color:#555">.</span><span style="color:#309">list</span><span style="color:#555">(</span>Paths<span style="color:#555">.</span><span style="color:#309">get</span><span style="color:#555">(</span><span style="color:#c30">&#34;.&#34;</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">forEach</span><span style="color:#555">(</span>System<span style="color:#555">.</span><span style="color:#309">out</span><span style="color:#555">:</span><span style="color:#555">:</span>println<span style="color:#555">)</span><span style="color:#555">;</span>
+
+Stream<span style="color:#555">&lt;</span>String<span style="color:#555">&gt;</span> lines <span style="color:#555">=</span> Files<span style="color:#555">.</span><span style="color:#309">lines</span><span style="color:#555">(</span>Paths<span style="color:#555">.</span><span style="color:#309">get</span><span style="color:#555">(</span><span style="color:#c30">&#34;META-INF&#34;</span><span style="color:#555">,</span><span style="color:#c30">&#34;MANIFEST.MF&#34;</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">// 遍历所有文件
+</span><span style="color:#09f;font-style:italic"></span>Files<span style="color:#555">.</span><span style="color:#309">walk</span><span style="color:#555">(</span>Paths<span style="color:#555">.</span><span style="color:#309">get</span><span style="color:#555">(</span><span style="color:#c30">&#34;.&#34;</span><span style="color:#555">)</span><span style="color:#555">)</span>
+    <span style="color:#555">.</span><span style="color:#309">filter</span><span style="color:#555">(</span>Files<span style="color:#555">:</span><span style="color:#555">:</span>isRegularFile<span style="color:#555">)</span>
+    <span style="color:#555">.</span><span style="color:#309">forEach</span><span style="color:#555">(</span>System<span style="color:#555">.</span><span style="color:#309">out</span><span style="color:#555">:</span><span style="color:#555">:</span>println<span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">// 删除所有文件
+</span><span style="color:#09f;font-style:italic"></span>Files<span style="color:#555">.</span><span style="color:#309">walk</span><span style="color:#555">(</span>path<span style="color:#555">)</span>
+    <span style="color:#555">.</span><span style="color:#309">sorted</span><span style="color:#555">(</span>Comparator<span style="color:#555">.</span><span style="color:#309">reverseOrder</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span>
+    <span style="color:#555">.</span><span style="color:#309">map</span><span style="color:#555">(</span>Path<span style="color:#555">:</span><span style="color:#555">:</span>toFile<span style="color:#555">)</span>
+    <span style="color:#555">.</span><span style="color:#309">forEach</span><span style="color:#555">(</span>File<span style="color:#555">:</span><span style="color:#555">:</span>delete<span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">// 过滤
+</span><span style="color:#09f;font-style:italic"></span>Files<span style="color:#555">.</span><span style="color:#309">lines</span><span style="color:#555">(</span><span style="color:#069;font-weight:bold">new</span> File<span style="color:#555">(</span>fileName<span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">toPath</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span>
+        <span style="color:#555">.</span><span style="color:#309">map</span><span style="color:#555">(</span>s <span style="color:#555">-</span><span style="color:#555">&gt;</span> s<span style="color:#555">.</span><span style="color:#309">trim</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span>
+        <span style="color:#555">.</span><span style="color:#309">filter</span><span style="color:#555">(</span>s <span style="color:#555">-</span><span style="color:#555">&gt;</span> <span style="color:#555">!</span>s<span style="color:#555">.</span><span style="color:#309">isEmpty</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span>
+        <span style="color:#555">.</span><span style="color:#309">filter</span><span style="color:#555">(</span>s <span style="color:#555">-</span><span style="color:#555">&gt;</span> <span style="color:#555">!</span>s<span style="color:#555">.</span><span style="color:#309">matches</span><span style="color:#555">(</span><span style="color:#c30">&#34;#.*&#34;</span><span style="color:#555">)</span><span style="color:#555">)</span>
+        <span style="color:#555">.</span><span style="color:#309">forEach</span><span style="color:#555">(</span>System<span style="color:#555">.</span><span style="color:#309">out</span><span style="color:#555">:</span><span style="color:#555">:</span>println<span style="color:#555">)</span><span style="color:#555">;</span>
+</code></pre></div><h2 id="stream">Stream/数据流</h2>
+<p>数据流是Java与磁盘,数据库,网络等源或目的媒介数据通信的描述,可分为(面向人的)字符流/Character和(面向机器的)字节流/Byte.</p>
+<p>缓冲流避免一个一个字符的读写,更加高效,常用来包装文件读写流.</p>
+<p><strong>常用类如下:</strong></p>
+<ul>
+<li>Streams/字节流:InputStream /OutputStream
+<ul>
+<li>面向8位字节,二进制或和机器打交道的数据</li>
+<li>FileInputStream/FileOutputStream：从文件读取字节，将字节写入文件</li>
+<li>ByteArrayInputStream/ByteArrayOutputStream：从内存型的数组读取字节，将字节写入内存中的数组</li>
+</ul>
+</li>
+<li>字符流: Reader/Writer
+<ul>
+<li>面向字符(16位unicode),文本或人可读数据</li>
+<li>Reader 喜欢从字节流读取字节并转换为字符. Writer 喜欢将字符转换为字节，以便将它们放在字节流上.</li>
+<li>StringReader/StringWriter：在内存的 String 中读取和写入字符.</li>
+<li>InputStreamReader/InputStreamWriter和子类 FileReader/FileWriter：充当字节流和字符流之间的桥梁.</li>
+</ul>
+</li>
+<li>缓存流: 读大文件或频繁读有更高的性能
+<ul>
+<li>BufferedReader / BufferedWriter：在读取或写入另一个流时缓冲数据，使读写操作更高效.</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-1">行操作</h3>
+<ul>
+<li>reader.readLine(): 只支持字符</li>
+<li>Scanner: 功能更强</li>
+<li>PrinterWriter: 支持多种类型或格式定义printf</li>
+<li>System.out是一个PrintStream对象</li>
+</ul>
+<p>注： 流操作要记得关闭资源，通常是外层的Buffer对象，避免占用文件句柄不释放。推荐使用try-with-resources(){}</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#078;font-weight:bold">double</span> hoursWorked<span style="color:#555">;</span>
+Scanner inFile <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">new</span> Scanner<span style="color:#555">(</span><span style="color:#069;font-weight:bold">new</span> FileReader<span style="color:#555">(</span><span style="color:#c30">&#34;employee.dat&#34;</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+hoursWorked <span style="color:#555">=</span> inFile<span style="color:#555">.</span><span style="color:#309">nextDouble</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">// 两个true参数代表开启追加模式和开启自动flush
+</span><span style="color:#09f;font-style:italic"></span>PrintWriter out <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">new</span> PrintWriter<span style="color:#555">(</span>
+                      <span style="color:#069;font-weight:bold">new</span> BufferedWriter<span style="color:#555">(</span>
+                      <span style="color:#069;font-weight:bold">new</span> FileWriter<span style="color:#555">(</span><span style="color:#c30">&#34;books.txt&#34;</span><span style="color:#555">,</span><span style="color:#069;font-weight:bold">true</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">,</span> <span style="color:#069;font-weight:bold">true</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+
+</code></pre></div><h2 id="heading-2">异常</h2>
+<ul>
+<li>IOException
+<ul>
+<li>EOFException</li>
+<li>FileNotFoundException</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-3">扩展阅读</h2>
+<ul>
+<li><a href="https://www.vogella.com/tutorials/JavaIO/article.html">Reading and writing files in Java (Input/Output) - Tutorial</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-perry-io/index.html">Java I/O 学习</a></li>
+<li><a href="http://www.c-jump.com/bcc/c257c/c257syllabus.html">Java教学大纲</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/java-io/" >https://xulizhao.com/blog/java-io/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/java" rel="tag" title="java">#java#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/jvm/" rel="next" title="JVM和GC调优">
+        <i class="fa fa-chevron-left"></i> JVM和GC调优
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java-patterns/" rel="prev" title="Java设计模式">
+        Java设计模式 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">文件操作</a></li>
+    <li><a href="#stream">Stream/数据流</a>
+      <ul>
+        <li><a href="#heading-1">行操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">异常</a></li>
+    <li><a href="#heading-3">扩展阅读</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Python高级笔记 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Python高级笔记">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Python高级笔记 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/python-advance/" itemprop="url">
+        Python高级笔记
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2016-12-23">
+    2016-12-23
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">2277 字 ~5分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。</p>
+<h2 id="heading">类和面向对象</h2>
+<p><strong>new</strong>()构造器可以实例化不可变对象，必须返回一个合法的实例</p>
+<p>实例属性和类属性：</p>
+<ul>
+<li>两种不同属性，类属性和实例无关</li>
+<li>不要从实例修改可变的类属性</li>
+<li>类属性的修改会影响所有实例</li>
+</ul>
+<p>类变量使用场合:</p>
+<ul>
+<li>用做常量: 被所有实例使用. 对于类变量的修改,会反映到所有实例.</li>
+<li>方便通过类直接访问</li>
+</ul>
+<p>变量的查找顺序为: 实例 &gt; 类 &gt; 基类</p>
+<p>绑定binding：</p>
+<ul>
+<li>没有实例时方法就是未绑定的</li>
+<li>self用于类实例方法中引用方法所绑定的实例</li>
+<li>还没有实例且需要调用一个非绑定方法时必须传递self, 比如覆盖父类方法</li>
+</ul>
+<h3 id="heading-1">静态方法和类方法</h3>
+<ul>
+<li>@classmethod： 函数参数是类对象而不是实例对象.  如果涉及工厂方法,应该使用类方法而不是静态方法.</li>
+<li>@staticmethod： 通常，有很多情况下一些函数与类相关，但不需要任何类或实例变量就可以实现一些功能.</li>
+<li>mixin 类：对两个完全不相关的类进行多重继承(联合)</li>
+</ul>
+<p>如果需要在多个模块共享全局变量,通常使用模块如config.py实现.因此<strong>模块</strong>是单例设计模式的基本实现.</p>
+<h3 id="heading-2">新式类的高级特征</h3>
+<ul>
+<li>__slots__类属性</li>
+<li>描述符
+<ul>
+<li><strong>get</strong>(), <strong>set</strong>(), <strong>delete</strong>()</li>
+<li><strong>getattribute</strong>()特殊方法</li>
+<li>优先级别
+<ul>
+<li>类属性</li>
+<li>数据描述符</li>
+<li>实例属性</li>
+<li>非数据描述符</li>
+<li>默认为__getattr__()</li>
+</ul>
+</li>
+<li>属性和@property</li>
+</ul>
+</li>
+<li>元类和__metaclass__</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li><strong>getattr</strong>(): 获取属性;内建getattr();仅当属性没有找到时调用</li>
+<li><strong>getattribute</strong>(): 获取属性;内建getattr(); 总是被调用</li>
+</ul>
+<p>与类相关模块:</p>
+<ul>
+<li>UserList, UserDict, UserString</li>
+<li>types</li>
+<li>operator</li>
+</ul>
+<h3 id="abcabstract-base-classes">ABC:Abstract Base Classes</h3>
+<p>import abc</p>
+<h2 id="heading-3">函数式</h2>
+<h3 id="iterator">iterator</h3>
+<ul>
+<li>itertools.islice</li>
+</ul>
+<h2 id="heading-4">网络</h2>
+<h3 id="socket">socket</h3>
+<ul>
+<li>socket.getdefaulttimeout():返回超时设置，默认为None（没有超时检查）</li>
+<li>socket 一旦设置了timeout, 就进入了 non-blocking 工作模式。在设置之后要将再次调用settimeout(None)来设置socket进入阻塞模式。</li>
+</ul>
+<p><strong>网络错误处理</strong></p>
+<p>Q: error: [Errno 11] Resource temporarily unavailable</p>
+<p>A: A &ldquo;Broken Pipe&rdquo; error occurs when you try to write to a pipe that has been closed on the other end.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#069;font-weight:bold">try</span>:
+    <span style="color:#555">.</span><span style="color:#555">.</span><span style="color:#555">.</span>
+<span style="color:#069;font-weight:bold">except</span> <span style="color:#c00;font-weight:bold">IOError</span> <span style="color:#069;font-weight:bold">as</span> e:
+    <span style="color:#069;font-weight:bold">if</span> e<span style="color:#555">.</span>errno <span style="color:#555">==</span> errno<span style="color:#555">.</span>EPIPE:
+        <span style="color:#09f;font-style:italic"># Handle error</span>
+
+<span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">errno</span><span style="color:#555">,</span> <span style="color:#0cf;font-weight:bold">os</span>
+<span style="color:#555">&gt;&gt;</span><span style="color:#555">&gt;</span> errno<span style="color:#555">.</span>EAGAIN, errno<span style="color:#555">.</span>EWOULDBLOCK
+<span style="color:#555">&gt;&gt;</span><span style="color:#555">&gt;</span> os<span style="color:#555">.</span>strerror(errno<span style="color:#555">.</span>EAGAIN)
+<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">Resource temporarily unavailable</span><span style="color:#c30">&#39;</span>
+</code></pre></div><h2 id="heading-5">多线程</h2>
+<p>进程、线程和协程的关系：</p>
+<ul>
+<li>多进程能够利用多核优势，但是进程间通信比较麻烦，另外，进程数目的增加会使性能下降，进程切换的成本较高。程序流程复杂度相对I/O多路复用要低。</li>
+<li>I/O多路复用是在一个进程内部处理多个逻辑流程，不用进行进程切换，性能较高，另外流程间共享信息简单。但是无法利用多核优势，另外，程序流程被事件处理切割成一个个小块，程序比较复杂，难于理解。</li>
+<li>线程运行在一个进程内部，由操作系统调度，切换成本较低，另外，他们共享进程的虚拟地址空间，线程间共享信息简单。但是线程安全问题导致线程学习曲线陡峭，而且易出错。</li>
+<li>协程有编程语言提供，由程序员控制进行切换，所以没有线程安全问题，可以用来处理状态机，并发请求等。但是无法利用多核优势（通过协程+进程的方式来解决）。</li>
+</ul>
+<h3 id="concurrentfutures">concurrent.futures</h3>
+<p>仿Java实现，执行并行任务</p>
+<ul>
+<li>ThreadPoolExecutor</li>
+<li>ProcessPoolExecutor</li>
+</ul>
+<h3 id="gilglobal-interpreter-lock">GIL(Global Interpreter Lock)</h3>
+<p>Python的内存管理不是 线程安全的，所以GIL被创造出来避免多线程同时运行同一个Python代码</p>
+<h3 id="io">异步IO</h3>
+<ul>
+<li>asyncio 内置库</li>
+<li><a href="https://github.com/python-trio/trio">Trio </a></li>
+<li><a href="https://github.com/dabeaz/curio">Curio</a>另一种实现，偏底层</li>
+</ul>
+<h3 id="gevent">gevent</h3>
+<ul>
+<li>非阻塞的网络协程库，基于系统底层的libev事件库. hub（可以理解为MainThread）对应event loop.</li>
+<li>gevent.spawn(func, args):创建一个greenlet,并将该greenlet的switch()加入hub主循环回调</li>
+<li>join会保存当前greenlet.switch到一个队列中，并注册_notify_links回调，然后切换到hub，在_notify_links回调中将依次调用先前注册在队列中的回调。</li>
+<li>事件(event)是一个在Greenlet之间异步通信的形式。事件对象的一个扩展是AsyncResult，它允许你在唤醒调用上附加一个值。 它有时也被称作是future或defered，因为它持有一个指向将来任意时间可设置 为任何值的引用。</li>
+<li>范围为1的信号量也称为锁(lock)，它向单个greenlet提供了互斥访问。 信号量和锁常常用来保证资源只在程序上下文被单次使用。</li>
+<li>上下文切换即两个子任务之间的切换。</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#09f;font-style:italic"># 放在文件头，其他导入语句前</span>
+<span style="color:#09f;font-style:italic"># 会替换线程为greenlets</span>
+<span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">gevent.monkey</span> <span style="color:#069;font-weight:bold">import</span> patch_all
+patch_all()
+
+<span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">gevent</span> <span style="color:#069;font-weight:bold">import</span> getcurrent
+<span style="color:#366">id</span>(getcurrent())
+</code></pre></div><h2 id="heading-6">高级特性</h2>
+<h3 id="decorator">Decorator</h3>
+<p>类似于macros宏和Java中的annotations,目的是提供一种修改语言元素的方式，是metaclasses(元类)的简单替代。</p>
+<p>可以注入或修改函数和类的代码，类似于Java的Aspect-Oriented Programming (AOP)，可以放在函数的入口或出口用作security, tracing, locking等。</p>
+<ul>
+<li>Class修饰符的实现要定义__call__</li>
+<li>不带参数的类修饰符：<strong>init</strong>(), <strong>call</strong>()</li>
+<li>带参数的类修饰符</li>
+<li>带参数的函数修饰符: 需要三次嵌套,最里层是实际的替代函数。这种情况尽量用带参数的类修饰符实现</li>
+</ul>
+<h3 id="context-manager">Context Manager</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">contextlib</span> <span style="color:#069;font-weight:bold">import</span> contextmanager
+
+<span style="color:#99f">@contextmanager</span>
+<span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">tag</span>(name):
+    <span style="color:#09f;font-style:italic"># 必须返回一个generator类型的iterator对象</span>
+    <span style="color:#069;font-weight:bold">yield</span>
+</code></pre></div><h2 id="heading-7">其他</h2>
+<h3 id="ctypes">ctypes</h3>
+<p>支持的Python内置类型：None, integers, longs, byte strings, unicode strings</p>
+<ul>
+<li>None 作为C空指针传递</li>
+<li>byte strings and unicode strings are passed as pointer to the memory block that contains their data (char * or wchar_t *).</li>
+<li>Python integers and longs are passed as the platforms default C int type, their value is masked to fit into the C type.</li>
+<li>create_string_buffer / create_unicode_buffer() 创建可变内存块</li>
+<li>类转为自定义类型: self.<em>as_parameter</em> = number 或使用property()</li>
+<li>指定参数格式  func_name.argtypes = [,,]</li>
+<li>from_param()实现类方法</li>
+<li>返回类型 : 默认为int,   用.restype 指定其他类型</li>
+<li>传递指针:  byref (更高效)/ pointer(会构建指针)</li>
+</ul>
+<ul>
+<li>定义的类是Structure或Union的子类,定义的_fields_ 必须是 a list of 2-tuples 包含名字和类型</li>
+<li>回调: CFUNCTYPE(返回类型)</li>
+<li>访问动态库的值  type.in_dll(pythonapi, )</li>
+</ul>
+<p><strong>扩展阅读</strong></p>
+<ul>
+<li><a href="https://pythonguidecn.readthedocs.io/zh/latest/scenarios/clibs.html">与C/C++库交互</a>: swig不能处理指针？</li>
+<li><a href="https://github.com/pybind/pybind11">pybind11 </a>: Seamless operability between C++11 and Python</li>
+<li><a href="https://github.com/zrax/pycdc">Decompyle++</a>: A Python Byte-code Disassembler/Decompiler</li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/python-advance/" >https://xulizhao.com/blog/python-advance/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/python" rel="tag" title="python">#python#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/python-style/" rel="next" title="Python编码规范和风格">
+        <i class="fa fa-chevron-left"></i> Python编码规范和风格
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/python-core/" rel="prev" title="Python基础笔记">
+        Python基础笔记 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">类和面向对象</a>
+      <ul>
+        <li><a href="#heading-1">静态方法和类方法</a></li>
+        <li><a href="#heading-2">新式类的高级特征</a></li>
+        <li><a href="#abcabstract-base-classes">ABC:Abstract Base Classes</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">函数式</a>
+      <ul>
+        <li><a href="#iterator">iterator</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">网络</a>
+      <ul>
+        <li><a href="#socket">socket</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">多线程</a>
+      <ul>
+        <li><a href="#concurrentfutures">concurrent.futures</a></li>
+        <li><a href="#gilglobal-interpreter-lock">GIL(Global Interpreter Lock)</a></li>
+        <li><a href="#io">异步IO</a></li>
+        <li><a href="#gevent">gevent</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-6">高级特性</a>
+      <ul>
+        <li><a href="#decorator">Decorator</a></li>
+        <li><a href="#context-manager">Context Manager</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-7">其他</a>
+      <ul>
+        <li><a href="#ctypes">ctypes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

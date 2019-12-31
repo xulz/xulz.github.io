@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>office on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/office/</link>
+    <description>Recent content in office on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 24 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xulizhao.com/tags/office/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>人体工学电脑办公</title>
+      <link>https://xulizhao.com/blog/work-health/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/work-health/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>办公软件之Word</title>
+      <link>https://xulizhao.com/blog/word/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/word/</guid>
+      <description>&lt;p&gt;用习惯了Markdown，回不去Word的格式排版。&lt;/p&gt;
+&lt;p&gt;不得不用的情况下，有必要了解这些技巧提高效率。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

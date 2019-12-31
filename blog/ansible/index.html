@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Ansible Checklist - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/ansible/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/ansible/" itemprop="url">
         Ansible Checklist
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-06-19">
     2018-06-19
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -149,122 +148,253 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">1338 字 ~3分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>最早接触Ansible是在15年,后来断断续续用过几次,因为更倾向于所写即所得的Fabric,后者也更轻量级.</p>
-
 <p>每次拾起来都要查文档,记录下常见用法.</p>
-
-<p></p>
-
-<h2 id="基础">基础</h2>
-
-<h3 id="ansible命令行用法">ansible命令行用法</h3>
-
-<p>ansible <host-pattern> [options]</p>
-
+<h2 id="heading">基础</h2>
+<h3 id="ansible">ansible命令行用法</h3>
+<p>ansible <!-- raw HTML omitted --> [options]</p>
 <ul>
 <li>-m ping : 使用模块</li>
-<li>-a/&ndash;args &ldquo;&hellip;&rdquo;: 模块参数</li>
+<li>-a/&ndash;args &ldquo;&hellip;&quot;: 模块参数</li>
 <li>-u xulz : 切换远程连接用户</li>
 <li>-b/&ndash;become : 等同于之前的sudo</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 复制本地文件到远程
-</span><span style="color:#09f;font-style:italic"></span>ansible all -m copy -a <span style="color:#c30">&#39;src=./README.md dest=/tmp&#39;</span></code></pre></div>
-<h3 id="ansible-console">ansible-console</h3>
-
-<p>交互式shell</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 列出hosts
-</span><span style="color:#09f;font-style:italic"></span>list     
-<span style="color:#09f;font-style:italic"># 切换分组
-</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">cd</span> groupA
-<span style="color:#366">cd</span> db*</code></pre></div>
-<h2 id="配置">配置</h2>
-
-<h3 id="配置选项">配置选项</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># ansible-config命令查看当前配置
-</span><span style="color:#09f;font-style:italic"></span>ansible-config view</code></pre></div>
-<p>以下列顺序查找:</p>
-
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 复制本地文件到远程</span>
+ansible all -m copy -a <span style="color:#c30">&#39;src=./README.md dest=/tmp&#39;</span>
+ansible -i ./hosts -m shell -a <span style="color:#c30">&#39;apt install nginx&#39;</span>
+</code></pre></div><h3 id="heading-1">配置选项</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># ansible-config命令查看当前配置</span>
+ansible-config view
+</code></pre></div><p>以下列顺序查找:</p>
 <ul>
 <li>ANSIBLE_CONFIG 环境变量</li>
 <li>当前路径的ansible.cfg 文件</li>
 <li>~/.ansible.cfg</li>
 <li>系统配置 /etc/ansible/ansible.cfg (默认)</li>
 </ul>
-
-<p><a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings">Ansible Configuration Settings</a></p>
-
-<h3 id="服务器信息配置">服务器信息配置</h3>
-
+<h3 id="heading-2">服务器信息配置</h3>
 <ul>
 <li>/etc/ansible/hosts (类似ini格式:以;作为注释,[header]作为分组)</li>
 <li>inventory文件</li>
+<li>本地目录的hosts</li>
 </ul>
-
 <p>注: 可以使用正则匹配指定主机</p>
+<h2 id="heading-3">常见用法</h2>
+<h3 id="become">提权become</h3>
+<ul>
+<li>become=true/yes : 激活提权</li>
+<li>become_user=root : 与上条命令独立使用</li>
+<li>become_method: 可以是su或sudo，在play/task级别修改默认值</li>
+<li>become_flags: &lsquo;-s /bin/sh&rsquo;  通常用来切换到nobody非登录用户</li>
+</ul>
+<p>在hosts或配置文件使用：</p>
+<ul>
+<li>ansible_become_user</li>
+<li>ansible_become_pass</li>
+<li>ansible_become_method</li>
+<li>ansible_become</li>
+</ul>
+<h3 id="ansible-console">ansible-console</h3>
+<p>交互式shell</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 列出hosts</span>
+list     
+<span style="color:#09f;font-style:italic"># 切换分组</span>
+<span style="color:#366">cd</span> groupA
+<span style="color:#366">cd</span> db*
+</code></pre></div><h3 id="heading-4">日志及调试</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 打印详细信息到控制台</span>
+ansible-playbook -vvv playbook.yaml
+<span style="color:#09f;font-style:italic"># 查看一些信息</span>
+--list-hosts
+--list-tasks
 
-<p><a href="https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html">Working with Inventory</a></p>
-
-<h2 id="playbook">Playbook</h2>
+</code></pre></div><p><strong>配置日志文件</strong></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[defaults]
+log_path=/path/to/logfile
+</code></pre></div><h2 id="playbook">Playbook</h2>
+<h3 id="heading-5">用法</h3>
+<ul>
+<li>-i/&ndash;inventory : 指定参考文件</li>
+<li>&ndash;syntax-check : 检查语法</li>
+</ul>
+<p><strong>减少执行时间</strong></p>
+<ul>
+<li>-l/&ndash;limit : 限定子集</li>
+<li>&ndash;tags/&ndash;skip-tags : 标签</li>
+<li>gather_facts: False</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-palybook playbook.yml
-<span style="color:#09f;font-style:italic"># 运行adhoc命令
-</span><span style="color:#09f;font-style:italic"></span>ansible boston -i production -m <span style="color:#366">command</span> -a <span style="color:#c30">&#39;/sbin/reboot&#39;</span>
+<span style="color:#09f;font-style:italic"># 运行adhoc命令</span>
+ansible boston -i production -m <span style="color:#366">command</span> -a <span style="color:#c30">&#39;/sbin/reboot&#39;</span>
+</code></pre></div><p><strong>最佳实践</strong></p>
+<ul>
+<li>命名任务</li>
+<li>涉及状态</li>
+<li>以角色分组</li>
+</ul>
+<h3 id="ansible-galaxy">ansible-galaxy</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ansible-galaxy init -p playbooks/roles web
 
-<span style="color:#09f;font-style:italic">### 用法
-</span><span style="color:#09f;font-style:italic"></span>* -i/--inventory : 指定参考文件
-
-<span style="color:#09f;font-style:italic">### 减少执行时间
-</span><span style="color:#09f;font-style:italic"></span>
-* -l/--limit : 限定子集
-* --tags/--skip-tags : 标签
-* gather_facts: False
-
-<span style="color:#09f;font-style:italic">### 最佳实践
-</span><span style="color:#09f;font-style:italic"></span>* 命名任务
-* 涉及状态
-* 以角色分组
-
-
-
-<span style="color:#09f;font-style:italic">### ansible-galaxy用法
-</span><span style="color:#09f;font-style:italic"></span>
-<span style="color:#c30">```</span>bash
- ansible-galaxy init -p playbooks/roles web</code></pre></div>
-<h3 id="日志及调试">日志及调试</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 打印详细信息到控制台
-</span><span style="color:#09f;font-style:italic"></span>ansible-playbook -vvv playbook.yaml
-<span style="color:#09f;font-style:italic"># 查看一些信息
-</span><span style="color:#09f;font-style:italic"></span>--list-hosts
---list-tasks</code></pre></div>
-<p><strong>配置日志文件</strong></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[defaults]
-log_path=/path/to/logfile</pre></div>
-<h2 id="其他工具">其他工具</h2>
-
+ansible-galaxy install oracle-java -p ./roles
+</code></pre></div><h3 id="heading-6">示例</h3>
+<p>deploy.yml样例：</p>
+<h4 id="heading-7">文件操作</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#bbb">
+</span><span style="color:#bbb"></span>--<span style="color:#c30;font-style:italic">-</span><span style="color:#c30;font-style:italic">
+</span><span style="color:#c30;font-style:italic"></span><span style="color:#c30;font-style:italic">- hosts: all</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>tasks:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>copy<span style="color:#bbb"> </span>java<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>copy:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>src:<span style="color:#bbb"> </span>/home/xulz/jdk-8u171-linux-x64.rpm<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>dest:<span style="color:#bbb"> </span>/home/xulz<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic">#      remote_src: yes</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic">#      支持递归复制，yes代表远程机器内复制</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>install<span style="color:#bbb"> </span>java<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>become:<span style="color:#bbb"> </span>yes<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>yum:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>name:<span style="color:#bbb"> </span>/home/xulz/jdk-8u171-linux-x64.rpm<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>state:<span style="color:#bbb"> </span>present<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>remove/delete<span style="color:#bbb"> </span>file<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>file:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>path:<span style="color:#bbb"> </span>/home/xulz/jdk-8u171-linux-x64.rpm<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>state:<span style="color:#bbb"> </span>absent<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>Move<span style="color:#bbb"> </span>foo<span style="color:#bbb"> </span>to<span style="color:#bbb"> </span>bar<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>command:<span style="color:#bbb"> </span>mv<span style="color:#bbb"> </span>/path/to/foo<span style="color:#bbb"> </span>/path/to/bar<span style="color:#bbb">
+</span></code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>ensure<span style="color:#bbb"> </span>installed<span style="color:#bbb"> </span>vim<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>apt:<span style="color:#bbb"> </span>pkg=vim<span style="color:#bbb"> </span>state=installed<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>set<span style="color:#bbb"> </span>filetype<span style="color:#bbb"> </span>indent<span style="color:#bbb"> </span>off<span style="color:#bbb"> </span>for<span style="color:#bbb"> </span>vim<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>lineinfile:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>dest=/etc/vim/vimrc<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>line=<span style="color:#c30">&#39;filetype indent off&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb">        </span>state=present<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>notify:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>-<span style="color:#bbb"> </span>start<span style="color:#bbb"> </span>nginx<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>handlers:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>start<span style="color:#bbb"> </span>nginx<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>service:<span style="color:#bbb"> </span>name=nginx<span style="color:#bbb"> </span>state=started<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>msg=&#34;{{<span style="color:#bbb"> </span>lookup<span style="color:#bbb"> </span>(<span style="color:#c30">&#39;env&#39;</span>,<span style="color:#bbb"> </span><span style="color:#c30">&#39;SHELL&#39;</span>)<span style="color:#bbb"> </span>}}<span style="color:#bbb">
+</span></code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>install<span style="color:#bbb"> </span>required<span style="color:#bbb"> </span>python<span style="color:#bbb"> </span>packages<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>pip:<span style="color:#bbb"> </span>name={{<span style="color:#bbb"> </span>item<span style="color:#bbb"> </span>}}<span style="color:#bbb"> </span>virtualenv={{<span style="color:#bbb"> </span>venv_path<span style="color:#bbb"> </span>}}<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>with_items:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>-<span style="color:#bbb"> </span>gunicorn<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>-<span style="color:#bbb"> </span>psycopg2<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>pip:<span style="color:#bbb"> </span>name={{<span style="color:#bbb"> </span>item.name<span style="color:#bbb"> </span>}}<span style="color:#bbb"> </span>version={{<span style="color:#bbb"> </span>item.version<span style="color:#bbb"> </span>}}<span style="color:#bbb"> </span>virtualenv=<span style="color:#bbb"> </span>{{<span style="color:#bbb"> </span>venv_path<span style="color:#bbb"> </span>}}<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>with_items:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>-<span style="color:#bbb"> </span>{name:<span style="color:#bbb"> </span>mezzanine,<span style="color:#bbb"> </span>version:<span style="color:#bbb"> </span><span style="color:#f60">3.1</span><span style="color:#f60">.10</span><span style="color:#bbb"> </span>}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>install<span style="color:#bbb"> </span>requirements.txt<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>pip:<span style="color:#bbb"> </span>requirements={{<span style="color:#bbb"> </span>proj_path<span style="color:#bbb"> </span>}}/{{<span style="color:#bbb"> </span>reqs_path<span style="color:#bbb"> </span>}}<span style="color:#bbb"> </span>virtualenv=<span style="color:#bbb"> </span>{{<span style="color:#bbb"> </span>venv_path<span style="color:#bbb"> </span>}}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span></code></pre></div><h4 id="heading-8">服务</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>Make<span style="color:#bbb"> </span>sure<span style="color:#bbb"> </span>a<span style="color:#bbb"> </span>service<span style="color:#bbb"> </span>is<span style="color:#bbb"> </span>running<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>systemd:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>state:<span style="color:#bbb"> </span>started<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>name:<span style="color:#bbb"> </span>httpd<span style="color:#bbb">
+</span></code></pre></div><h4 id="heading-9">后台执行</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#bbb">    </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>start<span style="color:#bbb"> </span>jmeter<span style="color:#bbb"> </span>slave<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>shell:<span style="color:#bbb"> </span><span style="color:#c30">&#34;(cd /opt/jmeter/bin; ./jmeter-server &gt;/dev/null 2&gt;&amp;1 &amp;)&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>async:<span style="color:#bbb"> </span><span style="color:#f60">30</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>poll:<span style="color:#bbb"> </span><span style="color:#f60">0</span><span style="color:#bbb">
+</span></code></pre></div><h2 id="heading-10">其他工具</h2>
 <h3 id="ansible-vault">ansible-vault</h3>
-
 <p>加密secret</p>
-
 <h3 id="ansible-doc">ansible-doc</h3>
-
 <p>插件文档</p>
-
 <h3 id="rollback">Rollback</h3>
-
 <p><a href="https://github.com/ansistrano/rollback">https://github.com/ansistrano/rollback</a></p>
+<h2 id="heading-11">扩展阅读</h2>
+<h3 id="heading-12">官方文档</h3>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings">Ansible Configuration Settings</a></li>
+<li><a href="https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html">Working with Inventory</a></li>
+<li><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_async.html">Asynchronous Actions and Polling</a>: 异步执行长时间任务</li>
+<li><a href="https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html">选择指定主机或分组</a></li>
+</ul>
+<h3 id="heading-13">常用模块</h3>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/modules/file_module.html">file</a></li>
+<li><a href="https://docs.ansible.com/ansible/latest/modules/copy_module.html">copy</a>： remote_src: yes 远程机器内复制</li>
+<li><a href="https://docs.ansible.com/ansible/latest/modules/synchronize_module.html">synchronize</a>： 结合delegated_to使用，支持远程机器间复制</li>
+<li>fetch</li>
+<li><a href="https://docs.ansible.com/ansible/latest/modules/yum_module.html">yum/dnf</a></li>
+<li><a href="https://docs.ansible.com/ansible/latest/modules/git_module.html">git</a></li>
+<li><a href="https://docs.ansible.com/ansible/latest/modules/authorized_key_module.html">authorized_key</a></li>
+<li><a href="https://docs.ansible.com/ansible/latest/modules/systemd_module.html">systemd</a></li>
+</ul>
+<h3 id="playbook-1">第三方playbook</h3>
+<ul>
+<li><a href="https://github.com/ansiblebit/oracle-java">oracle-java</a></li>
+</ul>
+<h3 id="heading-14">教程</h3>
+<ul>
+<li><a href="https://serversforhackers.com/c/an-ansible2-tutorial">An Ansible2 Tutorial</a></li>
+<li><a href="http://goodcode.io/articles/ansible-tips/">Ansible tips</a>
+<ul>
+<li>使用细分角色和tags</li>
+<li>在角色里包含多个include和tags</li>
+<li>使用现有的模块</li>
+<li>使用var_prompt 并提供默认值</li>
+</ul>
+</li>
+<li><a href="https://galaxy.ansible.com/">Ansible Galaxy</a></li>
+</ul>
     </div>
     <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/ansible/" >https://xulizhao.com/blog/ansible/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
      
  
 <div class="post-tags">     
      
-    <a href="/tags/automation" rel="tag" title="automation">#automation#</a>
+    <a href="https://xulizhao.com/tags/automation" rel="tag" title="automation">#automation#</a>
     
-    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    <a href="https://xulizhao.com/tags/ops" rel="tag" title="ops">#ops#</a>
     
 </div>
 
@@ -273,38 +403,21 @@ log_path=/path/to/logfile</pre></div>
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/docker-command/" rel="next" title="Docker Command">
-        <i class="fa fa-chevron-left"></i> Docker Command
+        <a href="https://xulizhao.com/blog/vim/" rel="next" title="Vim必知必会">
+        <i class="fa fa-chevron-left"></i> Vim必知必会
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/vim/" rel="prev" title="Vim必知必会">
-        Vim必知必会 <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/docker-command/" rel="prev" title="Docker Command">
+        Docker Command <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -339,22 +452,23 @@ log_path=/path/to/logfile</pre></div>
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -364,9 +478,9 @@ log_path=/path/to/logfile</pre></div>
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -374,25 +488,9 @@ log_path=/path/to/logfile</pre></div>
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -402,31 +500,44 @@ log_path=/path/to/logfile</pre></div>
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#基础">基础</a>
-<ul>
-<li><a href="#ansible命令行用法">ansible命令行用法</a></li>
-<li><a href="#ansible-console">ansible-console</a></li>
-</ul></li>
-<li><a href="#配置">配置</a>
-<ul>
-<li><a href="#配置选项">配置选项</a></li>
-<li><a href="#服务器信息配置">服务器信息配置</a></li>
-</ul></li>
-<li><a href="#playbook">Playbook</a>
-<ul>
-<li><a href="#日志及调试">日志及调试</a></li>
-</ul></li>
-<li><a href="#其他工具">其他工具</a>
-<ul>
-<li><a href="#ansible-vault">ansible-vault</a></li>
-<li><a href="#ansible-doc">ansible-doc</a></li>
-<li><a href="#rollback">Rollback</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">基础</a>
+      <ul>
+        <li><a href="#ansible">ansible命令行用法</a></li>
+        <li><a href="#heading-1">配置选项</a></li>
+        <li><a href="#heading-2">服务器信息配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">常见用法</a>
+      <ul>
+        <li><a href="#become">提权become</a></li>
+        <li><a href="#ansible-console">ansible-console</a></li>
+        <li><a href="#heading-4">日志及调试</a></li>
+      </ul>
+    </li>
+    <li><a href="#playbook">Playbook</a>
+      <ul>
+        <li><a href="#heading-5">用法</a></li>
+        <li><a href="#ansible-galaxy">ansible-galaxy</a></li>
+        <li><a href="#heading-6">示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-10">其他工具</a>
+      <ul>
+        <li><a href="#ansible-vault">ansible-vault</a></li>
+        <li><a href="#ansible-doc">ansible-doc</a></li>
+        <li><a href="#rollback">Rollback</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-11">扩展阅读</a>
+      <ul>
+        <li><a href="#heading-12">官方文档</a></li>
+        <li><a href="#heading-13">常用模块</a></li>
+        <li><a href="#playbook-1">第三方playbook</a></li>
+        <li><a href="#heading-14">教程</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -440,18 +551,18 @@ log_path=/path/to/logfile</pre></div>
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -460,36 +571,58 @@ log_path=/path/to/logfile</pre></div>
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

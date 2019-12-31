@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
-	<meta name="generator" content="Hugo 0.40.1" />
+	<meta name="generator" content="Hugo 0.62.0" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
@@ -13,15 +13,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="XuLizhao &#39;s Notes - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    <link rel="alternate" href="/index.xml" title="XuLizhao &#39;s Notes" type="application/rss+xml" />
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
     
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -39,7 +38,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -61,25 +60,25 @@
       
       
         <li class="menu-item menu-item-active">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -113,8 +112,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/pytest/" itemprop="url">
-        pytest测试框架
+        <a class="post-title-link" href="https://xulizhao.com/blog/acme/" itemprop="url">
+        自动生成SSL证书的利器acme.sh
         </a>
       </h1>
       <div class="post-meta">
@@ -123,8 +122,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-03-21">
-    2018-03-21
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-30">
+    2018-09-30
 </time>
 </span> 
       
@@ -137,8 +136,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -152,22 +151,19 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">542 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>单元测试最初流行是从JUnit,而他的发明者Kent Beck大神的经典名作&lt;测试驱动开发&gt;这本小书却引领了TDD的风潮,产生了xUnit各个语言系列.</p>
-
-<p>初次接触pytest,感觉不像个xUnit,因为既看不到对TestCase的继承,也找不到Setup/Teardown这些建立/销毁函数.当然这些基本功能肯定是支持的.</p>
-
-<p>pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.</p>
-
-<p></p>
+    <p>已经使用letsencrypt的免费证书一段时间了，是之前折腾Ghost博客时自动安装的，而后台其实也是用的acme.sh这个工具。</p>
+<p>遇到的问题是不知哪里的配置错误，我的证书自动更新有问题，每次都是遇到证书已经过期，网站彻底不能访问了，必须要手动更新。</p>
+<p>之前用的HTTP的验证方式，由于一知半解，这块每次手动配置也会花费一些时间。</p>
+<p>今天重读了<a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E">官方文档</a>，才发现有一些细节的使用，其实可以做到一劳永逸。</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/pytest/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/acme/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -178,8 +174,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/linux-system-command/" itemprop="url">
-        Linux系统命令
+        <a class="post-title-link" href="https://xulizhao.com/blog/jvm/" itemprop="url">
+        JVM和GC调优
         </a>
       </h1>
       <div class="post-meta">
@@ -188,8 +184,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-03-13">
-    2018-03-13
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-27">
+    2018-09-27
 </time>
 </span> 
       
@@ -202,8 +198,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -217,18 +213,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">1610 字 ~4分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>Linux系統命令, 完成一些常見任務.</p>
-
-<p></p>
+    <p>曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/linux-system-command/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/jvm/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -239,8 +233,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/linux-tuning/" itemprop="url">
-        Linux调优
+        <a class="post-title-link" href="https://xulizhao.com/blog/java-io/" itemprop="url">
+        Java I/O学习
         </a>
       </h1>
       <div class="post-meta">
@@ -249,8 +243,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-03-09">
-    2018-03-09
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-26">
+    2018-09-26
 </time>
 </span> 
       
@@ -263,8 +257,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -278,18 +272,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">819 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.</p>
-
-<p></p>
+    <p>Java系列记录文章.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/linux-tuning/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/java-io/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -300,8 +292,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/nginx-tuning/" itemprop="url">
-        Nginx调优
+        <a class="post-title-link" href="https://xulizhao.com/blog/java-patterns/" itemprop="url">
+        Java设计模式
         </a>
       </h1>
       <div class="post-meta">
@@ -310,8 +302,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-03-09">
-    2018-03-09
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-26">
+    2018-09-26
 </time>
 </span> 
       
@@ -324,8 +316,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -339,18 +331,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">487 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>Nginx在部署服务时经常被用到, 大多时候是作为代理使用. 如果用户量比较大就涉及到一些调优, 本文做一些分类记录.</p>
-
-<p></p>
+    <p>Java的世界，你需要知道设计模式^_^</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/nginx-tuning/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/java-patterns/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -361,8 +351,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/distributed-paper/" itemprop="url">
-        分布式系统的那些论文及开源实现
+        <a class="post-title-link" href="https://xulizhao.com/blog/java-collections/" itemprop="url">
+        Java集合类
         </a>
       </h1>
       <div class="post-meta">
@@ -371,8 +361,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-02-11">
-    2018-02-11
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-26">
+    2018-09-26
 </time>
 </span> 
       
@@ -385,8 +375,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -400,24 +390,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">732 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>近几年总能看到大数据,云计算这些buzz word/时髦词, 可是说来惭愧,对近10来年历史上那些著名论文及主要内容却知道的很少.</p>
-
-<p>之前零散的看到分布式系统的一些文章,接下来总结下主要内容,也打算读几本书系统的学习下.</p>
-
-<p>今天先看看这些经典论文及衍生的开源系统.</p>
-
-<p>按时间顺序/影响力最大的应该就是谷歌的老三篇了,即 GFS + MapReduce + BigTable.</p>
-
-<p></p>
+    <p>Java系列记录文章。</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/distributed-paper/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/java-collections/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -428,8 +410,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/nodejs-and-frontend/" itemprop="url">
-        NodeJS及前端开发
+        <a class="post-title-link" href="https://xulizhao.com/blog/more-load-test-note/" itemprop="url">
+        全链路压测笔记续
         </a>
       </h1>
       <div class="post-meta">
@@ -438,8 +420,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-02-05">
-    2018-02-05
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-21">
+    2018-09-21
 </time>
 </span> 
       
@@ -452,8 +434,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -467,24 +449,17 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">2555 字 ~6分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>因为最近使用的两个博客系统都是基于NodeJS开发的,也顺便谈谈我理解的JavaScript及前端开发.</p>
-
-<p>NodeJS的是伴随Chrome的V8 Engine而出现,由于JS群众基础及高性能而快速发展,本质是它使用类似Nginx的事件循环模型可以处理极高的并发请求.异步IO及基于NodeJS的第三方库都提供的异步版本,使得较简单的编程模型带来极高的性能, JavaScipt这一应用于前端开发的古老语言焕发出新的生机.</p>
-
-<p>早期前端开发的JavaScript由于要处理浏览器版本兼容且语言本身问题,充斥着丑陋的代码. 伴随着JQuery及第三方框架/库的流行,JavaScript也变得优美起来.</p>
-
-<p>前端开发三剑客: HTML + CSS + JavaScript这些年随着新标准的发展也比我最初接触时强大易用多了, 一切事物还真得以发展的眼光看待,技术领域尤其容不得偏见.</p>
-
-<p></p>
+    <p>看完美团的分享觉得不过瘾，继续学习其他大厂的分享。</p>
+<p>不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/nodejs-and-frontend/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/more-load-test-note/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -495,8 +470,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/play/blog-hexo/" itemprop="url">
-        静态博客Hexo
+        <a class="post-title-link" href="https://xulizhao.com/blog/meituan-load-test-note/" itemprop="url">
+        美团全链路压测Quake学习笔记
         </a>
       </h1>
       <div class="post-meta">
@@ -505,8 +480,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-02-02">
-    2018-02-02
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-21">
+    2018-09-21
 </time>
 </span> 
       
@@ -519,8 +494,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/play" itemprop="url" rel="index">
-        <span itemprop="name">Play</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -534,22 +509,21 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">982 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>可能过于追求完美,使用Ghost博客两个多月,感觉功能还是过于简单,许多常用的功能用户早就提了Issue,官方却认为不是核心.</p>
-
-<p>比如常用的文章目录,归档页,搜索功能等. 文章目录折腾下来已经可用了,搜索折腾了一半,实在没时间调试放弃了.见<a href="/2017/start">新博客</a>这篇记录文章.</p>
-
-<p>本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.</p>
-
-<p></p>
+    <p>今天读了美团技术团队新发布的<a href="https://tech.meituan.com/2018/09/27/quake-introduction.html">全链路压测平台Quake在美团中的实践</a>，做个笔记。</p>
+<p>先说下总的读后感:</p>
+<p>压力测试/性能测试有多种方式，从下面的几个发展阶段可以看出越来越追求真实高峰访问的模拟。</p>
+<p>现在大公司普遍的分布式架构，云计算的应用，容器的使用也可以提供更有力的资源调度。但全链路压测最重要的工作在于需要架构，开发团队的支持和适配工作。</p>
+<p>没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。</p>
+<p>印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/play/blog-hexo/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/meituan-load-test-note/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -560,8 +534,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/linux-debug-command/" itemprop="url">
-        Linux调试命令/工具
+        <a class="post-title-link" href="https://xulizhao.com/play/swimming/" itemprop="url">
+        再学游泳
         </a>
       </h1>
       <div class="post-meta">
@@ -570,8 +544,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-01-14">
-    2018-01-14
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-14">
+    2018-09-14
 </time>
 </span> 
       
@@ -584,8 +558,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/play" itemprop="url" rel="index">
+        <span itemprop="name">play</span>
       </a>
       &nbsp; 
     </span>
@@ -599,20 +573,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">554 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>Linux的强大之一是丰富的命令系统,尤其在调试服务端应用时.</p>
-
-<p>记录在这里方便查阅.</p>
-
-<p></p>
+    最近再次开始学游泳，距离初次学蛙泳已经过去了10多年。当时还在大学蹭宿舍，因为一直很喜欢向往大海，便让老同学教我蛙泳。 期间由于基础不行，某次
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/linux-debug-command/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/play/swimming/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -623,8 +593,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/redis/" itemprop="url">
-        Redis
+        <a class="post-title-link" href="https://xulizhao.com/blog/ubuntu/" itemprop="url">
+        Ubuntu日常
         </a>
       </h1>
       <div class="post-meta">
@@ -633,8 +603,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-01-12">
-    2018-01-12
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-13">
+    2018-09-13
 </time>
 </span> 
       
@@ -647,8 +617,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -662,18 +632,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">513 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>最流行的内存数据库,Redis可以理解为Remote Dictionary Service.</p>
-
-<p></p>
+    很早就接触使用Ubuntu，也是自己最钟爱的Linux系统。 给Ubuntu留一篇记录日常使用。 Ubuntu 18.04安装中文输入法 sogou拼音由于不
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/redis/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/ubuntu/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -684,8 +652,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/mysql/" itemprop="url">
-        MySQL
+        <a class="post-title-link" href="https://xulizhao.com/blog/mysql-tuning/" itemprop="url">
+        MySQL性能优化
         </a>
       </h1>
       <div class="post-meta">
@@ -694,8 +662,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-01-11">
-    2018-01-11
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-05">
+    2018-09-05
 </time>
 </span> 
       
@@ -708,8 +676,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">Tech</span>
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
       </a>
       &nbsp; 
     </span>
@@ -723,18 +691,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">652 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.</p>
-
-<p></p>
+    <p>关于MySQL性能问题查找及优化的点滴.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/mysql/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/mysql-tuning/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -760,31 +726,31 @@
 
 
 <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/p/5/"><i class="fa fa-angle-left"></i></a>
+    <a class="extend prev" rel="prev" href="https://xulizhao.com/p/5/"><i class="fa fa-angle-left"></i></a>
     
         
     
         
         
-          <a class="page-number" href="/p/2/">2</a>
+          <a class="page-number" href="https://xulizhao.com/p/2/">2</a>
         
         
     
         
         
-          <a class="page-number" href="/p/3/">3</a>
+          <a class="page-number" href="https://xulizhao.com/p/3/">3</a>
         
         
     
         
         
-          <a class="page-number" href="/p/4/">4</a>
+          <a class="page-number" href="https://xulizhao.com/p/4/">4</a>
         
         
     
         
         
-          <a class="page-number" href="/p/5/">5</a>
+          <a class="page-number" href="https://xulizhao.com/p/5/">5</a>
         
         
     
@@ -796,23 +762,39 @@
     
         
         
-          <a class="page-number" href="/p/7/">7</a>
+          <a class="page-number" href="https://xulizhao.com/p/7/">7</a>
         
         
     
         
         
-          <a class="page-number" href="/p/8/">8</a>
+          <a class="page-number" href="https://xulizhao.com/p/8/">8</a>
         
         
     
         
         
-          <a class="page-number" href="/p/9/">9</a>
+          <a class="page-number" href="https://xulizhao.com/p/9/">9</a>
         
         
     
-    <a class="extend next" rel="next" href="/p/7/"><i class="fa fa-angle-right"></i></a>
+        
+        
+          <a class="page-number" href="https://xulizhao.com/p/10/">10</a>
+        
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    <a class="extend next" rel="next" href="https://xulizhao.com/p/7/"><i class="fa fa-angle-right"></i></a>
 </nav>
 
 
@@ -832,22 +814,23 @@
 
     <section class="site-overview sidebar-panel  sidebar-panel-active ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -857,9 +840,9 @@
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -867,32 +850,16 @@
 </nav>
       
 <div class="feed-link motion-element">
-<a href="/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
+<a href="https://xulizhao.com/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
     <i class="fa fa-rss"></i>
     RSS 订阅
 </a>
 </div>
 
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -908,18 +875,18 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -928,34 +895,56 @@
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
 <script type="text/javascript" id="motion.page.archive">
   $('.archive-year').velocity('transition.slideLeftIn');
 </script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Go网络开发笔记 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/go-networking/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/go-networking/" itemprop="url">
         Go网络开发笔记
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-12-26">
     2017-12-26
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">Tech</span>
       </a>
       &nbsp; 
@@ -149,17 +148,13 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">577 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.</p>
-
-<p></p>
-
-<h3 id="系统库模块">系统库模块</h3>
-
+<h3 id="heading">系统库模块</h3>
 <ul>
 <li>net : TCP连接 net.Conn</li>
 <li>net/http : HTTP处理</li>
@@ -167,111 +162,99 @@
 <li>encoding/json</li>
 <li>encoding/binary</li>
 </ul>
-
-<h3 id="json的要点">JSON的要点</h3>
-
+<h3 id="json">JSON的要点</h3>
 <ul>
 <li>Go对象与JSON转换：
-
 <ul>
 <li>Marshal : 把对象编码为JSON数据格式</li>
 <li>Unmarshal： 把JSON数据解码为Go 对象</li>
-</ul></li>
+</ul>
+</li>
 <li>streams形式的JSON数据读写(Reader/Writer)：
-
 <ul>
 <li>NewDecoder 从输入读取并编码</li>
 <li>NewEncoder 编码并写入输出</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#069;font-weight:bold">type</span> Foo <span style="color:#069;font-weight:bold">struct</span> {
     Bar <span style="color:#078;font-weight:bold">string</span>
 }
 
 body <span style="color:#555">:=</span> <span style="color:#366">new</span>(bytes.Buffer)
 foo1 <span style="color:#555">:=</span> Foo{<span style="color:#c30">&#34;barTest&#34;</span>}
-json.NewEncoder(b).Encode(foo1)
-res, _ <span style="color:#555">:=</span> http.Post(<span style="color:#c30">&#34;https://httpbin.org/post&#34;</span>, <span style="color:#c30">&#34;application/json; charset=utf-8&#34;</span>, body)
+json.<span style="color:#c0f">NewEncoder</span>(b).<span style="color:#c0f">Encode</span>(foo1)
+res, _ <span style="color:#555">:=</span> http.<span style="color:#c0f">Post</span>(<span style="color:#c30">&#34;https://httpbin.org/post&#34;</span>, <span style="color:#c30">&#34;application/json; charset=utf-8&#34;</span>, body)
 
 foo2 <span style="color:#555">:=</span> <span style="color:#366">new</span>(Foo)  <span style="color:#09f;font-style:italic">// new返回指针
-</span><span style="color:#09f;font-style:italic"></span>json.NewDecoder(r.Body).Decode(foo2)
+</span><span style="color:#09f;font-style:italic"></span>json.<span style="color:#c0f">NewDecoder</span>(r.Body).<span style="color:#c0f">Decode</span>(foo2)
 foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-style:italic">// 或者 var foo3 Foo
-</span><span style="color:#09f;font-style:italic"></span>json.NewDecoder(r.Body).Decode(<span style="color:#555">&amp;</span>foo3)</code></pre></div>
-
+</span><span style="color:#09f;font-style:italic"></span>json.<span style="color:#c0f">NewDecoder</span>(r.Body).<span style="color:#c0f">Decode</span>(<span style="color:#555">&amp;</span>foo3)</code></pre></div>
 <ul>
 <li>*RawMessage:指针,处理嵌套json</li>
 </ul>
-
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#09f;font-style:italic">// 接受收到json嵌套格式的响应, {&#34;name&#34;:{&#34;first&#34;:&#34;Michael&#34;,&#34;last&#34;:&#34;Xu&#34;},&#34;gender&#34;:&#34;male&#34;}
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic">//var dat map[string]*json.RawMessage
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">var</span> dat <span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{}
-    json.Unmarshal(response, <span style="color:#555">&amp;</span>dat)
+    json.<span style="color:#c0f">Unmarshal</span>(response, <span style="color:#555">&amp;</span>dat)
     r <span style="color:#555">:=</span> dat[<span style="color:#c30">&#34;name&#34;</span>].(<span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{})
     firstName <span style="color:#555">:=</span> r[<span style="color:#c30">&#34;first&#34;</span>].(<span style="color:#078;font-weight:bold">string</span>)</code></pre></div>
-
-<h3 id="代码示例">代码示例</h3>
-
-<h4 id="http的例子">HTTP的例子</h4>
-
+<h3 id="heading-1">代码示例</h3>
+<h4 id="http">HTTP的例子</h4>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#09f;font-style:italic">// 忽略HTTPS证书检查,因为本地用的自签名
 </span><span style="color:#09f;font-style:italic"></span>    tr <span style="color:#555">:=</span> <span style="color:#555">&amp;</span>http.Transport{TLSClientConfig: <span style="color:#555">&amp;</span>tls.Config{InsecureSkipVerify: <span style="color:#069;font-weight:bold">true</span>}}
     <span style="color:#09f;font-style:italic">// 自定义客户端
 </span><span style="color:#09f;font-style:italic"></span>    client <span style="color:#555">:=</span> <span style="color:#555">&amp;</span>http.Client{Transport: tr}
-    payload <span style="color:#555">:=</span> <span style="color:#c30">`{&#34;username&#34;:&#34;xulz&#34;}`</span>
+    payload <span style="color:#555">:=</span> <span style="color:#c30">`</span><span style="color:#c30">{</span><span style="color:#c30">&#34;username&#34;:&#34;xulz&#34;}</span><span style="color:#c30">`</span>
     <span style="color:#09f;font-style:italic">// 创建请求,注:为简单期间忽略了错误检查
-</span><span style="color:#09f;font-style:italic"></span>    req, _ <span style="color:#555">:=</span> http.NewRequest(<span style="color:#c30">&#34;POST&#34;</span>, <span style="color:#c30">&#34;https://xulizhao.com/api/login&#34;</span>, bytes.NewBuffer([]<span style="color:#366">byte</span>(payload)))
+</span><span style="color:#09f;font-style:italic"></span>    req, _ <span style="color:#555">:=</span> http.<span style="color:#c0f">NewRequest</span>(<span style="color:#c30">&#34;POST&#34;</span>, <span style="color:#c30">&#34;https://xulizhao.com/api/login&#34;</span>, bytes.<span style="color:#c0f">NewBuffer</span>([]<span style="color:#366">byte</span>(payload)))
     <span style="color:#09f;font-style:italic">// 定制头信息
-</span><span style="color:#09f;font-style:italic"></span>    req.Header.Set(<span style="color:#c30">&#34;Content-Type&#34;</span>, <span style="color:#c30">&#34;application/json&#34;</span>)
-    resp, _ <span style="color:#555">:=</span> client.Do(req)
+</span><span style="color:#09f;font-style:italic"></span>    req.Header.<span style="color:#c0f">Set</span>(<span style="color:#c30">&#34;Content-Type&#34;</span>, <span style="color:#c30">&#34;application/json&#34;</span>)
+    resp, _ <span style="color:#555">:=</span> client.<span style="color:#c0f">Do</span>(req)
     <span style="color:#09f;font-style:italic">// 记得关闭连接
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">defer</span> resp.Body.Close()
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">defer</span> resp.Body.<span style="color:#c0f">Close</span>()
     <span style="color:#09f;font-style:italic">// 把响应转换为对象
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">var</span> ret LoginResponse
-    <span style="color:#069;font-weight:bold">if</span> err <span style="color:#555">:=</span> json.NewDecoder(resp.Body).Decode(<span style="color:#555">&amp;</span>ret); err <span style="color:#555">!=</span> <span style="color:#069;font-weight:bold">nil</span> {
-        log.Warn(<span style="color:#c30">&#34;error in json decode&#34;</span>, err)
+    <span style="color:#069;font-weight:bold">if</span> err <span style="color:#555">:=</span> json.<span style="color:#c0f">NewDecoder</span>(resp.Body).<span style="color:#c0f">Decode</span>(<span style="color:#555">&amp;</span>ret); err <span style="color:#555">!=</span> <span style="color:#069;font-weight:bold">nil</span> {
+        log.<span style="color:#c0f">Warn</span>(<span style="color:#c30">&#34;error in json decode&#34;</span>, err)
     }</code></pre></div>
-
-<h4 id="tcp的例子">TCP的例子</h4>
-
-<p><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#069;font-weight:bold">type</span> LoginReq <span style="color:#069;font-weight:bold">struct</span> {
-        Username          <span style="color:#078;font-weight:bold">string</span> <span style="color:#c30">`json:&#34;username&#34;`</span>
-        Password        <span style="color:#078;font-weight:bold">int</span>    <span style="color:#c30">`json:&#34;password`</span>
+<h4 id="tcp">TCP的例子</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#069;font-weight:bold">type</span> LoginReq <span style="color:#069;font-weight:bold">struct</span> {
+        Username          <span style="color:#078;font-weight:bold">string</span> <span style="color:#c30">`</span><span style="color:#c30">json:&#34;username&#34;</span><span style="color:#c30">`</span>
+        Password        <span style="color:#078;font-weight:bold">int</span>    <span style="color:#c30">`</span><span style="color:#c30">json:&#34;password</span><span style="color:#c30">`</span>
     }
     <span style="color:#09f;font-style:italic">// 读数据
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> handleRead(conn net.Conn) []<span style="color:#078;font-weight:bold">byte</span> {
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">handleRead</span>(conn net.Conn) []<span style="color:#078;font-weight:bold">byte</span> {
         buf <span style="color:#555">:=</span> <span style="color:#366">make</span>([]<span style="color:#078;font-weight:bold">byte</span>, <span style="color:#f60">1024</span>)
         <span style="color:#09f;font-style:italic">// 注: 返回读到的字节数
-</span><span style="color:#09f;font-style:italic"></span>        rLen, err <span style="color:#555">:=</span> conn.Read(buf)
-        checkError(err)
+</span><span style="color:#09f;font-style:italic"></span>        rLen, err <span style="color:#555">:=</span> conn.<span style="color:#c0f">Read</span>(buf)
+        <span style="color:#c0f">checkError</span>(err)
         r <span style="color:#555">:=</span> buf[:rLen<span style="color:#555">-</span><span style="color:#f60">1</span>]
         <span style="color:#09f;font-style:italic">// 假设前2个字节为实际数据大小
-</span><span style="color:#09f;font-style:italic"></span>        size <span style="color:#555">:=</span> binary.BigEndian.Uint32(r[:<span style="color:#f60">2</span>])
-        log.Debug(<span style="color:#c30">&#34;Recv:&#34;</span>, <span style="color:#366">string</span>(r))
+</span><span style="color:#09f;font-style:italic"></span>        size <span style="color:#555">:=</span> binary.BigEndian.<span style="color:#c0f">Uint32</span>(r[:<span style="color:#f60">2</span>])
+        log.<span style="color:#c0f">Debug</span>(<span style="color:#c30">&#34;Recv:&#34;</span>, <span style="color:#366">string</span>(r))
         <span style="color:#069;font-weight:bold">return</span> r
     }
     <span style="color:#09f;font-style:italic">// 写数据
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> handleWrite(conn net.Conn, cmd []<span style="color:#078;font-weight:bold">byte</span>) {
-        _, err <span style="color:#555">:=</span> conn.Write(cmd)
-        log.Debug(<span style="color:#c30">&#34;Sent:&#34;</span>, <span style="color:#366">string</span>(cmd))
-        checkError(err)
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">handleWrite</span>(conn net.Conn, cmd []<span style="color:#078;font-weight:bold">byte</span>) {
+        _, err <span style="color:#555">:=</span> conn.<span style="color:#c0f">Write</span>(cmd)
+        log.<span style="color:#c0f">Debug</span>(<span style="color:#c30">&#34;Sent:&#34;</span>, <span style="color:#366">string</span>(cmd))
+        <span style="color:#c0f">checkError</span>(err)
     }
     
-    <span style="color:#069;font-weight:bold">func</span> main() {
+    <span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">main</span>() {
         <span style="color:#09f;font-style:italic">// 客户端忽略TLS检查
 </span><span style="color:#09f;font-style:italic"></span>        conf <span style="color:#555">:=</span> <span style="color:#555">&amp;</span>tls.Config{InsecureSkipVerify: <span style="color:#069;font-weight:bold">true</span>}
         server <span style="color:#555">:=</span> ServerHost <span style="color:#555">+</span> <span style="color:#c30">&#34;:&#34;</span> <span style="color:#555">+</span> ServerPort
         <span style="color:#09f;font-style:italic">// 建立TCP连接
-</span><span style="color:#09f;font-style:italic"></span>        conn, err <span style="color:#555">:=</span> tls.Dial(<span style="color:#c30">&#34;tcp&#34;</span>, server, conf)
-        checkError(err)
-        <span style="color:#069;font-weight:bold">defer</span> conn.Close()
-        auth <span style="color:#555">:=</span> LoginReq(<span style="color:#c30">&#34;xulz&#34;</span>, <span style="color:#c30">&#34;password&#34;</span>)
-        handleWrite(conn, auth)
-        handleRead(conn)
-    }</code></pre></div></p>
-
-<h3 id="扩展阅读">扩展阅读</h3>
-
+</span><span style="color:#09f;font-style:italic"></span>        conn, err <span style="color:#555">:=</span> tls.<span style="color:#c0f">Dial</span>(<span style="color:#c30">&#34;tcp&#34;</span>, server, conf)
+        <span style="color:#c0f">checkError</span>(err)
+        <span style="color:#069;font-weight:bold">defer</span> conn.<span style="color:#c0f">Close</span>()
+        auth <span style="color:#555">:=</span> <span style="color:#c0f">LoginReq</span>(<span style="color:#c30">&#34;xulz&#34;</span>, <span style="color:#c30">&#34;password&#34;</span>)
+        <span style="color:#c0f">handleWrite</span>(conn, auth)
+        <span style="color:#c0f">handleRead</span>(conn)
+    }</code></pre></div>
+<h3 id="heading-2">扩展阅读</h3>
 <ul>
 <li>json的用法讲解 <a href="https://blog.golang.org/json-and-go">官方博客</a>, <a href="https://eager.io/blog/go-and-json/">代码示例</a></li>
 <li><a href="http://colobu.com/2014/12/02/go-socket-programming-TCP/">Go socket编程实践</a></li>
@@ -279,10 +262,42 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
     </div>
     <footer class="post-footer">
      
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/go-networking/" >https://xulizhao.com/blog/go-networking/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
  
 <div class="post-tags">     
      
-    <a href="/tags/go" rel="tag" title="go">#go#</a>
+    <a href="https://xulizhao.com/tags/go" rel="tag" title="go">#go#</a>
     
 </div>
 
@@ -291,38 +306,21 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/intellij-ide/" rel="next" title="IntelliJ IDE">
-        <i class="fa fa-chevron-left"></i> IntelliJ IDE
+        <a href="https://xulizhao.com/blog/go-learn/" rel="next" title="Go语言入门">
+        <i class="fa fa-chevron-left"></i> Go语言入门
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/golang/" rel="prev" title="Go语言学习笔记">
-        Go语言学习笔记 <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/idea/" rel="prev" title="IntelliJ IDEA">
+        IntelliJ IDEA <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -357,22 +355,23 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -382,9 +381,9 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -392,25 +391,9 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -420,22 +403,16 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#系统库模块">系统库模块</a></li>
-<li><a href="#json的要点">JSON的要点</a></li>
-<li><a href="#代码示例">代码示例</a>
-<ul>
-<li><a href="#http的例子">HTTP的例子</a></li>
-<li><a href="#tcp的例子">TCP的例子</a></li>
-</ul></li>
-<li><a href="#扩展阅读">扩展阅读</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading">系统库模块</a></li>
+        <li><a href="#json">JSON的要点</a></li>
+        <li><a href="#heading-1">代码示例</a></li>
+        <li><a href="#heading-2">扩展阅读</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -449,18 +426,18 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -469,36 +446,58 @@ foo3 <span style="color:#555">:=</span> Foo{}  <span style="color:#09f;font-styl
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

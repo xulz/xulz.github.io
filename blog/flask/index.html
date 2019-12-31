@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Flask开发笔记 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/flask/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/flask/" itemprop="url">
         Flask开发笔记
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-10-19">
     2017-10-19
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -149,23 +148,19 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">606 字 ~2分钟</span>
+<span class="leancloud-visitors-count">683 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    
-
-<h2 id="开发基础">开发基础</h2>
-
-<h3 id="创建-flask-starter-project">创建 Flask Starter Project</h3>
+    <h2 id="heading">开发基础</h2>
+<h3 id="-flask-starter-project">创建 Flask Starter Project</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pip3 install cookiecutter
-cookiecutter https:<span style="color:#555">//</span>github<span style="color:#555">.</span>com<span style="color:#555">/</span>realpython<span style="color:#555">/</span>cookiecutter<span style="color:#555">-</span>flask<span style="color:#555">-</span>skeleton<span style="color:#555">.</span>git</code></pre></div>
-<p>具体使用参考 <a href="https://github.com/realpython/cookiecutter-flask-skeleton">项目地址</a></p>
-
-<h3 id="常用第三方">常用第三方</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># requirements.txt 
-</span><span style="color:#09f;font-style:italic"></span>Flask
+cookiecutter https:<span style="color:#555">/</span><span style="color:#555">/</span>github<span style="color:#555">.</span>com<span style="color:#555">/</span>realpython<span style="color:#555">/</span>cookiecutter<span style="color:#555">-</span>flask<span style="color:#555">-</span>skeleton<span style="color:#555">.</span>git
+</code></pre></div><p>具体使用参考 <a href="https://github.com/realpython/cookiecutter-flask-skeleton">项目地址</a></p>
+<h3 id="heading-1">常用第三方</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># requirements.txt</span> 
+Flask
 
 Flask-Bcrypt
 Flask-Login
@@ -179,65 +174,64 @@ Flask-Testing
 Flask-Migrate
 Flask-SQLAlchemy
 
-celery</code></pre></div>
-<h3 id="例子">例子</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#09f;font-style:italic"># -- coding: utf-8 --</span>
+celery
+</code></pre></div><h3 id="heading-2">例子</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#09f;font-style:italic"># -- coding: utf-8 --</span>
 <span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">flask</span> <span style="color:#069;font-weight:bold">import</span> Flask, request, make_response, redirect, abort
 
 app <span style="color:#555">=</span> Flask(__name__)
 
 
-<span style="color:#09f;font-style:italic"># route建立请求路径和函数之间的映射</span>
-<span style="color:#09f;font-style:italic"># 等同于 app.add_url_rule()</span>
-<span style="color:#09f;font-style:italic"># app.url_map 存放所以映射</span>
-<span style="color:#99f">@app.route</span>(<span style="color:#c30">&#34;/&#34;</span>)
-<span style="color:#09f;font-style:italic"># 视图函数</span>
+<span style="color:#09f;font-style:italic"># route建立请求路径和函数之间的映射</span>
+<span style="color:#09f;font-style:italic"># 等同于 app.add_url_rule()</span>
+<span style="color:#09f;font-style:italic"># app.url_map 存放所以映射</span>
+<span style="color:#99f">@app.route</span>(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">/</span><span style="color:#c30">&#34;</span>)
+<span style="color:#09f;font-style:italic"># 视图函数</span>
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">index</span>():
-    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30">&#34;&lt;h1&gt;Hello World!&lt;/h1&gt;&#34;</span>
+    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">&lt;h1&gt;Hello World!&lt;/h1&gt;</span><span style="color:#c30">&#34;</span>
 
 
-<span style="color:#09f;font-style:italic"># route支持类型: int, fload, path, 比如 &lt;int:id&gt;</span>
-<span style="color:#99f">@app.route</span>(<span style="color:#c30">&#34;/user/&lt;name&gt;&#34;</span>)
+<span style="color:#09f;font-style:italic"># route支持类型: int, fload, path, 比如 &lt;int:id&gt;</span>
+<span style="color:#99f">@app.route</span>(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">/user/&lt;name&gt;</span><span style="color:#c30">&#34;</span>)
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">greeting</span>(name):
-    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30">&#34;Hello, </span><span style="color:#a00">%s</span><span style="color:#c30">&#34;</span> <span style="color:#555">%</span> name
+    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">Hello, </span><span style="color:#a00">%s</span><span style="color:#c30">&#34;</span> <span style="color:#555">%</span> name
 
 
-<span style="color:#99f">@app.route</span>(<span style="color:#c30">&#34;ua&#34;</span>)
+<span style="color:#99f">@app.route</span>(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">ua</span><span style="color:#c30">&#34;</span>)
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">user_agent</span>():
-    ua <span style="color:#555">=</span> request<span style="color:#555">.</span>headers<span style="color:#555">.</span>get(<span style="color:#c30">&#34;User-Agent&#34;</span>)
-    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30">&#34;Your UA:</span><span style="color:#a00">%s</span><span style="color:#c30">&#34;</span> <span style="color:#555">%</span>ua
+    ua <span style="color:#555">=</span> request<span style="color:#555">.</span>headers<span style="color:#555">.</span>get(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">User-Agent</span><span style="color:#c30">&#34;</span>)
+    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">Your UA:</span><span style="color:#a00">%s</span><span style="color:#c30">&#34;</span> <span style="color:#555">%</span>ua
 
 
-<span style="color:#99f">@app.route</span>(<span style="color:#c30">&#34;/error/400&#34;</span>)
+<span style="color:#99f">@app.route</span>(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">/error/400</span><span style="color:#c30">&#34;</span>)
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">error400</span>():
-    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30">&#34;&lt;h1&gt;Bad Request&lt;/h1&gt;&#34;</span>, <span style="color:#f60">400</span>
-<span style="color:#09f;font-style:italic"># 第三个参数可以传入其他headers</span>
+    <span style="color:#069;font-weight:bold">return</span> <span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">&lt;h1&gt;Bad Request&lt;/h1&gt;</span><span style="color:#c30">&#34;</span>, <span style="color:#f60">400</span>
+<span style="color:#09f;font-style:italic"># 第三个参数可以传入其他headers</span>
 
 
-<span style="color:#99f">@app.route</span>(<span style="color:#c30">&#34;/cookie&#34;</span>)
+<span style="color:#99f">@app.route</span>(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">/cookie</span><span style="color:#c30">&#34;</span>)
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">respone_with_cookie</span>():
-    response <span style="color:#555">=</span> make_response(<span style="color:#c30">&#34;Response with Cookie&#34;</span>)
-    response<span style="color:#555">.</span>set_cookie(<span style="color:#c30">&#39;user&#39;</span>, <span style="color:#c30">&#39;xulz&#39;</span>)
+    response <span style="color:#555">=</span> make_response(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">Response with Cookie</span><span style="color:#c30">&#34;</span>)
+    response<span style="color:#555">.</span>set_cookie(<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">user</span><span style="color:#c30">&#39;</span>, <span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">xulz</span><span style="color:#c30">&#39;</span>)
     <span style="color:#069;font-weight:bold">return</span> response
 
 
-<span style="color:#09f;font-style:italic"># 302 Response</span>
-<span style="color:#99f">@app.route</span>(<span style="color:#c30">&#34;/redirect&#34;</span>)
+<span style="color:#09f;font-style:italic"># 302 Response</span>
+<span style="color:#99f">@app.route</span>(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">/redirect</span><span style="color:#c30">&#34;</span>)
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">redirect_test</span>():
-    <span style="color:#069;font-weight:bold">return</span> redirect(<span style="color:#c30">&#34;http://127.0.0.1:5000&#34;</span>)
+    <span style="color:#069;font-weight:bold">return</span> redirect(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">http://127.0.0.1:5000</span><span style="color:#c30">&#34;</span>)
 
 
-<span style="color:#09f;font-style:italic"># abort 会把控制权交给web server然后抛出异常</span>
-<span style="color:#99f">@app.route</span>(<span style="color:#c30">&#34;/abort&#34;</span>)
+<span style="color:#09f;font-style:italic"># abort 会把控制权交给web server然后抛出异常</span>
+<span style="color:#99f">@app.route</span>(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">/abort</span><span style="color:#c30">&#34;</span>)
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">abort_test</span>():
     abort(<span style="color:#f60">404</span>)
 
 
-<span style="color:#069;font-weight:bold">if</span> __name__ <span style="color:#555">==</span> <span style="color:#c30">&#34;__main__&#34;</span>:
-    <span style="color:#09f;font-style:italic"># 激活 debugger和reloader</span>
-    app<span style="color:#555">.</span>run(debug<span style="color:#555">=</span>True)</code></pre></div>
-<h3 id="context">Context</h3>
-
+<span style="color:#069;font-weight:bold">if</span> __name__ <span style="color:#555">==</span> <span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">__main__</span><span style="color:#c30">&#34;</span>:
+    <span style="color:#09f;font-style:italic"># 激活 debugger和reloader</span>
+    app<span style="color:#555">.</span>run(debug<span style="color:#555">=</span>True)
+</code></pre></div><h3 id="context">Context</h3>
 <table>
 <thead>
 <tr>
@@ -246,26 +240,22 @@ app <span style="color:#555">=</span> Flask(__name__)
 <th>描述</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>current_app</td>
 <td>应用上下文</td>
 <td>当前活跃的应用实例</td>
 </tr>
-
 <tr>
 <td>g</td>
 <td>应用上下文</td>
 <td>用于一个request的临时存储,每次会重置</td>
 </tr>
-
 <tr>
 <td>request</td>
 <td>请求上下文</td>
 <td>request对象</td>
 </tr>
-
 <tr>
 <td>session</td>
 <td>请求上下文</td>
@@ -273,64 +263,71 @@ app <span style="color:#555">=</span> Flask(__name__)
 </tr>
 </tbody>
 </table>
-
 <h3 id="request-hooks">request Hooks</h3>
-
 <ul>
 <li>before_first_request</li>
 <li>before_request</li>
 <li>after_request: 没有发生异常时,注册</li>
 <li>teardown_request 每次request之后注册,即使发生异常</li>
 </ul>
-
 <blockquote>
 <p>一般把hook和functions view的共享数据存放在g应用上下文</p>
 </blockquote>
+<h3 id="heading-3">约定</h3>
+<ul>
+<li>templates</li>
+<li>static</li>
+</ul>
+<h3 id="blueprint">Blueprint</h3>
+<p>应用的子集</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">app<span style="color:#555">.</span>register_blueprint(simple_page, url_prefix<span style="color:#555">=</span><span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">/pages</span><span style="color:#c30">&#39;</span>)
 
-<h2 id="flask-扩展">Flask 扩展</h2>
-
+</code></pre></div><h3 id="sqlalchemy">SQLAlchemy</h3>
+<p>filter_by(**kwargs)的使用：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">db.users.filter_by<span style="color:#555">(</span><span style="color:#033">name</span><span style="color:#555">=</span><span style="color:#c30">&#39;Joe&#39;</span><span style="color:#555">)</span>
+<span style="color:#09f;font-style:italic"># 注意下面是重载符号==</span>
+db.users.filter<span style="color:#555">(</span>db.users.name<span style="color:#555">=</span><span style="color:#555">=</span><span style="color:#c30">&#39;Joe&#39;</span><span style="color:#555">)</span>
+db.users.filter<span style="color:#555">(</span>or_<span style="color:#555">(</span>db.users.name<span style="color:#555">=</span><span style="color:#555">=</span><span style="color:#c30">&#39;Ryan&#39;</span>, db.users.country<span style="color:#555">=</span><span style="color:#555">=</span><span style="color:#c30">&#39;England&#39;</span><span style="color:#555">)</span><span style="color:#555">)</span>
+</code></pre></div><h2 id="flask-">Flask 扩展</h2>
+<h3 id="flask-app-builderhttpsgithubcomdpgasparflask-appbuilder"><a href="https://github.com/dpgaspar/flask-appbuilder/">Flask App Builder</a></h3>
 <p>偶然发现一个增强版Flask项目,提供了更好的安全和自动CRUD操作等许多常用特性(有点学习Django的意思), 强烈推荐.</p>
+<h3 id="heading-4"></h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">celery -A application.celery worker
 
-<p><a href="https://github.com/dpgaspar/flask-appbuilder/">Flask App Builder</a></p>
-
-<h2 id="技巧">技巧</h2>
-
-<h3 id="禁止控制台输出">禁止控制台输出</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">log <span style="color:#555">=</span> logging<span style="color:#555">.</span>getLogger(<span style="color:#c30">&#39;werkzeug&#39;</span>)
-log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</span>ERROR)</code></pre></div>
-<h3 id="增加响应延迟">增加响应延迟</h3>
+form.my_field.render_kw = {&#39;disabled&#39;: &#39;disabled&#39;}
+</code></pre></div><h2 id="heading-5">技巧</h2>
+<h3 id="heading-6">禁止控制台输出</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">log <span style="color:#555">=</span> logging<span style="color:#555">.</span>getLogger(<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">werkzeug</span><span style="color:#c30">&#39;</span>)
+log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</span>ERROR)
+</code></pre></div><h3 id="heading-7">增加响应延迟</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">get_fake_latency</span>():
     <span style="color:#069;font-weight:bold">return</span> random<span style="color:#555">.</span>uniform(<span style="color:#f60">0.1</span>, <span style="color:#f60">0.2</span>)
 
 <span style="color:#99f">@app.after_request</span>
 <span style="color:#069;font-weight:bold">def</span> <span style="color:#c0f">apply_latency</span>(response):
     time<span style="color:#555">.</span>sleep(get_fake_latency())
-    <span style="color:#069;font-weight:bold">return</span> response</code></pre></div>
-<h2 id="部署">部署</h2>
-
-<h3 id="生产环境">生产环境</h3>
-
+    <span style="color:#069;font-weight:bold">return</span> response
+</code></pre></div><h2 id="heading-8">部署</h2>
+<h3 id="heading-9">生产环境</h3>
 <ul>
 <li>不要使用｀app.run()｀方式运行</li>
 <li>使用gunicorn
-
 <ul>
 <li>python实现，简单易用</li>
 <li>运行: gunicorn app:app</li>
-</ul></li>
+</ul>
+</li>
 <li>使用uWsgi
-
 <ul>
 <li>C实现，CPU占用低</li>
 <li>通常与Nginx反向代理一起使用</li>
-</ul></li>
 </ul>
-
-<h2 id="链接">链接</h2>
-
+</li>
+</ul>
+<h2 id="heading-10">链接</h2>
 <ul>
 <li><a href="http://flask.pocoo.org/docs/1.0/patterns/">Patterns for Flask</a> 官方进阶</li>
-<li><a href="http://exploreflask.com/en/latest/index.html">Explore Flask</a> 教程</li>
+<li><a href="http://exploreflask.com/en/latest/index.html">Explore Flask</a> /<a href="https://github.com/spacewander/explore-flask-zh">Explore Flask中文翻译</a></li>
 <li><a href="https://blog.miguelgrinberg.com/">Flask Web Development 作者博客</a></li>
 <li><a href="https://nickjanetakis.com/blog/dockerize-a-flask-celery-and-redis-application-with-docker-compose">使用Docker部署Flask应用</a></li>
 </ul>
@@ -338,12 +335,44 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
     </div>
     <footer class="post-footer">
      
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/flask/" >https://xulizhao.com/blog/flask/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
  
 <div class="post-tags">     
      
-    <a href="/tags/web" rel="tag" title="web">#web#</a>
+    <a href="https://xulizhao.com/tags/web" rel="tag" title="web">#web#</a>
     
-    <a href="/tags/python" rel="tag" title="python">#python#</a>
+    <a href="https://xulizhao.com/tags/python" rel="tag" title="python">#python#</a>
     
 </div>
 
@@ -352,38 +381,21 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/zookeeper/" rel="next" title="ZooKeeper">
-        <i class="fa fa-chevron-left"></i> ZooKeeper
+        <a href="https://xulizhao.com/play/blog-ghost/" rel="next" title="新博客">
+        <i class="fa fa-chevron-left"></i> 新博客
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/play/blog-ghost/" rel="prev" title="新博客">
-        新博客 <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/go-basic/" rel="prev" title="Go基础笔记">
+        Go基础笔记 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -418,22 +430,23 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -443,9 +456,9 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -453,25 +466,9 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -481,30 +478,38 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#开发基础">开发基础</a>
-<ul>
-<li><a href="#创建-flask-starter-project">创建 Flask Starter Project</a></li>
-<li><a href="#常用第三方">常用第三方</a></li>
-<li><a href="#例子">例子</a></li>
-<li><a href="#context">Context</a></li>
-<li><a href="#request-hooks">request Hooks</a></li>
-</ul></li>
-<li><a href="#flask-扩展">Flask 扩展</a></li>
-<li><a href="#技巧">技巧</a>
-<ul>
-<li><a href="#禁止控制台输出">禁止控制台输出</a></li>
-<li><a href="#增加响应延迟">增加响应延迟</a></li>
-</ul></li>
-<li><a href="#部署">部署</a>
-<ul>
-<li><a href="#生产环境">生产环境</a></li>
-</ul></li>
-<li><a href="#链接">链接</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">开发基础</a>
+      <ul>
+        <li><a href="#-flask-starter-project">创建 Flask Starter Project</a></li>
+        <li><a href="#heading-1">常用第三方</a></li>
+        <li><a href="#heading-2">例子</a></li>
+        <li><a href="#context">Context</a></li>
+        <li><a href="#request-hooks">request Hooks</a></li>
+        <li><a href="#heading-3">约定</a></li>
+        <li><a href="#blueprint">Blueprint</a></li>
+        <li><a href="#sqlalchemy">SQLAlchemy</a></li>
+      </ul>
+    </li>
+    <li><a href="#flask-">Flask 扩展</a>
+      <ul>
+        <li><a href="#flask-app-builderhttpsgithubcomdpgasparflask-appbuilder">Flask App Builder</a></li>
+        <li><a href="#heading-4"></a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">技巧</a>
+      <ul>
+        <li><a href="#heading-6">禁止控制台输出</a></li>
+        <li><a href="#heading-7">增加响应延迟</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-8">部署</a>
+      <ul>
+        <li><a href="#heading-9">生产环境</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-10">链接</a></li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -518,18 +523,18 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -538,36 +543,58 @@ log<span style="color:#555">.</span>setLevel(logging<span style="color:#555">.</
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

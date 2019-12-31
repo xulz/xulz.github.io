@@ -1,25 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Security on XuLizhao &#39;s Notes</title>
-    <link>/tags/security/</link>
-    <description>Recent content in Security on XuLizhao &#39;s Notes</description>
+    <title>security on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/security/</link>
+    <description>Recent content in security on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 03 Apr 2018 03:32:33 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/security/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>加解密算法学习</title>
+      <link>https://xulizhao.com/blog/crypto/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/crypto/</guid>
+      <description>&lt;p&gt;关于SSL，TLS，对称加密，非对称(公私钥)加密等的学习笔记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自动生成SSL证书的利器acme.sh</title>
+      <link>https://xulizhao.com/blog/acme/</link>
+      <pubDate>Sun, 30 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/acme/</guid>
+      <description>&lt;p&gt;已经使用letsencrypt的免费证书一段时间了，是之前折腾Ghost博客时自动安装的，而后台其实也是用的acme.sh这个工具。&lt;/p&gt;
+&lt;p&gt;遇到的问题是不知哪里的配置错误，我的证书自动更新有问题，每次都是遇到证书已经过期，网站彻底不能访问了，必须要手动更新。&lt;/p&gt;
+&lt;p&gt;之前用的HTTP的验证方式，由于一知半解，这块每次手动配置也会花费一些时间。&lt;/p&gt;
+&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>证书那些事</title>
+      <link>https://xulizhao.com/blog/cert/</link>
+      <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/cert/</guid>
+      <description>&lt;p&gt;断断续续接触过加密通讯的一些场景, 随着近两年安全的普及,建站使用https也成为标配.&lt;/p&gt;
+&lt;p&gt;这篇文章试图汇总下证书这块的知识提纲.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>你的网站账号密码安全吗</title>
-      <link>/blog/check-your-password/</link>
+      <link>https://xulizhao.com/blog/check-your-password/</link>
       <pubDate>Tue, 03 Apr 2018 03:32:33 +0000</pubDate>
       
-      <guid>/blog/check-your-password/</guid>
+      <guid>https://xulizhao.com/blog/check-your-password/</guid>
       <description>&lt;p&gt;今天看了Django开发者的一篇&lt;a href=&#34;https://www.b-list.org/weblog/2018/mar/06/two-new-projects/&#34;&gt;文章&lt;/a&gt;,关于web安全的子项目, 其中提到了一个用于检测用户密码是否安全的API.&lt;/p&gt;
-
-&lt;p&gt;不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.&lt;/p&gt;</description>
+&lt;p&gt;不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.&lt;/p&gt;
+&lt;p&gt;对普通用户,提供两个主要的网页查询功能:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你邮件账户的密码是否已泄漏[&lt;!-- raw HTML omitted --&gt;1&lt;!-- raw HTML omitted --&gt;]&lt;/li&gt;
+&lt;li&gt;你正在使用的密码是否存在于泄漏数据库及被其他用户泄漏的次数[&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt;]&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
   </channel>

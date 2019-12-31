@@ -4,23 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-    <title>Golang开发环境 - XuLizhao &#39;s Notes</title>
+    <title>Go基础笔记 - XuLizhao &#39;s Notes</title>
     <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
     
-    <meta property="og:title" content="Golang开发环境">
+    <meta property="og:title" content="Go基础笔记">
     <meta property="og:site_name" content="XuLizhao &#39;s Notes">
     <meta property="og:image" content="/img/author.jpg"> 
-    <meta name="title" content="Golang开发环境 - XuLizhao &#39;s Notes" />
+    <meta name="title" content="Go基础笔记 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,8 +109,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/go-basic/" itemprop="url">
-        Golang开发环境
+        <a class="post-title-link" href="https://xulizhao.com/blog/go-basic/" itemprop="url">
+        Go基础笔记
         </a>
       </h1>
       <div class="post-meta">
@@ -120,10 +119,10 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-11-28">
-    2017-11-28
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-10-18">
+    2017-10-18
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">Tech</span>
       </a>
       &nbsp; 
@@ -149,83 +148,188 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">2741 字 ~6分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>简单记录下Go语言开发环境的搭建和基本用法.</p>
-
-<p></p>
-
-<h2 id="安装">安装</h2>
-
-<p>如果要使用系统命令安装:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    # Ubuntu
-    apt install golang
-    # Mac
-    brew install golang</pre></div>
-<p>如果想安装最新版本的话,可以直接到镜像站<a href="https://golangtc.com/download">下载</a>系统对应版本或者参考<a href="https://github.com/golang/go/wiki/Ubuntu">Ubuntu安装最新版</a>.</p>
-
-<p>如果在Linux的话解压缩之后需要设置下环境变量:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    # vi ~/.zshrc  添加
-    export GOPATH=$HOME/go
-    export GOBIN=$HOME/go/bin
-    export PATH=$GOPATH/bin:$PATH</pre></div>
-<blockquote>
-<p>注: 在新版命令行安装之后, GOROOT(设置安装路径)和GOPATH都不用设置.</p>
-
-<p>GOPATH 默认位置为 $HOME/go, 该目录用来在标准Go目录之外存放get, build和install等下载的依赖包.</p>
-
-<p>go env 查看当前环境变量</p>
-</blockquote>
-
-<h2 id="go扩展包的下载">Go扩展包的下载</h2>
-
-<p>如果要编译一个开源项目,在国内的环境下, go get 的方式通常会因为访问 <strong>golang.org/x</strong> 而失败.</p>
-
-<p>绕过方式为手动下载依赖:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#366">cd</span> <span style="color:#033">$GOPATH</span>/src
-    mkdir -p golang.org/x
-    <span style="color:#366">cd</span> golang.org/x
-    <span style="color:#09f;font-style:italic"># 通常下边几个库就够用了,具体以错误提示相应的下载
-</span><span style="color:#09f;font-style:italic"></span>    git clone https://github.com/golang/net.git
-    git clone https://github.com/golang/sys.git
-    git clone https://github.com/golang/crypto.git</code></pre></div>
-<h2 id="常用命令">常用命令</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 运行
-</span><span style="color:#09f;font-style:italic"></span>    go run hello.go
-    
-    <span style="color:#09f;font-style:italic"># 编译并指定运行环境
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#033">GOOS</span><span style="color:#555">=</span>linux <span style="color:#033">GOARCH</span><span style="color:#555">=</span>amd64 go build -o hello hello.go
-    
-    <span style="color:#09f;font-style:italic"># 打包
-</span><span style="color:#09f;font-style:italic"></span>    go install hello.go
-    
-    <span style="color:#09f;font-style:italic"># 格式化, -w:直接覆盖原代码,不输出到控制台
-</span><span style="color:#09f;font-style:italic"></span>    gofmt -w hello.go
-    
-    <span style="color:#09f;font-style:italic">## 查看文档
-</span><span style="color:#09f;font-style:italic"></span>    godoc fmt</code></pre></div>
-<h2 id="依赖管理">依赖管理</h2>
-
-<p>可以通过<a href="https://github.com/golang/dep">Dep</a>这个工具来管理项目依赖.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Mac安装
-brew install dep
-# 或者Linux
-curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-dep init
-# 会在项目目录创建依赖配置文件Gopkg.toml
-[[constraint]]
-  branch = &#34;master&#34;
-  name = &#34;golang.org/x/net&#34;</pre></div>
+    <p>Go语言学习笔记。</p>
+<h2 id="heading">语法和特性</h2>
+<ul>
+<li>main包比较特殊。它定义了一个独立可执行的程序，而不是一个库。</li>
+<li>编译器会主动把特定符号后的换行符转换为分号, 因此换行符添加的位置会影响Go代码的正确解析.</li>
+</ul>
+<h3 id="heading-1">作用域</h3>
+<p>名字的开头字母的大小写决定了名字在包外的可见性。如果一个名字是大写字母开头的，那么它将是导出的，也就是说可以被外部的包访问。</p>
+<p>通常来说，如果一个名字的作用域比较大，生命周期也比较长，那么用长的名字将会更有意义。推荐使用 驼峰式 命名。</p>
+<h3 id="heading-2">声明和赋值</h3>
+<ul>
+<li>变量会在声明时直接初始化</li>
+<li>符号:=是短变量声明（short variable declaration）的一部分, 这是定义一个或多个变量并根据它们的初始值为这些变量赋予适当类型的语句.</li>
+<li>通常在函数内部使用.请记住“:=”是一个变量声明语句，而“=”是一个变量赋值操作</li>
+<li>自增和自减是语句，而不是表达式</li>
+</ul>
+<h3 id="heading-3">逻辑结构</h3>
+<ul>
+<li>习惯在if中处理错误然后直接返回，这样可以确保正常执行的语句不需要代码缩进。</li>
+<li>不要将一个控制结构if、for、switch、select的左大括号放在下一行</li>
+<li>switch 不需要显式地在每一个case后写break</li>
+<li>switch还可以不带操作对象, tagless switch（注：switch不带操作对象时默认用true值代替，然后将每个case的表达式和true值进行比较）</li>
+<li>break会中断当前的循环，并开始执行循环之后的内容</li>
+<li>continue会跳过当前循环，并开始执行下一次循环。</li>
+</ul>
+<h2 id="heading-4">类型</h2>
+<p>Go语言将数据类型分为四类：</p>
+<ul>
+<li>基础类型: 数字、字符串和布尔型</li>
+<li>复合类型: 数组和结构体</li>
+<li>引用类型: 指针、切片、字典、函数、通道</li>
+<li>接口类型:</li>
+</ul>
+<p>对于每种类型T，如果转换允许的话，类型转换操作T(x)将x转换为T类型</p>
+<p>&amp;&amp;对应逻辑乘法，||对应逻辑加法，乘法比加法优先级要高</p>
+<h3 id="heading-5">字符串</h3>
+<ul>
+<li>文本字符串通常被解释为采用UTF8编码的Unicode码点（rune）序列 (rune是int32等价类型)</li>
+<li>一个字符串是包含只读字节的数组，一旦创建，是不可变的。相比之下，一个字节slice的元素则可以自由地修改。</li>
+<li>字符面值通过一对单引号直接包含对应字符。字符使用%c参数打印，或者是用%q参数打印带单引号的字符</li>
+<li>一个原生的字符串面值形式是<code>...</code>，使用反引号代替双引号。</li>
+<li>原生字符串面值同时被广泛应用于正则表达式、HTML模板、JSON面值、命令行提示信息以及那些需要扩展到多行的场景。</li>
+</ul>
+<p>字符串处理包：bytes、strings、strconv和unicode</p>
+<ul>
+<li>bytes包还提供了Buffer类型用于字节slice的缓存</li>
+<li>将一个字符串解析为整数，可以使用strconv包的Atoi或ParseInt函数</li>
+<li>fmt.Scanf来解析输入的字符串和数字，特别是当字符串和数字混合在一行的时候，它可以灵活处理不完整或不规则的输入。</li>
+<li>iota常量生成器初始化，用于生成一组以相似规则初始化的常量 (类似枚举)</li>
+</ul>
+<h3 id="fmt">fmt</h3>
+<p>后缀f指format，ln指line</p>
+<p>字符串的格式化：</p>
+<ul>
+<li>fmt.Printf，它会把结果写到标准输出</li>
+<li>fmt.Sprintf，它会把结果以字符串的形式返回。</li>
+</ul>
+<p>这两个函数都使用了另一个函数fmt.Fprintf来进行封装, 前缀F表示文件(File)也表明格式化输出结果应该被写入第一个参数提供的文件中</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#09f;font-style:italic">//   返回格式化后的错误
+</span><span style="color:#09f;font-style:italic"></span>fmt.<span style="color:#c0f">Errorf</span>()
+<span style="color:#09f;font-style:italic">// 处理时间
+</span><span style="color:#09f;font-style:italic"></span>fmt.<span style="color:#c0f">Println</span>(time.<span style="color:#c0f">Now</span>().<span style="color:#c0f">Format</span>(<span style="color:#c30">&#34;2006-01-02 15:04:05&#34;</span>))
+</code></pre></div><h3 id="heading-6">结构体</h3>
+<p>在初始化结构体时使用带有标签的语法。</p>
+<ul>
+<li>将 slice 或 map 定义成自定义类型可以让你的代码更容易维护。</li>
+<li>点操作符也可以和指向结构体的指针一起工作.调用函数返回的是值，并不是一个可取地址的变量</li>
+<li>考虑效率的话，较大的结构体通常会用指针的方式传入和返回。如果要在函数内部修改结构体成员的话，用指针传入是必须的；因为在Go语言中，所有的函数参数都是值拷贝传入的，函数参数将不再是函数调用时的原始变量。</li>
+</ul>
+<h4 id="heading-7">数组</h4>
+<ul>
+<li>数组是由同构的元素组成 (很少直接使用, 一般使用slice来替代数组)，结构体则是由异构的元素组成的。</li>
+<li>数组和结构体都是有固定内存大小的数据结构。相比之下，slice和map则是动态的数据结构，它们将根据需要动态增长。</li>
+<li>在数组字面值中，如果在数组的长度位置出现的是“&hellip;”省略号，则表示数组的长度是根据初始化值的个数来计算</li>
+<li>通常是将append返回的结果直接赋值给输入的slice变量</li>
+</ul>
+<h3 id="slice">Slice切片</h3>
+<ul>
+<li>slice底层是数组，保存了len、capacity和对数组的引用</li>
+<li>从slice创建新slice时，注意原slice的操作可能导致底层数组变化</li>
+<li>如果创建很长的slice，尽量创建成一个slice里存引用，这样可以分批释放</li>
+</ul>
+<h4 id="map">Map</h4>
+<p>Map是引用类型，不需要指针（类似指针类型, 切片）</p>
+<h4 id="json">json</h4>
+<p>json.Marshal返回[]byte和error，必须先判断error是否为空，再进一步解析 []byte</p>
+<h2 id="heading-8">指针</h2>
+<p>指针是可见的内存地址，&amp;操作符可以返回一个变量的内存地址，并且*操作符可以获取指针指向的变量内容</p>
+<p>一个指针的值是另一个变量的地址</p>
+<ul>
+<li>&amp;x表达式（取x变量的内存地址），指针对应的数据类型是*int，指针被称之为“指向int类型的指针”</li>
+<li>*p表达式对应p指针指向的变量的值，变量有时候被称为可寻址的值</li>
+</ul>
+<p>new只是一个预定义的函数</p>
+<ul>
+<li>在现实的程序里，一般会约定如果Point这个类有一个指针作为接收器的方法，那么所有Point的方法都必须有一个指针接收器。</li>
+<li>只有类型(Point)和指向他们的指针(*Point)，才可能是出现在接收器声明里的两种接收器</li>
+<li>不管你的method的receiver是指针类型还是非指针类型，都是可以通过指针/非指针类型进行调用的，编译器会帮你做类型转换。</li>
+<li>在声明一个method的receiver该是指针还是非指针类型时，你需要考虑两方面的因素，第一方面是这个对象本身是不是特别大，如果声明为非指针变量时，调用会产生一次拷贝；第二方面是如果你用指针类型作为receiver，那么你一定要注意，这种指针类型指向的始终是一块内存地址，就算你对其进行了拷贝。</li>
+</ul>
+<h3 id="heading-9">模块</h3>
+<p>init()函数总是被执行，一个package的多个init()都会被执行</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#09f;font-style:italic">//函数返回不定数量参数
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">multiArgs</span>(a <span style="color:#555">...</span><span style="color:#069;font-weight:bold">interface</span>{}){
+    fmt.<span style="color:#c0f">Println</span>(a<span style="color:#555">...</span>)
+}
+</code></pre></div><h2 id="io">IO</h2>
+<ul>
+<li>io</li>
+<li>ioutil</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-GO" data-lang="GO">body, _ <span style="color:#555">:=</span> ioutil.<span style="color:#c0f">ReadAll</span>(resp.Body)
+</code></pre></div><h3 id="reader">Reader</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#09f;font-style:italic">// 从Reader读取内容
+</span><span style="color:#09f;font-style:italic"></span>body, err <span style="color:#555">:=</span> ioutil.<span style="color:#c0f">ReadAll</span>(r.Body)
+</code></pre></div><h2 id="heading-10">错误处理</h2>
+<ul>
+<li>error是一个值</li>
+<li>error是可恢复的,panic却不是</li>
+</ul>
+<p>如果导致失败的原因只有一个，额外的返回值可以是一个布尔值，通常被命名为ok</p>
+<p>fmt.Errorf函数使用fmt.Sprintf格式化错误信息并返回。我们使用该函数添加额外的前缀上下文信息到原始错误信息。</p>
+<p>错误信息中应避免大写和换行符</p>
+<p>log.Fatalf  等价于输出错误并退出</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#09f;font-style:italic">// 注意错误处理的位置
+</span><span style="color:#09f;font-style:italic"></span>resp, err <span style="color:#555">:=</span> http.<span style="color:#c0f">Get</span>(url)
+    <span style="color:#069;font-weight:bold">if</span> err <span style="color:#555">!=</span> <span style="color:#069;font-weight:bold">nil</span> {
+        <span style="color:#09f;font-style:italic">//handle error without panicing
+</span><span style="color:#09f;font-style:italic"></span>    }
+    <span style="color:#09f;font-style:italic">// there was no error, so resp.Body is guaranteed to exist.
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">defer</span> resp.Body.<span style="color:#c0f">Close</span>()
+</code></pre></div><h2 id="heading-11">接口</h2>
+<p>接口只有当有两个或两个以上的具体类型必须以相同的方式进行处理时才需要。</p>
+<p>对于接口设计的一个好的标准就是 ask only for what you need（只考虑你需要的东西）</p>
+<h2 id="heading-12">实用工具</h2>
+<ul>
+<li>time.Tick 定时执行</li>
+</ul>
     </div>
     <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/go-basic/" >https://xulizhao.com/blog/go-basic/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
      
  
 <div class="post-tags">     
      
-    <a href="/tags/go" rel="tag" title="go">#go#</a>
+    <a href="https://xulizhao.com/tags/go" rel="tag" title="go">#go#</a>
     
 </div>
 
@@ -234,38 +338,21 @@ dep init
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/git/" rel="next" title="Git备忘">
-        <i class="fa fa-chevron-left"></i> Git备忘
+        <a href="https://xulizhao.com/blog/flask/" rel="next" title="Flask开发笔记">
+        <i class="fa fa-chevron-left"></i> Flask开发笔记
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/jenkins/" rel="prev" title="Jenkins持续集成工具">
-        Jenkins持续集成工具 <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/java8/" rel="prev" title="Java8学习">
+        Java8学习 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -300,22 +387,23 @@ dep init
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -325,9 +413,9 @@ dep init
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -335,25 +423,9 @@ dep init
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -363,15 +435,36 @@ dep init
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#安装">安装</a></li>
-<li><a href="#go扩展包的下载">Go扩展包的下载</a></li>
-<li><a href="#常用命令">常用命令</a></li>
-<li><a href="#依赖管理">依赖管理</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">语法和特性</a>
+      <ul>
+        <li><a href="#heading-1">作用域</a></li>
+        <li><a href="#heading-2">声明和赋值</a></li>
+        <li><a href="#heading-3">逻辑结构</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">类型</a>
+      <ul>
+        <li><a href="#heading-5">字符串</a></li>
+        <li><a href="#fmt">fmt</a></li>
+        <li><a href="#heading-6">结构体</a></li>
+        <li><a href="#slice">Slice切片</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-8">指针</a>
+      <ul>
+        <li><a href="#heading-9">模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#io">IO</a>
+      <ul>
+        <li><a href="#reader">Reader</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-10">错误处理</a></li>
+    <li><a href="#heading-11">接口</a></li>
+    <li><a href="#heading-12">实用工具</a></li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -385,18 +478,18 @@ dep init
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -405,36 +498,58 @@ dep init
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

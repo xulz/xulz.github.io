@@ -1,59 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Performance on XuLizhao &#39;s Notes</title>
-    <link>/tags/performance/</link>
-    <description>Recent content in Performance on XuLizhao &#39;s Notes</description>
+    <title>performance on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/performance/</link>
+    <description>Recent content in performance on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 27 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/performance/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JVM和GC调优</title>
-      <link>/blog/jvm/</link>
+      <link>https://xulizhao.com/blog/jvm/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/jvm/</guid>
-      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/jvm/</guid>
+      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>全链路压测笔记续</title>
-      <link>/blog/more-load-test-note/</link>
+      <link>https://xulizhao.com/blog/more-load-test-note/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/more-load-test-note/</guid>
+      <guid>https://xulizhao.com/blog/more-load-test-note/</guid>
       <description>&lt;p&gt;看完美团的分享觉得不过瘾，继续学习其他大厂的分享。&lt;/p&gt;
-
-&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>美团全链路压测Quake学习笔记</title>
-      <link>/blog/meituan-load-test-note/</link>
+      <link>https://xulizhao.com/blog/meituan-load-test-note/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/meituan-load-test-note/</guid>
+      <guid>https://xulizhao.com/blog/meituan-load-test-note/</guid>
       <description>&lt;p&gt;今天读了美团技术团队新发布的&lt;a href=&#34;https://tech.meituan.com/2018/09/27/quake-introduction.html&#34;&gt;全链路压测平台Quake在美团中的实践&lt;/a&gt;，做个笔记。&lt;/p&gt;
-
 &lt;p&gt;先说下总的读后感:&lt;/p&gt;
-
 &lt;p&gt;压力测试/性能测试有多种方式，从下面的几个发展阶段可以看出越来越追求真实高峰访问的模拟。&lt;/p&gt;
-
 &lt;p&gt;现在大公司普遍的分布式架构，云计算的应用，容器的使用也可以提供更有力的资源调度。但全链路压测最重要的工作在于需要架构，开发团队的支持和适配工作。&lt;/p&gt;
-
 &lt;p&gt;没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。&lt;/p&gt;
-
-&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;</description>
     </item>
     
   </channel>

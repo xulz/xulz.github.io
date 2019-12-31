@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Go并发编程笔记 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/go-concurrency/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/go-concurrency/" itemprop="url">
         Go并发编程笔记
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-08-20">
     2018-08-20
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -149,67 +148,125 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">1320 字 ~3分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>最近尝试用Go重写以前Python的一个工具,感觉一直工作于Hard模式,可是又不想轻易的放弃Golang的实践,因为遇到一些问题最终变成从入门到放弃.</p>
-
+    <p>最近尝试用Go重写之前用Python开发的一个工具,感觉一直工作于Hard模式,可是又不想轻易的放弃Golang的实践,变成遇到一些问题而从入门到放弃.</p>
 <p>还好一周周坚持了下来,虽然遇到一个问题可能会解决多半天甚至一天多时间,还是有所学的.</p>
-
 <p>今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.</p>
-
-<p></p>
-
-<h2 id="敲重点">敲重点</h2>
-
-<h3 id="运行是一定打开-race-命令行参数">运行是一定打开 -race 命令行参数</h3>
-
-<p>该标记会打印产生读写冲突/数据竞争的错误及stacktrace, 避免到生产环境才发现问题.</p>
-
-<p>绝对是提早排查的利器, 也算Go的优势之一 :)</p>
-
+<h2 id="heading">敲重点</h2>
+<h3 id="--race-">一定打开 -race 命令行参数</h3>
+<p>该标记会打印产生读写冲突/数据竞争的错误及stacktrace, 避免到生产环境才发现问题. <strong>绝对是提早排查的利器, 也算Go的优势之一 :)</strong></p>
 <p>其他应用: 该参数也可以加在test,build,run等命令, 由于生成带检测的build会消耗更多内存和CPU,建议生产环境不要部署或只部署其中一台节点.</p>
-
-<h2 id="并发map">并发Map</h2>
-
+<h2 id="map">并发Map</h2>
 <p>默认的map是不支持并发读写的, 如果违法了后果很严重,主程序直接异常退出,通常会看到如下的错误:</p>
-
 <blockquote>
 <p>fatal error: concurrent map writes</p>
 </blockquote>
-
 <p>解决方式有三个:</p>
-
 <ul>
 <li>仍使用原生map,用sync.RWMutex加锁</li>
 <li>使用 1.9 引入的 sync.Map, 适用于读远大于写的情景(方法少了些)</li>
 <li>使用 第三方库<a href="https://github.com/orcaman/concurrent-map">concurrent-map</a> （sharding方式,更适合以内存数据库方式使用）</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#09f;font-style:italic">// 加锁的示例, 修改自SO的一个例子
-</span><span style="color:#09f;font-style:italic">// 锁可以被任意读或唯一的写协程所持有
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#09f;font-style:italic">// 锁可以被任意读或唯一的写协程所持有
 </span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">var</span> m = <span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#078;font-weight:bold">int</span>{<span style="color:#c30">&#34;a&#34;</span>: <span style="color:#f60">1</span>}
 <span style="color:#069;font-weight:bold">var</span> lock = sync.RWMutex{}
 
-<span style="color:#069;font-weight:bold">func</span> read() {
-    lock.RLock()
+<span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">read</span>() {
+    lock.<span style="color:#c0f">RLock</span>()
     _ = m[<span style="color:#c30">&#34;a&#34;</span>]
-    lock.RUnlock()
+    lock.<span style="color:#c0f">RUnlock</span>()
 }
 
-<span style="color:#069;font-weight:bold">func</span> write() {
-    lock.Lock()
+<span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">write</span>() {
+    lock.<span style="color:#c0f">Lock</span>()
     m[<span style="color:#c30">&#34;b&#34;</span>] = <span style="color:#f60">2</span>
-    lock.Unlock()
-}</code></pre></div>
+    lock.<span style="color:#c0f">Unlock</span>()
+}
+
+</code></pre></div><h2 id="goroutines">Goroutines</h2>
+<ul>
+<li>发送和接收两个操作都使用&lt;-运算符.  在接收语句中，&lt;-运算符写在channel对象之前</li>
+<li>如果channel的容量大于零，那么该channel就是带缓存的channel.</li>
+<li>无缓存Channels有时候也被称为同步Channels。</li>
+<li>happens before 要表达的意思是要保证在此之前的事件都已经完成了</li>
+<li>避免“循环变量快照”</li>
+</ul>
+<h3 id="syncwaitgroup">sync.WaitGroup</h3>
+<p>使用buffered channel作为一个计数信号量</p>
+<h3 id="syncmutex">sync.Mutex</h3>
+<ul>
+<li>不要使用共享数据来通信；使用通信来共享数据。</li>
+<li>一个只能为1和0的信号量叫做二元信号量(binary semaphore)。</li>
+<li>惯例来说，被mutex所保护的变量是在mutex变量声明之后立刻声明的</li>
+<li>用defer来调用Unlock，临界区会隐式地延伸到函数作用域的最后</li>
+<li>“多读单写”锁(multiple readers, single writer lock)是sync.RWMutex</li>
+<li>一次性初始化 Sync.Once</li>
+<li>net/http包提供了一个请求多路器ServeMux来简化URL和handlers的联系</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">mu  sync.Mutex
+</code></pre></div><h2 id="channel">Channel/信道</h2>
+<p>默认情况下，发送和接收操作在另一端准备好之前都会阻塞。这使得 Go 程可以在没有显式的锁或竞态变量的情况下进行同步。</p>
+<ul>
+<li>channel会返回两个值，一个是内容，一个是还有没有内容</li>
+<li>channel是通过注册相关goroutine id实现消息通知的</li>
+<li>发送者只有在必须告诉接收者不再有值需要发送的时候才有必要关闭/close信道（只有发送者才能关闭信道，而接收者不能）</li>
+</ul>
+<h3 id="heading-1">带缓冲的信道</h3>
+<p>仅当信道的缓冲区填满后，向其发送数据时才会阻塞（阻塞写）。当缓冲区为空时，接受方会阻塞（阻塞读）</p>
+<h3 id="select">select</h3>
+<ul>
+<li>select 语句使一个goroutine 可以等待多个通信操作。</li>
+<li>select 会阻塞到某个分支可以继续执行为止，这时就会执行该分支</li>
+<li>当 select 中的其它分支都没有准备好时，default 分支就会执行。不想阻塞发送和接受时使用。</li>
+</ul>
+<h2 id="heading-2">规范</h2>
+<ul>
+<li>goroutine记得return或者中断，不然容易造成goroutine占用大量CPU</li>
+</ul>
     </div>
     <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/go-concurrency/" >https://xulizhao.com/blog/go-concurrency/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
      
  
 <div class="post-tags">     
      
-    <a href="/tags/go" rel="tag" title="go">#go#</a>
+    <a href="https://xulizhao.com/tags/go" rel="tag" title="go">#go#</a>
     
 </div>
 
@@ -218,38 +275,21 @@
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/mq/" rel="next" title="开源消息队列实现">
-        <i class="fa fa-chevron-left"></i> 开源消息队列实现
+        <a href="https://xulizhao.com/blog/flyway/" rel="next" title="Java应用的数据库迁移工具Flyway">
+        <i class="fa fa-chevron-left"></i> Java应用的数据库迁移工具Flyway
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/java-db-migrate/" rel="prev" title="Java应用的数据库迁移工具Flyway">
-        Java应用的数据库迁移工具Flyway <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/mq/" rel="prev" title="开源消息队列实现">
+        开源消息队列实现 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -284,22 +324,23 @@
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -309,9 +350,9 @@
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -319,25 +360,9 @@
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -347,16 +372,27 @@
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#敲重点">敲重点</a>
-<ul>
-<li><a href="#运行是一定打开-race-命令行参数">运行是一定打开 -race 命令行参数</a></li>
-</ul></li>
-<li><a href="#并发map">并发Map</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">敲重点</a>
+      <ul>
+        <li><a href="#--race-">一定打开 -race 命令行参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#map">并发Map</a></li>
+    <li><a href="#goroutines">Goroutines</a>
+      <ul>
+        <li><a href="#syncwaitgroup">sync.WaitGroup</a></li>
+        <li><a href="#syncmutex">sync.Mutex</a></li>
+      </ul>
+    </li>
+    <li><a href="#channel">Channel/信道</a>
+      <ul>
+        <li><a href="#heading-1">带缓冲的信道</a></li>
+        <li><a href="#select">select</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">规范</a></li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -370,18 +406,18 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -390,36 +426,58 @@
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

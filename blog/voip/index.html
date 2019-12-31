@@ -1,0 +1,532 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>了解VOIP - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="了解VOIP">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="了解VOIP - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/voip/" itemprop="url">
+        了解VOIP
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-09-16">
+    2019-09-16
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1400 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>VOIP简单说就是网络电话。</p>
+<p>按：最近想找做个Java版的VOIP简单demo，发现官方居然没有个正经库。网上这方面的一些介绍文章也已经过时，特整理一份供大家参考。</p>
+<h2 id="heading">名词解释</h2>
+<ul>
+<li>SIP ：Session Initiation Protocol/会话初始协议，互联网电话</li>
+<li>RTP ：Real Time Protocol/实时传输协议</li>
+<li>RTCP: 每发完一批RTP包的时候，就发一个RTCP包，告诉接收方我刚才发了多少RTP包，多少个字节</li>
+<li>PBX ：程控交换机，集团电话</li>
+</ul>
+<p>SIP是基于文本的应用层控制协议，用于创建、修改和释放一个或多个参与者的会话。支持tcp和udp传输，通常使用UDP协议。</p>
+<p>SDP：Session Description Protocol/会话描述协议，描述终端设备的特点。用途之一是会话建立时，需要媒体协商，双方才能确定对方的媒体能力以及交换媒体数据。</p>
+<h2 id="sip">SIP协议栈</h2>
+<p>拨号地址格式： sip/sip:username@ip_address[:port]</p>
+<p>注： 端口为可选项，不提供使用默认端口5060。</p>
+<h3 id="kamailio">Kamailio</h3>
+<p><a href="https://www.kamailio.org">Kamailio</a>/<a href="https://github.com/kamailio/kamailio">github仓库</a>,是流行的开源的SIP Proxy。和早期的另一分支OpenSips同样出自SER(SIP Express Router)。</p>
+<p>不同于PBX，Kamailio是个纯粹的SIP服务器，它可以作为Proxy、注册服务器、重定向服务器，也可作为简单的Presence服务器，其本身并不处理RTP，可能通过RTPProxy来处理RTP的NAT问题。</p>
+<p>Kamailio最新5.2版本,通常与RTPEngine组合，kamailio (995 ★) + rtpengine (311 ★)</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 安装</span>
+<span style="color:#09f;font-style:italic"># Debian/Ubuntu 仓库: https://deb.kamailio.org/</span>
+wget -O- http://deb.kamailio.org/kamailiodebkey.gpg | sudo apt-key add -
+sudo apt update
+sudo apt install mysql-server
+sudo apt install kamailio kamailio-mysql-modules
+systemctl start kamailio
+
+<span style="color:#09f;font-style:italic"># dump</span>
+kamcmd ul.dump
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 添加subscriber用户</span>
+kamctl add alice secret
+
+kamctl restart
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 开启日志</span>
+vi /etc/rsyslog.conf
+<span style="color:#09f;font-style:italic"># 插入下面这行</span>
+local0.* -/var/log/kamailio.log
+
+systemctl restart rsyslog.service 
+
+</code></pre></div><p>更多信息参考:<a href="http://kamailio.org/docs/tutorials/devel/kamailio-install-guide-deb/">kamailio-install-guide-deb</a></p>
+<h3 id="rtpengine">RTPEngine</h3>
+<p><a href="https://github.com/sipwise/rtpengine">rtpengine</a>通常作为媒体代理（media proxy）。</p>
+<p>rtpengine is a proxy for RTP traffic and other UDP based media traffic.</p>
+<h3 id="opensips">opensips</h3>
+<p><a href="https://github.com/OpenSIPS/opensips">opensips</a>,同kamailio,用作SIP代理和控制信令。</p>
+<p>现在主要为3.0/2.4两个版本分支，常见组合：OpenSIPS做sip proxy，FreeSWITCH做SBC和媒体网关，媒体网关也可选Asterisk。</p>
+<p>opensips(619 ★) + rtp proxy (  208 ★)</p>
+<p><a href="https://github.com/sippy/rtpproxy"> <strong>RTP Proxy</strong> </a> 是一个高性能而且开源的RTP流(RTP Stream)软件代理(Software Proxy).
+其典型应用就是作为OpenSIP服务器的子模块, 为SIP Call 提供的Video/Audio RTP Stream的转发.</p>
+<h3 id="heading-1">其他</h3>
+<p><a href="https://github.com/asterisk/asterisk"> <strong>Asterisk</strong> </a> is an Open Source PBX and telephony toolkit.
+C实现，0.7k star。</p>
+<p><a href="https://freeswitch.com/"> <strong>FreeSWITCH</strong> </a></p>
+<h2 id="siprtp">SIP/RTP开源实现</h2>
+<ul>
+<li>PJSIP: C语言实现的多媒体跨平台通讯库，支持SIP,RTP等多种协议</li>
+<li>peers: Java实现</li>
+<li>RTSP-Client-Server: Java的RTP实现</li>
+</ul>
+<h3 id="heading-2">安卓客户端</h3>
+<ul>
+<li><a href="https://github.com/opentelecoms-org/lumicall">Lumicall</a> : 支持证书</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew install yasm
+brew install ffmpeg
+</code></pre></div><h3 id="heading-3">测试库</h3>
+<p>两个Java实现</p>
+<ul>
+<li><a href="https://github.com/RestComm/sipunit">sipunit</a></li>
+<li><a href="https://github.com/SIMULAP/simulap-plugin-sip/wiki">simulap-plugin-sip</a></li>
+</ul>
+<h3 id="heading-4">本地开发</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/BelledonneCommunications/linphone-desktop.git
+</code></pre></div><p>安装QT5
+<a href="http://download.qt.io/official_releases/qt/5.9/">http://download.qt.io/official_releases/qt/5.9/</a></p>
+<h3 id="heading-5">不再维护的库</h3>
+<ul>
+<li>官方的JMF</li>
+<li>半官方的JSIP/JAIN-SIP</li>
+<li>doubango</li>
+</ul>
+<h2 id="heading-6">客户端</h2>
+<h3 id="yate-sip">Yate SIP客户端</h3>
+<p>支持跨平台的开源客户端，<a href="http://docs.yate.ro/wiki/Download">下载</a></p>
+<h3 id="microsip">MicroSIP</h3>
+<p><a href="https://www.microsip.org">MicroSIP</a> ,Windows客户端的一种选择。</p>
+<h3 id="linphone">Linphone</h3>
+<h3 id="mumble">Mumble</h3>
+<p><a href="https://github.com/mumble-voip/mumble">Mumble</a>,C++实现，2.7k star</p>
+<p>为游戏设计的语音聊天软件，基于Qt 和 Opus，包含client和server端。</p>
+<h2 id="heading-7">音视频处理</h2>
+<h3 id="webrtc">WebRTC</h3>
+<p>WebRTC是一个支持网页浏览器进行实时语音对话或视频对话的开源项目,它提供了包括音视频的采集、编解码、网络传输、显示等功能。
+但需要配合其他开源server项目。</p>
+<h3 id="jitsi">Jitsi</h3>
+<p><a href="https://jitsi.org/">Jitsi</a> 开源的多人视频会议系统,配合WebRTC。</p>
+<p>Java实现,2k star。</p>
+<h3 id="janus">janus</h3>
+<p>WebRTC Server
+<a href="https://github.com/meetecho/janus-gateway">janus</a>,C实现，2.9k star</p>
+<h2 id="heading-8">扩展阅读</h2>
+<ul>
+<li><a href="https://dev.to/onmyway133/learning-voip-rtp-and-sip-aka-awesome-pjsip-9d1">Learning VoIP, RTP and SIP</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/33601072">最全实时音视频开发要用到的开源工程汇总</a></li>
+</ul>
+<ul>
+<li><a href="http://pjsip.org/">pjsip.org</a></li>
+<li><a href="github.com/ymartineau/peers">peers</a></li>
+<li><a href="https://github.com/mutaphore/RTSP-Client-Server">RTSP-Client-Server</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/voip/" >https://xulizhao.com/blog/voip/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/networking" rel="tag" title="networking">#networking#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/sipp/" rel="next" title="sipp压测工具介绍">
+        <i class="fa fa-chevron-left"></i> sipp压测工具介绍
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/jmeter/" rel="prev" title="JMeter基础笔记">
+        JMeter基础笔记 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">名词解释</a></li>
+    <li><a href="#sip">SIP协议栈</a>
+      <ul>
+        <li><a href="#kamailio">Kamailio</a></li>
+        <li><a href="#rtpengine">RTPEngine</a></li>
+        <li><a href="#opensips">opensips</a></li>
+        <li><a href="#heading-1">其他</a></li>
+      </ul>
+    </li>
+    <li><a href="#siprtp">SIP/RTP开源实现</a>
+      <ul>
+        <li><a href="#heading-2">安卓客户端</a></li>
+        <li><a href="#heading-3">测试库</a></li>
+        <li><a href="#heading-4">本地开发</a></li>
+        <li><a href="#heading-5">不再维护的库</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-6">客户端</a>
+      <ul>
+        <li><a href="#yate-sip">Yate SIP客户端</a></li>
+        <li><a href="#microsip">MicroSIP</a></li>
+        <li><a href="#linphone">Linphone</a></li>
+        <li><a href="#mumble">Mumble</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-7">音视频处理</a>
+      <ul>
+        <li><a href="#webrtc">WebRTC</a></li>
+        <li><a href="#jitsi">Jitsi</a></li>
+        <li><a href="#janus">janus</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-8">扩展阅读</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

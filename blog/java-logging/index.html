@@ -1,0 +1,597 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Java日志 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Java日志">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Java日志 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/java-logging/" itemprop="url">
+        Java日志
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-07-29">
+    2017-07-29
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1246 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Java日志的使用笔记。</p>
+<p>现在流行的日志库通常包含Log Facade和Log Implementation两部分，可以理解为上层抽象和底层实现。</p>
+<p>具体的组合用法为：</p>
+<ul>
+<li>SLF4J(Simple Logging Facade for Java) + Logback</li>
+<li>Log4j2 (2.x版本) : log4j-api + log4j-core</li>
+</ul>
+<p>背景介绍：SLF4J,Logback是log4j 1.x版本的重新实现，作者为同一人。</p>
+<h2 id="heading">日志简介</h2>
+<p>记录日志的三个原因:</p>
+<ul>
+<li>记录操作轨迹</li>
+<li>监控系统运行状况</li>
+<li>回溯系统故障</li>
+</ul>
+<p>日志级别从低到高: TRACE、DEBUG、INFO、WARN、ERROR、FATAL</p>
+<p>Appender 主要职责：</p>
+<ul>
+<li>接受日志事件</li>
+<li>使用Layout格式化日志</li>
+<li>转发到指定目标输出</li>
+</ul>
+<h2 id="slf4j">SLF4J</h2>
+<p>SLF4J 是Java日志框架的抽象接口和门面实现。</p>
+<p>最常见的日志使用方式：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">org.slf4j.Logger</span><span style="color:#555">;</span>
+<span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">org.slf4j.LoggerFactory</span><span style="color:#555">;</span>
+
+<span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">class</span> <span style="color:#0a8;font-weight:bold">Log4jExample</span> <span style="color:#555">{</span>
+
+    <span style="color:#09f;font-style:italic">// 定义为static，与当前类绑定，避免每次都new一个新对象
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">private</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">final</span> Logger logger <span style="color:#555">=</span> LoggerFactory<span style="color:#555">.</span><span style="color:#309">getLogger</span><span style="color:#555">(</span>Log4jExample<span style="color:#555">.</span><span style="color:#309">class</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+    <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">static</span> <span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">main</span><span style="color:#555">(</span>String<span style="color:#555">[</span><span style="color:#555">]</span> args<span style="color:#555">)</span> <span style="color:#555">{</span>
+        logger<span style="color:#555">.</span><span style="color:#309">debug</span><span style="color:#555">(</span><span style="color:#c30">&#34;Debug log message&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+        logger<span style="color:#555">.</span><span style="color:#309">info</span><span style="color:#555">(</span><span style="color:#c30">&#34;Info log message&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+        logger<span style="color:#555">.</span><span style="color:#309">error</span><span style="color:#555">(</span><span style="color:#c30">&#34;Error log message&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+    <span style="color:#555">}</span>
+<span style="color:#555">}</span>
+</code></pre></div><p>添加依赖</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">		<span style="color:#309;font-weight:bold">&lt;dependency</span><span style="color:#309;font-weight:bold">&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.slf4j<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>slf4j-api<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>1.7.28<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+		<span style="color:#309;font-weight:bold">&lt;/dependency&gt;</span>
+</code></pre></div><h2 id="log4j-2">Log4J 2</h2>
+<p><strong>添加库依赖log4j-api和log4j-core：</strong></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;dependency</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.logging.log4j<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>log4j-api<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>2.12.1<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/dependency&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;dependency</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.logging.log4j<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>log4j-core<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>2.12.1<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/dependency&gt;</span>
+<span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic"> 异步日志依赖 </span><span style="color:#09f;font-style:italic">--&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;dependency</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>com.lmax<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>disruptor<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>3.4.2<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/dependency&gt;</span>
+</code></pre></div><p><strong>配置文件log4j2.xml</strong></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#099">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;Configuration</span> <span style="color:#309">status=</span><span style="color:#c30">&#34;INFO&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;Appenders</span><span style="color:#309;font-weight:bold">&gt;</span>
+        # Console appender
+        <span style="color:#309;font-weight:bold">&lt;Console</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;stdout&#34;</span> <span style="color:#309">target=</span><span style="color:#c30">&#34;SYSTEM_OUT&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;PatternLayout</span> <span style="color:#309">pattern=</span><span style="color:#c30">&#34;%d{yyyy-MM-dd HH:mm:ss} %p %m%n&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/Console&gt;</span>
+
+        # File appender
+        <span style="color:#309;font-weight:bold">&lt;File</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;fout&#34;</span> <span style="color:#309">fileName=</span><span style="color:#c30">&#34;logs/log4j2.log&#34;</span>
+            <span style="color:#309">immediateFlush=</span><span style="color:#c30">&#34;false&#34;</span> <span style="color:#309">append=</span><span style="color:#c30">&#34;false&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;PatternLayout</span> <span style="color:#309">pattern=</span><span style="color:#c30">&#34;%d{yyyy-MM-dd HH:mm:ss} %p %m%n&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/File&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/Appenders&gt;</span>
+
+    <span style="color:#309;font-weight:bold">&lt;Loggers</span><span style="color:#309;font-weight:bold">&gt;</span>
+        # Override log level for specified package
+        <span style="color:#309;font-weight:bold">&lt;Logger</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;com.xulizhao.logging&#34;</span> <span style="color:#309">level=</span><span style="color:#c30">&#34;TRACE&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;AsyncRoot</span> <span style="color:#309">level=</span><span style="color:#c30">&#34;DEBUG&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;AppenderRef</span> <span style="color:#309">ref=</span><span style="color:#c30">&#34;stdout&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;AppenderRef</span> <span style="color:#309">ref=</span><span style="color:#c30">&#34;fout&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/AsyncRoot&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/Loggers&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/Configuration&gt;</span>
+</code></pre></div><h2 id="logback">Logback</h2>
+<ol>
+<li>依赖</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;dependency</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>ch.qos.logback<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>logback-classic<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>1.2.3<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/dependency&gt;</span>
+<span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic"> 会自动下载依赖的logback</span><span style="color:#09f;font-style:italic">-</span><span style="color:#09f;font-style:italic">core 和 slf4j</span><span style="color:#09f;font-style:italic">-</span><span style="color:#09f;font-style:italic">api</span><span style="color:#09f;font-style:italic">--&gt;</span>
+</code></pre></div><ol start="2">
+<li>配置文件logback.xml</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+    # Console appender
+    <span style="color:#309;font-weight:bold">&lt;appender</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;stdout&#34;</span> <span style="color:#309">class=</span><span style="color:#c30">&#34;ch.qos.logback.core.ConsoleAppender&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;layout</span> <span style="color:#309">class=</span><span style="color:#c30">&#34;ch.qos.logback.classic.PatternLayout&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;Pattern</span><span style="color:#309;font-weight:bold">&gt;</span>%d{yyyy-MM-dd HH:mm:ss} %p %m%n<span style="color:#309;font-weight:bold">&lt;/Pattern&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/layout&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/appender&gt;</span>
+
+    # File appender
+    <span style="color:#309;font-weight:bold">&lt;appender</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;fout&#34;</span> <span style="color:#309">class=</span><span style="color:#c30">&#34;ch.qos.logback.core.FileAppender&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;file</span><span style="color:#309;font-weight:bold">&gt;</span>logs/logback.log<span style="color:#309;font-weight:bold">&lt;/file&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;append</span><span style="color:#309;font-weight:bold">&gt;</span>false<span style="color:#309;font-weight:bold">&lt;/append&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;encoder</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;pattern</span><span style="color:#309;font-weight:bold">&gt;</span>%d{yyyy-MM-dd HH:mm:ss} %p %m%n<span style="color:#309;font-weight:bold">&lt;/pattern&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/encoder&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/appender&gt;</span>
+
+    <span style="color:#309;font-weight:bold">&lt;appender</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;roll-by-time-and-size&#34;</span>
+        <span style="color:#309">class=</span><span style="color:#c30">&#34;ch.qos.logback.core.rolling.RollingFileAppender&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;file</span><span style="color:#309;font-weight:bold">&gt;</span>logs/roll-by-time-and-size/app.log<span style="color:#309;font-weight:bold">&lt;/file&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;rollingPolicy</span>
+            <span style="color:#309">class=</span><span style="color:#c30">&#34;ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;fileNamePattern</span><span style="color:#309;font-weight:bold">&gt;</span>logs/roll-by-time-and-size/app.%d{yyyy-MM-dd-mm}.%i.log.zip
+            <span style="color:#309;font-weight:bold">&lt;/fileNamePattern&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;maxFileSize</span><span style="color:#309;font-weight:bold">&gt;</span>5KB<span style="color:#309;font-weight:bold">&lt;/maxFileSize&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;maxHistory</span><span style="color:#309;font-weight:bold">&gt;</span>20<span style="color:#309;font-weight:bold">&lt;/maxHistory&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;totalSizeCap</span><span style="color:#309;font-weight:bold">&gt;</span>1MB<span style="color:#309;font-weight:bold">&lt;/totalSizeCap&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/rollingPolicy&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;encoder</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;pattern</span><span style="color:#309;font-weight:bold">&gt;</span>%d{yyyy-MM-dd HH:mm:ss} %p %m%n<span style="color:#309;font-weight:bold">&lt;/pattern&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/encoder&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/appender&gt;</span>
+    # Override log level for specified package
+    <span style="color:#309;font-weight:bold">&lt;logger</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;com.xulizhao.logging&#34;</span> <span style="color:#309">level=</span><span style="color:#c30">&#34;TRACE&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;appender-ref</span> <span style="color:#309">ref=</span><span style="color:#c30">&#34;roll-by-time-and-size&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/logger&gt;</span>
+
+    <span style="color:#309;font-weight:bold">&lt;root</span> <span style="color:#309">level=</span><span style="color:#c30">&#34;INFO&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;appender-ref</span> <span style="color:#309">ref=</span><span style="color:#c30">&#34;stdout&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;appender-ref</span> <span style="color:#309">ref=</span><span style="color:#c30">&#34;fout&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/root&gt;</span>
+</code></pre></div><h2 id="heading-1">使用规范</h2>
+<ul>
+<li>日志文件命名:appName_logType_logName.log。类型可以有stats,monitor,visit等,logName为日志描述</li>
+<li>对DEBUG,INFO级别日志必须使用条件输出或使用占位符方式{}打印。</li>
+<li>使用 additivity=&quot;false&rdquo; 避免打印重复日志(appender累积)</li>
+<li>ERROR级别只记录系统逻辑错误，异常或违反重要业务规则，其他错误对归为WARN</li>
+<li>记录日志一定要输出异常堆栈信息，例如logger.error(&ldquo;xxx&quot;+e.getMesssage(),e)</li>
+</ul>
+<h2 id="heading-2">日志性能优化</h2>
+<ul>
+<li>关闭不必要的日志</li>
+</ul>
+<blockquote>
+<p>logging.level.org.apache.zookeeper=OFF</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;include</span> <span style="color:#309">resource=</span><span style="color:#c30">&#34;org/springframework/boot/logging/logback/basic.xml&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;logger</span> <span style="color:#309">name=</span><span style="color:#c30">&#34;org.apache.zookeeper&#34;</span> <span style="color:#309">level=</span><span style="color:#c30">&#34;WARN&#34;</span><span style="color:#309;font-weight:bold">/&gt;</span><span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+</code></pre></div><ul>
+<li>设置高过滤级别</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;filter</span> <span style="color:#309">class=</span><span style="color:#c30">&#34;ch.qos.logback.classic.filter.ThresholdFilter&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;level</span><span style="color:#309;font-weight:bold">&gt;</span>ERROR<span style="color:#309;font-weight:bold">&lt;/level&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/filter&gt;</span>
+</code></pre></div><ul>
+<li>异步处理日志事件</li>
+</ul>
+<p>NDC (Nested Diagnostic Context)和MDC (Mapped Diagnostic Context)是基于线程级的，两者的区别是MDC使用map而NDC使用stack。</p>
+<h2 id="heading-3">其他日志和冲突解决</h2>
+<p>这块历史包袱太重了，经常遇到冲突问题或slf4j多个绑定的问题。</p>
+<p>先解释几个名词：</p>
+<ul>
+<li>jcl : 代表commons-logging</li>
+<li>jul : 代表JDK自带的jdk-logging</li>
+</ul>
+<h3 id="heading-4">解决冲突</h3>
+<blockquote>
+<p>如果遇到SLF4J: Class path contains multiple SLF4J bindings 或Could not initialize class org.apache.logging.log4j.util.PropertiesUtil 错误，需要删除其一</p>
+</blockquote>
+<ul>
+<li>jcl-over-slf4j和slf4j-jcl互相委托，删除其一</li>
+<li>log4j-over-slf4j和slf4j-log4j12互相委托，删除其一</li>
+<li>jul-to-slf4j和slf4j-jdk14互相委托，删除其一</li>
+</ul>
+<h2 id="heading-5">资源</h2>
+<ul>
+<li><a href="https://my.oschina.net/pingpangkuangmo/blog/410224">slf4j、jcl、jul、log4j1、log4j2、logback大总结</a></li>
+<li><a href="https://logging.apache.org/log4j/2.x/">Log4j 2</a></li>
+<li><a href="https://www.tutorialspoint.com/log4j/log4j_patternlayout.htm">log4j - PatternLayout</a></li>
+<li><a href="http://www.slf4j.org/">slf4j</a> /<a href="https://logback.qos.ch/">Logback</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html">Spring Boot日志文档</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24275518">Java 日志框架解析(下) - 最佳实践</a></li>
+<li><a href="https://www.baeldung.com/java-logging-intro">https://www.baeldung.com/java-logging-intro</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/java-logging/" >https://xulizhao.com/blog/java-logging/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/java" rel="tag" title="java">#java#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java-core/" rel="next" title="Java核心库">
+        <i class="fa fa-chevron-left"></i> Java核心库
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java-tools/" rel="prev" title="Java命令行及工具集">
+        Java命令行及工具集 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">日志简介</a></li>
+    <li><a href="#slf4j">SLF4J</a></li>
+    <li><a href="#log4j-2">Log4J 2</a></li>
+    <li><a href="#logback">Logback</a></li>
+    <li><a href="#heading-1">使用规范</a></li>
+    <li><a href="#heading-2">日志性能优化</a></li>
+    <li><a href="#heading-3">其他日志和冲突解决</a>
+      <ul>
+        <li><a href="#heading-4">解决冲突</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">资源</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

@@ -1,119 +1,184 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on XuLizhao &#39;s Notes</title>
-    <link>/tags/python/</link>
-    <description>Recent content in Python on XuLizhao &#39;s Notes</description>
+    <title>python on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/python/</link>
+    <description>Recent content in python on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 07 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>matplotlib绘图库</title>
+      <link>https://xulizhao.com/blog/matplotlib/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/matplotlib/</guid>
+      <description>&lt;p&gt;Python库记录系列.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python高性能技巧</title>
+      <link>https://xulizhao.com/blog/python-performance/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-performance/</guid>
+      <description>数据结构使用技巧 列表 在列表中检查是否存在某个值远比字典和集合速度慢，因为Python是线性搜索列表中的值，但在字典和集合中，在同样的时间内还</description>
+    </item>
+    
+    <item>
       <title>Django再记录</title>
-      <link>/blog/django/</link>
+      <link>https://xulizhao.com/blog/django/</link>
       <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/django/</guid>
-      <description>&lt;p&gt;Django作为python web开发第一框架,很早就有所了解, 上次使用是在3年多之前. 作为全栈框架来说,是个很优秀的框架.&lt;br /&gt;
-据我所知Instagram,Mozilla等高流量/大公司都在使用.&lt;br /&gt;
+      <guid>https://xulizhao.com/blog/django/</guid>
+      <description>&lt;p&gt;Django作为python web开发第一框架,很早就有所了解, 上次使用是在3年多之前. 作为全栈框架来说,是个很优秀的框架.&lt;br&gt;
+据我所知Instagram,Mozilla等高流量/大公司都在使用.&lt;br&gt;
 之前几个项目特意使用了以轻量著称的Flask,两者算是各有千秋吧.&lt;/p&gt;
-
-&lt;p&gt;去年Django2.0推出后一直想尝试,正好最近拿来试试.&lt;br /&gt;
-用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.
-&lt;/p&gt;</description>
+&lt;p&gt;去年Django2.0推出后一直想尝试,正好最近拿来试试.&lt;br&gt;
+用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>再提镜像站的使用</title>
-      <link>/blog/mirror/</link>
+      <link>https://xulizhao.com/blog/mirror/</link>
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/mirror/</guid>
+      <guid>https://xulizhao.com/blog/mirror/</guid>
       <description>把时间花在下载软件或必须翻过去访问外部网络是让人苦恼的一件事, 镜像站能很好地解决一些问题. 最早时使用Ubuntu国内镜像加速软件更新,后来使</description>
     </item>
     
     <item>
-      <title>迁移至Python3</title>
-      <link>/blog/python3/</link>
+      <title>Python发布</title>
+      <link>https://xulizhao.com/blog/python-release/</link>
       <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/python3/</guid>
+      <guid>https://xulizhao.com/blog/python-release/</guid>
+      <description>&lt;p&gt;Python库的打包,发布,分发.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>迁移至Python3</title>
+      <link>https://xulizhao.com/blog/python3/</link>
+      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python3/</guid>
       <description>&lt;p&gt;用过Python的都知道,他有两个互不兼容的大版本Python2和Python3,由于历史遗留问题许多生产环境或库还只支持老版本Python2.&lt;/p&gt;
-
 &lt;p&gt;实际上2.7已经发布了近8年,且是最后一个2.x的大版本,并且将于2010(两年后)彻底停止维护,退出历史舞台.&lt;/p&gt;
-
 &lt;p&gt;Python3在两年前及更早时的库支持和应用范围确实不太好,有选择困难症的同学都转去Go语言了:) .&lt;/p&gt;
-
 &lt;p&gt;幸运的是近两年主流库/框架都已支持Python3,毕竟发布已经10年多了,在新项目中毫无疑问必须用Python3.&lt;/p&gt;
-
-&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>python流行库/框架汇总</title>
-      <link>/blog/python-lib/</link>
+      <link>https://xulizhao.com/blog/python-lib/</link>
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/python-lib/</guid>
+      <guid>https://xulizhao.com/blog/python-lib/</guid>
       <description>&lt;p&gt;作为一个Python粉,一直在各种场合使用这个语言,最近也在试图从Python2彻底切换到Python3.&lt;/p&gt;
-
 &lt;p&gt;如果说缺点的话,也只有对它的性能有所抱怨(GIL),不能使用多核CPU.&lt;/p&gt;
-
-&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Fabric自动化部署</title>
-      <link>/blog/fabric/</link>
+      <link>https://xulizhao.com/blog/fabric/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/fabric/</guid>
+      <guid>https://xulizhao.com/blog/fabric/</guid>
       <description>&lt;p&gt;Fabric比较轻量级,平时在部署多个服务器时经常用到.&lt;/p&gt;
-
 &lt;p&gt;今年作者发布了不向后兼容的Fabric2, 由于原有的脚本改动太多,暂时还没有迁移.&lt;/p&gt;
-
-&lt;p&gt;[2018.12更新]&lt;br /&gt;
-Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.&lt;br /&gt;
-在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.&lt;br /&gt;
-算了不折腾了,直接上Ansible吧.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;[2018.12更新]&lt;br&gt;
+Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.&lt;br&gt;
+在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.&lt;br&gt;
+算了不折腾了,直接上Ansible吧.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>用Jupyter/iPython Notebook做笔记</title>
-      <link>/blog/jupyter-ipython-notebook/</link>
+      <link>https://xulizhao.com/blog/jupyter-ipython-notebook/</link>
       <pubDate>Tue, 03 Apr 2018 08:17:30 +0000</pubDate>
       
-      <guid>/blog/jupyter-ipython-notebook/</guid>
+      <guid>https://xulizhao.com/blog/jupyter-ipython-notebook/</guid>
       <description>ipython作为一个必备的学习/调试环境, notebook可以看做其增强版, 支持Markdown格式说明, 很适合用笔记或者演示/培训用途,</description>
     </item>
     
     <item>
-      <title>Python配置备忘</title>
-      <link>/blog/python/</link>
+      <title>pytest测试框架</title>
+      <link>https://xulizhao.com/blog/pytest/</link>
+      <pubDate>Wed, 21 Mar 2018 03:38:22 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/pytest/</guid>
+      <description>&lt;p&gt;单元测试最初流行是从JUnit,而他的发明者Kent Beck大神的经典名作&amp;lt;测试驱动开发&amp;gt;这本小书却引领了TDD的风潮,产生了xUnit各个语言系列.&lt;/p&gt;
+&lt;p&gt;初次接触pytest,感觉不像个xUnit,因为既看不到对TestCase的继承,也找不到Setup/Teardown这些建立/销毁函数.当然这些基本功能肯定是支持的.&lt;/p&gt;
+&lt;p&gt;pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python学习系列</title>
+      <link>https://xulizhao.com/blog/python/</link>
       <pubDate>Wed, 13 Dec 2017 07:58:35 +0000</pubDate>
       
-      <guid>/blog/python/</guid>
-      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/python/</guid>
+      <description>&lt;p&gt;Python记录系列.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python开发环境配置</title>
+      <link>https://xulizhao.com/blog/python-dev/</link>
+      <pubDate>Wed, 13 Dec 2017 07:58:35 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-dev/</guid>
+      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Flask开发笔记</title>
-      <link>/blog/flask/</link>
+      <link>https://xulizhao.com/blog/flask/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/flask/</guid>
+      <guid>https://xulizhao.com/blog/flask/</guid>
       <description>开发基础 创建 Flask Starter Project pip3 install cookiecutter cookiecutter https://github.com/realpython/cookiecutter-flask-skeleton.git 具体使用参考 项目地址 常用第三方 # requirements.txt Flask Flask-Bcrypt Flask-Login Flask-WTF Flask-Bootstrap Flask-DebugToolbar Flask-Testing Flask-Migrate Flask-SQLAlchemy celery 例子 # -- coding: utf-8 -- from flask import Flask, request, make_response, redirect, abort app = Flask(__name__) # route建立请求路</description>
+    </item>
+    
+    <item>
+      <title>Python的Unicode使用</title>
+      <link>https://xulizhao.com/blog/python-unicode/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-unicode/</guid>
+      <description>&lt;p&gt;在做数据处理时，通常会遇到Unicode的问题。 这里对python的编码问题做简单的总结。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python编码规范和风格</title>
+      <link>https://xulizhao.com/blog/python-style/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-style/</guid>
+      <description>&lt;p&gt;用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python高级笔记</title>
+      <link>https://xulizhao.com/blog/python-advance/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-advance/</guid>
+      <description>&lt;p&gt;用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python基础笔记</title>
+      <link>https://xulizhao.com/blog/python-core/</link>
+      <pubDate>Mon, 14 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-core/</guid>
+      <description>&lt;p&gt;用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。&lt;/p&gt;</description>
     </item>
     
   </channel>

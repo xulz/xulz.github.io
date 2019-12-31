@@ -1,0 +1,502 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Wireshark网络分析工具 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Wireshark网络分析工具">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Wireshark网络分析工具 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/wireshark/" itemprop="url">
+        Wireshark网络分析工具
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-01-03">
+    2018-01-03
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">779 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h2 id="wireshark">Wireshark基础</h2>
+<h3 id="heading">过滤的用法</h3>
+<p>需要区分两种过滤语言</p>
+<h4 id="capture-filter-a-hrefhttpbiotcomcapstatsbpfhtmlberkley-packet-filtera">Capture Filter: <!-- raw HTML omitted -->Berkley Packet Filter<!-- raw HTML omitted --></h4>
+<blockquote>
+<p>示例: host xulizhao.com and port 443</p>
+</blockquote>
+<h4 id="a-hrefhttpswwwwiresharkorgdocswsug-html-chunkedchworkbuilddisplayfiltersectionhtmldisplay-filtera"><!-- raw HTML omitted -->Display Filter<!-- raw HTML omitted --></h4>
+<p>常用过滤器</p>
+<pre><code># 地址/端口
+ip.addr == 10.0.0.1
+ip.src ==
+ip.src_host ==
+tcp.port==4000
+tcp.port == 8080 and ip.addr==127.0.0.1
+# HTTP
+http
+http.request # 显示所有GET请求
+# 其他
+# 显示所有 TCP resets
+tcp.flags.reset==1 
+# 显示所有retransmissions
+tcp.analysis.retransmission 
+tcp.analysis.lost_segment
+tcp.analysis.ack_lost_segment
+# 显示包含关键字 traffic 的包
+tcp contains traffic 
+frame contains ...
+</code></pre>
+<h3 id="heading-1">配置</h3>
+<p>如果SSL端口不是默认的443端口,需要修改配置项以显示TLS/SSL协议抓包:<br>
+位于 Edit -&gt; Preferences -&gt; Protocols -&gt; HTTP -&gt; SSL/TLS Ports,把值修改为 443,8443</p>
+<h3 id="heading-2">知识点</h3>
+<ul>
+<li>Wireshark的时间戳存在偏差,非标准时间</li>
+<li>每个包在Info存在唯一标识</li>
+<li>DUP ACK/TCP Retransmission 是正常的</li>
+<li>协议
+<ul>
+<li>802.11即以太网,在frames</li>
+<li>Internet Protocol/IP: 包含在每个以太frame,在packets</li>
+<li>Transmission Control Protocol/TCP: 包在每个IP packet,在segments</li>
+<li>Transport Layer Security/TLS: 通过TCP字节流,在records/messages</li>
+<li>Hypertext Transfer Protocol/HTTP: 在加密的TLS连接中携带,一般不可见</li>
+</ul>
+</li>
+<li>名词解释
+<ul>
+<li>TCP Spurious Retransmission: 发送方重传了接收方已确认的数据, 通常因为发送方认为该数据包丢失而重发.</li>
+<li>TCP post number reused: 可能意味网络存在重复包.</li>
+</ul>
+</li>
+</ul>
+<h4 id="heading-3">编辑/合并文件</h4>
+<pre><code>editcap -c 10000 in.pcap out.pcap
+editcap -A &quot;2017-05-11 12:00:00&quot; -B &quot;2017-05-11 13:00:00&quot; in.pcap out.pcap
+mergecap out.pcap in1.pcap in2.pcap
+</code></pre>
+<h2 id="heading-4">高级用法</h2>
+<h3 id="ssl">解密SSL抓包</h3>
+<ul>
+<li>使用服务端私钥：
+<ul>
+<li>Edit → Preferences - Protocols → TLS;</li>
+<li>RSA keys list： 需要从服务器导出证书,不支持DHE加密算法 （填写 &ldquo;any&rdquo; 应用到所有IP地址）</li>
+<li>可在ServerHello中搜索是否包含EDH或EECDH，以确定密钥交换算法</li>
+</ul>
+</li>
+<li>SSLKEYLOGFILE: 只支持Chrome、Firefox,但支持DHE</li>
+</ul>
+<p>注： DHE算法符合完全正向保密协议/perfect forward secrecy，中间人即使得到私钥也破解不了密文。</p>
+<h3 id="heading-5">流程图</h3>
+<p>[Statistics]-[Flow Graph]</p>
+<h2 id="heading-6">相关工具</h2>
+<h3 id="tcpdump">tcpdump</h3>
+<blockquote>
+<p>sudo tcpdump -n -s 4096 -w l.log port 80</p>
+</blockquote>
+<p>常用选项:</p>
+<ul>
+<li>-n: 不做地址和端口的数字/名称转换</li>
+<li>-i: 捕获的网卡名</li>
+<li>-w: 把原始包写到文件, 而不是解析并打印(默认行为). 可以用-r选项再次打印</li>
+</ul>
+<h3 id="tcpflow">tcpflow</h3>
+<p><a href="https://github.com/simsong/tcpflow">tcpflow</a>, 轻量级网络包分析</p>
+<h3 id="heading-7">扩展阅读</h3>
+<ul>
+<li><a href="https://lukasa.co.uk/2016/01/Debugging_With_Wireshark_TLS/">TLS的Wireshark例子</a></li>
+<li><a href="http://rationallyparanoid.com/articles/tcpdump.html">tcpdump命令详解</a></li>
+<li><a href="https://joji.me/zh-cn/blog/walkthrough-decrypt-ssl-tls-traffic-https-and-http2-in-wireshark/">如何通过Wireshark查看HTTPS、HTTP/2网络包</a></li>
+</ul>
+
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/wireshark/" >https://xulizhao.com/blog/wireshark/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/networking" rel="tag" title="networking">#networking#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/tomcat/" rel="next" title="Tomcat">
+        <i class="fa fa-chevron-left"></i> Tomcat
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/network-tools/" rel="prev" title="网络分析工具">
+        网络分析工具 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#wireshark">Wireshark基础</a>
+      <ul>
+        <li><a href="#heading">过滤的用法</a></li>
+        <li><a href="#heading-1">配置</a></li>
+        <li><a href="#heading-2">知识点</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">高级用法</a>
+      <ul>
+        <li><a href="#ssl">解密SSL抓包</a></li>
+        <li><a href="#heading-5">流程图</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-6">相关工具</a>
+      <ul>
+        <li><a href="#tcpdump">tcpdump</a></li>
+        <li><a href="#tcpflow">tcpflow</a></li>
+        <li><a href="#heading-7">扩展阅读</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

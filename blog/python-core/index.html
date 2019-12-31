@@ -1,0 +1,542 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Python基础笔记 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Python基础笔记">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Python基础笔记 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/python-core/" itemprop="url">
+        Python基础笔记
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2016-11-14">
+    2016-11-14
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">751 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。</p>
+<h1 id="python">Python语言基础</h1>
+<h2 id="heading">语法</h2>
+<ul>
+<li>那些可以改变对象值的可变对象方法是没有返回值的</li>
+</ul>
+<p><strong>约定和语法</strong></p>
+<ul>
+<li>4空格对其</li>
+<li>一行一个语句，没有；</li>
+<li>使用\分割长语句，（和，除外</li>
+<li>大小写敏感</li>
+<li>只有类名是TitleCased，通常全小写</li>
+<li>常量全大写</li>
+</ul>
+<h2 id="heading-1">数据类型</h2>
+<h3 id="heading-2">字符串</h3>
+<ul>
+<li>string.uppercase</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">random</span>
+<span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">string</span>
+<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">&#39;</span><span style="color:#555">.</span>join(random<span style="color:#555">.</span>choice(string<span style="color:#555">.</span>ascii_uppercase <span style="color:#555">+</span> string<span style="color:#555">.</span>digits) <span style="color:#069;font-weight:bold">for</span> _ <span style="color:#000;font-weight:bold">in</span> <span style="color:#366">range</span>(<span style="color:#f60">40</span>))
+
+<span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">uuid</span>;
+<span style="color:#366">str</span>(uuid<span style="color:#555">.</span>uuid4()<span style="color:#555">.</span>get_hex()<span style="color:#555">.</span>upper()[<span style="color:#f60">0</span>:<span style="color:#f60">6</span>])
+</code></pre></div><h4 id="heading-3">格式化</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#09f;font-style:italic">### 用元组或字典作参数</span>
+<span style="color:#555">%</span>(error)s   
+<span style="color:#555">%</span>dictionary
+
+<span style="color:#09f;font-style:italic">### 时间转换成字符串</span>
+time<span style="color:#555">.</span>strftime(<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">%</span><span style="color:#c30">Y</span><span style="color:#c30">%</span><span style="color:#c30">m</span><span style="color:#a00">%d</span><span style="color:#c30">%</span><span style="color:#c30">H</span><span style="color:#c30">%</span><span style="color:#c30">M</span><span style="color:#c30">%</span><span style="color:#c30">S</span><span style="color:#c30">&#34;</span>, time<span style="color:#555">.</span>localtime())
+    
+<span style="color:#09f;font-style:italic">### 数字转换成字符串并填充位数</span>
+<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">{:07}</span><span style="color:#c30">&#39;</span><span style="color:#555">.</span>format(<span style="color:#f60">1</span>)
+<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">{:.0f}</span><span style="color:#c30">&#39;</span><span style="color:#555">.</span>format(<span style="color:#f60">1.0</span>)
+    
+<span style="color:#09f;font-style:italic">### 转换为16进制</span>
+<span style="color:#366">str</span><span style="color:#555">.</span>encode(<span style="color:#a00;background-color:#faa">“</span><span style="color:#366">hex</span><span style="color:#a00;background-color:#faa">”</span>)
+<span style="color:#c30"></span><span style="color:#c30">&#34;</span><span style="color:#c30">61”.decode(“hex”)</span>
+</code></pre></div><h3 id="heading-4">元组</h3>
+<p>单元素元组应在末尾添加&rsquo;，&lsquo;否则会被作为分组操作符</p>
+<h3 id="lists">Lists</h3>
+<p>是可变的,而strings不是</p>
+<ul>
+<li>+= INPLACE_ADD</li>
+<li>str.<strong>iadd</strong> 会复制,但是list.<strong>iadd</strong> 会改变</li>
+</ul>
+<h3 id="deque-">deque 双端队列</h3>
+<ul>
+<li>List更适合固定大小;</li>
+<li>deque支持性能更好的append/pop, 可设定最大队列.</li>
+</ul>
+<h2 id="heading-5">分支控制</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#09f;font-style:italic"># if-else 单值的简洁写法</span>
+<span style="color:#09f;font-style:italic"># value_when_true if condition else value_when_false</span>
+
+<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">Yes</span><span style="color:#c30">&#39;</span> <span style="color:#069;font-weight:bold">if</span> fruit <span style="color:#555">==</span> <span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">Apple</span><span style="color:#c30">&#39;</span> <span style="color:#069;font-weight:bold">else</span> <span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">No</span><span style="color:#c30">&#39;</span>
+
+</code></pre></div><h1 id="heading-6">常用模块</h1>
+<h2 id="heading-7">常用内置函数</h2>
+<p><strong>信息、帮助类</strong></p>
+<ul>
+<li>dir()</li>
+<li>help()</li>
+<li>type()</li>
+<li>getattr(object, name[, default])</li>
+</ul>
+<p><strong>操作类</strong></p>
+<ul>
+<li>int(), str()</li>
+<li>range()</li>
+<li>input()/对于py2的raw_input()</li>
+<li>zip([iterable, &hellip;]) : returns a list of tuples</li>
+<li>map(function, iterable, &hellip;): 在每个元素应用函数并返回结果列表</li>
+<li>sorted(student_tuples, key=itemgetter(2), reverse=True)</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#069;font-weight:bold">from</span> <span style="color:#0cf;font-weight:bold">operator</span> <span style="color:#069;font-weight:bold">import</span> itemgetter, attrgetter
+
+itemgetter <span style="color:#555">=</span> <span style="color:#366">object</span>[item]
+attrgetter <span style="color:#555">=</span> <span style="color:#366">object</span><span style="color:#555">.</span>attr
+</code></pre></div><h2 id="heading-8">字符处理</h2>
+<ul>
+<li>textwrap.dedent</li>
+<li>codecs: 编解码注册及基类</li>
+</ul>
+<h2 id="io">文件系统,I/O</h2>
+<p><strong>常用模块</strong></p>
+<ul>
+<li>shutil: 上层文件操作</li>
+<li>glob: unix查找规则的文件匹配</li>
+</ul>
+<h3 id="ospath">os.path</h3>
+<ul>
+<li>join(dir, file)</li>
+<li>basename(), dirname()</li>
+<li>splitext()</li>
+<li>os.path.expanduser(&lsquo;~&rsquo;) 用户主目录</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">os<span style="color:#555">.</span>walk(<span style="color:#c30"></span><span style="color:#c30">&#39;</span><span style="color:#c30">.</span><span style="color:#c30">&#39;</span>)<span style="color:#555">.</span>next()[<span style="color:#f60">1</span>]
+</code></pre></div><h2 id="io-1">网络I/O</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#069;font-weight:bold">import</span> <span style="color:#0cf;font-weight:bold">urllib.request</span>
+<span style="color:#09f;font-style:italic"># 下载文件</span>
+urllib<span style="color:#555">.</span>request<span style="color:#555">.</span>urlretrieve(url, file_name)
+</code></pre></div><p><strong>uuid1</strong>: 产生唯一字符, 和机器的mac地址关联以确保不会跨机器冲突,和时间戳有关</p>
+<h2 id="heading-9">配置</h2>
+<p>configparser模块</p>
+<ul>
+<li>值没有数据类型,默认存储为字符串型：getboolean、getint、getfloat</li>
+<li>DEFAULT部分提供所有其他section的默认值</li>
+<li>section名是大小写敏感，但key不区分大小写并以小写存储</li>
+<li>尽量不使用行内注释</li>
+</ul>
+<h1 id="heading-10">学习大纲</h1>
+<h2 id="heading-11">基础</h2>
+<ul>
+<li>String, List, Dictionary</li>
+<li>Loops and Condition</li>
+<li>File I/O</li>
+<li>Functions</li>
+<li>Classes</li>
+</ul>
+<h1 id="heading-12">资源</h1>
+<ul>
+<li><a href="https://docs.python.org/3/library/string.html#format-string-syntax">格式化字符串</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/python-core/" >https://xulizhao.com/blog/python-core/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/python" rel="tag" title="python">#python#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/python-advance/" rel="next" title="Python高级笔记">
+        <i class="fa fa-chevron-left"></i> Python高级笔记
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/read/reborn/" rel="prev" title="reborn">
+        reborn <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">语法</a></li>
+    <li><a href="#heading-1">数据类型</a>
+      <ul>
+        <li><a href="#heading-2">字符串</a></li>
+        <li><a href="#heading-4">元组</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#deque-">deque 双端队列</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">分支控制</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-7">常用内置函数</a></li>
+    <li><a href="#heading-8">字符处理</a></li>
+    <li><a href="#io">文件系统,I/O</a>
+      <ul>
+        <li><a href="#ospath">os.path</a></li>
+      </ul>
+    </li>
+    <li><a href="#io-1">网络I/O</a></li>
+    <li><a href="#heading-9">配置</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-11">基础</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

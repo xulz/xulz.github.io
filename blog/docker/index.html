@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Docker基础 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/docker/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/docker/" itemprop="url">
         Docker基础
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-12-18">
     2017-12-18
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">Tech</span>
       </a>
       &nbsp; 
@@ -149,166 +148,149 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">1234 字 ~3分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>最近两年随着微服务而流行起来的Docker是一种轻量级容器技术(相对于VMWare,KVM等Hypervisor解决方案).</p>
-
 <p>它能给开发,测试,运维各团队提供一个统一的运行环境, 这点很实用.</p>
-
 <p>Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更高级功能的控制工具,主要特性:</p>
-
 <p>(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链</p>
-
-<p></p>
-
 <blockquote>
 <p>补充: 关于虚拟化的主流分类</p>
-
+</blockquote>
+<blockquote>
 <ul>
-<li><p>操作系统(服务器)级别的虚拟化: 在硬件层之上做Hypervisor,内核级隔离. 常见的有VMWare vsphere, XEN,KVM, Hyper-V</p></li>
-
-<li><p>进程(容器)级别的虚拟化: Docker 和LXC(Linux Container)</p></li>
+<li>操作系统(服务器)级别的虚拟化: 在硬件层之上做Hypervisor,内核级隔离. 常见的有VMWare vsphere, XEN,KVM, Hyper-V</li>
 </ul>
 </blockquote>
-
-<h3 id="配置国内镜像">配置国内镜像</h3>
-
+<blockquote>
+<ul>
+<li>进程(容器)级别的虚拟化: Docker 和LXC(Linux Container)</li>
+</ul>
+</blockquote>
+<h3 id="heading">配置国内镜像</h3>
 <p>国内使用前Docker的第一件事,必须先配置国内镜像加速器,否则下载容器镜像龟速(最近安装docker也不用了)</p>
-
 <ul>
 <li><a href="http://mirrors.ustc.edu.cn/">中科大镜像(推荐)</a>:<a href="http://mirrors.ustc.edu.cn/help/docker-ce.html">docker CE源使用手册</a>/<a href="http://mirrors.ustc.edu.cn/help/dockerhub.html">Docker HUB源使用手册</a></li>
 <li><a href="https://cs.console.aliyun.com/">Aliyun</a></li>
 <li><a href="https://www.daocloud.io/mirror">DaoCloud</a> : 需要先注册</li>
-<li><a href="https://www.docker-cn.com/registry-mirror"><del datetime="2018-04-16T07:15:38+00:00">Docker 中国官方镜像加速</del></a>:运行了几个月就不可用了,够坑爹的😤</li>
+<li><a href="https://www.docker-cn.com/registry-mirror"><!-- raw HTML omitted -->Docker 中国官方镜像加速<!-- raw HTML omitted --></a>:运行了几个月就不可用了,够坑爹的😤</li>
 </ul>
-
 <p>使用示例：</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 如果想永久保存，编辑/etc/docker/daemon.json并添加
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#555">{</span>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 如果想永久保存，编辑/etc/docker/daemon.json并添加</span>
+    <span style="color:#555">{</span>
       <span style="color:#c30">&#34;registry-mirrors&#34;</span>: <span style="color:#555">[</span><span style="color:#c30">&#34;https://docker.mirrors.ustc.edu.cn/&#34;</span><span style="color:#555">]</span>
     <span style="color:#555">}</span>
-    <span style="color:#09f;font-style:italic"># 必须重启服务以生效
-</span><span style="color:#09f;font-style:italic"></span>    sudo service docker restart</code></pre></div>
-<h3 id="安装">安装</h3>
-
+    <span style="color:#09f;font-style:italic"># 必须重启服务以生效</span>
+    sudo service docker restart
+</code></pre></div><h3 id="heading-1">安装</h3>
 <ul>
 <li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu Guide</a></li>
 <li><a href="https://download.docker.com/mac/stable/Docker.dmg">Docker CE for Mac</a></li>
 <li><a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe">Docker CE for Windows</a></li>
 </ul>
-
-<h4 id="ubuntu环境安装">Ubuntu环境安装</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 安装Docker
-</span><span style="color:#09f;font-style:italic"></span>    sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+<h4 id="ubuntu">Ubuntu环境安装</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 安装Docker</span>
+    sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
     curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository <span style="color:#c30">&#34;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> stable&#34;</span>
+    sudo add-apt-repository <span style="color:#c30">&#34;</span><span style="color:#c30">deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span style="color:#069;font-weight:bold">$(</span>lsb_release -cs<span style="color:#069;font-weight:bold">)</span><span style="color:#c30"> stable</span><span style="color:#c30">&#34;</span>
     sudo apt-get -y update
     sudo apt-get -y install docker-ce
 
-    <span style="color:#09f;font-style:italic"># 安装docker-compose
-</span><span style="color:#09f;font-style:italic"></span>    sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-<span style="color:#069;font-weight:bold">$(</span>uname -s<span style="color:#069;font-weight:bold">)</span>-<span style="color:#069;font-weight:bold">$(</span>uname -m<span style="color:#069;font-weight:bold">)</span> -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose</code></pre></div>
-<h4 id="centos离线安装">CentOS离线安装</h4>
-
+    <span style="color:#09f;font-style:italic"># 安装docker-compose</span>
+    sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-<span style="color:#069;font-weight:bold">$(</span>uname -s<span style="color:#069;font-weight:bold">)</span>-<span style="color:#069;font-weight:bold">$(</span>uname -m<span style="color:#069;font-weight:bold">)</span> -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+</code></pre></div><h4 id="centos">CentOS离线安装</h4>
 <p>依赖库: libcgroup和device-mapper-*</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 离线包下载: http://rpmfind.net/linux/rpm2html/search.php
-</span><span style="color:#09f;font-style:italic"></span>rpm -ivh clibcgroup-*
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 离线包下载: http://rpmfind.net/linux/rpm2html/search.php</span>
+rpm -ivh clibcgroup-*
 rpm -ivh device-mapper-*  --force --nodeps
-<span style="color:#09f;font-style:italic"># 追加一行到/etc/fstab
-</span><span style="color:#09f;font-style:italic"></span>none /sys/fs/cgroup  cgroup  defaults    <span style="color:#f60">0</span> <span style="color:#f60">0</span>
+<span style="color:#09f;font-style:italic"># 追加一行到/etc/fstab</span>
+none /sys/fs/cgroup  cgroup  defaults    <span style="color:#f60">0</span> 0
 
-<span style="color:#09f;font-style:italic"># 重启以生效
-</span><span style="color:#09f;font-style:italic"></span>shutdown -r now
+<span style="color:#09f;font-style:italic"># 重启以生效</span>
+shutdown -r now
 
-<span style="color:#09f;font-style:italic"># 启动cgroup
-</span><span style="color:#09f;font-style:italic"></span>service cgconfig start
+<span style="color:#09f;font-style:italic"># 启动cgroup</span>
+service cgconfig start
 
-<span style="color:#09f;font-style:italic"># 下载docker: https://yum.dockerproject.org/repo/main/centos/6/Packages/
-</span><span style="color:#09f;font-style:italic"></span>rpm -ivh docker-engine-*.rpm
-service docker start</code></pre></div>
-<h3 id="基础命令">基础命令</h3>
+<span style="color:#09f;font-style:italic"># 下载docker: https://yum.dockerproject.org/repo/main/centos/6/Packages/</span>
+rpm -ivh docker-engine-*.rpm
+service docker start
 
+</code></pre></div><h3 id="heading-2">基础命令</h3>
 <ul>
 <li>docker</li>
 <li>docker-compose : 编排</li>
 <li>docker-machine (Docker Toolbox已过时,不推荐使用)</li>
 </ul>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 把当前用户添加到docker组
-</span><span style="color:#09f;font-style:italic"></span>    sudo usermod -aG docker xulz
-    <span style="color:#09f;font-style:italic">## docker
-</span><span style="color:#09f;font-style:italic"></span>    docker run  <span style="color:#09f;font-style:italic"># 在新容器运行命令
-</span><span style="color:#09f;font-style:italic"></span>    docker start  <span style="color:#09f;font-style:italic"># 启动容器
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 查看所有容器
-</span><span style="color:#09f;font-style:italic"></span>    docker ps -a  
-    docker ps -a --no-trunc  <span style="color:#09f;font-style:italic"># 显示完整的命令
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 查看所有镜像
-</span><span style="color:#09f;font-style:italic"></span>    docker images
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 把当前用户添加到docker组</span>
+    sudo usermod -aG docker xulz
+    <span style="color:#09f;font-style:italic">## docker</span>
+    docker run  <span style="color:#09f;font-style:italic"># 在新容器运行命令</span>
+    docker start  <span style="color:#09f;font-style:italic"># 启动容器</span>
+    <span style="color:#09f;font-style:italic"># 查看所有容器</span>
+    docker ps -a  
+    docker ps -a --no-trunc  <span style="color:#09f;font-style:italic"># 显示完整的命令</span>
+    <span style="color:#09f;font-style:italic"># 查看所有镜像</span>
+    docker images
     docker stop/rm xxx
-    <span style="color:#09f;font-style:italic"># 删除
-</span><span style="color:#09f;font-style:italic"></span>    docker rm &lt;container_id&gt;
+    <span style="color:#09f;font-style:italic"># 删除</span>
+    docker rm &lt;container_id&gt;
     docker rmi &lt;image_id&gt;
-    <span style="color:#09f;font-style:italic"># 加载镜像
-</span><span style="color:#09f;font-style:italic"></span>    docker load &lt;  &lt;image_file&gt;
-    <span style="color:#09f;font-style:italic"># 复制文件到容器
-</span><span style="color:#09f;font-style:italic"></span>    docker cp source_file &lt;container_name&gt;:destination
-    <span style="color:#09f;font-style:italic"># 切换到容器终端
-</span><span style="color:#09f;font-style:italic"></span>    docker <span style="color:#366">exec</span> -it container_name /bin/bash
+    <span style="color:#09f;font-style:italic"># 加载镜像</span>
+    docker load &lt;  &lt;image_file&gt;
+    <span style="color:#09f;font-style:italic"># 复制文件到容器</span>
+    docker cp source_file &lt;container_name&gt;:destination
+    <span style="color:#09f;font-style:italic"># 切换到容器终端</span>
+    docker <span style="color:#366">exec</span> -it container_name /bin/bash
     
-    <span style="color:#09f;font-style:italic"># 在后台启动
-</span><span style="color:#09f;font-style:italic"></span>    docker start  <span style="color:#c30">`</span>docker ps -q -l<span style="color:#c30">`</span> <span style="color:#09f;font-style:italic"># restart it in the background
-</span><span style="color:#09f;font-style:italic"></span>    docker attach <span style="color:#c30">`</span>docker ps -q -l<span style="color:#c30">`</span> <span style="color:#09f;font-style:italic"># reattach the terminal &amp; stdin
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># Detatch:  Ctrl+p + Ctrl+q
-</span><span style="color:#09f;font-style:italic"></span>
+    <span style="color:#09f;font-style:italic"># 在后台启动</span>
+    docker start  <span style="color:#c30">`</span>docker ps -q -l<span style="color:#c30">`</span> <span style="color:#09f;font-style:italic"># restart it in the background</span>
+    docker attach <span style="color:#c30">`</span>docker ps -q -l<span style="color:#c30">`</span> <span style="color:#09f;font-style:italic"># reattach the terminal &amp; stdin</span>
+    <span style="color:#09f;font-style:italic"># Detatch:  Ctrl+p + Ctrl+q</span>
 
-    <span style="color:#09f;font-style:italic">## 常用compose命令
-</span><span style="color:#09f;font-style:italic"></span>    docker-compose up —build
+
+    <span style="color:#09f;font-style:italic">## 常用compose命令</span>
+    <span style="color:#09f;font-style:italic"># --build 意味着在启动前先构建容器</span>
+    <span style="color:#09f;font-style:italic"># -d 在detached模式运行</span>
+    docker-compose up --build
     docker-compose ps
     docker-compose stop
     
-    <span style="color:#09f;font-style:italic">## docker-machine
-</span><span style="color:#09f;font-style:italic"></span>    docker-machine ip
-    docker-machine env</code></pre></div>
-<h3 id="docker-hub">Docker Hub</h3>
-
+    <span style="color:#09f;font-style:italic">## docker-machine</span>
+    docker-machine ip
+    docker-machine env
+</code></pre></div><h3 id="docker-hub">Docker Hub</h3>
 <p>到hub.docker.com注册自己的ID, 提供一个私有仓库及不限共有仓库．</p>
-
 <p>今天为了国内访问kubernetes的学习项目方便，建立了一个镜像，步骤如下：</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 需要先在网页创建仓库
-</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic"># 再命令行登录hub
-</span><span style="color:#09f;font-style:italic"></span>    docker login
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 需要先在网页创建仓库</span>
+    <span style="color:#09f;font-style:italic"># 再命令行登录hub</span>
+    docker login
     docker pull gcr.io/google-samples/kubernetes-bootcamp:v1
     docker tag gcr.io/google-samples/kubernetes-bootcamp:v1 xulz/kubernetes-bootcamp:v1
-    docker push xulz/kubernetes-bootcamp:v1</code></pre></div>
-<h3 id="用docker部署flask-web-app的-a-href-https-github-com-xulz-learn-tree-master-tools-docker-示例-a">用Docker部署Flask Web App的<a href="https://github.com/xulz/learn/tree/master/Tools/docker">示例</a></h3>
-
+    docker push xulz/kubernetes-bootcamp:v1
+</code></pre></div><h3 id="dockerflask-web-appa-hrefhttpsgithubcomxulzlearntreemastertoolsdockera">用Docker部署Flask Web App的<!-- raw HTML omitted -->示例<!-- raw HTML omitted --></h3>
 <p>主要用到的配置文件:</p>
-
 <ul>
 <li>Dockerfile : 存放自动化的创建镜像的全部指令&gt; docker build</li>
 <li>docker-compose.yml : 创建多个容器的模板文件,主要包含services,volumns,network</li>
 <li>.env : 设置环境变量</li>
 <li>.dockerignore : 忽略文件</li>
 </ul>
-
-<h3 id="扩展">扩展</h3>
-
+<h3 id="heading-3">扩展</h3>
 <ul>
 <li><a href="https://github.com/portainer/portainer">Portainer</a> : Docker管理 Web界面</li>
 <li><a href="https://github.com/francescou/docker-compose-ui">docker-compose-ui</a>: Docker Compose Web界面</li>
 </ul>
-
-<h3 id="与vagrant比较">与Vagrant比较</h3>
-
+<h3 id="vagrant">与Vagrant比较</h3>
 <ul>
 <li>docker-compose exec CONTAINER /bin/sh == vagrant ssh</li>
 <li>docker cp == vagrant scp</li>
 </ul>
-
-<h3 id="资源参考">资源参考</h3>
-
+<h3 id="heading-4">资源参考</h3>
 <ul>
 <li><a href="https://docker_practice.gitee.io/">Docker从入门到实践</a></li>
 <li><a href="https://docker-curriculum.com">Docker入门教程-英文</a></li>
@@ -318,14 +300,46 @@ service docker start</code></pre></div>
     </div>
     <footer class="post-footer">
      
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/docker/" >https://xulizhao.com/blog/docker/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
  
 <div class="post-tags">     
      
-    <a href="/tags/container" rel="tag" title="container">#container#</a>
+    <a href="https://xulizhao.com/tags/container" rel="tag" title="container">#container#</a>
     
-    <a href="/tags/docker" rel="tag" title="docker">#docker#</a>
+    <a href="https://xulizhao.com/tags/docker" rel="tag" title="docker">#docker#</a>
     
-    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    <a href="https://xulizhao.com/tags/ops" rel="tag" title="ops">#ops#</a>
     
 </div>
 
@@ -334,38 +348,21 @@ service docker start</code></pre></div>
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/tmux/" rel="next" title="利器之TMUX">
-        <i class="fa fa-chevron-left"></i> 利器之TMUX
+        <a href="https://xulizhao.com/blog/kubernetes/" rel="next" title="Kubernetes">
+        <i class="fa fa-chevron-left"></i> Kubernetes
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/kubernetes/" rel="prev" title="Kubernetes">
-        Kubernetes <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/tmux/" rel="prev" title="利器之TMUX">
+        利器之TMUX <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -400,22 +397,23 @@ service docker start</code></pre></div>
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -425,9 +423,9 @@ service docker start</code></pre></div>
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -435,25 +433,9 @@ service docker start</code></pre></div>
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -463,26 +445,20 @@ service docker start</code></pre></div>
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#配置国内镜像">配置国内镜像</a></li>
-<li><a href="#安装">安装</a>
-<ul>
-<li><a href="#ubuntu环境安装">Ubuntu环境安装</a></li>
-<li><a href="#centos离线安装">CentOS离线安装</a></li>
-</ul></li>
-<li><a href="#基础命令">基础命令</a></li>
-<li><a href="#docker-hub">Docker Hub</a></li>
-<li><a href="#用docker部署flask-web-app的-a-href-https-github-com-xulz-learn-tree-master-tools-docker-示例-a">用Docker部署Flask Web App的<a href="https://github.com/xulz/learn/tree/master/Tools/docker">示例</a></a></li>
-<li><a href="#扩展">扩展</a></li>
-<li><a href="#与vagrant比较">与Vagrant比较</a></li>
-<li><a href="#资源参考">资源参考</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading">配置国内镜像</a></li>
+        <li><a href="#heading-1">安装</a></li>
+        <li><a href="#heading-2">基础命令</a></li>
+        <li><a href="#docker-hub">Docker Hub</a></li>
+        <li><a href="#dockerflask-web-appa-hrefhttpsgithubcomxulzlearntreemastertoolsdockera">用Docker部署Flask Web App的示例</a></li>
+        <li><a href="#heading-3">扩展</a></li>
+        <li><a href="#vagrant">与Vagrant比较</a></li>
+        <li><a href="#heading-4">资源参考</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -496,18 +472,18 @@ service docker start</code></pre></div>
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -516,36 +492,58 @@ service docker start</code></pre></div>
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

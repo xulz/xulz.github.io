@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
-	<meta name="generator" content="Hugo 0.40.1" />
+	<meta name="generator" content="Hugo 0.62.0" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
@@ -13,15 +13,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="XuLizhao &#39;s Notes - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    <link rel="alternate" href="/index.xml" title="XuLizhao &#39;s Notes" type="application/rss+xml" />
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
     
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -39,7 +38,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -61,25 +60,25 @@
       
       
         <li class="menu-item menu-item-active">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -113,8 +112,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/meituan-load-test-note/" itemprop="url">
-        美团全链路压测Quake学习笔记
+        <a class="post-title-link" href="https://xulizhao.com/blog/kubeadm/" itemprop="url">
+        用kubeadm手动搭建Kubernetes集群
         </a>
       </h1>
       <div class="post-meta">
@@ -123,8 +122,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-21">
-    2018-09-21
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-29">
+    2018-12-29
 </time>
 </span> 
       
@@ -137,7 +136,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -152,28 +151,18 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">1935 字 ~4分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>今天读了美团技术团队新发布的<a href="https://tech.meituan.com/2018/09/27/quake-introduction.html">全链路压测平台Quake在美团中的实践</a>，做个笔记。</p>
-
-<p>先说下总的读后感:</p>
-
-<p>压力测试/性能测试有多种方式，从下面的几个发展阶段可以看出越来越追求真实高峰访问的模拟。</p>
-
-<p>现在大公司普遍的分布式架构，云计算的应用，容器的使用也可以提供更有力的资源调度。但全链路压测最重要的工作在于需要架构，开发团队的支持和适配工作。</p>
-
-<p>没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。</p>
-
-<p>印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。</p>
-
-<p></p>
+    <p>用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.<br>
+所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.<br>
+这也是此文/这次实践的目的所在.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/meituan-load-test-note/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/kubeadm/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -184,8 +173,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/play/swimming/" itemprop="url">
-        再学游泳
+        <a class="post-title-link" href="https://xulizhao.com/blog/mirror/" itemprop="url">
+        再提镜像站的使用
         </a>
       </h1>
       <div class="post-meta">
@@ -194,8 +183,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-14">
-    2018-09-14
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-19">
+    2018-12-19
 </time>
 </span> 
       
@@ -208,66 +197,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/play" itemprop="url" rel="index">
-        <span itemprop="name">play</span>
-      </a>
-      &nbsp; 
-    </span>
-  
-</span>
-
-
-       <span>
-&nbsp; | &nbsp;
-<span class="post-meta-item-icon">
-    <i class="fa fa-eye"></i>
-</span>
-<span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">510 字 ~2分钟</span>
-</span>
-      </div>
-    </header>
-    <div class="post-body" itemprop="articleBody">
-    最近再次开始学游泳，距离初次学蛙泳已经过去了10多年。当时还在大学蹭宿舍，因为一直很喜欢向往大海，便让老同学教我蛙泳。 期间由于基础不行，某次
-    </div>
-    
-    <div class="post-more-link text-center">
-    <a class="btn" href="/play/swimming/" rel="contents">
-      阅读全文 &raquo;
-    </a>
-    </div>
-    
-    <footer class="post-footer"><div class="post-eof"></div></footer>
-  </article>
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/ubuntu/" itemprop="url">
-        Ubuntu日常
-        </a>
-      </h1>
-      <div class="post-meta">
-      <span class="post-time">
-<span class="post-meta-item-icon">
-    <i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-13">
-    2018-09-13
-</time>
-</span> 
-      
-
-  <span class="post-category" >
-  &nbsp; | &nbsp;
-  <span class="post-meta-item-icon">
-    <i class="fa fa-folder-o"></i>
-  </span>
-  <span class="post-meta-item-text">分类：</span>
-  
-    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -282,16 +212,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">362 字 ~1分钟</span>
+<span class="leancloud-visitors-count">456 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    很早就接触使用Ubuntu，也是自己最钟爱的Linux系统。 给Ubuntu留一篇记录日常使用。 Ubuntu 18.04安装中文输入法 sogou拼音由于不
+    把时间花在下载软件或必须翻过去访问外部网络是让人苦恼的一件事, 镜像站能很好地解决一些问题. 最早时使用Ubuntu国内镜像加速软件更新,后来使
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/ubuntu/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/mirror/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -302,8 +232,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/mysql-tuning/" itemprop="url">
-        MySQL性能优化
+        <a class="post-title-link" href="https://xulizhao.com/read/shufa/" itemprop="url">
+        书法与文字
         </a>
       </h1>
       <div class="post-meta">
@@ -312,8 +242,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-05">
-    2018-09-05
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-18">
+    2018-12-18
 </time>
 </span> 
       
@@ -326,7 +256,66 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/essay" itemprop="url" rel="index">
+        <span itemprop="name">essay</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">659 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.</p>
+    </div>
+    
+    <div class="post-more-link text-center">
+    <a class="btn" href="https://xulizhao.com/read/shufa/" rel="contents">
+      阅读全文 &raquo;
+    </a>
+    </div>
+    
+    <footer class="post-footer"><div class="post-eof"></div></footer>
+  </article>
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/iterm2/" itemprop="url">
+        利器之iTerm2
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-17">
+    2018-12-17
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -341,17 +330,17 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">268 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>关于MySQL性能问题查找及优化的点滴.
-</p>
+    <p>平时用的最多的系统是Windows10和Ubuntu,如果说苹果系统MacOS有什么让我离不开的特性的话,iTerm2绝对排第一.</p>
+<p>可这个经常使用的免费终端居然有一些我不知道的好用功能,特记录与此.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/mysql-tuning/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/iterm2/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -362,8 +351,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/java-db-migrate/" itemprop="url">
-        Java应用的数据库迁移工具Flyway
+        <a class="post-title-link" href="https://xulizhao.com/blog/latex/" itemprop="url">
+        LaTeX生成PDF实践
         </a>
       </h1>
       <div class="post-meta">
@@ -372,8 +361,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-08-29">
-    2018-08-29
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-13">
+    2018-12-13
 </time>
 </span> 
       
@@ -386,7 +375,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -401,22 +390,17 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">812 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>最近折腾部署一年前的一个应用,发现一些由于一些细节已经忘记,常常可能多花费几个小时去重新解决问题的过程. 而有的过程之前写过KB,关键字一搜索就出来能省不少时间.</p>
-
-<p>所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.</p>
-
-<p>印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.</p>
-
-<p></p>
+    <p>LaTeX最广泛的用途应该是在学术领域写论文, 其实在排版(尤其公式,格式)上也胜过Word很多,绝对专业.</p>
+<p>最近为了在本地生成一个PDF,做了一些了解.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/java-db-migrate/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/latex/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -427,8 +411,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/go-concurrency/" itemprop="url">
-        Go并发编程笔记
+        <a class="post-title-link" href="https://xulizhao.com/blog/k8s-namespace/" itemprop="url">
+        Kubernetes命名空间的应用
         </a>
       </h1>
       <div class="post-meta">
@@ -437,8 +421,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-08-20">
-    2018-08-20
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-12">
+    2018-12-12
 </time>
 </span> 
       
@@ -451,7 +435,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -466,22 +450,18 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">419 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>最近尝试用Go重写以前Python的一个工具,感觉一直工作于Hard模式,可是又不想轻易的放弃Golang的实践,因为遇到一些问题最终变成从入门到放弃.</p>
-
-<p>还好一周周坚持了下来,虽然遇到一个问题可能会解决多半天甚至一天多时间,还是有所学的.</p>
-
-<p>今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.</p>
-
-<p></p>
+    <p>在实际应用中存在一个Kubernetes集群中多个部署环境的问题,比如存在dev,qa,stage等.</p>
+<p>如果部署在一个集群会省去不少运维成本且节省资源占用.</p>
+<p>通常这会用到命名空间的特性.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/go-concurrency/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/k8s-namespace/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -492,8 +472,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/mq/" itemprop="url">
-        开源消息队列实现
+        <a class="post-title-link" href="https://xulizhao.com/blog/python-release/" itemprop="url">
+        Python发布
         </a>
       </h1>
       <div class="post-meta">
@@ -502,8 +482,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-24">
-    2018-07-24
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-06">
+    2018-12-06
 </time>
 </span> 
       
@@ -516,7 +496,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -531,22 +511,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">493 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>经常会遇到系统中使用Message Queue/消息队列的情况, 与此类似的模型还有 pubsub/发布订阅模式(publisher/subscriber).</p>
-
-<p>这两种模型的实现也被看做 消息中间件/MOM(Message-Oriented Middleware),因为这种结构解耦了发送端和接收端,简化了架构.</p>
-
-<p>另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.</p>
-
-<p></p>
+    <p>Python库的打包,发布,分发.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/mq/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/python-release/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -557,8 +531,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/network/" itemprop="url">
-        网络基础
+        <a class="post-title-link" href="https://xulizhao.com/blog/python3/" itemprop="url">
+        迁移至Python3
         </a>
       </h1>
       <div class="post-meta">
@@ -567,8 +541,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-19">
-    2018-07-19
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-06">
+    2018-12-06
 </time>
 </span> 
       
@@ -581,7 +555,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -596,18 +570,20 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">677 字 ~2分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>好记性不如烂笔头, 网络基础知识备忘.</p>
-
-<p></p>
+    <p>用过Python的都知道,他有两个互不兼容的大版本Python2和Python3,由于历史遗留问题许多生产环境或库还只支持老版本Python2.</p>
+<p>实际上2.7已经发布了近8年,且是最后一个2.x的大版本,并且将于2010(两年后)彻底停止维护,退出历史舞台.</p>
+<p>Python3在两年前及更早时的库支持和应用范围确实不太好,有选择困难症的同学都转去Go语言了:) .</p>
+<p>幸运的是近两年主流库/框架都已支持Python3,毕竟发布已经10年多了,在新项目中毫无疑问必须用Python3.</p>
+<p>之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/network/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/python3/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -618,8 +594,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/cloud-native/" itemprop="url">
-        Kubernetes和云原生计算
+        <a class="post-title-link" href="https://xulizhao.com/blog/ddia/" itemprop="url">
+        设计数据密集型应用笔记
         </a>
       </h1>
       <div class="post-meta">
@@ -628,8 +604,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-18">
-    2018-07-18
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-03">
+    2018-12-03
 </time>
 </span> 
       
@@ -642,7 +618,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -657,20 +633,18 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">6233 字 ~13分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>最早注意到云原生这个概念是某次看文章说Kubernetes是作为CNCF(云原生计算基金会)的主要项目来开发的,该基金会属于Linux基金会旗下,还包括被熟知的prometheus,istio等开源项目, 似乎可以理解为Kubernetes生态系统.</p>
-
-<p>至此Kubernetes把<a href="/blog/microservices/">微服务</a>,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.</p>
-
-<p></p>
+    <p>去年就看到总有人推荐<!-- raw HTML omitted -->这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.</p>
+<p>今年偶然看到网上有<a href="https://github.com/Vonng/ddia">中译版</a>,惭愧的是到了年底,最近几个月才读来.</p>
+<p>书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.</p>
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/cloud-native/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/blog/ddia/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -681,8 +655,8 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/harbor/" itemprop="url">
-        私有Docker仓库Harbor
+        <a class="post-title-link" href="https://xulizhao.com/read/guoxue/" itemprop="url">
+        读国学
         </a>
       </h1>
       <div class="post-meta">
@@ -691,8 +665,8 @@
     <i class="fa fa-calendar-o"></i>
 </span>
 <span class="post-meta-item-text">时间：</span>
-<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-07-13">
-    2018-07-13
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-11-23">
+    2018-11-23
 </time>
 </span> 
       
@@ -705,8 +679,8 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
-        <span itemprop="name">tech</span>
+      <a href="https://xulizhao.com/categories/essay" itemprop="url" rel="index">
+        <span itemprop="name">essay</span>
       </a>
       &nbsp; 
     </span>
@@ -720,16 +694,16 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">725 字 ~2分钟</span>
+<span class="leancloud-visitors-count">467 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    提到私有容器仓库,VMWare出品的开源Harbor算是首选. 安装和配置照官方文档来很简单,今天在尝试push镜像时遇到了如下错误: &ldquo;Get https://yourdomain.com/v2/: Service Unavailable&rdquo;,
+    国学的火热似乎起自十多年前百家讲坛的于丹系列,最近几年也总能听到教儿童读弟子规或者各地开女德班等的无关真正国学的负面新闻. 最近读章太炎的国学
     </div>
     
     <div class="post-more-link text-center">
-    <a class="btn" href="/blog/harbor/" rel="contents">
+    <a class="btn" href="https://xulizhao.com/read/guoxue/" rel="contents">
       阅读全文 &raquo;
     </a>
     </div>
@@ -755,23 +729,20 @@
 
 
 
-  
-  
-
 
 
 <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/p/2/"><i class="fa fa-angle-left"></i></a>
+    <a class="extend prev" rel="prev" href="https://xulizhao.com/p/2/"><i class="fa fa-angle-left"></i></a>
     
         
         
-          <a class="page-number" href="/">1</a>
+          <a class="page-number" href="https://xulizhao.com/">1</a>
         
         
     
         
         
-          <a class="page-number" href="/p/2/">2</a>
+          <a class="page-number" href="https://xulizhao.com/p/2/">2</a>
         
         
     
@@ -783,37 +754,49 @@
     
         
         
-          <a class="page-number" href="/p/4/">4</a>
+          <a class="page-number" href="https://xulizhao.com/p/4/">4</a>
         
         
     
         
         
-          <a class="page-number" href="/p/5/">5</a>
+          <a class="page-number" href="https://xulizhao.com/p/5/">5</a>
         
         
     
         
         
-          <a class="page-number" href="/p/6/">6</a>
+          <a class="page-number" href="https://xulizhao.com/p/6/">6</a>
         
         
     
         
         
-          <a class="page-number" href="/p/7/">7</a>
+          <a class="page-number" href="https://xulizhao.com/p/7/">7</a>
         
         
     
         
         
-          <a class="page-number" href="/p/8/">8</a>
+          <a class="page-number" href="https://xulizhao.com/p/8/">8</a>
         
         
     
         
     
-    <a class="extend next" rel="next" href="/p/4/"><i class="fa fa-angle-right"></i></a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    <a class="extend next" rel="next" href="https://xulizhao.com/p/4/"><i class="fa fa-angle-right"></i></a>
 </nav>
 
 
@@ -833,22 +816,23 @@
 
     <section class="site-overview sidebar-panel  sidebar-panel-active ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -858,9 +842,9 @@
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -868,32 +852,16 @@
 </nav>
       
 <div class="feed-link motion-element">
-<a href="/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
+<a href="https://xulizhao.com/index.xml" rel="alternate" type="application/rss+xml" target="_blank">
     <i class="fa fa-rss"></i>
     RSS 订阅
 </a>
 </div>
 
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -909,18 +877,18 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -929,34 +897,56 @@
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
 <script type="text/javascript" id="motion.page.archive">
   $('.archive-year').velocity('transition.slideLeftIn');
 </script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

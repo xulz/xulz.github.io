@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="用kubeadm手动搭建Kubernetes集群 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/kubeadm/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/kubeadm/" itemprop="url">
         用kubeadm手动搭建Kubernetes集群
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-12-29">
     2018-12-29
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">tech</span>
       </a>
       &nbsp; 
@@ -149,27 +148,21 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">1935 字 ~4分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    <p>用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.<br />
-所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.<br />
+    <p>用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.<br>
+所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.<br>
 这也是此文/这次实践的目的所在.</p>
-
-<p></p>
-
-<h2 id="前提条件">前提条件</h2>
-
-<h3 id="禁用swap">禁用swap</h3>
+<h2 id="heading">前提条件</h2>
+<h3 id="swap">禁用swap</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo swapoff -a
-<span style="color:#09f;font-style:italic"># 永久性禁用
-</span><span style="color:#09f;font-style:italic"></span># 编辑/etc/fstab并注释掉swap那一行</code></pre></div>
-<h3 id="保留端口">保留端口</h3>
-
+<span style="color:#09f;font-style:italic"># 永久性禁用</span>
+<span style="color:#09f;font-style:italic"># 编辑/etc/fstab并注释掉swap那一行</span>
+</code></pre></div><h3 id="heading-1">保留端口</h3>
 <p><strong>Master节点</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -178,32 +171,27 @@
 <th>注释</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>API server</td>
 <td>6443</td>
 <td>可重新定义</td>
 </tr>
-
 <tr>
 <td>etcd</td>
 <td>2379-2380</td>
 <td></td>
 </tr>
-
 <tr>
 <td>Kubelet API</td>
 <td>10250</td>
 <td></td>
 </tr>
-
 <tr>
 <td>kube-scheduler</td>
 <td>10251</td>
 <td></td>
 </tr>
-
 <tr>
 <td>kube-controller-manage</td>
 <td>10252</td>
@@ -211,11 +199,8 @@
 </tr>
 </tbody>
 </table>
-
 <p>注: 2 CPU+</p>
-
 <p><strong>Worker节点</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -224,14 +209,12 @@
 <th>注释</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Kubelet API</td>
 <td>6443</td>
 <td></td>
 </tr>
-
 <tr>
 <td>NodePort Services</td>
 <td>30000-32767</td>
@@ -239,134 +222,121 @@
 </tr>
 </tbody>
 </table>
-
 <h3 id="docker">Docker</h3>
-
 <p>容器运行时默认使用docker</p>
-
-<h2 id="安装说明">安装说明</h2>
-
+<h2 id="heading-2">安装说明</h2>
 <h3 id="kubeadm-kubelet-kubectl">kubeadm, kubelet, kubectl</h3>
-
 <ul>
 <li>kubeadm: 集群引导命令行</li>
 <li>kubelet: 集群每个节点都有(Node Agent),用于启动Pod/容器等</li>
 <li>kubectl: 交互式集群管理命令行</li>
 </ul>
-
 <p>注: kubelet的版本号不应该超过API server</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Ubuntu
-</span><span style="color:#09f;font-style:italic"></span>apt-get update <span style="color:#555">&amp;&amp;</span> apt-get install -y apt-transport-https curl
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Ubuntu</span>
+apt-get update <span style="color:#555">&amp;&amp;</span> apt-get install -y apt-transport-https curl
 curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add -
 cat <span style="color:#c30">&lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list
 </span><span style="color:#c30">deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main
 </span><span style="color:#c30">EOF</span>
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl</code></pre></div>
-<h3 id="kubeadm-init">kubeadm init</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 可以先运行下面命令检查到gcr.io的连接性
-</span><span style="color:#09f;font-style:italic"># kubeadm config images pull
-</span><span style="color:#09f;font-style:italic"># 解决etcd pull失败的问题
-</span><span style="color:#09f;font-style:italic"></span>docker pull  xulz/coreos-etcd:v3.2.24
+apt-mark hold kubelet kubeadm kubectl
+</code></pre></div><h3 id="kubeadm-init">kubeadm init</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 可以先运行下面命令检查到gcr.io的连接性</span>
+<span style="color:#09f;font-style:italic"># kubeadm config images pull</span>
+<span style="color:#09f;font-style:italic"># 解决etcd pull失败的问题</span>
+docker pull  xulz/coreos-etcd:v3.2.24
 docker tag xulz/coreos-etcd:v3.2.24 gcr.mirrors.ustc.edu.cn/google-containers/etcd:3.2.24
 
-kubeadm init --kubernetes-version<span style="color:#555">=</span>v1.13.1 --image-repository<span style="color:#555">=</span>gcr.mirrors.ustc.edu.cn/google-containers --pod-network-cidr<span style="color:#555">=</span><span style="color:#f60">192</span>.168.0.0/16
+kubeadm init --kubernetes-version<span style="color:#555">=</span>v1.13.1 --image-repository<span style="color:#555">=</span>gcr.mirrors.ustc.edu.cn/google-containers --pod-network-cidr<span style="color:#555">=</span>192.168.0.0/16
 
-<span style="color:#09f;font-style:italic"># --image-repository 指定镜像mirror,默认k8s.gcr.io
-</span><span style="color:#09f;font-style:italic"># 也可以通过配置文件的形式 imageRepository: &lt;private-registry&gt;
-</span><span style="color:#09f;font-style:italic"></span>
-<span style="color:#09f;font-style:italic"># root用户运行 
-</span><span style="color:#09f;font-style:italic"></span><span style="color:#366">export</span> <span style="color:#033">KUBECONFIG</span><span style="color:#555">=</span>/etc/kubernetes/admin.conf
+<span style="color:#09f;font-style:italic"># --image-repository 指定镜像mirror,默认k8s.gcr.io</span>
+<span style="color:#09f;font-style:italic"># 也可以通过配置文件的形式 imageRepository: &lt;private-registry&gt;</span>
 
-# 记录下关于 kubeadm join的输出用于添加节点</code></pre></div>
-<p>注: token用户master和加入节点间的双向认证,需保密. 也可用 kubeadm token命令管理token.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># kubelet环境变量
-</span><span style="color:#09f;font-style:italic"># /var/lib/kubelet/kubeadm-flags.env
-</span><span style="color:#09f;font-style:italic"># kubelet配置文件
-</span><span style="color:#09f;font-style:italic"></span># /var/lib/kubelet/config.yaml</code></pre></div>
-<h3 id="安装pod网络插件">安装Pod网络插件</h3>
+<span style="color:#09f;font-style:italic"># root用户运行</span> 
+<span style="color:#366">export</span> <span style="color:#033">KUBECONFIG</span><span style="color:#555">=</span>/etc/kubernetes/admin.conf
 
+<span style="color:#09f;font-style:italic"># 记录下关于 kubeadm join的输出用于添加节点</span>
+</code></pre></div><p>注: token用户master和加入节点间的双向认证,需保密. 也可用 kubeadm token命令管理token.</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># kubelet环境变量</span>
+<span style="color:#09f;font-style:italic"># /var/lib/kubelet/kubeadm-flags.env</span>
+<span style="color:#09f;font-style:italic"># kubelet配置文件</span>
+<span style="color:#09f;font-style:italic"># /var/lib/kubelet/config.yaml</span>
+</code></pre></div><h3 id="pod">安装Pod网络插件</h3>
 <p><strong>pod networking provider</strong></p>
-
 <p>这里使用的CNI network plugin是Calico,它需要提供CIDR(默认使用192.168.0.0/16), 已经在上步的init提供.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 先获取本地镜像并tag
-</span><span style="color:#09f;font-style:italic"></span>docker pull xulz/calico-node:v3.3.2
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 先获取本地镜像并tag</span>
+docker pull xulz/calico-node:v3.3.2
 docker tag xulz/calico-node:v3.3.2 quay.io/calico/node:v3.3.2
 docker pull xulz/calico-cni:v3.3.2
 docker tag xulz/calico-cni:v3.3.2 quay.io/calico/cni:v3.3.2
 docker pull quay.mirrors.ustc.edu.cn/calico/typha:v3.3.2
-docker tag quay.mirrors.ustc.edu.cn/calico/typha:v3.3.2 quay.io/calico/typha:v3.3.2</code></pre></div>
-<p>以Calico为例:</p>
+docker tag quay.mirrors.ustc.edu.cn/calico/typha:v3.3.2 quay.io/calico/typha:v3.3.2
+
+</code></pre></div><p>以Calico为例:</p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
 
-<span style="color:#09f;font-style:italic"># 检查状态, CoreDNS pod应该已经运行
-</span><span style="color:#09f;font-style:italic"></span>kubectl get pods --all-namespaces</code></pre></div>
-<h3 id="添加节点">添加节点</h3>
+<span style="color:#09f;font-style:italic"># 检查状态, CoreDNS pod应该已经运行</span>
+kubectl get pods --all-namespaces
+</code></pre></div><h3 id="heading-3">添加节点</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm join --token &lt;token&gt; &lt;master-ip&gt;:&lt;master-port&gt; --discovery-token-ca-cert-hash sha256:&lt;hash&gt;
 
-<span style="color:#09f;font-style:italic"># 获取token
-</span><span style="color:#09f;font-style:italic"></span>kubeadm token list
+<span style="color:#09f;font-style:italic"># 获取token</span>
+kubeadm token list
 
-<span style="color:#09f;font-style:italic"># 获取 --discovery-token-ca-cert-hash的值
-</span><span style="color:#09f;font-style:italic"></span>openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der <span style="color:#f60">2</span>&gt;/dev/null | <span style="color:#c30;font-weight:bold">\
-</span><span style="color:#c30;font-weight:bold"></span>   openssl dgst -sha256 -hex | sed <span style="color:#c30">&#39;s/^.* //&#39;</span>
+<span style="color:#09f;font-style:italic"># 获取 --discovery-token-ca-cert-hash的值</span>
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | <span style="color:#c30;font-weight:bold">\</span>
+   openssl dgst -sha256 -hex | sed <span style="color:#c30">&#39;s/^.* //&#39;</span>
    
-<span style="color:#09f;font-style:italic"># 检查状态
-</span><span style="color:#09f;font-style:italic"></span>kubectl get nodes   </code></pre></div>
-<h3 id="删除节点-清除">删除节点/清除</h3>
+<span style="color:#09f;font-style:italic"># 检查状态</span>
+kubectl get nodes   
 
+</code></pre></div><h3 id="heading-4">删除节点/清除</h3>
 <p><strong>在Master节点执行</strong></p>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl drain &lt;node name&gt; --delete-local-data --force --ignore-daemonsets
-kubectl delete node &lt;node name&gt;</code></pre></div>
-<p><strong>在要删除的节点执行:</strong></p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 重置状态
-</span><span style="color:#09f;font-style:italic"></span>kubeadm reset
+kubectl delete node &lt;node name&gt;
+</code></pre></div><p><strong>在要删除的节点执行:</strong></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 重置状态</span>
+kubeadm reset
 
-<span style="color:#09f;font-style:italic"># 清理iptables
-</span><span style="color:#09f;font-style:italic"></span>iptables -F <span style="color:#555">&amp;&amp;</span> iptables -t nat -F <span style="color:#555">&amp;&amp;</span> iptables -t mangle -F <span style="color:#555">&amp;&amp;</span> iptables -X</code></pre></div>
-<h2 id="参考">参考</h2>
+<span style="color:#09f;font-style:italic"># 清理iptables</span>
+iptables -F <span style="color:#555">&amp;&amp;</span> iptables -t nat -F <span style="color:#555">&amp;&amp;</span> iptables -t mangle -F <span style="color:#555">&amp;&amp;</span> iptables -X
+</code></pre></div><h2 id="heading-5">参考</h2>
+<h3 id="kubeadm-">kubeadm 命令参考</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 输出默认配置</span>
+kubeadm config print
 
-<h3 id="kubeadm-命令参考">kubeadm 命令参考</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 输出默认配置
-</span><span style="color:#09f;font-style:italic"></span>kubeadm config print
-
-<span style="color:#09f;font-style:italic"># 输出指定api对象
-</span><span style="color:#09f;font-style:italic"></span>kubeadm config print-default --api-objects KubeletConfiguration
+<span style="color:#09f;font-style:italic"># 输出指定api对象</span>
+kubeadm config print-default --api-objects KubeletConfiguration
 
 
-<span style="color:#09f;font-style:italic"># 列出/获取kubeadm需要的容器镜像
-</span><span style="color:#09f;font-style:italic"></span>kubeadm config images list
+<span style="color:#09f;font-style:italic"># 列出/获取kubeadm需要的容器镜像</span>
+kubeadm config images list
 kubeadm config images pull
 
-<span style="color:#09f;font-style:italic"># 指定版本, 跳过该地址的检查 https://dl.k8s.io/release/stable-1.txt
-</span><span style="color:#09f;font-style:italic"></span>--kubernetes-version<span style="color:#555">=</span>v1.13.1</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># --config指定配置文件
-</span><span style="color:#09f;font-style:italic"></span>kubeadm init --config kubeadm-config.yaml</code></pre></div>
-<h3 id="kubelet配置">kubelet配置</h3>
+<span style="color:#09f;font-style:italic"># 指定版本, 跳过该地址的检查 https://dl.k8s.io/release/stable-1.txt</span>
+--kubernetes-version<span style="color:#555">=</span>v1.13.1
 
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># --config指定配置文件</span>
+kubeadm init --config kubeadm-config.yaml
+</code></pre></div><h3 id="kubelet">kubelet配置</h3>
 <p><strong>init阶段</strong></p>
-
 <ul>
 <li>/var/lib/kubelet/config.yaml : 同时上传至kubelet-config-1.X的ConfigMap</li>
 <li>/etc/kubernetes/kubelet.conf : 存储客户端证书用于和API Server通讯</li>
 <li>/var/lib/kubelet/kubeadm-flags.env : 实例特定的信息及cgroup driver,CRI runtime socket</li>
 </ul>
-
 <p><strong>join阶段</strong></p>
-
 <ul>
 <li>读取ConfigMap并写入/var/lib/kubelet/config.yaml</li>
 <li>/etc/kubernetes/bootstrap-kubelet.conf 包含CA 证书和Bootstrap Token.</li>
 <li>读取上步的文件生成/etc/kubernetes/kubelet.conf</li>
 </ul>
-
 <p><strong>systemd使用的配置</strong></p>
-
 <p>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</p>
-
-<h3 id="kubeadm-init-输出日志">kubeadm init 输出日志</h3>
+<h3 id="kubeadm-init-">kubeadm init 输出日志</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>init<span style="color:#555">]</span> Using Kubernetes version: v1.13.1
 <span style="color:#555">[</span>preflight<span style="color:#555">]</span> Running pre-flight checks
 <span style="color:#555">[</span>preflight<span style="color:#555">]</span> Pulling images required <span style="color:#069;font-weight:bold">for</span> setting up a Kubernetes cluster
@@ -380,14 +350,14 @@ kubeadm config images pull
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;front-proxy-client&#34;</span> certificate and key
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;etcd/ca&#34;</span> certificate and key
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;etcd/server&#34;</span> certificate and key
-<span style="color:#555">[</span>certs<span style="color:#555">]</span> etcd/server serving cert is signed <span style="color:#069;font-weight:bold">for</span> DNS names <span style="color:#555">[</span>xulz-master1 localhost<span style="color:#555">]</span> and IPs <span style="color:#555">[</span><span style="color:#f60">192</span>.168.10.1 <span style="color:#f60">127</span>.0.0.1 ::1<span style="color:#555">]</span>
+<span style="color:#555">[</span>certs<span style="color:#555">]</span> etcd/server serving cert is signed <span style="color:#069;font-weight:bold">for</span> DNS names <span style="color:#555">[</span>xulz-master1 localhost<span style="color:#555">]</span> and IPs <span style="color:#555">[</span>192.168.10.1 127.0.0.1 ::1<span style="color:#555">]</span>
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;etcd/peer&#34;</span> certificate and key
-<span style="color:#555">[</span>certs<span style="color:#555">]</span> etcd/peer serving cert is signed <span style="color:#069;font-weight:bold">for</span> DNS names <span style="color:#555">[</span>xulz-master1 localhost<span style="color:#555">]</span> and IPs <span style="color:#555">[</span><span style="color:#f60">192</span>.168.10.1 <span style="color:#f60">127</span>.0.0.1 ::1<span style="color:#555">]</span>
+<span style="color:#555">[</span>certs<span style="color:#555">]</span> etcd/peer serving cert is signed <span style="color:#069;font-weight:bold">for</span> DNS names <span style="color:#555">[</span>xulz-master1 localhost<span style="color:#555">]</span> and IPs <span style="color:#555">[</span>192.168.10.1 127.0.0.1 ::1<span style="color:#555">]</span>
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;apiserver-etcd-client&#34;</span> certificate and key
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;etcd/healthcheck-client&#34;</span> certificate and key
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;ca&#34;</span> certificate and key
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;apiserver&#34;</span> certificate and key
-<span style="color:#555">[</span>certs<span style="color:#555">]</span> apiserver serving cert is signed <span style="color:#069;font-weight:bold">for</span> DNS names <span style="color:#555">[</span>xulz-master1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local<span style="color:#555">]</span> and IPs <span style="color:#555">[</span><span style="color:#f60">10</span>.96.0.1 <span style="color:#f60">192</span>.168.10.1<span style="color:#555">]</span>
+<span style="color:#555">[</span>certs<span style="color:#555">]</span> apiserver serving cert is signed <span style="color:#069;font-weight:bold">for</span> DNS names <span style="color:#555">[</span>xulz-master1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local<span style="color:#555">]</span> and IPs <span style="color:#555">[</span>10.96.0.1 192.168.10.1<span style="color:#555">]</span>
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;apiserver-kubelet-client&#34;</span> certificate and key
 <span style="color:#555">[</span>certs<span style="color:#555">]</span> Generating <span style="color:#c30">&#34;sa&#34;</span> key and public key
 <span style="color:#555">[</span>kubeconfig<span style="color:#555">]</span> Using kubeconfig folder <span style="color:#c30">&#34;/etc/kubernetes&#34;</span>
@@ -401,7 +371,7 @@ kubeadm config images pull
 <span style="color:#555">[</span>control-plane<span style="color:#555">]</span> Creating static Pod manifest <span style="color:#069;font-weight:bold">for</span> <span style="color:#c30">&#34;kube-scheduler&#34;</span>
 <span style="color:#555">[</span>etcd<span style="color:#555">]</span> Creating static Pod manifest <span style="color:#069;font-weight:bold">for</span> <span style="color:#366">local</span> etcd in <span style="color:#c30">&#34;/etc/kubernetes/manifests&#34;</span>
 <span style="color:#555">[</span>wait-control-plane<span style="color:#555">]</span> Waiting <span style="color:#069;font-weight:bold">for</span> the kubelet to boot up the control plane as static Pods from directory <span style="color:#c30">&#34;/etc/kubernetes/manifests&#34;</span>. This can take up to 4m0s
-<span style="color:#555">[</span>apiclient<span style="color:#555">]</span> All control plane components are healthy after <span style="color:#f60">21</span>.502262 seconds
+<span style="color:#555">[</span>apiclient<span style="color:#555">]</span> All control plane components are healthy after 21.502262 seconds
 <span style="color:#555">[</span>uploadconfig<span style="color:#555">]</span> storing the configuration used in ConfigMap <span style="color:#c30">&#34;kubeadm-config&#34;</span> in the <span style="color:#c30">&#34;kube-system&#34;</span> Namespace
 <span style="color:#555">[</span>kubelet<span style="color:#555">]</span> Creating a ConfigMap <span style="color:#c30">&#34;kubelet-config-1.13&#34;</span> in namespace kube-system with the configuration <span style="color:#069;font-weight:bold">for</span> the kubelets in the cluster
 <span style="color:#555">[</span>patchnode<span style="color:#555">]</span> Uploading the CRI Socket information <span style="color:#c30">&#34;/var/run/dockershim.sock&#34;</span> to the Node API object <span style="color:#c30">&#34;xulz-master1&#34;</span> as an annotation
@@ -431,8 +401,8 @@ Run <span style="color:#c30">&#34;kubectl apply -f [podnetwork].yaml&#34;</span>
 You can now join any number of machines by running the following on each node
 as root:
 
-  kubeadm join <span style="color:#f60">192</span>.168.10.1:6443 --token r4p7.6fuglhjtitmb --discovery-token-ca-cert-hash sha256:12345660bf8a5ff727b3563a4be19abee27785fcc806bbf2e20f82a15a82be06</code></pre></div>
-<h3 id="添加节点输出日志">添加节点输出日志</h3>
+  kubeadm join 192.168.10.1:6443 --token r4p7.6fuglhjtitmb --discovery-token-ca-cert-hash sha256:12345660bf8a5ff727b3563a4be19abee27785fcc806bbf2e20f82a15a82be06
+</code></pre></div><h3 id="heading-6">添加节点输出日志</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#555">[</span>preflight<span style="color:#555">]</span> Running pre-flight checks
 <span style="color:#555">[</span>discovery<span style="color:#555">]</span> Trying to connect to API Server <span style="color:#c30">&#34;192.168.10.1:6443&#34;</span>
 <span style="color:#555">[</span>discovery<span style="color:#555">]</span> Created cluster-info discovery client, requesting info from <span style="color:#c30">&#34;https://192.168.10.1:6443&#34;</span>
@@ -452,9 +422,8 @@ This node has joined the cluster:
 * Certificate signing request was sent to apiserver and a response was received.
 * The Kubelet was informed of the new secure connection details.
 
-Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to see this node join the cluster.</code></pre></div>
-<h3 id="文章列表">文章列表</h3>
-
+Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to see this node join the cluster.
+</code></pre></div><h3 id="heading-7">文章列表</h3>
 <ul>
 <li><a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">Installing kubeadm</a></li>
 <li><a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">Creating a single master cluster with kubeadm</a></li>
@@ -463,10 +432,42 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
     </div>
     <footer class="post-footer">
      
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/kubeadm/" >https://xulizhao.com/blog/kubeadm/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
  
 <div class="post-tags">     
      
-    <a href="/tags/kubernetes" rel="tag" title="kubernetes">#kubernetes#</a>
+    <a href="https://xulizhao.com/tags/kubernetes" rel="tag" title="kubernetes">#kubernetes#</a>
     
 </div>
 
@@ -475,38 +476,21 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/mirror/" rel="next" title="再提镜像站的使用">
-        <i class="fa fa-chevron-left"></i> 再提镜像站的使用
+        <a href="https://xulizhao.com/blog/mindset/" rel="next" title="Mindset读书笔记">
+        <i class="fa fa-chevron-left"></i> Mindset读书笔记
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/mindset/" rel="prev" title="Mindset读书笔记">
-        Mindset读书笔记 <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/mirror/" rel="prev" title="再提镜像站的使用">
+        再提镜像站的使用 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -541,22 +525,23 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -566,9 +551,9 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -576,25 +561,9 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -604,33 +573,33 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#前提条件">前提条件</a>
-<ul>
-<li><a href="#禁用swap">禁用swap</a></li>
-<li><a href="#保留端口">保留端口</a></li>
-<li><a href="#docker">Docker</a></li>
-</ul></li>
-<li><a href="#安装说明">安装说明</a>
-<ul>
-<li><a href="#kubeadm-kubelet-kubectl">kubeadm, kubelet, kubectl</a></li>
-<li><a href="#kubeadm-init">kubeadm init</a></li>
-<li><a href="#安装pod网络插件">安装Pod网络插件</a></li>
-<li><a href="#添加节点">添加节点</a></li>
-<li><a href="#删除节点-清除">删除节点/清除</a></li>
-</ul></li>
-<li><a href="#参考">参考</a>
-<ul>
-<li><a href="#kubeadm-命令参考">kubeadm 命令参考</a></li>
-<li><a href="#kubelet配置">kubelet配置</a></li>
-<li><a href="#kubeadm-init-输出日志">kubeadm init 输出日志</a></li>
-<li><a href="#添加节点输出日志">添加节点输出日志</a></li>
-<li><a href="#文章列表">文章列表</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">前提条件</a>
+      <ul>
+        <li><a href="#swap">禁用swap</a></li>
+        <li><a href="#heading-1">保留端口</a></li>
+        <li><a href="#docker">Docker</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">安装说明</a>
+      <ul>
+        <li><a href="#kubeadm-kubelet-kubectl">kubeadm, kubelet, kubectl</a></li>
+        <li><a href="#kubeadm-init">kubeadm init</a></li>
+        <li><a href="#pod">安装Pod网络插件</a></li>
+        <li><a href="#heading-3">添加节点</a></li>
+        <li><a href="#heading-4">删除节点/清除</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">参考</a>
+      <ul>
+        <li><a href="#kubeadm-">kubeadm 命令参考</a></li>
+        <li><a href="#kubelet">kubelet配置</a></li>
+        <li><a href="#kubeadm-init-">kubeadm init 输出日志</a></li>
+        <li><a href="#heading-6">添加节点输出日志</a></li>
+        <li><a href="#heading-7">文章列表</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -644,18 +613,18 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -664,36 +633,58 @@ Run <span style="color:#c30">&#39;kubectl get nodes&#39;</span> on the master to
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

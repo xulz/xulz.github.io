@@ -1,65 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Database on XuLizhao &#39;s Notes</title>
-    <link>/tags/database/</link>
-    <description>Recent content in Database on XuLizhao &#39;s Notes</description>
+    <title>database on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/database/</link>
+    <description>Recent content in database on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 03 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/database/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/database/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>设计数据密集型应用笔记</title>
-      <link>/blog/ddia/</link>
+      <link>https://xulizhao.com/blog/ddia/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/ddia/</guid>
-      <description>&lt;p&gt;去年就看到总有人推荐&lt;Design Data Intensive Applications&gt;这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.&lt;/p&gt;
-
+      <guid>https://xulizhao.com/blog/ddia/</guid>
+      <description>&lt;p&gt;去年就看到总有人推荐&lt;!-- raw HTML omitted --&gt;这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.&lt;/p&gt;
 &lt;p&gt;今年偶然看到网上有&lt;a href=&#34;https://github.com/Vonng/ddia&#34;&gt;中译版&lt;/a&gt;,惭愧的是到了年底,最近几个月才读来.&lt;/p&gt;
-
-&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL性能优化</title>
-      <link>/blog/mysql-tuning/</link>
+      <link>https://xulizhao.com/blog/mysql-tuning/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/mysql-tuning/</guid>
-      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.
-&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/mysql-tuning/</guid>
+      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java应用的数据库迁移工具Flyway</title>
-      <link>/blog/java-db-migrate/</link>
+      <link>https://xulizhao.com/blog/flyway/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/java-db-migrate/</guid>
+      <guid>https://xulizhao.com/blog/flyway/</guid>
       <description>&lt;p&gt;最近折腾部署一年前的一个应用,发现一些由于一些细节已经忘记,常常可能多花费几个小时去重新解决问题的过程. 而有的过程之前写过KB,关键字一搜索就出来能省不少时间.&lt;/p&gt;
-
 &lt;p&gt;所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.&lt;/p&gt;
-
-&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>/blog/mysql/</link>
+      <link>https://xulizhao.com/blog/mysql/</link>
       <pubDate>Thu, 11 Jan 2018 09:31:35 +0000</pubDate>
       
-      <guid>/blog/mysql/</guid>
-      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/mysql/</guid>
+      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;</description>
     </item>
     
   </channel>

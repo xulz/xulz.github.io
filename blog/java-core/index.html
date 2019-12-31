@@ -1,0 +1,545 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Java核心库 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Java核心库">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Java核心库 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/java-core/" itemprop="url">
+        Java核心库
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-08-29">
+    2017-08-29
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1066 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>回归基础。</p>
+<h2 id="heading">类型</h2>
+<p>Java类型必定是class, abstract class，interface, enum ,annotation之一.</p>
+<h3 id="heading-1">基本类型</h3>
+<p>变量的类型有：</p>
+<p>primitive/原语数据类型: byte/char/short/int/long/float/double/boolean <!-- raw HTML omitted -->
+占用字节&mdash;&mdash;&mdash;&mdash;-8 &mdash;16 &mdash;16&mdash;32&ndash;64&mdash;32&mdash;&ndash;64&mdash;&mdash;&mdash; <!-- raw HTML omitted -->
+对应封装类型: Byte/Character/Short/Integer/Long/Float/Double/String (不可变)</p>
+<p>当变量指向一个对象时，变量被称作对象的引用</p>
+<p>注：float和double类型不应该用于精确计算，在需要的场合要使用BigDecimal类</p>
+<h3 id="object">Object</h3>
+<p>所有对象的超类，常用方法：</p>
+<ul>
+<li>equals(o1) 对象比较</li>
+<li>hashCode() 返回当前对象唯一标识</li>
+<li>getClass() 返回实例类</li>
+<li>toString() 返回当前对象的字符表示</li>
+</ul>
+<h3 id="string">String/字符串</h3>
+<p>不可变对象。在Java内部使用bytes表示，使用UTF-16编码（即双字节）</p>
+<ul>
+<li>substring(包含的,不包含的)</li>
+<li>trim():去掉头尾部空白，包括空格、Tab、换行符</li>
+<li>很多次的字符串连接要使用StringBuilder</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String three <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">new</span> StringBuilder<span style="color:#555">(</span>one<span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">append</span><span style="color:#555">(</span>two<span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">toString</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+</code></pre></div><h3 id="arrays">数组/Arrays</h3>
+<p>数组用以存储<strong>同一类型</strong>的对象，一旦创建后后<strong>无法改变大小</strong>。</p>
+<ul>
+<li>length是数组对象的一个属性</li>
+<li>Arrays是针对数组对象进行操作的工具类</li>
+<li>Arrays.binarySearch 返回插入位置的索引-1</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#09f;font-style:italic">// 初始化，{}被称为array literal
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span><span style="color:#555">[</span><span style="color:#555">]</span>   ints <span style="color:#555">=</span> <span style="color:#555">{</span> 1<span style="color:#555">,</span>2<span style="color:#555">,</span>3<span style="color:#555">,</span>4<span style="color:#555">,</span>5<span style="color:#555">,</span>6<span style="color:#555">,</span>7<span style="color:#555">,</span>8<span style="color:#555">,</span>9<span style="color:#555">,</span>10 <span style="color:#555">}</span><span style="color:#555">;</span>
+
+
+<span style="color:#09f;font-style:italic">// 装箱
+</span><span style="color:#09f;font-style:italic"></span>Integer boxedValue <span style="color:#555">=</span> Integer<span style="color:#555">.</span><span style="color:#309">valueOf</span><span style="color:#555">(</span>18<span style="color:#555">)</span><span style="color:#555">;</span>
+<span style="color:#09f;font-style:italic">// 拆箱
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> intValue <span style="color:#555">=</span> boxedValue<span style="color:#555">.</span><span style="color:#309">intValue</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+<span style="color:#09f;font-style:italic">// 注：Java虽然支持自动装箱和拆箱,但以上显式的写法可读性更好
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic">// 解析字符串
+</span><span style="color:#09f;font-style:italic"></span>Integer convertedValue <span style="color:#555">=</span> Integer<span style="color:#555">.</span><span style="color:#309">parseInt</span><span style="color:#555">(</span><span style="color:#c30">&#34;123&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+String characterNumeric <span style="color:#555">=</span> convertedValue<span style="color:#555">.</span><span style="color:#309">toString</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+<span style="color:#09f;font-style:italic">// 注：在String表达式中使用串联运算符时会自动装箱并调用toString()
+</span><span style="color:#09f;font-style:italic"></span>
+
+</code></pre></div><h2 id="heading-2">逻辑结构</h2>
+<h3 id="for">for</h3>
+<p>for(Loop initializer;Loop condition;Post iteration operation)</p>
+<ul>
+<li>continue: 直接跳到下一迭代，而不继续执行之后的循环体</li>
+<li>break: 立即跳出循环，即使循环条件仍满足</li>
+</ul>
+<p>注：do while循环在条件被测前至少执行一次</p>
+<h3 id="foreach">foreach</h3>
+<p>for的增强简化版本。一般结合泛型使用,适用于不需要引用数组或者集合的索引的情况。</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">for(元素类型t 元素变量x : 遍历对象obj){
+     引用了x的java语句;
+}
+</code></pre></div><h3 id="switch">switch</h3>
+<p>支持类型有 byte, short, char, int, String, enum</p>
+<p>break跳出switch语句.</p>
+<h2 id="heading-3">类</h2>
+<h3 id="static">修饰符static</h3>
+<ul>
+<li>静态类意味着在类加载时（类第一个被引用时）执行，并且只运行一次</li>
+<li>静态方法或字段属于类，而不是类实例</li>
+</ul>
+<h3 id="final">修饰符final</h3>
+<p>final字段不能更改它的值，通常与static连用，表示常量</p>
+<h3 id="heading-4">访问修饰符</h3>
+<p>protected 类似于包修饰符，除了子类可以访问（即使子类在包外）</p>
+<h3 id="heading-5">构造函数</h3>
+<ul>
+<li>扩展类不需要集成构造函数</li>
+<li>子类必须在构造函数调用父类的构造函数</li>
+</ul>
+<h3 id="heading-6">变量</h3>
+<p>四类变量：</p>
+<ul>
+<li>Non-static fields (  instance variables)</li>
+<li>Static fields ( class variables)</li>
+<li>Local variables ( declared inside a method)</li>
+<li>Parameters</li>
+</ul>
+<h2 id="heading-7">数据处理</h2>
+<ul>
+<li>java.security.SecureRandom</li>
+</ul>
+<h3 id="heading-8">字符</h3>
+<p>Scanner以文本格式读，PrintWriter以文本格式写</p>
+<p>字符集：字符集名字大小写不敏感，中文和日文是可变字节编码</p>
+<h3 id="io">I/O</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#09f;font-style:italic">// 复制二进制数据:
+</span><span style="color:#09f;font-style:italic"></span>System<span style="color:#555">.</span><span style="color:#309">arraycopy</span><span style="color:#555">(</span><span style="color:#555">)</span>
+Arrays<span style="color:#555">.</span><span style="color:#309">copyOfRange</span><span style="color:#555">(</span>buf<span style="color:#555">,</span> i<span style="color:#555">,</span> buf<span style="color:#555">.</span><span style="color:#309">length</span><span style="color:#555">)</span>
+</code></pre></div><h4 id="heading-9">接口</h4>
+<ul>
+<li>InputStream/OutputStream</li>
+<li>Writer/Reader</li>
+</ul>
+<h3 id="heading-10">编码/解码</h3>
+<ul>
+<li>Java.util.Base64  (1.8+)</li>
+</ul>
+<h3 id="system">System</h3>
+<ul>
+<li>System.identityHashCode()</li>
+</ul>
+<h2 id="heading-11">缩略语</h2>
+<ul>
+<li>JAX-RS: Java API for RESTful Services</li>
+<li>JAX-WS: Java API for XML-Based Web Services</li>
+</ul>
+<h2 id="heading-12">资源</h2>
+<ul>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/package-tree.html">Hierarchy For Package java.lang</a></li>
+<li><a href="https://yq.aliyun.com/articles/69455">Java NIO概述</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/java-core/" >https://xulizhao.com/blog/java-core/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/java" rel="tag" title="java">#java#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java8/" rel="next" title="Java8学习">
+        <i class="fa fa-chevron-left"></i> Java8学习
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java-logging/" rel="prev" title="Java日志">
+        Java日志 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">类型</a>
+      <ul>
+        <li><a href="#heading-1">基本类型</a></li>
+        <li><a href="#object">Object</a></li>
+        <li><a href="#string">String/字符串</a></li>
+        <li><a href="#arrays">数组/Arrays</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">逻辑结构</a>
+      <ul>
+        <li><a href="#for">for</a></li>
+        <li><a href="#foreach">foreach</a></li>
+        <li><a href="#switch">switch</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">类</a>
+      <ul>
+        <li><a href="#static">修饰符static</a></li>
+        <li><a href="#final">修饰符final</a></li>
+        <li><a href="#heading-4">访问修饰符</a></li>
+        <li><a href="#heading-5">构造函数</a></li>
+        <li><a href="#heading-6">变量</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-7">数据处理</a>
+      <ul>
+        <li><a href="#heading-8">字符</a></li>
+        <li><a href="#io">I/O</a></li>
+        <li><a href="#heading-10">编码/解码</a></li>
+        <li><a href="#system">System</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-11">缩略语</a></li>
+    <li><a href="#heading-12">资源</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

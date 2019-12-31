@@ -1,0 +1,579 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>DDD/领域驱动设计 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="DDD/领域驱动设计">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="DDD/领域驱动设计 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/ddd/" itemprop="url">
+        DDD/领域驱动设计
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-12-29">
+    2019-12-29
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">3792 字 ~8分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>之前了解到微服务、中台等实践的背后都和领域驱动设计紧密相关，上周从图书馆借了2本相关书来读，记点笔记加深理解。</p>
+<h2 id="heading">领域驱动设计</h2>
+<ul>
+<li>
+<p><strong>核心域</strong>： 限界上下文被当作组织的关键战略举措进行开发时即为核心域。是组织的核心竞争力，需要最好的资源投入。</p>
+</li>
+<li>
+<p>A Big Ball of Mud/大泥球：指杂乱无章、错综复杂、邋遢不堪、随意拼贴的大堆代码。开发人员应时刻保持警惕，不断地通过设计和实现的优化来杜绝和延缓大泥球的形成。
+演进式架构是一种有效手段，通过业务领域的划分不断地进行持续设计。</p>
+</li>
+<li>
+<p>有效设计： 是简洁而非冗余，它也需要不断地演进与优化才能趋于完美。</p>
+</li>
+</ul>
+<blockquote>
+<p>“设计，让生活变得完美的艺术”是乔布斯的产品设计理念。首先意味着简洁的产品（开箱即用）、简洁的战略（产品的专注）和简洁的沟通（高效的沟通）。其次有效设计允许不完美。任何产品都始于不完美，只有通过不断试错和修正的迭代才可能逐步趋于完美。</p>
+</blockquote>
+<h3 id="heading-1">战略设计</h3>
+<p>在展开具体实现细节之前，需要优先完成宏观层面的战略设计。它强调的是业务战略上的重点，如何按重要性分配工作，已经如何进行最佳整合。</p>
+<p>DDD 主要关注的是如何在明确的限界上下文中创建通用语言的模型。</p>
+<p>先确定核心域，专注于业务复杂性（而非技术复杂性）。</p>
+<h4 id="heading-2">限界上下文</h4>
+<p>Bounded Context.</p>
+<p>限界上下文是语义和语境上的边界。模型是在限界上下文中实现的，需要为每个限界上下文开发不同的软件。</p>
+<h4 id="heading-3">通用语言</h4>
+<p>Ubiquitous Language.</p>
+<p>可以理解为团队（开发、业务专家等）的国际语言，使得所有人能收到表达的准确含义和约束条件。</p>
+<h4 id="heading-4">核心域</h4>
+<p>应当使用一组具体场景来表达核心域，描述领域模型该如何工作，各种组件该做什么。</p>
+<p>可以通过实例化需求技术创建验收测试。</p>
+<p>可能使用的架构：</p>
+<ul>
+<li>端口和适配器/六边形架构</li>
+<li>整洁架构/Clean Architecture</li>
+<li>事件驱动架构、事件溯源</li>
+<li>命令和查询职责分离/CQRS</li>
+<li>响应式架构和Actor模型：每个Actor都可以看成一致性边界和一个独立的业务单元，和聚合对接。</li>
+<li>具象状态传输/REST</li>
+<li>面向服务的架构/SOA</li>
+<li>微服务</li>
+</ul>
+<blockquote>
+<p>CQRS: 区别于传统CRUD模式，把同一个模型的无副作用的查询操作和改变状态的修改操作（通常称为命令）分开。两部分分成不同的模块和服务实现。改变状态的命令经常会采用事件溯源来实现。
+这种架构特别适合需要高性能且查询和命令的扩展性有不同需求的应用/服务。当然也会引入架构复杂性。</p>
+</blockquote>
+<blockquote>
+<p>Service Oriented Architecture/SOA是一个组件模型，它将应用程序分为的不同功能单元（称为服务），通过这些服务之间定义良好的接口和契约联系起来。
+实际上微服务和SOA一脉相承，可被认为是SOA的一种特定的现代实现。微服务相对SOA更注重对独立业务单元的拆分来形成清晰的边界，并采用轻量级的通讯机制，以一种更加松耦合的方式进行集成，
+来提供更好的扩展性和灵活性。借助devops和云平台，微服务可以有单个独立的小团队开发、部署和运维。是现代分布式系统的首选架构，也是遗留架构首选的演进和重构方向。</p>
+</blockquote>
+<h4 id="heading-5">子域</h4>
+<p>Subdomain. 处理遗留系统中无边界的复杂性.</p>
+<p>子域是整个业务领域的一部分，负责为核心业务提供解决方案。限界上下文应该与子域一一对应。</p>
+<p>项目中有三种主要的子域类型：</p>
+<ul>
+<li>核心域/Sub Domain：核心业务功能</li>
+<li>支撑子域/Supporting Domain：定制开发</li>
+<li>通用子域/Generic Domain：可采购、外包或内部实现</li>
+</ul>
+<h4 id="heading-6">上下文映射</h4>
+<p>Context Mapping. 集成多个限界上下文.</p>
+<p>Context Map/上下文映射图同时定义了两个进行集成的限界上下文之间的团队间关系及技术实现方式.</p>
+<p>上下文映射本质是一种集成关系，持续集成的实践活动对上下文映射关系不可或缺。</p>
+<p>映射的种类：</p>
+<ul>
+<li>合作关系/Partership:通过互相依赖的一套目标联合起来，需要联系紧密并经常同步</li>
+<li>共享内核/Shared Kernel：共享小规模通用模型，常见方式是将通用模块以二进制依赖(Jar,链接库)方式共享</li>
+<li>客户-供应商/Customer-Supplier:上下游关系。可采用消费者驱动契约(Consumer Driven Contract/CDC)实践，通过契约测试保持之间协作</li>
+<li>跟随者/遵奉着/Conformist：上游过于强大，只能按约定集成</li>
+<li><strong>防腐层</strong>/Anticorruption Layer:下游团队在上下游通用语言模型之间创建翻译层。推荐实践。</li>
+<li>开放主机服务/Open Host Service:REST服务是一种常见的实例</li>
+<li>已发布语言/Published Language: 和开放主机服务结合，API+XML/JSON</li>
+<li>各行其道/Separate Way</li>
+<li>大泥球：特征有
+<ul>
+<li>越来越多的聚合因不合理的关联和依赖而交叉感染</li>
+<li>对一部分进行维护就会牵一发而动全身，解决问题像在打地鼠</li>
+<li>只剩“部落知识”和“个人英雄主义”，唯一“讲”出所有语言的极个别“超人”方能扶大厦之将倾</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>防腐层是最常见的一种阻止外部技术偏好或领域模型侵入的设计模式。API网关就是一种防腐层的具体实现。
+另外对遗留单块系统进行拆分时，防腐层也发挥着巨大作用。 
+有一种对付单块系统的重构方式叫做“抽象分支/Branch by Abstraction”,其中从要拆分的模块中提取出的抽象层就发挥着防腐层的作用，在重构的过程中抵挡着未拆分部分对重构工作的腐蚀。</p>
+</blockquote>
+<p><strong>集成方式</strong></p>
+<ul>
+<li>基于SOAP的RPC：现代RPC机制更友好的支持多编程语言，序列化协议(gRPC,Thrift)比XML更高效，传输协议更现代(HTTP/2)</li>
+<li>RESTful HTTP： 避免直接把模型中的聚合暴露成资源，服务端提供的资源必须具有客户端需要的样子和组成</li>
+<li>消息机制
+<ul>
+<li>领域事件由聚合发布，感兴趣的订阅方都可以消费</li>
+<li>消息机制应支持至少一次投递/Reactive来保证所有消息最终都会被收到</li>
+<li>订阅方必须实现幂等接受者/Idempotent Receiver</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Backoff/退避算法重试机制,发送者会在再次重试之前等待一个随机时间，避免多个发送者按相同的时间间隔重试产生的冲突。等待时间的随机范围通常采用一种策略和算法来计算，常用的有指数退避算法。</p>
+</blockquote>
+<h3 id="heading-7">战术设计</h3>
+<h4 id="heading-8">聚合</h4>
+<p>Aggregate模式.</p>
+<ul>
+<li>值对象/Value Object/值：对一个不变的概念整体所建立的模型，常用来描述、量化或测量一个实体。</li>
+<li>实体：一个实体模型就是一个独立的事物，拥有一个唯一的标识符，可以将它的个体性和其他实体区分开。</li>
+<li>聚合：由一个或多个实体组成，其中一个实体被称为聚合根（Aggregate Root）。也可能包含值对象。
+<ul>
+<li>每个聚合的根实体(Root Entity)控制着所有聚集在其中的其他元素。根实体的名称就是聚合概念上的名称。</li>
+<li><strong>每个聚合都会形成保证事务一致性的边界</strong>。只能在一次事务中修改一个聚合实例并提交。</li>
+</ul>
+</li>
+</ul>
+<p>业务规则最终决定在单次事务完成提交后，哪些对象必须是完整、完全和一致的驱动力。</p>
+<p>聚合的实现应避免贫血领域模型（函数式编程除外），先为聚合根实体创建一个类，它继承于基类Entity。</p>
+<p><strong>聚合设计的四条基本原则</strong></p>
+<ul>
+<li>在聚合边界内保护业务规则不变性</li>
+<li>聚合要设计得小巧：符合SRP/单一职责原则</li>
+<li>只能通过标识符引用其他聚合</li>
+<li>使用最终一致性更新其他聚合。</li>
+</ul>
+<h4 id="heading-9">领域事件</h4>
+<p>Domain Event.</p>
+<p>领域事件是一条记录，记录着限界上下文中发生的对业务产生重要影响的事情。</p>
+<p>领域事件类型的名称应该是对过去发生事情的陈述，即动词的过去式。比如ProductCreated,ReleaseScheduled.</p>
+<p>领域事件通常由命令(一个方法/动作请求的对象形态)发布，命令可命名为CreateProduct。也可能由其他变化的状态引起，比如日期和时间。</p>
+<p>消费事件的限界上下文要能识别出正确的因果关系，因果关系可以由领域事件类型本身表明，或由和领域事件关联的元数据表示，比如一个序列标识符或因果标识符。</p>
+<p><strong>事件溯源(Event Sourcing)</strong></p>
+<p>对所有发生在聚合实例上的领域事件进行持久化，把它们当做对聚合实例变化的记录。</p>
+<p>可以在核心域上使用事件溯源，达到高吞吐量、低延迟和高伸缩性。性能最好的是缓存在内存中的聚合，另一种方式是使用快照(对聚合的增量状态的快照进行维护)。</p>
+<h3 id="heading-10">辅助工具</h3>
+<h4 id="heading-11">事件风暴</h4>
+<p>使用Event Storming加速建模.</p>
+<p>步骤：</p>
+<ol>
+<li>通过创建一系列写在便利贴上的领域事件，快速梳理出业务流程。</li>
+<li>创建导致每个领域事件发生的命令。</li>
+<li>把命令和领域事件通过实体/聚合关联起来，命令在实体/聚合上执行并产生领域事件的结果。实体就是命令执行和领域事件触发的数据载体。</li>
+<li>在建模平面上画出边界和表示事件流动的箭头连线。</li>
+<li>识别用户执行操作所需的各种视图(View)，以及不同用户的关键角色。</li>
+</ol>
+<p>其他工具：</p>
+<ul>
+<li>引入&quot;Given/When/Then&quot;格式编写的可执行的高级需求说明/验收测试/实例化需求</li>
+<li>影响力地图/Impact Mapping</li>
+<li>用户故事地图/User Story Mapping</li>
+</ul>
+<h4 id="ddd">敏捷项目管理DDD</h4>
+<ul>
+<li>SWOT分析法(四象限矩阵)
+<ul>
+<li>优势/Strength: 领先于对手的业务或项目特征</li>
+<li>劣势/Weakness： 落后于对手的业务或项目特征</li>
+<li>机会/Opportunity：可以发挥项目优势的要素</li>
+<li>威胁/Threat：存在于环境中并可能给业务或项目带来问题的因素</li>
+</ul>
+</li>
+<li>建模Spike和建模债务(类似技术债务)</li>
+</ul>
+<blockquote>
+<p>Spike通过一系列的探索活动获取必要的知识，以降低技术方法的风险、更好的理解业务需求或提高用户故事的可靠性。
+探索活动包括研究、设计、调查和原型等</p>
+</blockquote>
+<ul>
+<li>任务识别和工作量估算
+<ul>
+<li>最简单和最准确的估算方式之一：基于度量指标的方法。</li>
+<li>按组件类型为每个组件在表格增加一行</li>
+<li>填入每一复杂级别(简单、适中、复杂)所需的小时数，估算含设计、实现、测试工作量</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-12">扩展阅读</h2>
+<ul>
+<li>《领域驱动设计精粹》</li>
+<li>《实现领域驱动设计》</li>
+<li><a href="https://www.infoq.cn/article/service-split-and-architecture-evolution">服务拆分与架构演进</a></li>
+<li>《REST实战》</li>
+<li><a href="http://insights.thoughtworkers.org/technical-debt-vs-slow-fish/">“鱼变慢”还是“技术债”：适合国人口味的比喻</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/ddd/" >https://xulizhao.com/blog/ddd/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/dev" rel="tag" title="dev">#dev#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/programming-language/" rel="next" title="谈编程语言">
+        <i class="fa fa-chevron-left"></i> 谈编程语言
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/spring-in-action/" rel="prev" title="Spring实战">
+        Spring实战 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">领域驱动设计</a>
+      <ul>
+        <li><a href="#heading-1">战略设计</a></li>
+        <li><a href="#heading-7">战术设计</a></li>
+        <li><a href="#heading-10">辅助工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-12">扩展阅读</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

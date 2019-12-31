@@ -1,91 +1,83 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Read on XuLizhao &#39;s Notes</title>
-    <link>/tags/read/</link>
-    <description>Recent content in Read on XuLizhao &#39;s Notes</description>
+    <title>read on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/read/</link>
+    <description>Recent content in read on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 13 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/read/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/read/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go in Action 学习笔记</title>
-      <link>/blog/go-in-action/</link>
+      <link>https://xulizhao.com/blog/go-in-action/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/go-in-action/</guid>
-      <description>&lt;p&gt;初学Go时主要读的&amp;lt;Go语言圣经&amp;gt;,正式中文版叫&amp;lt;Go程序设计语言&amp;gt;, 由于当时写的代码还很少,实际上很多是不太懂的或后来也忘了.&lt;br /&gt;
-之后想读些其他书时,本来想读的&amp;lt;Go编程实战&amp;gt;在豆瓣的评分偏低,便一直没读. 在写过一些代码后,偶然再读这本书,发现其实战意义很高,是很好的一本进阶书.&lt;br /&gt;
+      <guid>https://xulizhao.com/blog/go-in-action/</guid>
+      <description>&lt;p&gt;初学Go时主要读的&amp;lt;Go语言圣经&amp;gt;,正式中文版叫&amp;lt;Go程序设计语言&amp;gt;, 由于当时写的代码还很少,实际上很多是不太懂的或后来也忘了. &lt;br&gt;
+之后想读些其他书时,本来想读的&amp;lt;Go编程实战&amp;gt;在豆瓣的评分偏低,便一直没读. 在写过一些代码后,偶然再读这本书,发现其实战意义很高,是很好的一本进阶书.  &lt;br&gt;
 由此看来豆瓣的评分只能当个参考,需要读读看是不是适合自己.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mindset读书笔记</title>
-      <link>/blog/mindset/</link>
+      <link>https://xulizhao.com/blog/mindset/</link>
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/mindset/</guid>
-      <description>&lt;p&gt;Mindset是一本讲思维模式的书,作者是斯坦福大学心理学教授, 与其说这是一本心理学或成功学著作, 更重要的这是一本很好的教育理念的书, 当然对于个人的成长也是很有帮助的.&lt;br /&gt;
-好多年前看到有人推荐这边书,当时只知道英文名字,英文版读起来也很慢. 后来才知道原来已有中译版, 人邮的&amp;lt;心理定向与成功 &amp;gt;,中信的&amp;lt;看见成长的自己 &amp;gt;和最新后浪的&amp;lt;终身成长&amp;gt;其实都是这本书.&lt;br /&gt;
-之前只看了开头几章, 也许好书你很难错过,因为总会看到有人推荐,于是最近开始继续阅读.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/mindset/</guid>
+      <description>&lt;p&gt;Mindset是一本讲思维模式的书,作者是斯坦福大学心理学教授, 与其说这是一本心理学或成功学著作, 更重要的这是一本很好的教育理念的书, 当然对于个人的成长也是很有帮助的.&lt;br&gt;
+好多年前看到有人推荐这边书,当时只知道英文名字,英文版读起来也很慢. 后来才知道原来已有中译版, 人邮的&amp;lt;心理定向与成功 &amp;gt;,中信的&amp;lt;看见成长的自己 &amp;gt;和最新后浪的&amp;lt;终身成长&amp;gt;其实都是这本书. &lt;br&gt;
+之前只看了开头几章, 也许好书你很难错过,因为总会看到有人推荐,于是最近开始继续阅读.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>书法与文字</title>
-      <link>/read/shufa/</link>
+      <link>https://xulizhao.com/read/shufa/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/shufa/</guid>
-      <description>&lt;p&gt;最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/read/shufa/</guid>
+      <description>&lt;p&gt;最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>读国学</title>
-      <link>/read/guoxue/</link>
+      <link>https://xulizhao.com/read/guoxue/</link>
       <pubDate>Fri, 23 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/guoxue/</guid>
+      <guid>https://xulizhao.com/read/guoxue/</guid>
       <description>国学的火热似乎起自十多年前百家讲坛的于丹系列,最近几年也总能听到教儿童读弟子规或者各地开女德班等的无关真正国学的负面新闻. 最近读章太炎的国学</description>
     </item>
     
     <item>
       <title>读诗词</title>
-      <link>/read/poem/</link>
+      <link>https://xulizhao.com/read/poem/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/poem/</guid>
+      <guid>https://xulizhao.com/read/poem/</guid>
       <description>为了听蒙曼品最美唐诗冲了会员,也因此收听到了更多的音频,毕竟喜欢的还有郦波品读唯美诗词名篇, 虽然我之前从没看过诗词大会之类的节目. 听过一些之</description>
     </item>
     
     <item>
       <title>读历史</title>
-      <link>/read/history/</link>
+      <link>https://xulizhao.com/read/history/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/history/</guid>
+      <guid>https://xulizhao.com/read/history/</guid>
       <description>缘起 在年初的时候,因偶然机会追了一部国产剧,即网剧大军师司马懿. 当时是很着迷的, 因为看的下载版,可以说看的不舍昼夜. 评价嘛,上部明显好于下部</description>
     </item>
     
     <item>
       <title>reborn</title>
-      <link>/read/reborn/</link>
+      <link>https://xulizhao.com/read/reborn/</link>
       <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/read/reborn/</guid>
+      <guid>https://xulizhao.com/read/reborn/</guid>
       <description>&lt;p&gt;&amp;ldquo;书籍是人类的好朋友&amp;rdquo;,这是句真理. 在如今信息爆炸,碎片充斥的年代,一年读十几/几十本书已成奢谈.&lt;/p&gt;
-
 &lt;p&gt;在手机上碎片阅读李笑来老师的书可追溯到几年前的&amp;lt;把时间当作朋友&amp;gt;,去年是&amp;lt;成长-YC创业课读书笔记&amp;gt;, 最近还在读的是&amp;lt;新生-七年就是一辈子&amp;gt;.&lt;/p&gt;
-
-&lt;p&gt;笑来老师的书部部精品,还有&lt;a href=&#34;http://zhibimo.com/books/xiaolai&#34;&gt;正版免费&lt;/a&gt;可读,你还奢求什么.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;笑来老师的书部部精品,还有&lt;a href=&#34;http://zhibimo.com/books/xiaolai&#34;&gt;正版免费&lt;/a&gt;可读,你还奢求什么.&lt;/p&gt;</description>
     </item>
     
   </channel>

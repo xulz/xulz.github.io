@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="MySQL - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/mysql/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/mysql/" itemprop="url">
         MySQL
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-01-11">
     2018-01-11
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">Tech</span>
       </a>
       &nbsp; 
@@ -149,46 +148,39 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">1204 字 ~3分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.</p>
-
-<p></p>
-
-<h2 id="安装及配置">安装及配置</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 安全化安装
-</span><span style="color:#09f;font-style:italic"></span>    sudo apt install mysql-server
-    sudo mysql_secure_installation
-    <span style="color:#09f;font-style:italic"># 设置root密码, Percona
-</span><span style="color:#09f;font-style:italic"></span>    /usr/bin/mysqladmin -u root password <span style="color:#c30">&#39;new-password&#39;</span>
-    <span style="color:#09f;font-style:italic"># 配置文件
-</span><span style="color:#09f;font-style:italic"></span>    /etc/mysql/my.cnf
-    <span style="color:#09f;font-style:italic"># CentOS
-</span><span style="color:#09f;font-style:italic"></span>    /etc/sysconfig/mysql
-    <span style="color:#09f;font-style:italic"># Ubuntu
-</span><span style="color:#09f;font-style:italic"></span>    /etc/default/mysql</code></pre></div>
-<h3 id="授权登录">授权登录</h3>
-
-<blockquote>
-<p>GRANT ALL PRIVILEGES ON dbname.* TO &lsquo;USERNAME&rsquo;@&lsquo;IP&rsquo; IDENTIFIED BY &lsquo;PASSWORD&rsquo;;</p>
-</blockquote>
-
-<ul>
+<h2 id="heading">安装及配置</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 安全化安装</span>
+sudo apt install mysql-server
+sudo mysql_secure_installation
+<span style="color:#09f;font-style:italic"># 设置root密码, Percona</span>
+/usr/bin/mysqladmin -u root password <span style="color:#c30">&#39;new-password&#39;</span>
+<span style="color:#09f;font-style:italic"># 配置文件</span>
+/etc/mysql/my.cnf
+<span style="color:#09f;font-style:italic"># CentOS</span>
+/etc/sysconfig/mysql
+<span style="color:#09f;font-style:italic"># Ubuntu</span>
+/etc/default/mysql
+</code></pre></div><h3 id="heading-1">授权登录</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">GRANT</span> <span style="color:#069;font-weight:bold">ALL</span> <span style="color:#069;font-weight:bold">PRIVILEGES</span> <span style="color:#069;font-weight:bold">ON</span> dbname.<span style="color:#555">*</span> <span style="color:#069;font-weight:bold">TO</span> <span style="color:#c30">&#39;</span><span style="color:#c30">USERNAME</span><span style="color:#c30">&#39;</span><span style="color:#555">@</span><span style="color:#c30">&#39;</span><span style="color:#c30">IP</span><span style="color:#c30">&#39;</span> IDENTIFIED <span style="color:#069;font-weight:bold">BY</span> <span style="color:#c30">&#39;</span><span style="color:#c30">PASSWORD</span><span style="color:#c30">&#39;</span>;
+FLUSH <span style="color:#069;font-weight:bold">PRIVILEGES</span>;
+</code></pre></div><ul>
 <li>grant与on之间是各种权限，例如:insert,select,update等</li>
 <li>on之后是数据库名和表名,第一个_表示所有的数据库，第二个_表示所有的表</li>
 <li>＠后可以跟域名或IP地址(%代表所有地址)，identified by后面的是登录用的密码，可以省略，即缺省密码或者叫空密码</li>
 </ul>
-
-<h2 id="常用命令">常用命令</h2>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">CREATE</span> <span style="color:#069;font-weight:bold">USER</span> <span style="color:#c30">&#39;newuser&#39;</span><span style="color:#555">@</span><span style="color:#c30">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#069;font-weight:bold">BY</span> <span style="color:#c30">&#39;password&#39;</span>;
+<h2 id="heading-2">常用命令</h2>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">CREATE</span> <span style="color:#069;font-weight:bold">USER</span> <span style="color:#c30">&#39;</span><span style="color:#c30">newuser</span><span style="color:#c30">&#39;</span><span style="color:#555">@</span><span style="color:#c30">&#39;</span><span style="color:#c30">localhost</span><span style="color:#c30">&#39;</span> IDENTIFIED <span style="color:#069;font-weight:bold">BY</span> <span style="color:#c30">&#39;</span><span style="color:#c30">password</span><span style="color:#c30">&#39;</span>;
 <span style="color:#069;font-weight:bold">select</span> <span style="color:#069;font-weight:bold">current_user</span>();
 <span style="color:#09f;font-style:italic">-- 授予权限需要以 root@localhost 登录
-</span><span style="color:#09f;font-style:italic">-- 创建数据库并授权
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#09f;font-style:italic">-- 创建数据库并授权
 </span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">CREATE</span> <span style="color:#069;font-weight:bold">DATABASE</span> wordpress <span style="color:#069;font-weight:bold">DEFAULT</span> <span style="color:#366">CHARACTER</span> <span style="color:#069;font-weight:bold">SET</span> utf8 <span style="color:#069;font-weight:bold">COLLATE</span> utf8_unicode_ci;
-<span style="color:#069;font-weight:bold">GRANT</span> <span style="color:#069;font-weight:bold">ALL</span> <span style="color:#069;font-weight:bold">ON</span> wordpress.<span style="color:#555">*</span> <span style="color:#069;font-weight:bold">TO</span> <span style="color:#c30">&#39;wordpressuser&#39;</span><span style="color:#555">@</span><span style="color:#c30">&#39;localhost&#39;</span> IDENTIFIED <span style="color:#069;font-weight:bold">BY</span> <span style="color:#c30">&#39;password&#39;</span>;
+<span style="color:#069;font-weight:bold">GRANT</span> <span style="color:#069;font-weight:bold">ALL</span> <span style="color:#069;font-weight:bold">ON</span> wordpress.<span style="color:#555">*</span> <span style="color:#069;font-weight:bold">TO</span> <span style="color:#c30">&#39;</span><span style="color:#c30">wordpressuser</span><span style="color:#c30">&#39;</span><span style="color:#555">@</span><span style="color:#c30">&#39;</span><span style="color:#c30">localhost</span><span style="color:#c30">&#39;</span> IDENTIFIED <span style="color:#069;font-weight:bold">BY</span> <span style="color:#c30">&#39;</span><span style="color:#c30">password</span><span style="color:#c30">&#39;</span>;
 FLUSH <span style="color:#069;font-weight:bold">PRIVILEGES</span>;
 
 <span style="color:#09f;font-style:italic">-- 创建相同结构
@@ -199,82 +191,130 @@ FLUSH <span style="color:#069;font-weight:bold">PRIVILEGES</span>;
 </span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">SHOW</span> <span style="color:#069;font-weight:bold">INDEX</span> <span style="color:#069;font-weight:bold">FROM</span> yourtable;
 <span style="color:#09f;font-style:italic">-- 字符集
 </span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">CREATE</span> <span style="color:#069;font-weight:bold">DATABASE</span> <span style="color:#069;font-weight:bold">IF</span> <span style="color:#069;font-weight:bold">NOT</span> <span style="color:#069;font-weight:bold">EXISTS</span> <span style="color:#555">`</span>gitlabhq_production<span style="color:#555">`</span> <span style="color:#069;font-weight:bold">DEFAULT</span> <span style="color:#366">CHARACTER</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#555">`</span>utf8<span style="color:#555">`</span> <span style="color:#069;font-weight:bold">COLLATE</span> <span style="color:#555">`</span>utf8_unicode_ci<span style="color:#555">`</span>;
-<span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#34;character_set_database&#34;</span>;
-<span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#34;collation_database&#34;</span>;</code></pre></div>
-<h3 id="导出-导入数据">导出/导入数据</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#09f;font-style:italic"># 备份数据
-</span><span style="color:#09f;font-style:italic"></span>    mysqldump -d -uroot -p mydb &gt;mydb_schema.sql
-    --no-create-info, -t   <span style="color:#09f;font-style:italic"># 只包含数据
-</span><span style="color:#09f;font-style:italic"></span>    --skip-triggers
-    --no-data, -d   
-    <span style="color:#09f;font-style:italic"># 导入数据
-</span><span style="color:#09f;font-style:italic"></span>    mysql -h host -u username -p password --default_character_set utf8 database &lt; file.sql
-    <span style="color:#09f;font-style:italic"># Load-data高速导入数据
-</span><span style="color:#09f;font-style:italic"></span>    load data <span style="color:#366">local</span> infile /root/out.txt into table table1 fields terminated by <span style="color:#a00;background-color:#faa">&#39;</span>,’ <span style="color:#555">(</span>field1,field2<span style="color:#555">)</span></code></pre></div>
-<h3 id="重置丢失的root密码">重置丢失的root密码</h3>
+<span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#34;</span><span style="color:#c30">character_set_database</span><span style="color:#c30">&#34;</span>;
+<span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#34;</span><span style="color:#c30">collation_database</span><span style="color:#c30">&#34;</span>;
+</code></pre></div><h3 id="heading-3">信息查询</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#09f;font-style:italic">-- 显示基础信息
+</span><span style="color:#09f;font-style:italic"></span>mysql <span style="color:#555">&gt;</span> status
+
+<span style="color:#09f;font-style:italic">-- 查询各数据库大小
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">SELECT</span> table_schema <span style="color:#c30">&#34;</span><span style="color:#c30">DB Name</span><span style="color:#c30">&#34;</span>, ROUND(<span style="color:#069;font-weight:bold">SUM</span>(data_length <span style="color:#555">+</span> index_length) <span style="color:#555">/</span> <span style="color:#f60">1024</span> <span style="color:#555">/</span> <span style="color:#f60">1024</span>, <span style="color:#f60">1</span>) <span style="color:#c30">&#34;</span><span style="color:#c30">DB Size in MB</span><span style="color:#c30">&#34;</span>
+<span style="color:#069;font-weight:bold">FROM</span> information_schema.tables <span style="color:#069;font-weight:bold">GROUP</span> <span style="color:#069;font-weight:bold">BY</span> table_schema;
+
+<span style="color:#09f;font-style:italic">-- 查询每个表的行数，注：对innodb这个是估算值
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">SELECT</span> <span style="color:#069;font-weight:bold">table_name</span>, table_rows <span style="color:#069;font-weight:bold">FROM</span> INFORMATION_SCHEMA.TABLES  <span style="color:#069;font-weight:bold">WHERE</span> TABLE_SCHEMA <span style="color:#555">=</span> <span style="color:#c30">&#39;</span><span style="color:#c30">your_db</span><span style="color:#c30">&#39;</span>;
+
+
+<span style="color:#09f;font-style:italic">-- 查询每个表大小
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">SELECT</span> <span style="color:#069;font-weight:bold">table_name</span> <span style="color:#069;font-weight:bold">AS</span> <span style="color:#555">`</span><span style="color:#069;font-weight:bold">Table</span><span style="color:#555">`</span>, round(((data_length <span style="color:#555">+</span> index_length) <span style="color:#555">/</span> <span style="color:#f60">1024</span> <span style="color:#555">/</span> <span style="color:#f60">1024</span>), <span style="color:#f60">2</span>) <span style="color:#555">`</span><span style="color:#069;font-weight:bold">Size</span> (MB)<span style="color:#555">`</span>
+<span style="color:#069;font-weight:bold">FROM</span> information_schema.TABLES <span style="color:#069;font-weight:bold">WHERE</span> table_schema <span style="color:#555">=</span> <span style="color:#c30">&#34;</span><span style="color:#c30">your_db</span><span style="color:#c30">&#34;</span>;
+
+<span style="color:#09f;font-style:italic">-- 所有用户信息
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">select</span> <span style="color:#069;font-weight:bold">distinct</span> concat(<span style="color:#c30">&#39;</span><span style="color:#c30">user: </span><span style="color:#c30">&#39;&#39;</span><span style="color:#c30">&#39;</span>,<span style="color:#069;font-weight:bold">user</span>,<span style="color:#c30">&#39;</span><span style="color:#c30">&#39;&#39;</span><span style="color:#c30">@</span><span style="color:#c30">&#39;&#39;</span><span style="color:#c30">&#39;</span>,<span style="color:#069;font-weight:bold">host</span>,<span style="color:#c30">&#39;</span><span style="color:#c30">&#39;&#39;</span><span style="color:#c30">;</span><span style="color:#c30">&#39;</span>) <span style="color:#069;font-weight:bold">as</span> query <span style="color:#069;font-weight:bold">from</span> mysql.<span style="color:#069;font-weight:bold">user</span>;
+</code></pre></div><h3 id="heading-4">备份数据</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 备份数据</span>
+mysqldump -d -uroot -p mydb &gt;mydb_schema.sql
+--no-create-info, -t   <span style="color:#09f;font-style:italic"># 只包含数据</span>
+--skip-triggers
+--no-data, -d   
+
+<span style="color:#09f;font-style:italic"># 备份多个数据库</span>
+--databases db1 db2 &gt; db12.sql
+    
+<span style="color:#09f;font-style:italic"># 备份全部数据库</span>
+mysqldump -u xulz  -p --all-databases &gt; all_db.sql
+</code></pre></div><p>其他选项：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">| gzip &gt; database_name.sql.gz
+<span style="color:#069;font-weight:bold">$(</span>date +%Y%m%d<span style="color:#069;font-weight:bold">)</span>
+</code></pre></div><p>执行脚本:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#099">#!/bin/bash
+</span><span style="color:#099"></span>
+<span style="color:#033">USER</span><span style="color:#555">=</span><span style="color:#c30">&#34;xulz&#34;</span>
+<span style="color:#033">PASSWORD</span><span style="color:#555">=</span><span style="color:#c30">&#34;&#34;</span>
+<span style="color:#09f;font-style:italic">#OUTPUT=&#34;/Users/xulz/DBs&#34;</span>
+
+<span style="color:#09f;font-style:italic">#rm &#34;$OUTPUTDIR/*gz&#34; &gt; /dev/null 2&gt;&amp;1</span>
+
+<span style="color:#033">databases</span><span style="color:#555">=</span><span style="color:#c30">`</span>mysql -u <span style="color:#033">$USER</span> -p<span style="color:#033">$PASSWORD</span> -e <span style="color:#c30">&#34;SHOW DATABASES;&#34;</span> | tr -d <span style="color:#c30">&#34;| &#34;</span> | grep -v Database<span style="color:#c30">`</span>
+
+<span style="color:#069;font-weight:bold">for</span> db in <span style="color:#033">$databases</span>; <span style="color:#069;font-weight:bold">do</span>
+<span style="color:#069;font-weight:bold">if</span> <span style="color:#555">[</span><span style="color:#555">[</span> <span style="color:#c30">&#34;</span><span style="color:#033">$db</span><span style="color:#c30">&#34;</span> !<span style="color:#555">=</span> <span style="color:#c30">&#34;information_schema&#34;</span> <span style="color:#555">]</span><span style="color:#555">]</span> <span style="color:#555">&amp;&amp;</span> <span style="color:#555">[</span><span style="color:#555">[</span> <span style="color:#c30">&#34;</span><span style="color:#033">$db</span><span style="color:#c30">&#34;</span> !<span style="color:#555">=</span> <span style="color:#c30">&#34;performance_schema&#34;</span> <span style="color:#555">]</span><span style="color:#555">]</span> <span style="color:#555">&amp;&amp;</span> <span style="color:#555">[</span><span style="color:#555">[</span> <span style="color:#c30">&#34;</span><span style="color:#033">$db</span><span style="color:#c30">&#34;</span> !<span style="color:#555">=</span> <span style="color:#c30">&#34;mysql&#34;</span> <span style="color:#555">]</span><span style="color:#555">]</span> <span style="color:#555">&amp;&amp;</span> <span style="color:#555">[</span><span style="color:#555">[</span> <span style="color:#c30">&#34;</span><span style="color:#033">$db</span><span style="color:#c30">&#34;</span> !<span style="color:#555">=</span> _* <span style="color:#555">]</span><span style="color:#555">]</span> ; <span style="color:#069;font-weight:bold">then</span>
+<span style="color:#366">echo</span> <span style="color:#c30">&#34;</span><span style="color:#c30">Dumping database: </span><span style="color:#033">$db</span><span style="color:#c30">&#34;</span>
+mysqldump -u <span style="color:#033">$USER</span> -p<span style="color:#033">$PASSWORD</span> --databases <span style="color:#033">$db</span> &gt; <span style="color:#c30">`</span>date +%Y%m%d<span style="color:#c30">`</span>.<span style="color:#033">$db</span>.sql
+<span style="color:#09f;font-style:italic"># gzip $OUTPUT/`date +%Y%m%d`.$db.sql</span>
+<span style="color:#069;font-weight:bold">fi</span>
+<span style="color:#069;font-weight:bold">done</span>
+
+
+</code></pre></div><h3 id="heading-5">恢复数据</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 导入数据</span>
+mysql -h host -u username -p password --default_character_set utf8 database &lt; file.sql
+
+
+mysqld database_name &lt; file.sql
+<span style="color:#09f;font-style:italic"># Load-data高速导入数据</span>
+load data <span style="color:#366">local</span> infile /root/out.txt into table table1 fields terminated by <span style="color:#a00;background-color:#faa">&#39;</span>,’ <span style="color:#555">(</span>field1,field2<span style="color:#555">)</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<span style="color:#09f;font-style:italic"># 恢复全部数据库</span>
+mysql -u xulz -p
+mysql&gt; <span style="color:#366">source</span> all_db.sql
+
+<span style="color:#09f;font-style:italic"># 或者</span>
+mysql -u xulz -p &lt; all_db.sql
+</code></pre></div><h3 id="root">重置丢失的root密码</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sudo mysqld_safe <span style="color:#09f;font-style:italic">--skip-grant-tables &amp;
 </span><span style="color:#09f;font-style:italic"></span>mysql <span style="color:#555">-</span>u root
 use mysql;
-<span style="color:#069;font-weight:bold">update</span> <span style="color:#069;font-weight:bold">user</span> <span style="color:#069;font-weight:bold">set</span> password<span style="color:#555">=</span>PASSWORD(<span style="color:#c30">&#34;newpass&#34;</span>) <span style="color:#069;font-weight:bold">where</span> <span style="color:#069;font-weight:bold">User</span><span style="color:#555">=</span><span style="color:#c30">&#39;root&#39;</span>;
-flush <span style="color:#069;font-weight:bold">privileges</span>;</code></pre></div>
-<h3 id="mysql-python的使用">mysql-python的使用</h3>
-
+<span style="color:#069;font-weight:bold">update</span> <span style="color:#069;font-weight:bold">user</span> <span style="color:#069;font-weight:bold">set</span> password<span style="color:#555">=</span>PASSWORD(<span style="color:#c30">&#34;</span><span style="color:#c30">newpass</span><span style="color:#c30">&#34;</span>) <span style="color:#069;font-weight:bold">where</span> <span style="color:#069;font-weight:bold">User</span><span style="color:#555">=</span><span style="color:#c30">&#39;</span><span style="color:#c30">root</span><span style="color:#c30">&#39;</span>;
+flush <span style="color:#069;font-weight:bold">privileges</span>;
+</code></pre></div><h3 id="mysql-python">mysql-python的使用</h3>
 <blockquote>
 <p>mysql-python 需要的mysql_config 包含在 libmysqlclient-dev 或 libmysqld-dev
 sudo apt-get install mysql-server mysql-client libmysqlclient-dev</p>
 </blockquote>
-
-<h2 id="性能">性能</h2>
-
-<h3 id="慢查询">慢查询</h3>
+<h2 id="heading-6">性能</h2>
+<h3 id="heading-7">慢查询</h3>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#09f;font-style:italic">-- 配置
-</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#39;%slow_query%&#39;</span>;
-<span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> log_output <span style="color:#555">=</span> <span style="color:#c30">&#39;FILE,TABLE&#39;</span>;
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#c30">&#39;</span><span style="color:#c30">%slow_query%</span><span style="color:#c30">&#39;</span>;
+<span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> log_output <span style="color:#555">=</span> <span style="color:#c30">&#39;</span><span style="color:#c30">FILE,TABLE</span><span style="color:#c30">&#39;</span>;
 <span style="color:#069;font-weight:bold">select</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">from</span> mysql.slow_log;
 <span style="color:#09f;font-style:italic">-- 或者
-</span><span style="color:#09f;font-style:italic"></span>mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> slow_query_log <span style="color:#555">=</span> <span style="color:#c30">&#39;ON&#39;</span>;
-mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> slow_query_log_file <span style="color:#555">=</span> <span style="color:#c30">&#39;/var/log/mysql/localhost-slow.log&#39;</span>;
-mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> log_queries_not_using_indexes <span style="color:#555">=</span> <span style="color:#c30">&#39;ON&#39;</span>;
+</span><span style="color:#09f;font-style:italic"></span>mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> slow_query_log <span style="color:#555">=</span> <span style="color:#c30">&#39;</span><span style="color:#c30">ON</span><span style="color:#c30">&#39;</span>;
+mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> slow_query_log_file <span style="color:#555">=</span> <span style="color:#c30">&#39;</span><span style="color:#c30">/var/log/mysql/localhost-slow.log</span><span style="color:#c30">&#39;</span>;
+mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">GLOBAL</span> log_queries_not_using_indexes <span style="color:#555">=</span> <span style="color:#c30">&#39;</span><span style="color:#c30">ON</span><span style="color:#c30">&#39;</span>;
 mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">SESSION</span> long_query_time <span style="color:#555">=</span> <span style="color:#f60">1</span>;  <span style="color:#09f;font-style:italic">-- 配置文件: long_query_time = 1
-</span><span style="color:#09f;font-style:italic"></span>mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">SESSION</span> min_examined_row_limit <span style="color:#555">=</span> <span style="color:#f60">100</span>;</code></pre></div>
-<h3 id="工具">工具</h3>
-
+</span><span style="color:#09f;font-style:italic"></span>mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">SET</span> <span style="color:#069;font-weight:bold">SESSION</span> min_examined_row_limit <span style="color:#555">=</span> <span style="color:#f60">100</span>;
+</code></pre></div><h3 id="heading-8">工具</h3>
 <ul>
 <li>自带工具: mysqldumpslow -t 5 -s at /var/log/mysql/localhost-slow.log</li>
 <li>第三方：<a href="https://www.percona.com/doc/percona-toolkit/3.0/pt-query-digest.html">pt-query-digest</a></li>
 </ul>
-
-<h3 id="其他命令">其他命令</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">select</span> <span style="color:#555">@@</span><span style="color:#069;font-weight:bold">global</span>.max_connections;
+<h3 id="heading-9">其他命令</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">select</span> <span style="color:#555">@</span><span style="color:#555">@</span><span style="color:#069;font-weight:bold">global</span>.max_connections;
 <span style="color:#069;font-weight:bold">show</span> variables <span style="color:#069;font-weight:bold">like</span> <span style="color:#a00;background-color:#faa">‘</span>max_connections<span style="color:#a00;background-color:#faa">’</span>;
-<span style="color:#069;font-weight:bold">SELECT</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">FROM</span>   information_schema.<span style="color:#069;font-weight:bold">STATISTICS</span> <span style="color:#069;font-weight:bold">WHERE</span>  TABLE_SCHEMA <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">DATABASE</span>()</code></pre></div>
-<h2 id="集群及高可用">集群及高可用</h2>
-
+<span style="color:#069;font-weight:bold">SELECT</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">FROM</span>   information_schema.<span style="color:#069;font-weight:bold">STATISTICS</span> <span style="color:#069;font-weight:bold">WHERE</span>  TABLE_SCHEMA <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">DATABASE</span>()
+</code></pre></div><h2 id="heading-10">集群及高可用</h2>
 <h3 id="percona-xtradb-cluster">Percona XtraDB Cluster</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">推荐至少3节点,每个节点包含全部数据的复制.主要作为读操作的扩展方案,写操作不会成倍scale.实现基于单实例并加入了写复制(同步).
+<pre><code>推荐至少3节点,每个节点包含全部数据的复制.主要作为读操作的扩展方案,写操作不会成倍scale.实现基于单实例并加入了写复制(同步).
 
-限制:复制只支持InnoDB存储引擎, 系统表复制只支持DDL.写吞吐量由最差的节点决定.不支持Lock查询</pre></div>
-<h3 id="用connector-j实现负载均衡">用Connector/J实现负载均衡</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Failover协议是“Multi-Host”链接模式中最基础的协议，“load balancing”、“replication”、“farbic”协议都基于Failover协议。</pre></div>
-<h3 id="中间件">中间件</h3>
-
+限制:复制只支持InnoDB存储引擎, 系统表复制只支持DDL.写吞吐量由最差的节点决定.不支持Lock查询
+</code></pre>
+<h3 id="connectorj">用Connector/J实现负载均衡</h3>
+<pre><code>Failover协议是“Multi-Host”链接模式中最基础的协议，“load balancing”、“replication”、“farbic”协议都基于Failover协议。
+</code></pre>
+<h3 id="heading-11">中间件</h3>
 <p>实现透明访问分布式数据库集群中的各个分库分表</p>
-
 <ul>
 <li><a href="https://github.com/sysown/proxysql">ProxySQL</a> : High-performance MySQL proxy</li>
 <li><a href="https://github.com/flike/kingshard">kingshard</a></li>
 </ul>
-
-<h3 id="一些工具">一些工具</h3>
-
+<h3 id="heading-12">一些工具</h3>
 <ul>
 <li><a href="https://github.com/youtube/vitess">vitess</a>: 工具集,youtube在用</li>
 <li><a href="https://github.com/github/orchestrator">orchestrator</a>: MySQL replication topology management and HA</li>
 <li><a href="https://github.com/pinterest/mysql_utils">mysql_utils</a>:Pinterest MySQL Management Tools</li>
 </ul>
-
-<h2 id="资源">资源</h2>
-
+<h2 id="heading-13">资源</h2>
 <ul>
 <li><a href="https://dev.mysql.com/downloads/repo/yum/">MySQL Yum Repository</a></li>
 <li><a href="https://www.percona.com/software/mysql-database/percona-server">Percona Server for MySQL</a></li>
@@ -282,14 +322,46 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
     </div>
     <footer class="post-footer">
      
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/mysql/" >https://xulizhao.com/blog/mysql/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
  
 <div class="post-tags">     
      
-    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    <a href="https://xulizhao.com/tags/ops" rel="tag" title="ops">#ops#</a>
     
-    <a href="/tags/mysql" rel="tag" title="mysql">#mysql#</a>
+    <a href="https://xulizhao.com/tags/mysql" rel="tag" title="mysql">#mysql#</a>
     
-    <a href="/tags/database" rel="tag" title="database">#database#</a>
+    <a href="https://xulizhao.com/tags/database" rel="tag" title="database">#database#</a>
     
 </div>
 
@@ -298,38 +370,21 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/postgresql/" rel="next" title="PostgreSQL">
-        <i class="fa fa-chevron-left"></i> PostgreSQL
+        <a href="https://xulizhao.com/blog/redis/" rel="next" title="Redis">
+        <i class="fa fa-chevron-left"></i> Redis
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/redis/" rel="prev" title="Redis">
-        Redis <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/postgresql/" rel="prev" title="PostgreSQL">
+        PostgreSQL <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -364,22 +419,23 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -389,9 +445,9 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -399,25 +455,9 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -427,35 +467,38 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#安装及配置">安装及配置</a>
-<ul>
-<li><a href="#授权登录">授权登录</a></li>
-</ul></li>
-<li><a href="#常用命令">常用命令</a>
-<ul>
-<li><a href="#导出-导入数据">导出/导入数据</a></li>
-<li><a href="#重置丢失的root密码">重置丢失的root密码</a></li>
-<li><a href="#mysql-python的使用">mysql-python的使用</a></li>
-</ul></li>
-<li><a href="#性能">性能</a>
-<ul>
-<li><a href="#慢查询">慢查询</a></li>
-<li><a href="#工具">工具</a></li>
-<li><a href="#其他命令">其他命令</a></li>
-</ul></li>
-<li><a href="#集群及高可用">集群及高可用</a>
-<ul>
-<li><a href="#percona-xtradb-cluster">Percona XtraDB Cluster</a></li>
-<li><a href="#用connector-j实现负载均衡">用Connector/J实现负载均衡</a></li>
-<li><a href="#中间件">中间件</a></li>
-<li><a href="#一些工具">一些工具</a></li>
-</ul></li>
-<li><a href="#资源">资源</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">安装及配置</a>
+      <ul>
+        <li><a href="#heading-1">授权登录</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">常用命令</a>
+      <ul>
+        <li><a href="#heading-3">信息查询</a></li>
+        <li><a href="#heading-4">备份数据</a></li>
+        <li><a href="#heading-5">恢复数据</a></li>
+        <li><a href="#root">重置丢失的root密码</a></li>
+        <li><a href="#mysql-python">mysql-python的使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-6">性能</a>
+      <ul>
+        <li><a href="#heading-7">慢查询</a></li>
+        <li><a href="#heading-8">工具</a></li>
+        <li><a href="#heading-9">其他命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-10">集群及高可用</a>
+      <ul>
+        <li><a href="#percona-xtradb-cluster">Percona XtraDB Cluster</a></li>
+        <li><a href="#connectorj">用Connector/J实现负载均衡</a></li>
+        <li><a href="#heading-11">中间件</a></li>
+        <li><a href="#heading-12">一些工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-13">资源</a></li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -469,18 +512,18 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -489,36 +532,58 @@ mysql<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bo
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

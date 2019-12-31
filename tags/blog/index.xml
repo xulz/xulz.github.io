@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on XuLizhao &#39;s Notes</title>
-    <link>/tags/blog/</link>
-    <description>Recent content in Blog on XuLizhao &#39;s Notes</description>
+    <title>blog on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/blog/</link>
+    <description>Recent content in blog on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 04 Oct 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go In Action</title>
-      <link>/play/blog-hugo/</link>
+      <link>https://xulizhao.com/play/blog-hugo/</link>
       <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/play/blog-hugo/</guid>
-      <description>更新下关于静态博客Hugo的旧文, 本博客现在就是使用Hugo生成. 最早知道Hugo是在听完&amp;rsquo;内核恐慌&amp;rsquo;播客的一期节目</description>
+      <guid>https://xulizhao.com/play/blog-hugo/</guid>
+      <description>更新下关于静态博客Hugo的旧文, 本博客现在就是使用Hugo生成. 最早知道Hugo是在听完&#39;内核恐慌&#39;播客的一期节目,其实之前已经通过Git</description>
     </item>
     
   </channel>

@@ -1,0 +1,741 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Maven构建工具 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Maven构建工具">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Maven构建工具 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/maven/" itemprop="url">
+        Maven构建工具
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-01-29">
+    2017-01-29
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">1431 字 ~3分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Maven是Java开发中最常用的项目依赖管理工具。</p>
+<p>虽然喜新厌旧的更喜欢Gradle，可在Java项目中还是会常常用到Maven，干脆做些记录。</p>
+<h2 id="heading">基础</h2>
+<h3 id="heading-1">安装</h3>
+<p>解压安装包后需要设置环境变量：M2_HOME，之后把M2_HOME/bin加到PATH。</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># Ubuntu</span>
+sudo apt install maven
+
+mvn -version
+</code></pre></div><p>通过wrapper的方式，其他人可以不用安装Maven。</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 安装设置wrapper</span>
+mvn -N io.takari:maven:wrapper
+
+<span style="color:#09f;font-style:italic"># 执行wrapper</span>
+./mvnw clean package
+</code></pre></div><h3 id="heading-2">运行命令</h3>
+<p>运行mvn会在本地目录解析pom.xml(POM即Project Object Model)，依赖下载到位于 ~/.m2/repository的本地仓库。</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn <span style="color:#366">test</span>
+mvn package
+mvn clean package
+
+<span style="color:#09f;font-style:italic"># IDEA支持</span>
+mvn idea:idea
+
+</code></pre></div><p>一些选项说明：</p>
+<ul>
+<li>-X,&ndash;debug</li>
+<li>-o  离线模式，不检查线上依赖更新</li>
+<li>-ff, &ndash;fail-fast</li>
+</ul>
+<h3 id="heading-3">生命周期</h3>
+<p>生命周期包含各种阶段，各阶段通过插件和目标实现具体的任务。</p>
+<p>常用阶段/phase：</p>
+<ul>
+<li>clean: 先清除之前的构建目标，即./target/目录</li>
+<li>compile: 编译源码</li>
+<li>package: 创建jar部署包</li>
+<li>test: 运行测试</li>
+<li>install: 编译，构建并安装到本地仓库</li>
+<li>deploy: 部署到远程仓库等</li>
+</ul>
+<p>一些生命周期目标通过插件实现。</p>
+<h3 id="heading-4">通过模板快速创建项目</h3>
+<p>通过archtype插件生成项目模板：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn archetype:generate
+</code></pre></div><p><strong>快速创建Java项目</strong></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn archetype:generate
+	-DgroupId<span style="color:#555">=</span>com.xulizhao.demo
+	-DartifactId<span style="color:#555">=</span>java-practice
+	-DarchetypeArtifactId<span style="color:#555">=</span>maven-archetype-quickstart
+	-DinteractiveMode<span style="color:#555">=</span><span style="color:#366">false</span>
+</code></pre></div><h3 id="heading-5">忽略测试</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn clean install -DskipTests
+mvn package -Dmaven.test.skip<span style="color:#555">=</span><span style="color:#366">true</span>
+<span style="color:#09f;font-style:italic"># maven.test.skip同时控制maven-compiler-plugin和maven-surefire-plugin两个插件的行为，即跳过编译和测试</span>
+</code></pre></div><p>或者</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#309;font-weight:bold">&lt;properties</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;skipTest</span><span style="color:#309;font-weight:bold">&gt;</span>true<span style="color:#309;font-weight:bold">&lt;/skipTest&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;/properties&gt;</span>
+</code></pre></div><p>打包时忽略错误：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;plugin</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.maven.plugins<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>maven-surefire-plugin<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;skip</span><span style="color:#309;font-weight:bold">&gt;</span>true<span style="color:#309;font-weight:bold">&lt;/skip&gt;</span><span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic">跳过单元测试</span><span style="color:#09f;font-style:italic">--&gt;</span>
+        <span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic">&lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;</span><span style="color:#09f;font-style:italic">--&gt;</span><span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic">忽略单元测试类的编译错误</span><span style="color:#09f;font-style:italic">--&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/plugin&gt;</span>
+</code></pre></div><h2 id="pomxml">配置pom.xml</h2>
+<h3 id="gav">GAV</h3>
+<p>即构成一个POM或依赖的基本三要素，来确定一个唯一的标识：</p>
+<ul>
+<li>groupId</li>
+<li>artifactId</li>
+<li>version</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;project</span><span style="color:#309;font-weight:bold">&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;modelVersion</span><span style="color:#309;font-weight:bold">&gt;</span>4.0.0<span style="color:#309;font-weight:bold">&lt;/modelVersion&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>com.xulizhao<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>demo<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>1.0-SNAPSHOT<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+  <span style="color:#309;font-weight:bold">&lt;name</span><span style="color:#309;font-weight:bold">&gt;</span>demo-project<span style="color:#309;font-weight:bold">&lt;/name&gt;</span>
+   <span style="color:#309;font-weight:bold">&lt;packaging</span><span style="color:#309;font-weight:bold">&gt;</span>jar<span style="color:#309;font-weight:bold">&lt;/packaging&gt;</span>
+</code></pre></div><h3 id="heading-6">常用属性</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">	<span style="color:#309;font-weight:bold">&lt;properties</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;project.build.sourceEncoding</span><span style="color:#309;font-weight:bold">&gt;</span>UTF-8<span style="color:#309;font-weight:bold">&lt;/project.build.sourceEncoding&gt;</span>
+		
+        <span style="color:#309;font-weight:bold">&lt;maven.compiler.source</span><span style="color:#309;font-weight:bold">&gt;</span>1.8<span style="color:#309;font-weight:bold">&lt;/maven.compiler.source&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;maven.compiler.target</span><span style="color:#309;font-weight:bold">&gt;</span>1.8<span style="color:#309;font-weight:bold">&lt;/maven.compiler.target&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/properties&gt;</span>
+</code></pre></div><h3 id="heading-7">多模块项目</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;project</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;modelVersion</span><span style="color:#309;font-weight:bold">&gt;</span>4.0.0<span style="color:#309;font-weight:bold">&lt;/modelVersion&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>com.xulizhao<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>guava<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>0.1.0-SNAPSHOT<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;name</span><span style="color:#309;font-weight:bold">&gt;</span>guava<span style="color:#309;font-weight:bold">&lt;/name&gt;</span>
+
+    <span style="color:#309;font-weight:bold">&lt;parent</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>com.xulizhao<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>parent-java<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>0.0.1-SNAPSHOT<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;relativePath</span><span style="color:#309;font-weight:bold">&gt;</span>../parent-java<span style="color:#309;font-weight:bold">&lt;/relativePath&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/parent&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;modules</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;module</span><span style="color:#309;font-weight:bold">&gt;</span>core-java-collections<span style="color:#309;font-weight:bold">&lt;/module&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;module</span><span style="color:#309;font-weight:bold">&gt;</span>core-java-networking<span style="color:#309;font-weight:bold">&lt;/module&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/modules&gt;</span>
+
+<span style="color:#309;font-weight:bold">&lt;/project&gt;</span>
+</code></pre></div><h2 id="heading-8">打包</h2>
+<h3 id="jar">打包jar</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;build</span><span style="color:#309;font-weight:bold">&gt;</span>
+		<span style="color:#309;font-weight:bold">&lt;finalName</span><span style="color:#309;font-weight:bold">&gt;</span>demoApp<span style="color:#309;font-weight:bold">&lt;/finalName&gt;</span>
+		<span style="color:#309;font-weight:bold">&lt;plugins</span><span style="color:#309;font-weight:bold">&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;plugin</span><span style="color:#309;font-weight:bold">&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.maven.plugins<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>maven-compiler-plugin<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>2.3.2<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+					<span style="color:#309;font-weight:bold">&lt;source</span><span style="color:#309;font-weight:bold">&gt;</span>1.8<span style="color:#309;font-weight:bold">&lt;/source&gt;</span>
+					<span style="color:#309;font-weight:bold">&lt;target</span><span style="color:#309;font-weight:bold">&gt;</span>1.8<span style="color:#309;font-weight:bold">&lt;/target&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;/plugin&gt;</span>
+
+			<span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic"> Make this jar executable </span><span style="color:#09f;font-style:italic">--&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;plugin</span><span style="color:#309;font-weight:bold">&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.maven.plugins<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>maven-jar-plugin<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+				  <span style="color:#309;font-weight:bold">&lt;archive</span><span style="color:#309;font-weight:bold">&gt;</span>
+					<span style="color:#309;font-weight:bold">&lt;manifest</span><span style="color:#309;font-weight:bold">&gt;</span>
+						<span style="color:#309;font-weight:bold">&lt;mainClass</span><span style="color:#309;font-weight:bold">&gt;</span>com.xulizhao.demo.App<span style="color:#309;font-weight:bold">&lt;/mainClass&gt;</span>
+					<span style="color:#309;font-weight:bold">&lt;/manifest&gt;</span>
+				  <span style="color:#309;font-weight:bold">&lt;/archive&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;/plugin&gt;</span>
+		<span style="color:#309;font-weight:bold">&lt;/plugins&gt;</span>
+	<span style="color:#309;font-weight:bold">&lt;/build&gt;</span>
+</code></pre></div><h3 id="heading-9">打包依赖</h3>
+<p>默认不会添加项目依赖到jar，</p>
+<h4 id="heading-10">复制依赖到文件夹</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">        <span style="color:#309;font-weight:bold">&lt;plugin</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.maven.plugins<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>maven-jar-plugin<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;archive</span><span style="color:#309;font-weight:bold">&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;manifest</span><span style="color:#309;font-weight:bold">&gt;</span>
+                        <span style="color:#309;font-weight:bold">&lt;addClasspath</span><span style="color:#309;font-weight:bold">&gt;</span>true<span style="color:#309;font-weight:bold">&lt;/addClasspath&gt;</span>
+                        <span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic">&lt;mainClass&gt;&lt;/mainClass&gt;</span><span style="color:#09f;font-style:italic">--&gt;</span>
+                        <span style="color:#309;font-weight:bold">&lt;classpathPrefix</span><span style="color:#309;font-weight:bold">&gt;</span>dependency-jars/<span style="color:#309;font-weight:bold">&lt;/classpathPrefix&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;/manifest&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;manifestEntries</span><span style="color:#309;font-weight:bold">&gt;</span>
+                        <span style="color:#309;font-weight:bold">&lt;Class-Path</span><span style="color:#309;font-weight:bold">&gt;</span>.<span style="color:#309;font-weight:bold">&lt;/Class-Path&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;/manifestEntries&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;/archive&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/plugin&gt;</span>
+        <span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic"> 复制依赖库 </span><span style="color:#09f;font-style:italic">--&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;plugin</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.maven.plugins<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>maven-dependency-plugin<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>2.5.1<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;executions</span><span style="color:#309;font-weight:bold">&gt;</span>
+              <span style="color:#309;font-weight:bold">&lt;execution</span><span style="color:#309;font-weight:bold">&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;id</span><span style="color:#309;font-weight:bold">&gt;</span>copy-dependencies<span style="color:#309;font-weight:bold">&lt;/id&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;phase</span><span style="color:#309;font-weight:bold">&gt;</span>package<span style="color:#309;font-weight:bold">&lt;/phase&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;goals</span><span style="color:#309;font-weight:bold">&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;goal</span><span style="color:#309;font-weight:bold">&gt;</span>copy-dependencies<span style="color:#309;font-weight:bold">&lt;/goal&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;/goals&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+                  <span style="color:#309;font-weight:bold">&lt;includeScope</span><span style="color:#309;font-weight:bold">&gt;</span>runtime<span style="color:#309;font-weight:bold">&lt;/includeScope&gt;</span>
+                  <span style="color:#309;font-weight:bold">&lt;outputDirectory</span><span style="color:#309;font-weight:bold">&gt;</span>${project.build.directory}/dependency-jars/<span style="color:#309;font-weight:bold">&lt;/outputDirectory&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+              <span style="color:#309;font-weight:bold">&lt;/execution&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;/executions&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/plugin&gt;</span>
+</code></pre></div><h4 id="-maven-shade-plugin">使用插件 Maven Shade Plugin</h4>
+<p>打包成fat jar(也叫Uber Jar)并添加Main入口，这里的shade意味着类会被重命名以避免依赖间冲突。</p>
+<p>一些例子参考<a href="https://maven.apache.org/plugins/maven-shade-plugin/">官网Maven Shade Plugin</a></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;plugin</span><span style="color:#309;font-weight:bold">&gt;</span>
+	<span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.maven.plugins<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+	<span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>maven-shade-plugin<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+	<span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>3.2.1<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+	<span style="color:#309;font-weight:bold">&lt;executions</span><span style="color:#309;font-weight:bold">&gt;</span>
+		<span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic"> Attach the shade into the package phase </span><span style="color:#09f;font-style:italic">--&gt;</span>
+		<span style="color:#309;font-weight:bold">&lt;execution</span><span style="color:#309;font-weight:bold">&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;phase</span><span style="color:#309;font-weight:bold">&gt;</span>package<span style="color:#309;font-weight:bold">&lt;/phase&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;goals</span><span style="color:#309;font-weight:bold">&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;goal</span><span style="color:#309;font-weight:bold">&gt;</span>shade<span style="color:#309;font-weight:bold">&lt;/goal&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;/goals&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+                <span style="color:#09f;font-style:italic">&lt;!--</span><span style="color:#09f;font-style:italic">去掉不必要的类，缩小jar尺寸.需要JDK8+ </span><span style="color:#09f;font-style:italic">--&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;minimizeJar</span><span style="color:#309;font-weight:bold">&gt;</span>true<span style="color:#309;font-weight:bold">&lt;/minimizeJar&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;transformers</span><span style="color:#309;font-weight:bold">&gt;</span>
+					<span style="color:#309;font-weight:bold">&lt;transformer</span> <span style="color:#309">implementation=</span><span style="color:#c30">&#34;org.apache.maven.plugins.shade.resource.ManifestResourceTransformer&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>
+						<span style="color:#309;font-weight:bold">&lt;mainClass</span><span style="color:#309;font-weight:bold">&gt;</span>com.xulizhao.demo.App<span style="color:#309;font-weight:bold">&lt;/mainClass&gt;</span>
+					<span style="color:#309;font-weight:bold">&lt;/transformer&gt;</span>
+				<span style="color:#309;font-weight:bold">&lt;/transformers&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;artifactSet</span><span style="color:#309;font-weight:bold">&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;includes</span><span style="color:#309;font-weight:bold">&gt;</span>
+                        <span style="color:#309;font-weight:bold">&lt;include</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.jmeter:*<span style="color:#309;font-weight:bold">&lt;/include&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;/includes&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;excludes</span><span style="color:#309;font-weight:bold">&gt;</span>
+                        <span style="color:#309;font-weight:bold">&lt;exclude</span><span style="color:#309;font-weight:bold">&gt;</span>org.slf4j:*<span style="color:#309;font-weight:bold">&lt;/exclude&gt;</span>
+                        <span style="color:#309;font-weight:bold">&lt;exclude</span><span style="color:#309;font-weight:bold">&gt;</span>org.apache.logging.log4j:*<span style="color:#309;font-weight:bold">&lt;/exclude&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;/excludes&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;/artifactSet&gt;</span>
+			<span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+		<span style="color:#309;font-weight:bold">&lt;/execution&gt;</span>
+	<span style="color:#309;font-weight:bold">&lt;/executions&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/plugin&gt;</span>
+</code></pre></div><h4 id="classes">提取依赖classes</h4>
+<p>使用maven-assembly插件，仅适用于依赖库不多的情况。</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;plugin</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>maven-assembly-plugin<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;executions</span><span style="color:#309;font-weight:bold">&gt;</span>
+          <span style="color:#309;font-weight:bold">&lt;execution</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;phase</span><span style="color:#309;font-weight:bold">&gt;</span>package<span style="color:#309;font-weight:bold">&lt;/phase&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;goals</span><span style="color:#309;font-weight:bold">&gt;</span>
+              <span style="color:#309;font-weight:bold">&lt;goal</span><span style="color:#309;font-weight:bold">&gt;</span>single<span style="color:#309;font-weight:bold">&lt;/goal&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;/goals&gt;</span>
+          <span style="color:#309;font-weight:bold">&lt;/execution&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/executions&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;configuration</span><span style="color:#309;font-weight:bold">&gt;</span>
+          <span style="color:#309;font-weight:bold">&lt;descriptorRefs</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;descriptorRef</span><span style="color:#309;font-weight:bold">&gt;</span>jar-with-dependencies<span style="color:#309;font-weight:bold">&lt;/descriptorRef&gt;</span>
+          <span style="color:#309;font-weight:bold">&lt;/descriptorRefs&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/configuration&gt;</span>
+ <span style="color:#309;font-weight:bold">&lt;/plugin&gt;</span>
+</code></pre></div><h3 id="heading-11">打包资源文件</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">   <span style="color:#309;font-weight:bold">&lt;build</span><span style="color:#309;font-weight:bold">&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;resources</span><span style="color:#309;font-weight:bold">&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;resource</span><span style="color:#309;font-weight:bold">&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;directory</span><span style="color:#309;font-weight:bold">&gt;</span>src/main/java<span style="color:#309;font-weight:bold">&lt;/directory&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;includes</span><span style="color:#309;font-weight:bold">&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;include</span><span style="color:#309;font-weight:bold">&gt;</span>**/*.dll<span style="color:#309;font-weight:bold">&lt;/include&gt;</span>
+                    <span style="color:#309;font-weight:bold">&lt;include</span><span style="color:#309;font-weight:bold">&gt;</span>**/*.so.*<span style="color:#309;font-weight:bold">&lt;/include&gt;</span>
+                <span style="color:#309;font-weight:bold">&lt;/includes&gt;</span>
+            <span style="color:#309;font-weight:bold">&lt;/resource&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;/resources&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/build&gt;</span>
+</code></pre></div><h2 id="heading-12">依赖</h2>
+<h3 id="heading-13">显示依赖关系</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 在控制台显示依赖树
+mvn dependency:tree -Dverbose
+
+# 输出到文件
+mvn dependency:tree -Dverbose -DoutputFile=/home/xulz/maven-dependencies
+</code></pre></div><h3 id="heading-14">显示依赖新版本</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mvn versions:display-dependency-updates
+</code></pre></div><h3 id="heading-15">依赖本地库</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#309;font-weight:bold">&lt;dependency</span><span style="color:#309;font-weight:bold">&gt;</span>
+      <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>com.xulizhao.demo<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>mylib<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>1.0<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+      <span style="color:#309;font-weight:bold">&lt;scope</span><span style="color:#309;font-weight:bold">&gt;</span>system<span style="color:#309;font-weight:bold">&lt;/scope&gt;</span>
+      <span style="color:#309;font-weight:bold">&lt;systemPath</span><span style="color:#309;font-weight:bold">&gt;</span>${project.basedir}/libs/mylib-0.0.1-SNAPSHOT.jar<span style="color:#309;font-weight:bold">&lt;/systemPath&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/dependency&gt;</span>
+</code></pre></div><h3 id="heading-16">指定版本</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;dependency</span><span style="color:#309;font-weight:bold">&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;groupId</span><span style="color:#309;font-weight:bold">&gt;</span>net.sf.json-lib<span style="color:#309;font-weight:bold">&lt;/groupId&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;artifactId</span><span style="color:#309;font-weight:bold">&gt;</span>json-lib<span style="color:#309;font-weight:bold">&lt;/artifactId&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;version</span><span style="color:#309;font-weight:bold">&gt;</span>2.4<span style="color:#309;font-weight:bold">&lt;/version&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;classifier</span><span style="color:#309;font-weight:bold">&gt;</span>jdk15<span style="color:#309;font-weight:bold">&lt;/classifier&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/dependency&gt;</span>
+</code></pre></div><h2 id="heading-17">插件</h2>
+<h3 id="heading-18">常用插件</h3>
+<ul>
+<li><a href="http://maven.apache.org/plugins/maven-source-plugin/">maven-source-plugin</a>: 打包源码</li>
+<li>maven-surefire-plugin : 多线程加速测试执行</li>
+<li><a href="https://github.com/git-commit-id/maven-git-commit-id-plugin">maven-git-commit-id-plugin</a>: 附带git版本信息</li>
+</ul>
+<h2 id="heading-19">使用技巧</h2>
+<h3 id="heading-20">库检索</h3>
+<ul>
+<li><a href="http://search.maven.org/#search">官方中央仓库</a></li>
+<li><a href="https://mvnrepository.com">另一个仓库</a>: 速度更快些</li>
+</ul>
+<h3 id="heading-21">镜像</h3>
+<p>以使用阿里云为例，修改下面的其中一个配置</p>
+<ul>
+<li>~/.m2/settings.xml</li>
+<li>maven根目录下的conf文件夹中的setting.xml文件</li>
+</ul>
+<p>内容如下：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#309;font-weight:bold">&lt;settings</span> <span style="color:#309">xmlns=</span><span style="color:#c30">&#34;http://maven.apache.org/SETTINGS/1.1.0&#34;</span> <span style="color:#309">xmlns:xsi=</span><span style="color:#c30">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>    
+ <span style="color:#309">xsi:schemaLocation=</span><span style="color:#c30">&#34;http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd&#34;</span><span style="color:#309;font-weight:bold">&gt;</span>  
+<span style="color:#309;font-weight:bold">&lt;mirrors</span><span style="color:#309;font-weight:bold">&gt;</span>    
+    <span style="color:#309;font-weight:bold">&lt;mirror</span><span style="color:#309;font-weight:bold">&gt;</span>      
+        <span style="color:#309;font-weight:bold">&lt;id</span><span style="color:#309;font-weight:bold">&gt;</span>alimaven<span style="color:#309;font-weight:bold">&lt;/id&gt;</span>      
+        <span style="color:#309;font-weight:bold">&lt;name</span><span style="color:#309;font-weight:bold">&gt;</span>aliyun Central<span style="color:#309;font-weight:bold">&lt;/name&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;url</span><span style="color:#309;font-weight:bold">&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span style="color:#309;font-weight:bold">&lt;/url&gt;</span>
+        <span style="color:#309;font-weight:bold">&lt;mirrorOf</span><span style="color:#309;font-weight:bold">&gt;</span>central<span style="color:#309;font-weight:bold">&lt;/mirrorOf&gt;</span>
+    <span style="color:#309;font-weight:bold">&lt;/mirror&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/mirrors&gt;</span>
+<span style="color:#309;font-weight:bold">&lt;/settings&gt;</span>
+
+
+</code></pre></div><h2 id="heading-22">资源</h2>
+<ul>
+<li><a href="https://maven.apache.org/">maven官网</a></li>
+<li><a href="https://www.vogella.com/tutorials/ApacheMaven/article.html">Maven for building Java applications - Tutorial</a></li>
+</ul>
+<p><strong>其他构建系统</strong></p>
+<ul>
+<li><a href="https://github.com/pantsbuild/pants">Pants构建系统</a>: Python实现的多语言支持项目构建</li>
+<li><a href="https://github.com/facebook/buck">Buck</a>:Facebook开源快速模块构建工具，java实现。rule/target/file(BUCK)</li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/maven/" >https://xulizhao.com/blog/maven/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/java" rel="tag" title="java">#java#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java-lib/" rel="next" title="Java常用库">
+        <i class="fa fa-chevron-left"></i> Java常用库
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/python-unicode/" rel="prev" title="Python的Unicode使用">
+        Python的Unicode使用 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">基础</a>
+      <ul>
+        <li><a href="#heading-1">安装</a></li>
+        <li><a href="#heading-2">运行命令</a></li>
+        <li><a href="#heading-3">生命周期</a></li>
+        <li><a href="#heading-4">通过模板快速创建项目</a></li>
+        <li><a href="#heading-5">忽略测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#pomxml">配置pom.xml</a>
+      <ul>
+        <li><a href="#gav">GAV</a></li>
+        <li><a href="#heading-6">常用属性</a></li>
+        <li><a href="#heading-7">多模块项目</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-8">打包</a>
+      <ul>
+        <li><a href="#jar">打包jar</a></li>
+        <li><a href="#heading-9">打包依赖</a></li>
+        <li><a href="#heading-11">打包资源文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-12">依赖</a>
+      <ul>
+        <li><a href="#heading-13">显示依赖关系</a></li>
+        <li><a href="#heading-14">显示依赖新版本</a></li>
+        <li><a href="#heading-15">依赖本地库</a></li>
+        <li><a href="#heading-16">指定版本</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-17">插件</a>
+      <ul>
+        <li><a href="#heading-18">常用插件</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-19">使用技巧</a>
+      <ul>
+        <li><a href="#heading-20">库检索</a></li>
+        <li><a href="#heading-21">镜像</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-22">资源</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jmeter on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/jmeter/</link>
+    <description>Recent content in jmeter on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 28 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xulizhao.com/tags/jmeter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JMeter基础笔记</title>
+      <link>https://xulizhao.com/blog/jmeter/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/jmeter/</guid>
+      <description>&lt;p&gt;JMeter的使用不能说最频繁，但是性能测试之前多次使用过，每次都有些时间间隔。&lt;/p&gt;
+&lt;p&gt;汇总下之前零散的笔记供参考.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JMeter高级使用笔记</title>
+      <link>https://xulizhao.com/blog/jmeter-advanced/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/jmeter-advanced/</guid>
+      <description>&lt;p&gt;JMeter的使用不能说最频繁，但是性能测试之前多次使用过，每次都有些时间间隔。&lt;/p&gt;
+&lt;p&gt;汇总下之前零散的笔记供参考。&lt;/p&gt;
+&lt;p&gt;接上文&lt;a href=&#34;https://xulizhao.com/blog/jmeter/&#34;&gt;JMeter基础篇&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

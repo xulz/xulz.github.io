@@ -1,1147 +1,1476 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>XuLizhao &#39;s Notes</title>
-    <link>/</link>
+    <link>https://xulizhao.com/</link>
     <description>Recent content on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>谈编程语言</title>
+      <link>https://xulizhao.com/blog/programming-language/</link>
+      <pubDate>Mon, 30 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/programming-language/</guid>
+      <description>&lt;p&gt;今年是变化的一年，自己最大的收获就是认识到视野和选择远比努力重要。&lt;/p&gt;
+&lt;p&gt;打开视野后，感觉自己以前对于编程语言的理解还是太片面了，所以重新谈谈现在的认识。&lt;/p&gt;
+&lt;p&gt;一句话总结的话，还是那句老话：没有最好语言，只有最适合的语言。 语言只是解决问题的一个工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DDD/领域驱动设计</title>
+      <link>https://xulizhao.com/blog/ddd/</link>
+      <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/ddd/</guid>
+      <description>&lt;p&gt;之前了解到微服务、中台等实践的背后都和领域驱动设计紧密相关，上周从图书馆借了2本相关书来读，记点笔记加深理解。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spring实战</title>
+      <link>https://xulizhao.com/blog/spring-in-action/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/spring-in-action/</guid>
+      <description>&lt;p&gt;Spring5 学习记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>matplotlib绘图库</title>
+      <link>https://xulizhao.com/blog/matplotlib/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/matplotlib/</guid>
+      <description>&lt;p&gt;Python库记录系列.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>加解密算法学习</title>
+      <link>https://xulizhao.com/blog/crypto/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/crypto/</guid>
+      <description>&lt;p&gt;关于SSL，TLS，对称加密，非对称(公私钥)加密等的学习笔记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Protocol Buffers协议笔记</title>
+      <link>https://xulizhao.com/blog/protobuf/</link>
+      <pubDate>Tue, 24 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/protobuf/</guid>
+      <description>&lt;p&gt;之前二进制序列化火热时Thrift和Protocol Buffers是最常用的协议，这次因为要写protobuf的Java程序，做些简单的记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sipp压测工具介绍</title>
+      <link>https://xulizhao.com/blog/sipp/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/sipp/</guid>
+      <description>&lt;p&gt;把sipp这个性能测试工具的笔记独立出来，更多VOIP知识参考&lt;a href=&#34;https://xulizhao.com/blog/voip/&#34;&gt;VOIP学习笔记&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>了解VOIP</title>
+      <link>https://xulizhao.com/blog/voip/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/voip/</guid>
+      <description>&lt;p&gt;VOIP简单说就是网络电话。&lt;/p&gt;
+&lt;p&gt;按：最近想找做个Java版的VOIP简单demo，发现官方居然没有个正经库。网上这方面的一些介绍文章也已经过时，特整理一份供大家参考。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JMeter基础笔记</title>
+      <link>https://xulizhao.com/blog/jmeter/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/jmeter/</guid>
+      <description>&lt;p&gt;JMeter的使用不能说最频繁，但是性能测试之前多次使用过，每次都有些时间间隔。&lt;/p&gt;
+&lt;p&gt;汇总下之前零散的笔记供参考.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JMeter高级使用笔记</title>
+      <link>https://xulizhao.com/blog/jmeter-advanced/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/jmeter-advanced/</guid>
+      <description>&lt;p&gt;JMeter的使用不能说最频繁，但是性能测试之前多次使用过，每次都有些时间间隔。&lt;/p&gt;
+&lt;p&gt;汇总下之前零散的笔记供参考。&lt;/p&gt;
+&lt;p&gt;接上文&lt;a href=&#34;https://xulizhao.com/blog/jmeter/&#34;&gt;JMeter基础篇&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mqtt轻量级发布订阅协议</title>
+      <link>https://xulizhao.com/blog/mqtt/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/mqtt/</guid>
+      <description>&lt;p&gt;轻量级发布订阅协议MQTT介绍。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>开源压测工具Locust</title>
+      <link>https://xulizhao.com/blog/locust/</link>
+      <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/locust/</guid>
+      <description>&lt;p&gt;locust是流行的开源性能测试工具,其压测脚本就是python代码,所以特点是简单,灵活.&lt;/p&gt;
+&lt;p&gt;之前使用的场合比较多,汇总些笔记供参考.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>开源反向代理及负载均衡Envoy初探</title>
-      <link>/blog/envoy-proxy/</link>
+      <link>https://xulizhao.com/blog/envoy-proxy/</link>
       <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/envoy-proxy/</guid>
-      <description>&lt;p&gt;Envoy是Lyft于2017年开源的网络反向代理工具,现属于CNCF基金会的毕业项目.&lt;/p&gt;
-
-&lt;p&gt;和Nginx和HAProxy相比,功能更强大,开源更彻底(提供的许多功能是其他产品的付费功能).&lt;/p&gt;
-
-&lt;p&gt;更重要的是作为新兴代理,与微服务紧密结合,可以做入口代理/边缘代理/中间代理等. 流行的Service Mesh框架istio就是基于Envoy构建而成.&lt;/p&gt;
-
-&lt;p&gt;Envoy本身用C++开发,并发模型与Nginx类似,具有很高的处理性能.&lt;/p&gt;
-
-&lt;p&gt;本文尽量脱离微服务和Service Mesh,聚焦于Envoy代理本身所提供的丰富功能.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/envoy-proxy/</guid>
+      <description>&lt;p&gt;Envoy是Lyft于2017年开源的网络反向代理工具,现属于CNCF基金会的毕业项目.&lt;br&gt;
+和Nginx和HAProxy相比,功能更强大,开源更彻底(提供的许多功能是其他产品的付费功能).&lt;/p&gt;
+&lt;p&gt;作为新兴代理,与微服务紧密结合,可以提高强大的可观察性功能,通常做为入口代理/边缘代理/中间代理等. 流行的Service Mesh框架istio就是基于Envoy构建而成.&lt;/p&gt;
+&lt;p&gt;Envoy本身用C++开发,并发模型与Nginx类似,具有很高的处理性能.属于L4层代理，但支持7层HTTP协议栈。&lt;/p&gt;
+&lt;p&gt;本文聚焦于Envoy代理本身所提供的丰富功能,个别地方也会引入微服务和Service Mesh的概念,读者可以再做深入了解.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>bazel构建工具</title>
-      <link>/blog/bazel-build/</link>
+      <link>https://xulizhao.com/blog/bazel-build/</link>
       <pubDate>Fri, 31 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/bazel-build/</guid>
+      <guid>https://xulizhao.com/blog/bazel-build/</guid>
       <description>&lt;p&gt;Bazel是Google开源的一个构建系统,主要支持分布式缓存和增量编译,使得大项目的构建更快速, 主要用于C++,Java,Go等服务端项目构建.&lt;/p&gt;
-
 &lt;p&gt;有一个与之类似的快速构建系统Buck(Facebook开源)则更关注于Android和iOS客户端的构建. 两者都倾向于mono repo(而非基于项目的仓库)的构建.&lt;/p&gt;
-
-&lt;p&gt;之前看了眼官方教程,觉得过于复杂没有引起兴趣. 最近看到在B站代码和envoy都作为标配,所以再做些深入了解.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;之前看了眼官方教程,觉得过于复杂没有引起兴趣. 最近看到在B站代码和envoy都作为标配,所以再做些深入了解.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go依赖库管理初探</title>
-      <link>/blog/go-mod/</link>
+      <link>https://xulizhao.com/blog/go-mod/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/go-mod/</guid>
+      <guid>https://xulizhao.com/blog/go-mod/</guid>
       <description>&lt;p&gt;Go作为一个新语言,其依赖管理系统一直不够完善,官方直到去年才在1.11加入modules(也叫vgo). 在此之前社区不满官方的官僚,还有过一阵激烈的讨论,讨论流行第三方库dep的不被采纳而官方自造轮子.&lt;/p&gt;
-
 &lt;p&gt;最近在项目首次使用了modules系统,但还是采用的兼容的vendor模式. 总体用下来还不错,一些github库也已经使用该方式.&lt;/p&gt;
-
-&lt;p&gt;下面简要列下常见用法.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;下面简要列下常见用法.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go in Action 学习笔记</title>
-      <link>/blog/go-in-action/</link>
+      <link>https://xulizhao.com/blog/go-in-action/</link>
       <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/go-in-action/</guid>
-      <description>&lt;p&gt;初学Go时主要读的&amp;lt;Go语言圣经&amp;gt;,正式中文版叫&amp;lt;Go程序设计语言&amp;gt;, 由于当时写的代码还很少,实际上很多是不太懂的或后来也忘了.&lt;br /&gt;
-之后想读些其他书时,本来想读的&amp;lt;Go编程实战&amp;gt;在豆瓣的评分偏低,便一直没读. 在写过一些代码后,偶然再读这本书,发现其实战意义很高,是很好的一本进阶书.&lt;br /&gt;
+      <guid>https://xulizhao.com/blog/go-in-action/</guid>
+      <description>&lt;p&gt;初学Go时主要读的&amp;lt;Go语言圣经&amp;gt;,正式中文版叫&amp;lt;Go程序设计语言&amp;gt;, 由于当时写的代码还很少,实际上很多是不太懂的或后来也忘了. &lt;br&gt;
+之后想读些其他书时,本来想读的&amp;lt;Go编程实战&amp;gt;在豆瓣的评分偏低,便一直没读. 在写过一些代码后,偶然再读这本书,发现其实战意义很高,是很好的一本进阶书.  &lt;br&gt;
 由此看来豆瓣的评分只能当个参考,需要读读看是不是适合自己.&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>Python高性能技巧</title>
+      <link>https://xulizhao.com/blog/python-performance/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-performance/</guid>
+      <description>数据结构使用技巧 列表 在列表中检查是否存在某个值远比字典和集合速度慢，因为Python是线性搜索列表中的值，但在字典和集合中，在同样的时间内还</description>
+    </item>
+    
+    <item>
+      <title>工作工具箱</title>
+      <link>https://xulizhao.com/blog/toolbox/</link>
+      <pubDate>Sun, 27 Jan 2019 07:20:47 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/toolbox/</guid>
+      <description>&lt;p&gt;在工作中经常会用到各种工具，但重装系统或换机器后经常忘了软件名字。&lt;/p&gt;
+&lt;p&gt;工欲善其事，必先利其器。因为工具/软件，计算机才如此强大。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Django再记录</title>
-      <link>/blog/django/</link>
+      <link>https://xulizhao.com/blog/django/</link>
       <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/django/</guid>
-      <description>&lt;p&gt;Django作为python web开发第一框架,很早就有所了解, 上次使用是在3年多之前. 作为全栈框架来说,是个很优秀的框架.&lt;br /&gt;
-据我所知Instagram,Mozilla等高流量/大公司都在使用.&lt;br /&gt;
+      <guid>https://xulizhao.com/blog/django/</guid>
+      <description>&lt;p&gt;Django作为python web开发第一框架,很早就有所了解, 上次使用是在3年多之前. 作为全栈框架来说,是个很优秀的框架.&lt;br&gt;
+据我所知Instagram,Mozilla等高流量/大公司都在使用.&lt;br&gt;
 之前几个项目特意使用了以轻量著称的Flask,两者算是各有千秋吧.&lt;/p&gt;
-
-&lt;p&gt;去年Django2.0推出后一直想尝试,正好最近拿来试试.&lt;br /&gt;
-用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.
-&lt;/p&gt;</description>
+&lt;p&gt;去年Django2.0推出后一直想尝试,正好最近拿来试试.&lt;br&gt;
+用下来感觉简化部署和可定制化相比之前改观很多,做下简要笔记.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mindset读书笔记</title>
-      <link>/blog/mindset/</link>
+      <link>https://xulizhao.com/blog/mindset/</link>
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/mindset/</guid>
-      <description>&lt;p&gt;Mindset是一本讲思维模式的书,作者是斯坦福大学心理学教授, 与其说这是一本心理学或成功学著作, 更重要的这是一本很好的教育理念的书, 当然对于个人的成长也是很有帮助的.&lt;br /&gt;
-好多年前看到有人推荐这边书,当时只知道英文名字,英文版读起来也很慢. 后来才知道原来已有中译版, 人邮的&amp;lt;心理定向与成功 &amp;gt;,中信的&amp;lt;看见成长的自己 &amp;gt;和最新后浪的&amp;lt;终身成长&amp;gt;其实都是这本书.&lt;br /&gt;
-之前只看了开头几章, 也许好书你很难错过,因为总会看到有人推荐,于是最近开始继续阅读.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/mindset/</guid>
+      <description>&lt;p&gt;Mindset是一本讲思维模式的书,作者是斯坦福大学心理学教授, 与其说这是一本心理学或成功学著作, 更重要的这是一本很好的教育理念的书, 当然对于个人的成长也是很有帮助的.&lt;br&gt;
+好多年前看到有人推荐这边书,当时只知道英文名字,英文版读起来也很慢. 后来才知道原来已有中译版, 人邮的&amp;lt;心理定向与成功 &amp;gt;,中信的&amp;lt;看见成长的自己 &amp;gt;和最新后浪的&amp;lt;终身成长&amp;gt;其实都是这本书. &lt;br&gt;
+之前只看了开头几章, 也许好书你很难错过,因为总会看到有人推荐,于是最近开始继续阅读.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>用kubeadm手动搭建Kubernetes集群</title>
-      <link>/blog/kubeadm/</link>
+      <link>https://xulizhao.com/blog/kubeadm/</link>
       <pubDate>Sat, 29 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/kubeadm/</guid>
-      <description>&lt;p&gt;用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.&lt;br /&gt;
-所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.&lt;br /&gt;
-这也是此文/这次实践的目的所在.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/kubeadm/</guid>
+      <description>&lt;p&gt;用kubespray基于Ansible自动化工具搭建集群是很方便,但是一旦遇到问题查起来经常找不到头绪,因为不知所以然.&lt;br&gt;
+所以回归本源,用官方提供的kubeadm一步步建立一个单主的集群,可以让我们更容易弄清它的部署架构.&lt;br&gt;
+这也是此文/这次实践的目的所在.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>再提镜像站的使用</title>
-      <link>/blog/mirror/</link>
+      <link>https://xulizhao.com/blog/mirror/</link>
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/mirror/</guid>
+      <guid>https://xulizhao.com/blog/mirror/</guid>
       <description>把时间花在下载软件或必须翻过去访问外部网络是让人苦恼的一件事, 镜像站能很好地解决一些问题. 最早时使用Ubuntu国内镜像加速软件更新,后来使</description>
     </item>
     
     <item>
       <title>书法与文字</title>
-      <link>/read/shufa/</link>
+      <link>https://xulizhao.com/read/shufa/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/shufa/</guid>
-      <description>&lt;p&gt;最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/read/shufa/</guid>
+      <description>&lt;p&gt;最近随着对国学和唐文化的喜爱,开始重新拾起毛笔找一点空隙时间练字.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>利器之iTerm2</title>
-      <link>/blog/iterm2/</link>
+      <link>https://xulizhao.com/blog/iterm2/</link>
       <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/iterm2/</guid>
+      <guid>https://xulizhao.com/blog/iterm2/</guid>
       <description>&lt;p&gt;平时用的最多的系统是Windows10和Ubuntu,如果说苹果系统MacOS有什么让我离不开的特性的话,iTerm2绝对排第一.&lt;/p&gt;
-
-&lt;p&gt;可这个经常使用的免费终端居然有一些我不知道的好用功能,特记录与此.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;可这个经常使用的免费终端居然有一些我不知道的好用功能,特记录与此.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>LaTeX生成PDF实践</title>
-      <link>/blog/latex/</link>
+      <link>https://xulizhao.com/blog/latex/</link>
       <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/latex/</guid>
+      <guid>https://xulizhao.com/blog/latex/</guid>
       <description>&lt;p&gt;LaTeX最广泛的用途应该是在学术领域写论文, 其实在排版(尤其公式,格式)上也胜过Word很多,绝对专业.&lt;/p&gt;
-
-&lt;p&gt;最近为了在本地生成一个PDF,做了一些了解.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;最近为了在本地生成一个PDF,做了一些了解.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Kubernetes命名空间的应用</title>
-      <link>/blog/k8s-namespace/</link>
+      <link>https://xulizhao.com/blog/k8s-namespace/</link>
       <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/k8s-namespace/</guid>
+      <guid>https://xulizhao.com/blog/k8s-namespace/</guid>
       <description>&lt;p&gt;在实际应用中存在一个Kubernetes集群中多个部署环境的问题,比如存在dev,qa,stage等.&lt;/p&gt;
-
 &lt;p&gt;如果部署在一个集群会省去不少运维成本且节省资源占用.&lt;/p&gt;
-
-&lt;p&gt;通常这会用到命名空间的特性.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;通常这会用到命名空间的特性.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python发布</title>
+      <link>https://xulizhao.com/blog/python-release/</link>
+      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-release/</guid>
+      <description>&lt;p&gt;Python库的打包,发布,分发.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>迁移至Python3</title>
-      <link>/blog/python3/</link>
+      <link>https://xulizhao.com/blog/python3/</link>
       <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/python3/</guid>
+      <guid>https://xulizhao.com/blog/python3/</guid>
       <description>&lt;p&gt;用过Python的都知道,他有两个互不兼容的大版本Python2和Python3,由于历史遗留问题许多生产环境或库还只支持老版本Python2.&lt;/p&gt;
-
 &lt;p&gt;实际上2.7已经发布了近8年,且是最后一个2.x的大版本,并且将于2010(两年后)彻底停止维护,退出历史舞台.&lt;/p&gt;
-
 &lt;p&gt;Python3在两年前及更早时的库支持和应用范围确实不太好,有选择困难症的同学都转去Go语言了:) .&lt;/p&gt;
-
 &lt;p&gt;幸运的是近两年主流库/框架都已支持Python3,毕竟发布已经10年多了,在新项目中毫无疑问必须用Python3.&lt;/p&gt;
-
-&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;之前我在两个新项目已经使用Python3,最近把一个老项目也彻底迁移过来, 这里记录下一些知识点.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>设计数据密集型应用笔记</title>
-      <link>/blog/ddia/</link>
+      <link>https://xulizhao.com/blog/ddia/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/ddia/</guid>
-      <description>&lt;p&gt;去年就看到总有人推荐&lt;Design Data Intensive Applications&gt;这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.&lt;/p&gt;
-
+      <guid>https://xulizhao.com/blog/ddia/</guid>
+      <description>&lt;p&gt;去年就看到总有人推荐&lt;!-- raw HTML omitted --&gt;这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.&lt;/p&gt;
 &lt;p&gt;今年偶然看到网上有&lt;a href=&#34;https://github.com/Vonng/ddia&#34;&gt;中译版&lt;/a&gt;,惭愧的是到了年底,最近几个月才读来.&lt;/p&gt;
-
-&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>读国学</title>
-      <link>/read/guoxue/</link>
+      <link>https://xulizhao.com/read/guoxue/</link>
       <pubDate>Fri, 23 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/guoxue/</guid>
+      <guid>https://xulizhao.com/read/guoxue/</guid>
       <description>国学的火热似乎起自十多年前百家讲坛的于丹系列,最近几年也总能听到教儿童读弟子规或者各地开女德班等的无关真正国学的负面新闻. 最近读章太炎的国学</description>
     </item>
     
     <item>
       <title>读诗词</title>
-      <link>/read/poem/</link>
+      <link>https://xulizhao.com/read/poem/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/poem/</guid>
+      <guid>https://xulizhao.com/read/poem/</guid>
       <description>为了听蒙曼品最美唐诗冲了会员,也因此收听到了更多的音频,毕竟喜欢的还有郦波品读唯美诗词名篇, 虽然我之前从没看过诗词大会之类的节目. 听过一些之</description>
     </item>
     
     <item>
       <title>读历史</title>
-      <link>/read/history/</link>
+      <link>https://xulizhao.com/read/history/</link>
       <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/read/history/</guid>
+      <guid>https://xulizhao.com/read/history/</guid>
       <description>缘起 在年初的时候,因偶然机会追了一部国产剧,即网剧大军师司马懿. 当时是很着迷的, 因为看的下载版,可以说看的不舍昼夜. 评价嘛,上部明显好于下部</description>
     </item>
     
     <item>
+      <title>Android自动化测试</title>
+      <link>https://xulizhao.com/blog/android-test/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/android-test/</guid>
+      <description>安卓客户端测试的一些主流技术。 官方支持 Espresso UI测试支持，Android Support库的一部分。 优点：控件支持最丰富，定制型强。 对应的： 需要安</description>
+    </item>
+    
+    <item>
+      <title>GUI图形界面测试</title>
+      <link>https://xulizhao.com/blog/gui-test/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/gui-test/</guid>
+      <description>PC和Mac的自动化工具/框架. 框架工具 AutoIt:最早接触的Windows自动化工具 AutoHotkey : a scripting language for desktop automation SikuliX: 基于图形识别，电脑端自动化。 PyA</description>
+    </item>
+    
+    <item>
+      <title>iOS测试</title>
+      <link>https://xulizhao.com/blog/ios-test/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/ios-test/</guid>
+      <description>框架 EarlGrey:Google开发的UI自动化框架，基于XCTest，支持Swift 和Objective-C FBSnapshot: 截图对比 工具 Carthage : Cocoa</description>
+    </item>
+    
+    <item>
+      <title>TestNG测试框架</title>
+      <link>https://xulizhao.com/blog/testng/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/testng/</guid>
+      <description>&lt;p&gt;Java测试必备之TestNG。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>人体工学电脑办公</title>
+      <link>https://xulizhao.com/blog/work-health/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/work-health/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>办公软件之Word</title>
+      <link>https://xulizhao.com/blog/word/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/word/</guid>
+      <description>&lt;p&gt;用习惯了Markdown，回不去Word的格式排版。&lt;/p&gt;
+&lt;p&gt;不得不用的情况下，有必要了解这些技巧提高效率。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>开发者成长</title>
+      <link>https://xulizhao.com/blog/developer/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/developer/</guid>
+      <description>&lt;p&gt;写程序就要有追求，只要还在写，就永无止境。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>性能测试</title>
+      <link>https://xulizhao.com/blog/performance-test/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/performance-test/</guid>
+      <description>有些内容会涵盖在我写的系列记录。 使用JMeter: 熟悉Java的用户 使用Locust: 熟悉Python的用户 全链路压测学习1/ 全链路压测学习</description>
+    </item>
+    
+    <item>
+      <title>日志处理</title>
+      <link>https://xulizhao.com/blog/logging/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/logging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>机器学习</title>
+      <link>https://xulizhao.com/blog/machine-learning/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/machine-learning/</guid>
+      <description>&lt;p&gt;学了也用不到系列。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>构建高性能系统</title>
+      <link>https://xulizhao.com/blog/oss-system/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/oss-system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>测试计划</title>
+      <link>https://xulizhao.com/blog/testplan/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/testplan/</guid>
+      <description>测试计划。 测试计划 / Test Plan 测试计划，用于具体项目的测试，通常包含测试策略。是整个测试活动的指南性（road map）文档。 关注于3W: who will test what and</description>
+    </item>
+    
+    <item>
+      <title>算法</title>
+      <link>https://xulizhao.com/blog/algorithm/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/algorithm/</guid>
+      <description>&lt;p&gt;程序=数据结构+算法，所以这里记录下算法的点点滴滴。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>编码和解码</title>
+      <link>https://xulizhao.com/blog/encoding/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/encoding/</guid>
+      <description>&lt;p&gt;只要和计算机打交道就涉及到编码和解码。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>缺陷报告</title>
+      <link>https://xulizhao.com/blog/defect/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/defect/</guid>
+      <description>好的缺陷报告什么样? 缺陷报告要素 缺陷标题 缺陷概述 缺陷影响 环境配置(按需描述) 前置条件 缺陷重现步骤 期望结果和实际结果 优先级和严重程度 变通方案(</description>
+    </item>
+    
+    <item>
+      <title>自动化测试</title>
+      <link>https://xulizhao.com/blog/automation-test/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/automation-test/</guid>
+      <description>自动化测试适用场景： 手工无法测试 功能稳定不容易变动 频繁回归 有些内容会涵盖在我写的系列记录。 Android 测试 iOS 测试 GUI图形界面测试 测试数据的准备 设计 分</description>
+    </item>
+    
+    <item>
+      <title>关于测试</title>
+      <link>https://xulizhao.com/blog/testing/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/testing/</guid>
+      <description>测试的方方面面。 关于测试 软件测试总的目标之一是在足以检查出错误的前提下,使测试用例的数量最小. 三个重要的测试原则： 软件测试是为发现错误而执行</description>
+    </item>
+    
+    <item>
+      <title>测试数据</title>
+      <link>https://xulizhao.com/blog/test-data/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/test-data/</guid>
+      <description>测试替代技术 Test Double / 测试替身 Mocks Aren&#39;t Stubs Mock和Stub的本质区别：测试期待结果的验证（Assert and Expectiation） 对于 Mock 代码来说，我</description>
+    </item>
+    
+    <item>
       <title>自动生成SSL证书的利器acme.sh</title>
-      <link>/blog/acme/</link>
+      <link>https://xulizhao.com/blog/acme/</link>
       <pubDate>Sun, 30 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/acme/</guid>
+      <guid>https://xulizhao.com/blog/acme/</guid>
       <description>&lt;p&gt;已经使用letsencrypt的免费证书一段时间了，是之前折腾Ghost博客时自动安装的，而后台其实也是用的acme.sh这个工具。&lt;/p&gt;
-
 &lt;p&gt;遇到的问题是不知哪里的配置错误，我的证书自动更新有问题，每次都是遇到证书已经过期，网站彻底不能访问了，必须要手动更新。&lt;/p&gt;
-
 &lt;p&gt;之前用的HTTP的验证方式，由于一知半解，这块每次手动配置也会花费一些时间。&lt;/p&gt;
-
-&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;今天重读了&lt;a href=&#34;https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E&#34;&gt;官方文档&lt;/a&gt;，才发现有一些细节的使用，其实可以做到一劳永逸。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JVM和GC调优</title>
-      <link>/blog/jvm/</link>
+      <link>https://xulizhao.com/blog/jvm/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/jvm/</guid>
-      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/jvm/</guid>
+      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java I/O学习</title>
+      <link>https://xulizhao.com/blog/java-io/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-io/</guid>
+      <description>&lt;p&gt;Java系列记录文章.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java设计模式</title>
+      <link>https://xulizhao.com/blog/java-patterns/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-patterns/</guid>
+      <description>&lt;p&gt;Java的世界，你需要知道设计模式^_^&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java集合类</title>
+      <link>https://xulizhao.com/blog/java-collections/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-collections/</guid>
+      <description>&lt;p&gt;Java系列记录文章。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>全链路压测笔记续</title>
-      <link>/blog/more-load-test-note/</link>
+      <link>https://xulizhao.com/blog/more-load-test-note/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/more-load-test-note/</guid>
+      <guid>https://xulizhao.com/blog/more-load-test-note/</guid>
       <description>&lt;p&gt;看完美团的分享觉得不过瘾，继续学习其他大厂的分享。&lt;/p&gt;
-
-&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;不用猜，第一个搞出这套系统的一定是阿里，因为他的双11需求最迫切。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>美团全链路压测Quake学习笔记</title>
-      <link>/blog/meituan-load-test-note/</link>
+      <link>https://xulizhao.com/blog/meituan-load-test-note/</link>
       <pubDate>Fri, 21 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/meituan-load-test-note/</guid>
+      <guid>https://xulizhao.com/blog/meituan-load-test-note/</guid>
       <description>&lt;p&gt;今天读了美团技术团队新发布的&lt;a href=&#34;https://tech.meituan.com/2018/09/27/quake-introduction.html&#34;&gt;全链路压测平台Quake在美团中的实践&lt;/a&gt;，做个笔记。&lt;/p&gt;
-
 &lt;p&gt;先说下总的读后感:&lt;/p&gt;
-
 &lt;p&gt;压力测试/性能测试有多种方式，从下面的几个发展阶段可以看出越来越追求真实高峰访问的模拟。&lt;/p&gt;
-
 &lt;p&gt;现在大公司普遍的分布式架构，云计算的应用，容器的使用也可以提供更有力的资源调度。但全链路压测最重要的工作在于需要架构，开发团队的支持和适配工作。&lt;/p&gt;
-
 &lt;p&gt;没有全链路的监控及相关工具支撑，没有架构的调整（压测标识）和数据库的配合（影子表），这个全链路压测就是个听起来更美的名字（你也知道技术圈喜欢造新词）。&lt;/p&gt;
-
-&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;印象中APM/Application Performance Management 前几年就挺火的，现在各大厂又都在提全链路了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>再学游泳</title>
-      <link>/play/swimming/</link>
+      <link>https://xulizhao.com/play/swimming/</link>
       <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/play/swimming/</guid>
+      <guid>https://xulizhao.com/play/swimming/</guid>
       <description>最近再次开始学游泳，距离初次学蛙泳已经过去了10多年。当时还在大学蹭宿舍，因为一直很喜欢向往大海，便让老同学教我蛙泳。 期间由于基础不行，某次</description>
     </item>
     
     <item>
       <title>Ubuntu日常</title>
-      <link>/blog/ubuntu/</link>
+      <link>https://xulizhao.com/blog/ubuntu/</link>
       <pubDate>Thu, 13 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/ubuntu/</guid>
+      <guid>https://xulizhao.com/blog/ubuntu/</guid>
       <description>很早就接触使用Ubuntu，也是自己最钟爱的Linux系统。 给Ubuntu留一篇记录日常使用。 Ubuntu 18.04安装中文输入法 sogou拼音由于不</description>
     </item>
     
     <item>
       <title>MySQL性能优化</title>
-      <link>/blog/mysql-tuning/</link>
+      <link>https://xulizhao.com/blog/mysql-tuning/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/mysql-tuning/</guid>
-      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.
-&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/mysql-tuning/</guid>
+      <description>&lt;p&gt;关于MySQL性能问题查找及优化的点滴.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java应用的数据库迁移工具Flyway</title>
-      <link>/blog/java-db-migrate/</link>
+      <link>https://xulizhao.com/blog/flyway/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/java-db-migrate/</guid>
+      <guid>https://xulizhao.com/blog/flyway/</guid>
       <description>&lt;p&gt;最近折腾部署一年前的一个应用,发现一些由于一些细节已经忘记,常常可能多花费几个小时去重新解决问题的过程. 而有的过程之前写过KB,关键字一搜索就出来能省不少时间.&lt;/p&gt;
-
 &lt;p&gt;所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.&lt;/p&gt;
-
-&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go并发编程笔记</title>
-      <link>/blog/go-concurrency/</link>
+      <link>https://xulizhao.com/blog/go-concurrency/</link>
       <pubDate>Mon, 20 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/go-concurrency/</guid>
-      <description>&lt;p&gt;最近尝试用Go重写以前Python的一个工具,感觉一直工作于Hard模式,可是又不想轻易的放弃Golang的实践,因为遇到一些问题最终变成从入门到放弃.&lt;/p&gt;
-
+      <guid>https://xulizhao.com/blog/go-concurrency/</guid>
+      <description>&lt;p&gt;最近尝试用Go重写之前用Python开发的一个工具,感觉一直工作于Hard模式,可是又不想轻易的放弃Golang的实践,变成遇到一些问题而从入门到放弃.&lt;/p&gt;
 &lt;p&gt;还好一周周坚持了下来,虽然遇到一个问题可能会解决多半天甚至一天多时间,还是有所学的.&lt;/p&gt;
-
-&lt;p&gt;今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;今天整理下关于并发编程,也就是Go核心亮点goroutine使用中可能遇到的问题.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>开源消息队列实现</title>
-      <link>/blog/mq/</link>
+      <link>https://xulizhao.com/blog/mq/</link>
       <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/mq/</guid>
+      <guid>https://xulizhao.com/blog/mq/</guid>
       <description>&lt;p&gt;经常会遇到系统中使用Message Queue/消息队列的情况, 与此类似的模型还有 pubsub/发布订阅模式(publisher/subscriber).&lt;/p&gt;
-
 &lt;p&gt;这两种模型的实现也被看做 消息中间件/MOM(Message-Oriented Middleware),因为这种结构解耦了发送端和接收端,简化了架构.&lt;/p&gt;
-
-&lt;p&gt;另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;另外常提的一个概念是Messaging Broker, 更多的用于消息验证,转换,路由.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>网络基础</title>
-      <link>/blog/network/</link>
+      <link>https://xulizhao.com/blog/network/</link>
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/network/</guid>
-      <description>&lt;p&gt;好记性不如烂笔头, 网络基础知识备忘.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/network/</guid>
+      <description>&lt;p&gt;好记性不如烂笔头, 网络基础知识备忘.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Kubernetes和云原生计算</title>
-      <link>/blog/cloud-native/</link>
+      <link>https://xulizhao.com/blog/cloud-native/</link>
       <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/cloud-native/</guid>
+      <guid>https://xulizhao.com/blog/cloud-native/</guid>
       <description>&lt;p&gt;最早注意到云原生这个概念是某次看文章说Kubernetes是作为CNCF(云原生计算基金会)的主要项目来开发的,该基金会属于Linux基金会旗下,还包括被熟知的prometheus,istio等开源项目, 似乎可以理解为Kubernetes生态系统.&lt;/p&gt;
-
-&lt;p&gt;至此Kubernetes把&lt;a href=&#34;/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;至此Kubernetes把&lt;a href=&#34;https://xulizhao.com/blog/microservices/&#34;&gt;微服务&lt;/a&gt;,十二要素,服务网格/Service Mesh等串联了起来, 符合这些概念的应用架构就是云原生应用.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>私有Docker仓库Harbor</title>
-      <link>/blog/harbor/</link>
+      <link>https://xulizhao.com/blog/harbor/</link>
       <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/harbor/</guid>
+      <guid>https://xulizhao.com/blog/harbor/</guid>
       <description>提到私有容器仓库,VMWare出品的开源Harbor算是首选. 安装和配置照官方文档来很简单,今天在尝试push镜像时遇到了如下错误: &amp;ldquo;Get https://yourdomain.com/v2/: Service Unavailable&amp;rdquo;,</description>
     </item>
     
     <item>
       <title>证书那些事</title>
-      <link>/blog/cert/</link>
+      <link>https://xulizhao.com/blog/cert/</link>
       <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/cert/</guid>
+      <guid>https://xulizhao.com/blog/cert/</guid>
       <description>&lt;p&gt;断断续续接触过加密通讯的一些场景, 随着近两年安全的普及,建站使用https也成为标配.&lt;/p&gt;
-
-&lt;p&gt;这篇文章试图汇总下证书这块的知识提纲.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;这篇文章试图汇总下证书这块的知识提纲.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>python流行库/框架汇总</title>
-      <link>/blog/python-lib/</link>
+      <link>https://xulizhao.com/blog/python-lib/</link>
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/python-lib/</guid>
+      <guid>https://xulizhao.com/blog/python-lib/</guid>
       <description>&lt;p&gt;作为一个Python粉,一直在各种场合使用这个语言,最近也在试图从Python2彻底切换到Python3.&lt;/p&gt;
-
 &lt;p&gt;如果说缺点的话,也只有对它的性能有所抱怨(GIL),不能使用多核CPU.&lt;/p&gt;
-
-&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;这篇主要记录使用过和部分mark过的库/框架,其他检索的话可以使用awesome-python.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Fabric自动化部署</title>
-      <link>/blog/fabric/</link>
+      <link>https://xulizhao.com/blog/fabric/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/fabric/</guid>
+      <guid>https://xulizhao.com/blog/fabric/</guid>
       <description>&lt;p&gt;Fabric比较轻量级,平时在部署多个服务器时经常用到.&lt;/p&gt;
-
 &lt;p&gt;今年作者发布了不向后兼容的Fabric2, 由于原有的脚本改动太多,暂时还没有迁移.&lt;/p&gt;
-
-&lt;p&gt;[2018.12更新]&lt;br /&gt;
-Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.&lt;br /&gt;
-在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.&lt;br /&gt;
-算了不折腾了,直接上Ansible吧.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;[2018.12更新]&lt;br&gt;
+Fabric2现在看来是个错误选择, Fabric v1不支持Python3,而Fabric2仍存在大量bug和未实现功能,从实用的角度看v2基本不可用.&lt;br&gt;
+在主流已经使用Python3的情况下,这意味着Fabric毫无迁移必要.&lt;br&gt;
+算了不折腾了,直接上Ansible吧.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Vim必知必会</title>
-      <link>/blog/vim/</link>
+      <link>https://xulizhao.com/blog/vim/</link>
       <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/vim/</guid>
+      <guid>https://xulizhao.com/blog/vim/</guid>
       <description>&lt;p&gt;VI/VIM作为Nix环境的常用编辑器,有一些常用命令/用法.&lt;/p&gt;
-
-&lt;p&gt;由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;由于平时用VSCode/SublimeText比较多,以至于切换到vi经常需要查阅,特记录与此.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ansible Checklist</title>
-      <link>/blog/ansible/</link>
+      <link>https://xulizhao.com/blog/ansible/</link>
       <pubDate>Tue, 19 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/ansible/</guid>
+      <guid>https://xulizhao.com/blog/ansible/</guid>
       <description>&lt;p&gt;最早接触Ansible是在15年,后来断断续续用过几次,因为更倾向于所写即所得的Fabric,后者也更轻量级.&lt;/p&gt;
-
-&lt;p&gt;每次拾起来都要查文档,记录下常见用法.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;每次拾起来都要查文档,记录下常见用法.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Docker Command</title>
-      <link>/blog/docker-command/</link>
+      <link>https://xulizhao.com/blog/docker-command/</link>
       <pubDate>Fri, 11 May 2018 10:15:55 +0000</pubDate>
       
-      <guid>/blog/docker-command/</guid>
-      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/docker-command/</guid>
+      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Docker最佳实践</title>
-      <link>/blog/docker-best-practice/</link>
+      <link>https://xulizhao.com/blog/docker-best-practice/</link>
       <pubDate>Fri, 11 May 2018 10:08:13 +0000</pubDate>
       
-      <guid>/blog/docker-best-practice/</guid>
+      <guid>https://xulizhao.com/blog/docker-best-practice/</guid>
       <description>这里主要针对制作Docker镜像，汇总常见的正确使用方式： 制作镜像 使用继承镜像 如果要制作包含Tomcat和Java运行环境的镜像， 建议先基于</description>
     </item>
     
     <item>
       <title>在Windows10运行增强版Ubuntu,支持复制粘贴和本地磁盘映射</title>
-      <link>/blog/hyperv-ubuntu-enhanced-mode/</link>
+      <link>https://xulizhao.com/blog/hyperv-ubuntu-enhanced-mode/</link>
       <pubDate>Thu, 10 May 2018 07:12:50 +0000</pubDate>
       
-      <guid>/blog/hyperv-ubuntu-enhanced-mode/</guid>
+      <guid>https://xulizhao.com/blog/hyperv-ubuntu-enhanced-mode/</guid>
       <description>使用Win10自带的Hyper-V运行Ubuntu虚拟机确实资源使用很小，Ubuntu虚拟机开个全屏，用起来和双系统没有区别。 前提 由于这是最</description>
     </item>
     
     <item>
       <title>Kubernetes控制命令kubectl汇总</title>
-      <link>/blog/k8s-command/</link>
+      <link>https://xulizhao.com/blog/k8s-command/</link>
       <pubDate>Fri, 13 Apr 2018 06:43:37 +0000</pubDate>
       
-      <guid>/blog/k8s-command/</guid>
+      <guid>https://xulizhao.com/blog/k8s-command/</guid>
       <description>kubectl 作为Kubernetes集群管理的命令行工具,经常用到的几个子命令包括: kubectl get &amp;ndash; list resources kubectl describe &amp;ndash; show detailed information about a resource kubectl logs &amp;ndash; print the logs from a container in a pod kubectl exec &amp;ndash; execute a command on</description>
     </item>
     
     <item>
       <title>电音欣赏</title>
-      <link>/play/electronic-muisc/</link>
+      <link>https://xulizhao.com/play/electronic-muisc/</link>
       <pubDate>Fri, 13 Apr 2018 04:00:38 +0000</pubDate>
       
-      <guid>/play/electronic-muisc/</guid>
+      <guid>https://xulizhao.com/play/electronic-muisc/</guid>
       <description>去年下半年玩王者荣耀(年前已出坑)的收获之一就是接触了电音,当时找一些攻略视频看,背景音乐都很带劲,于是通过网易云音乐的歌单发现了电音的广阔</description>
     </item>
     
     <item>
       <title>Kubernetes部署篇:Kubespray方式自动化</title>
-      <link>/blog/k8s-deploy/</link>
+      <link>https://xulizhao.com/blog/k8s-deploy/</link>
       <pubDate>Fri, 13 Apr 2018 01:27:57 +0000</pubDate>
       
-      <guid>/blog/k8s-deploy/</guid>
+      <guid>https://xulizhao.com/blog/k8s-deploy/</guid>
       <description>众所周知Kubernetes集群的部署比较繁琐复杂,这里列出常见的几种部署方式及过程. 官方现在提供2种主要的部署方式: Kubespray : 基于Ansible</description>
     </item>
     
     <item>
       <title>Kubernetes部署篇:本地开发测试环境搭建</title>
-      <link>/blog/k8s-local/</link>
+      <link>https://xulizhao.com/blog/k8s-local/</link>
       <pubDate>Fri, 13 Apr 2018 01:19:50 +0000</pubDate>
       
-      <guid>/blog/k8s-local/</guid>
+      <guid>https://xulizhao.com/blog/k8s-local/</guid>
       <description>&lt;p&gt;本文侧重于入门Kubernetes时的本地开发测试环境搭建,及minikube的使用.&lt;/p&gt;
-
-&lt;p&gt;尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Web测试及工具</title>
-      <link>/blog/webtest/</link>
+      <link>https://xulizhao.com/blog/webtest/</link>
       <pubDate>Tue, 10 Apr 2018 07:02:21 +0000</pubDate>
       
-      <guid>/blog/webtest/</guid>
+      <guid>https://xulizhao.com/blog/webtest/</guid>
       <description>&lt;p&gt;整理下测试相关的东西在这里。&lt;/p&gt;
-
 &lt;p&gt;说到Web网页自动化测试，事实上的唯一标准就是基于WebDriver/Selenium的实现了。&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;说明: WebDriver 等同于Selenium2&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;h2 id=&#34;webdriver-介绍&#34;&gt;WebDriver 介绍&lt;/h2&gt;
-
+&lt;h2 id=&#34;webdriver-&#34;&gt;WebDriver 介绍&lt;/h2&gt;
 &lt;p&gt;WebDriver 是一个跨浏览器的网站自动化测试API，主要包含以下几方面&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Browser Control： navigation, snapshotting, window control, override geolocation&lt;/li&gt;
 &lt;li&gt;User input simulation： mouse, keyborad, file uploads, altert handling&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Web stuff： find/query elements, evaluate JavaScript, manipulate cookies&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;li&gt;Web stuff： find/query elements, evaluate JavaScript, manipulate cookies&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>接口测试及工具</title>
-      <link>/blog/apitest/</link>
+      <link>https://xulizhao.com/blog/apitest/</link>
       <pubDate>Tue, 10 Apr 2018 03:26:58 +0000</pubDate>
       
-      <guid>/blog/apitest/</guid>
-      <description>接口（API）测试随着REST的流行有个越来越多的应用，而基于测试金字塔理论，偏底层的接口测试是投入产出最高的。 接口测试基本操作： 生成符合协</description>
+      <guid>https://xulizhao.com/blog/apitest/</guid>
+      <description>接口（API）测试随着REST的流行有了更多使用场合，基于测试金字塔理论，偏底层的接口测试是投入产出最高的。 接口可能是面向web、客户端或其</description>
     </item>
     
     <item>
       <title>用Makefile简化重复的多个命令</title>
-      <link>/blog/makefile/</link>
+      <link>https://xulizhao.com/blog/makefile/</link>
       <pubDate>Sun, 08 Apr 2018 10:03:00 +0000</pubDate>
       
-      <guid>/blog/makefile/</guid>
+      <guid>https://xulizhao.com/blog/makefile/</guid>
       <description>经常会通过编译安装一些Linux包,最熟悉的就是make test, make install 这类命令了,以为make只适用于编译安装. 实际上发现Makefile/make</description>
     </item>
     
     <item>
       <title>用Jupyter/iPython Notebook做笔记</title>
-      <link>/blog/jupyter-ipython-notebook/</link>
+      <link>https://xulizhao.com/blog/jupyter-ipython-notebook/</link>
       <pubDate>Tue, 03 Apr 2018 08:17:30 +0000</pubDate>
       
-      <guid>/blog/jupyter-ipython-notebook/</guid>
+      <guid>https://xulizhao.com/blog/jupyter-ipython-notebook/</guid>
       <description>ipython作为一个必备的学习/调试环境, notebook可以看做其增强版, 支持Markdown格式说明, 很适合用笔记或者演示/培训用途,</description>
     </item>
     
     <item>
       <title>你的网站账号密码安全吗</title>
-      <link>/blog/check-your-password/</link>
+      <link>https://xulizhao.com/blog/check-your-password/</link>
       <pubDate>Tue, 03 Apr 2018 03:32:33 +0000</pubDate>
       
-      <guid>/blog/check-your-password/</guid>
+      <guid>https://xulizhao.com/blog/check-your-password/</guid>
       <description>&lt;p&gt;今天看了Django开发者的一篇&lt;a href=&#34;https://www.b-list.org/weblog/2018/mar/06/two-new-projects/&#34;&gt;文章&lt;/a&gt;,关于web安全的子项目, 其中提到了一个用于检测用户密码是否安全的API.&lt;/p&gt;
-
-&lt;p&gt;不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.&lt;/p&gt;</description>
+&lt;p&gt;不同于普通的密码强度检测,它的检测原理基于最近这些年大型的互联网公司数据库泄漏事件,比如CSDN,天涯,HiAPK安卓网,网易等.&lt;/p&gt;
+&lt;p&gt;对普通用户,提供两个主要的网页查询功能:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你邮件账户的密码是否已泄漏[&lt;!-- raw HTML omitted --&gt;1&lt;!-- raw HTML omitted --&gt;]&lt;/li&gt;
+&lt;li&gt;你正在使用的密码是否存在于泄漏数据库及被其他用户泄漏的次数[&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt;]&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>回到WordPress</title>
-      <link>/play/blog-wordpress/</link>
+      <link>https://xulizhao.com/play/blog-wordpress/</link>
       <pubDate>Thu, 29 Mar 2018 09:12:46 +0000</pubDate>
       
-      <guid>/play/blog-wordpress/</guid>
-      <description>&lt;h2 id=&#34;最近几年博客经历&#34;&gt;最近几年博客经历&lt;/h2&gt;
-
+      <guid>https://xulizhao.com/play/blog-wordpress/</guid>
+      <description>&lt;h2 id=&#34;heading&#34;&gt;最近几年博客经历&lt;/h2&gt;
 &lt;p&gt;3年前改用Evernote做笔记,因为很少写博客的原因停掉了国外共享主机的wordpress,之前的内容也迁移到了Blogger平台(国内不可访问,仅作为备份).&lt;/p&gt;
-
 &lt;p&gt;后来为了学习git和markdown,也时常在GitHub上写笔记.&lt;/p&gt;
-
 &lt;p&gt;久闻Go大名已久,在听了播客内核恐慌某期讲静态博客后,尝试了高性能的Hugo.&lt;/p&gt;
-
 &lt;p&gt;去年总收到阿里云的广告促销,也想有一个移动版调试系统,就购买了云主机,把域名也迁到了国内.&lt;/p&gt;
-
 &lt;p&gt;在上面部署了静态博客, 由于Hugo/Lektor缺乏好用的主题,最后使用了已有所了解的Hexo. 也就有了前两篇搭建博客的记录文章.&lt;/p&gt;
-
 &lt;h2 id=&#34;wordpress&#34;&gt;WordPress&lt;/h2&gt;
-
 &lt;p&gt;又回到WordPress,其实是为了让写博客这件事变得简单. 不管静态博客还是新生代Ghost,最终用下来的感觉是表面看似简洁的新博客使用起来并不简单.&lt;/p&gt;
-
 &lt;p&gt;例如静态博客, 需要git版本管理,每次修改需要commit/push, Hexo需要generate/deploy(虽然这一步在Github Pages可以hook自动化),有时候还需要clean,而生成静态页面/rsync并不像Hugo那么智能高效.&lt;/p&gt;
-
 &lt;p&gt;由于云主机几乎没有资源占用率,实际上新版WordPress有很大改进,在插件优化之后,安装前后资源占用几乎没有变化.&lt;/p&gt;
-
-&lt;p&gt;之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;之前WordPress使用时间比较长,对插件/主题比较熟悉,只记录下关键步骤.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux Bash笔记</title>
-      <link>/blog/linux-bash/</link>
+      <link>https://xulizhao.com/blog/linux-bash/</link>
       <pubDate>Tue, 27 Mar 2018 07:16:47 +0000</pubDate>
       
-      <guid>/blog/linux-bash/</guid>
-      <description>&lt;p&gt;这里主要记录Linux系统的默认shell Bash用法.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/linux-bash/</guid>
+      <description>&lt;p&gt;这里主要记录Linux系统的默认shell Bash用法.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux文件查找/内容搜索命令</title>
-      <link>/blog/linux-search/</link>
+      <link>https://xulizhao.com/blog/linux-search/</link>
       <pubDate>Tue, 27 Mar 2018 06:42:45 +0000</pubDate>
       
-      <guid>/blog/linux-search/</guid>
-      <description>&lt;p&gt;Linux的文件检索或者日志文件关键字搜索应该是很常用的工作场景, 这里汇总常见的命令用法.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/linux-search/</guid>
+      <description>&lt;p&gt;Linux的文件检索或者日志文件关键字搜索应该是很常用的工作场景, 这里汇总常见的命令用法.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>pytest测试框架</title>
-      <link>/blog/pytest/</link>
+      <link>https://xulizhao.com/blog/pytest/</link>
       <pubDate>Wed, 21 Mar 2018 03:38:22 +0000</pubDate>
       
-      <guid>/blog/pytest/</guid>
+      <guid>https://xulizhao.com/blog/pytest/</guid>
       <description>&lt;p&gt;单元测试最初流行是从JUnit,而他的发明者Kent Beck大神的经典名作&amp;lt;测试驱动开发&amp;gt;这本小书却引领了TDD的风潮,产生了xUnit各个语言系列.&lt;/p&gt;
-
 &lt;p&gt;初次接触pytest,感觉不像个xUnit,因为既看不到对TestCase的继承,也找不到Setup/Teardown这些建立/销毁函数.当然这些基本功能肯定是支持的.&lt;/p&gt;
-
-&lt;p&gt;pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;pytest虽然作为一个Python单元测试框架的扩展版, 但是它丰富的功能和灵活的特性也很适合做功能测试, 其中的精华就是fixtures.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux系统命令</title>
-      <link>/blog/linux-system-command/</link>
+      <link>https://xulizhao.com/blog/linux-system-command/</link>
       <pubDate>Tue, 13 Mar 2018 03:09:29 +0000</pubDate>
       
-      <guid>/blog/linux-system-command/</guid>
-      <description>&lt;p&gt;Linux系統命令, 完成一些常見任務.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/linux-system-command/</guid>
+      <description>&lt;p&gt;Linux系統命令, 完成一些常見任務.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux调优</title>
-      <link>/blog/linux-tuning/</link>
+      <link>https://xulizhao.com/blog/linux-tuning/</link>
       <pubDate>Fri, 09 Mar 2018 09:17:28 +0000</pubDate>
       
-      <guid>/blog/linux-tuning/</guid>
-      <description>&lt;p&gt;Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/linux-tuning/</guid>
+      <description>&lt;p&gt;Linux作为服务器针对使用场景, 有许多需要调优的地方, 本文记录常用优化项.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Nginx调优</title>
-      <link>/blog/nginx-tuning/</link>
+      <link>https://xulizhao.com/blog/nginx-tuning/</link>
       <pubDate>Fri, 09 Mar 2018 09:17:27 +0000</pubDate>
       
-      <guid>/blog/nginx-tuning/</guid>
-      <description>&lt;p&gt;Nginx在部署服务时经常被用到, 大多时候是作为代理使用. 如果用户量比较大就涉及到一些调优, 本文做一些分类记录.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/nginx-tuning/</guid>
+      <description>&lt;p&gt;Nginx在部署服务时经常被用到, 大多时候是作为代理使用. 如果用户量比较大就涉及到一些调优, 本文做一些分类记录.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>分布式系统的那些论文及开源实现</title>
-      <link>/blog/distributed-paper/</link>
+      <link>https://xulizhao.com/blog/distributed-paper/</link>
       <pubDate>Sun, 11 Feb 2018 10:04:41 +0000</pubDate>
       
-      <guid>/blog/distributed-paper/</guid>
+      <guid>https://xulizhao.com/blog/distributed-paper/</guid>
       <description>&lt;p&gt;近几年总能看到大数据,云计算这些buzz word/时髦词, 可是说来惭愧,对近10来年历史上那些著名论文及主要内容却知道的很少.&lt;/p&gt;
-
 &lt;p&gt;之前零散的看到分布式系统的一些文章,接下来总结下主要内容,也打算读几本书系统的学习下.&lt;/p&gt;
-
 &lt;p&gt;今天先看看这些经典论文及衍生的开源系统.&lt;/p&gt;
-
-&lt;p&gt;按时间顺序/影响力最大的应该就是谷歌的老三篇了,即 GFS + MapReduce + BigTable.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;按时间顺序/影响力最大的应该就是谷歌的老三篇了,即 GFS + MapReduce + BigTable.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>NodeJS及前端开发</title>
-      <link>/blog/nodejs-and-frontend/</link>
+      <link>https://xulizhao.com/blog/nodejs-and-frontend/</link>
       <pubDate>Mon, 05 Feb 2018 02:19:15 +0000</pubDate>
       
-      <guid>/blog/nodejs-and-frontend/</guid>
+      <guid>https://xulizhao.com/blog/nodejs-and-frontend/</guid>
       <description>&lt;p&gt;因为最近使用的两个博客系统都是基于NodeJS开发的,也顺便谈谈我理解的JavaScript及前端开发.&lt;/p&gt;
-
 &lt;p&gt;NodeJS的是伴随Chrome的V8 Engine而出现,由于JS群众基础及高性能而快速发展,本质是它使用类似Nginx的事件循环模型可以处理极高的并发请求.异步IO及基于NodeJS的第三方库都提供的异步版本,使得较简单的编程模型带来极高的性能, JavaScipt这一应用于前端开发的古老语言焕发出新的生机.&lt;/p&gt;
-
 &lt;p&gt;早期前端开发的JavaScript由于要处理浏览器版本兼容且语言本身问题,充斥着丑陋的代码. 伴随着JQuery及第三方框架/库的流行,JavaScript也变得优美起来.&lt;/p&gt;
-
-&lt;p&gt;前端开发三剑客: HTML + CSS + JavaScript这些年随着新标准的发展也比我最初接触时强大易用多了, 一切事物还真得以发展的眼光看待,技术领域尤其容不得偏见.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;前端开发三剑客: HTML + CSS + JavaScript这些年随着新标准的发展也比我最初接触时强大易用多了, 一切事物还真得以发展的眼光看待,技术领域尤其容不得偏见.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>静态博客Hexo</title>
-      <link>/play/blog-hexo/</link>
+      <link>https://xulizhao.com/play/blog-hexo/</link>
       <pubDate>Fri, 02 Feb 2018 06:58:17 +0000</pubDate>
       
-      <guid>/play/blog-hexo/</guid>
+      <guid>https://xulizhao.com/play/blog-hexo/</guid>
       <description>&lt;p&gt;可能过于追求完美,使用Ghost博客两个多月,感觉功能还是过于简单,许多常用的功能用户早就提了Issue,官方却认为不是核心.&lt;/p&gt;
-
-&lt;p&gt;比如常用的文章目录,归档页,搜索功能等. 文章目录折腾下来已经可用了,搜索折腾了一半,实在没时间调试放弃了.见&lt;a href=&#34;/2017/start&#34;&gt;新博客&lt;/a&gt;这篇记录文章.&lt;/p&gt;
-
-&lt;p&gt;本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;比如常用的文章目录,归档页,搜索功能等. 文章目录折腾下来已经可用了,搜索折腾了一半,实在没时间调试放弃了.见&lt;a href=&#34;https://xulizhao.com/2017/start&#34;&gt;新博客&lt;/a&gt;这篇记录文章.&lt;/p&gt;
+&lt;p&gt;本来用这么个博客系统是为了不折腾,索性迁移到了之前熟知的Hexo+NexT(国人最好用主题),该主题常用的扩展都提供,没想到的功能也支持,很👍.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>在线文档</title>
-      <link>/docs/</link>
+      <link>https://xulizhao.com/docs/</link>
       <pubDate>Thu, 01 Feb 2018 11:04:16 +0800</pubDate>
       
-      <guid>/docs/</guid>
+      <guid>https://xulizhao.com/docs/</guid>
       <description>一些在线电子书,如果喜欢请支持实体书. Go语言圣经中文版</description>
     </item>
     
     <item>
       <title>Linux调试命令/工具</title>
-      <link>/blog/linux-debug-command/</link>
+      <link>https://xulizhao.com/blog/linux-debug-command/</link>
       <pubDate>Sun, 14 Jan 2018 09:59:48 +0000</pubDate>
       
-      <guid>/blog/linux-debug-command/</guid>
+      <guid>https://xulizhao.com/blog/linux-debug-command/</guid>
       <description>&lt;p&gt;Linux的强大之一是丰富的命令系统,尤其在调试服务端应用时.&lt;/p&gt;
-
-&lt;p&gt;记录在这里方便查阅.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;记录在这里方便查阅.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Redis</title>
-      <link>/blog/redis/</link>
+      <link>https://xulizhao.com/blog/redis/</link>
       <pubDate>Fri, 12 Jan 2018 02:33:44 +0000</pubDate>
       
-      <guid>/blog/redis/</guid>
-      <description>&lt;p&gt;最流行的内存数据库,Redis可以理解为Remote Dictionary Service.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/redis/</guid>
+      <description>&lt;p&gt;最流行的内存数据库,Redis可以理解为Remote Dictionary Service.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>/blog/mysql/</link>
+      <link>https://xulizhao.com/blog/mysql/</link>
       <pubDate>Thu, 11 Jan 2018 09:31:35 +0000</pubDate>
       
-      <guid>/blog/mysql/</guid>
-      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/mysql/</guid>
+      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PostgreSQL</title>
-      <link>/blog/postgresql/</link>
+      <link>https://xulizhao.com/blog/postgresql/</link>
       <pubDate>Thu, 11 Jan 2018 09:30:37 +0000</pubDate>
       
-      <guid>/blog/postgresql/</guid>
+      <guid>https://xulizhao.com/blog/postgresql/</guid>
       <description>&lt;p&gt;PostgreSQL是2017年流行度上升最快的数据库.&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;吐槽:官方的管理工具pgAdmin真难用啊, 命令也没有MySQL易记.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
       <title>Linux防火墙</title>
-      <link>/blog/linux-firewall/</link>
+      <link>https://xulizhao.com/blog/linux-firewall/</link>
       <pubDate>Thu, 11 Jan 2018 08:38:35 +0000</pubDate>
       
-      <guid>/blog/linux-firewall/</guid>
-      <description>&lt;p&gt;CentOS作为一个开发环境用还是有些繁琐了,今天因为忘了iptables防火墙默认开启,还浪费了些时间找原因.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/linux-firewall/</guid>
+      <description>&lt;p&gt;CentOS作为一个开发环境用还是有些繁琐了,今天因为忘了iptables防火墙默认开启,还浪费了些时间找原因.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Tomcat</title>
-      <link>/blog/tomcat/</link>
+      <link>https://xulizhao.com/blog/tomcat/</link>
       <pubDate>Fri, 05 Jan 2018 02:08:09 +0000</pubDate>
       
-      <guid>/blog/tomcat/</guid>
+      <guid>https://xulizhao.com/blog/tomcat/</guid>
       <description>&lt;p&gt;Tomcat是最常用的Java部署容器，在我最初接触Java时就是主流，特点就是稳定.&lt;/p&gt;
-
-&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Wireshark网络分析工具</title>
+      <link>https://xulizhao.com/blog/wireshark/</link>
+      <pubDate>Wed, 03 Jan 2018 08:06:32 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/wireshark/</guid>
+      <description>Wireshark基础 过滤的用法 需要区分两种过滤语言 Capture Filter: Berkley Packet Filter 示例: host xulizhao.com and port 443 Display Filter 常用过滤器 # 地址/端口 ip.addr == 10.0.0.1 ip.src == ip.src_host == tcp.port==4000 tcp.port == 8080 and ip.addr==127.0.0.1 # HTTP http http.request #</description>
     </item>
     
     <item>
       <title>网络分析工具</title>
-      <link>/blog/network-tools/</link>
+      <link>https://xulizhao.com/blog/network-tools/</link>
       <pubDate>Wed, 03 Jan 2018 08:06:32 +0000</pubDate>
       
-      <guid>/blog/network-tools/</guid>
+      <guid>https://xulizhao.com/blog/network-tools/</guid>
       <description>&lt;p&gt;这里的网络分析工具可以归为两大类:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;网络代理: 用的最多的是 Fiddler&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;分析工具: 比较熟悉的是Wireshark&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;li&gt;
+&lt;p&gt;网络代理: 用的最多的是 Fiddler&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分析工具: 比较熟悉的是&lt;a href=&#34;https://xulizhao.com/blog/wireshark/&#34;&gt;Wireshark&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>聊聊监控系统</title>
-      <link>/blog/monitoring/</link>
+      <link>https://xulizhao.com/blog/monitoring/</link>
       <pubDate>Fri, 29 Dec 2017 02:47:29 +0000</pubDate>
       
-      <guid>/blog/monitoring/</guid>
+      <guid>https://xulizhao.com/blog/monitoring/</guid>
       <description>&lt;p&gt;2017很快就要过去了,也顺便整理下散落在印象笔记的一些片段.&lt;/p&gt;
-
-&lt;p&gt;监控系统本来是运维的一个重要组成,因为工作需要也接触了一些开源的监控系统, 下面简要的聊聊我所知道的.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;监控系统本来是运维的一个重要组成,因为工作需要也接触了一些开源的监控系统, 下面简要的聊聊我所知道的.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Grafana指标展示仪表盘</title>
+      <link>https://xulizhao.com/blog/grafana/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/grafana/</guid>
+      <description>&lt;p&gt;Grafana本身已经足够成熟，也有了广泛的应用。&lt;/p&gt;
+&lt;p&gt;从&lt;a href=&#34;https://xulizhao.com/blog/monitoring/&#34;&gt;聊聊监控系统&lt;/a&gt;独立出Grafana。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>InfluxDB时序数据库</title>
+      <link>https://xulizhao.com/blog/influxdb/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/influxdb/</guid>
+      <description>&lt;p&gt;InfluxData提供的开源方案&lt;/p&gt;
+&lt;p&gt;开源的几个产品简称TICK. 相对于付费的企业版/云版少了集群和高可用等支持.&lt;/p&gt;
+&lt;p&gt;我主要使用的Telegraf和InfluxDB, 后两者感觉易用性太差.&lt;/p&gt;
+&lt;p&gt;展示这部分使用Grafana替代,它自带基本的告警.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Telegraf : 性能数据的收集,插件支持丰富&lt;/li&gt;
+&lt;li&gt;InfluxDB: 核心的时序数据库,负责存储&lt;/li&gt;
+&lt;li&gt;Chronograf : 前端图形化展示&lt;/li&gt;
+&lt;li&gt;Kapacitor: 流数据处理,异常检测并触发报警&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>微服务</title>
-      <link>/blog/microservices/</link>
+      <link>https://xulizhao.com/blog/microservices/</link>
       <pubDate>Thu, 28 Dec 2017 07:38:18 +0000</pubDate>
       
-      <guid>/blog/microservices/</guid>
-      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/microservices/</guid>
+      <description>&lt;p&gt;微服务是最近两年流行起来的一种架构设计方法,可以很好的和Docker,Kubernetes结合起来.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>利器之ZSH</title>
-      <link>/blog/zsh/</link>
+      <link>https://xulizhao.com/blog/zsh/</link>
       <pubDate>Thu, 28 Dec 2017 02:19:17 +0000</pubDate>
       
-      <guid>/blog/zsh/</guid>
+      <guid>https://xulizhao.com/blog/zsh/</guid>
       <description>&lt;p&gt;有些工具真的很能提高效率, 比如oh-my-zsh这个扩展(zsh本身比bash更强大).&lt;/p&gt;
-
 &lt;p&gt;纵观软件世界,一个软件系统能流行起来很大原因是其生态是不是够丰富和繁荣,比如容器docker,Spring框架.&lt;/p&gt;
-
-&lt;p&gt;oh-my-zsh提供了丰富的插件及主题,是我的装机必备. 在这里记录下常用设置.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;oh-my-zsh提供了丰富的插件及主题,是我的装机必备. 在这里记录下常用设置.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Go语言学习笔记</title>
-      <link>/blog/golang/</link>
+      <title>Go语言入门</title>
+      <link>https://xulizhao.com/blog/go-learn/</link>
       <pubDate>Tue, 26 Dec 2017 07:00:40 +0000</pubDate>
       
-      <guid>/blog/golang/</guid>
+      <guid>https://xulizhao.com/blog/go-learn/</guid>
       <description>&lt;p&gt;接触Go有段时间了，感觉有几个学习资源很有帮助：&lt;/p&gt;
-
 &lt;ol&gt;
 &lt;li&gt;官方Go指南 : 边写边学, 最轻松简单的方式&lt;/li&gt;
-&lt;li&gt;系统的学习: 推荐书 &lt;Go程序设计语言&gt;， 我是先看的&lt;a href=&#34;https://xulizhao.com/docs/gopl&#34;&gt;中文电子版&lt;/a&gt;之后买的实体书。&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;官方文档&amp;rdquo;Effective Go/实效Go编程&amp;rdquo; : 理解Go的必读文档&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;li&gt;系统的学习: 推荐书 &amp;lt;Go程序设计语言&amp;gt;， 我是先看的[中文电子版][1]之后买的实体书。&lt;/li&gt;
+&lt;li&gt;官方文档&amp;quot;Effective Go/实效Go编程&amp;rdquo; : 理解Go的必读文档&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
     
     <item>
       <title>Go网络开发笔记</title>
-      <link>/blog/go-networking/</link>
+      <link>https://xulizhao.com/blog/go-networking/</link>
       <pubDate>Tue, 26 Dec 2017 03:33:27 +0000</pubDate>
       
-      <guid>/blog/go-networking/</guid>
-      <description>&lt;p&gt;用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/go-networking/</guid>
+      <description>&lt;p&gt;用Go开发网络很常见,由于对系统库还不是很熟,做下简单的笔记.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>IntelliJ IDE</title>
-      <link>/blog/intellij-ide/</link>
+      <title>IntelliJ IDEA</title>
+      <link>https://xulizhao.com/blog/idea/</link>
       <pubDate>Wed, 20 Dec 2017 07:28:00 +0000</pubDate>
       
-      <guid>/blog/intellij-ide/</guid>
+      <guid>https://xulizhao.com/blog/idea/</guid>
       <description>&lt;p&gt;接触最早最多的IDE是Eclipse,当时一有大版本我就下载更新,却总感觉变化不大.&lt;/p&gt;
-
 &lt;p&gt;后来时不时有人安利IntelliJ,我试用后体会不深,再说商业版很贵(早期没有社区版),没有继续使用.&lt;/p&gt;
-
 &lt;p&gt;做Python开发后,慢慢从Eclipse+PyDev逐渐切换到PyCharm,感觉这才是IDE的样子,也就是足够智能.&lt;/p&gt;
-
-&lt;p&gt;之后越来越喜欢全家桶,IDEA,DataGrip,GoLand, 毕竟操作习惯了,而且我每次安装完必须给界面换成Darcula的黑色主题.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;之后越来越喜欢全家桶,IDEA,DataGrip,GoLand, 毕竟操作习惯了,而且我每次安装完必须给界面换成Darcula的黑色主题.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Go开发遇到的坑</title>
-      <link>/blog/go-fix-it/</link>
+      <title>Go错误排查</title>
+      <link>https://xulizhao.com/blog/go-fix-it/</link>
       <pubDate>Wed, 20 Dec 2017 06:49:56 +0000</pubDate>
       
-      <guid>/blog/go-fix-it/</guid>
+      <guid>https://xulizhao.com/blog/go-fix-it/</guid>
       <description>&lt;p&gt;由于之前主要用的是Python这类动态语言,切换到Go还有些不适应.&lt;/p&gt;
-
-&lt;p&gt;这些出错信息看的一头雾水,记下来供参考.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;这些出错信息看的一头雾水,记下来供参考.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go性能测试</title>
+      <link>https://xulizhao.com/blog/go-perf/</link>
+      <pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/go-perf/</guid>
+      <description>&lt;p&gt;Go用下来最深的体会就是其极其高效的性能。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;官方调优工具&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;pprof：调优分析和可视化工具&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>/blog/kubernetes/</link>
+      <link>https://xulizhao.com/blog/kubernetes/</link>
       <pubDate>Mon, 18 Dec 2017 02:38:06 +0000</pubDate>
       
-      <guid>/blog/kubernetes/</guid>
+      <guid>https://xulizhao.com/blog/kubernetes/</guid>
       <description>&lt;p&gt;Kubernetes(缩写为k8s)是最流行的开源容器管理平台, 现在也是事实上的容器编排调度标准.&lt;/p&gt;
-
 &lt;p&gt;打算写系列的相关文章,记录自己的学习过程.&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-local&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes部署篇:本地开发测试环境搭建&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-deploy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes部署篇:Kubespray方式自动化&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/kubeadm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;用kubeadm手动搭建Kubernetes集群&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-command&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kubectl命令汇总&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-namespace&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes命名空间的应用&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;Kubernetes部署篇:本地开发测试环境搭建&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;Kubernetes部署篇:Kubespray方式自动化&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;用kubeadm手动搭建Kubernetes集群&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;kubectl命令汇总&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;Kubernetes命名空间的应用&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>Docker基础</title>
-      <link>/blog/docker/</link>
+      <link>https://xulizhao.com/blog/docker/</link>
       <pubDate>Mon, 18 Dec 2017 02:37:23 +0000</pubDate>
       
-      <guid>/blog/docker/</guid>
+      <guid>https://xulizhao.com/blog/docker/</guid>
       <description>&lt;p&gt;最近两年随着微服务而流行起来的Docker是一种轻量级容器技术(相对于VMWare,KVM等Hypervisor解决方案).&lt;/p&gt;
-
 &lt;p&gt;它能给开发,测试,运维各团队提供一个统一的运行环境, 这点很实用.&lt;/p&gt;
-
 &lt;p&gt;Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更高级功能的控制工具,主要特性:&lt;/p&gt;
-
-&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>利器之TMUX</title>
-      <link>/blog/tmux/</link>
+      <link>https://xulizhao.com/blog/tmux/</link>
       <pubDate>Mon, 18 Dec 2017 02:21:35 +0000</pubDate>
       
-      <guid>/blog/tmux/</guid>
+      <guid>https://xulizhao.com/blog/tmux/</guid>
       <description>用法 tmux ls : list sessions tmux attach -t 0 : -t 代表“target” , 0 是session名 tmux kill-session -t 0 : 结束会话 tmux source ~/.tmux.conf : 重新加载配置 复制和粘贴: 使用Shift临时禁用</description>
     </item>
     
     <item>
       <title>Go流行库简介</title>
-      <link>/blog/go-lib/</link>
+      <link>https://xulizhao.com/blog/go-lib/</link>
       <pubDate>Fri, 15 Dec 2017 08:44:11 +0000</pubDate>
       
-      <guid>/blog/go-lib/</guid>
+      <guid>https://xulizhao.com/blog/go-lib/</guid>
       <description>&lt;p&gt;Go作为最近几年随大数据,Docker而火热起来(依然偏小众)的服务端语言,最近接触下来的感觉是第三方库/框架还是不够稳定和丰富,很多应用场景还没有一个绝对地位的首选库.&lt;/p&gt;
-
-&lt;p&gt;偶尔发现&lt;a href=&#34;https://go.libhunt.com/&#34;&gt;LibHunt&lt;/a&gt;还不错,可以在库选型时做些对比.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;偶尔发现&lt;a href=&#34;https://go.libhunt.com/&#34;&gt;LibHunt&lt;/a&gt;还不错,可以在库选型时做些对比.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SSH使用及扩展</title>
-      <link>/blog/ssh/</link>
+      <link>https://xulizhao.com/blog/ssh/</link>
       <pubDate>Fri, 15 Dec 2017 06:19:55 +0000</pubDate>
       
-      <guid>/blog/ssh/</guid>
-      <description>&lt;p&gt;经常和Linux服务器打交道就离不开SSH.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/ssh/</guid>
+      <description>&lt;p&gt;经常和Linux服务器打交道就离不开SSH.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>/blog/nginx/</link>
+      <link>https://xulizhao.com/blog/nginx/</link>
       <pubDate>Wed, 13 Dec 2017 10:45:49 +0000</pubDate>
       
-      <guid>/blog/nginx/</guid>
+      <guid>https://xulizhao.com/blog/nginx/</guid>
       <description>时常会用到Nginx,一直没有好好的梳理下,以后更新在这里. 基础使用 安装 照官方教程来就好,没啥好说的. # CentOS中 $releasever</description>
     </item>
     
     <item>
-      <title>Python配置备忘</title>
-      <link>/blog/python/</link>
+      <title>Python学习系列</title>
+      <link>https://xulizhao.com/blog/python/</link>
       <pubDate>Wed, 13 Dec 2017 07:58:35 +0000</pubDate>
       
-      <guid>/blog/python/</guid>
-      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/python/</guid>
+      <description>&lt;p&gt;Python记录系列.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python开发环境配置</title>
+      <link>https://xulizhao.com/blog/python-dev/</link>
+      <pubDate>Wed, 13 Dec 2017 07:58:35 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-dev/</guid>
+      <description>&lt;p&gt;Python开发环境问题记录.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>/about/</link>
+      <link>https://xulizhao.com/about/</link>
       <pubDate>Wed, 06 Dec 2017 02:10:50 +0000</pubDate>
       
-      <guid>/about/</guid>
-      <description>IT人,过去这些年多了些折腾,少了些坚持. 多了些浮躁,少了些踏实. 属于典型的后知后觉型. 有过多次折腾博客的经历了,最近几年因为技术类备注主要</description>
+      <guid>https://xulizhao.com/about/</guid>
+      <description>IT人,属于典型的后知后觉型. 有过多次折腾博客的经历了,最近几年因为技术类备注主要改用印象笔记而荒废了博客. 考虑到一个博客系统对回顾总结还是</description>
     </item>
     
     <item>
       <title>Jenkins持续集成工具</title>
-      <link>/blog/jenkins/</link>
+      <link>https://xulizhao.com/blog/jenkins/</link>
       <pubDate>Thu, 30 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/jenkins/</guid>
-      <description>时不时会和持续集成工具Jenkins打交道. Python API调用 无认证 import requests api_url = &amp;#34;http://jenkins.xulizhao.com/job/test_job/api/json?tree=lastSuccessfulBuild[number]&amp;#34; r = requests.get(api_url) build_number = r.json()[&amp;#39;lastSuccessfulBuild&amp;#39;][&amp;#39;number&amp;#39;] 需要认证 # 先安装依赖库 pip install python-jenkins # 代码示例 import jenkins server = jenkins.Jenkins(&amp;#39;http://jenkins.xulizhao.com&amp;#39;, username=&amp;#39;user&amp;#39;, password=&amp;#39;password&amp;#39;) last_build_number =</description>
+      <guid>https://xulizhao.com/blog/jenkins/</guid>
+      <description>时不时会和持续集成工具Jenkins打交道. 安装 直接安装系统安装包 推荐安装方式,以Ubuntu为例: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - sudo vi /etc/apt/sources.list.d/jenkins.list # 添加 deb https://pkg.jenkins.io/debian-stable binary/ sudo</description>
     </item>
     
     <item>
       <title>Golang开发环境</title>
-      <link>/blog/go-basic/</link>
-      <pubDate>Tue, 28 Nov 2017 10:14:35 +0000</pubDate>
+      <link>https://xulizhao.com/blog/go-dev/</link>
+      <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/go-basic/</guid>
-      <description>&lt;p&gt;简单记录下Go语言开发环境的搭建和基本用法.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/go-dev/</guid>
+      <description>&lt;p&gt;简单记录下Go语言开发环境的搭建和基本用法.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Git备忘</title>
-      <link>/blog/git/</link>
+      <link>https://xulizhao.com/blog/git/</link>
       <pubDate>Mon, 27 Nov 2017 07:20:47 +0000</pubDate>
       
-      <guid>/blog/git/</guid>
-      <description>&lt;h1 id=&#34;学习资源&#34;&gt;学习资源&lt;/h1&gt;
-
-&lt;p&gt;如果是新手,强烈推荐阅读&lt;a href=&#34;http://rogerdudler.github.io/git-guide/index.zh.html&#34;&gt;Git简明教程&lt;/a&gt;, 进阶必读 &lt;a href=&#34;https://git-scm.com/book/zh&#34;&gt;Pro Git中文版&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;git常用命令&#34;&gt;Git常用命令&lt;/h1&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/git/</guid>
+      <description>&lt;h1 id=&#34;git&#34;&gt;Git常用命令解释&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>新博客</title>
-      <link>/play/blog-ghost/</link>
+      <link>https://xulizhao.com/play/blog-ghost/</link>
       <pubDate>Mon, 27 Nov 2017 02:10:29 +0000</pubDate>
       
-      <guid>/play/blog-ghost/</guid>
+      <guid>https://xulizhao.com/play/blog-ghost/</guid>
       <description>&lt;p&gt;本博客基于Ghost开源博客平台搭建,系统基于Node.js开发.&lt;/p&gt;
-
-&lt;p&gt;主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;主要看中她的简洁和轻量,编辑器使用Markdown,资源占用比较低(性能比WordPress好很多).&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Flask开发笔记</title>
-      <link>/blog/flask/</link>
+      <link>https://xulizhao.com/blog/flask/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/flask/</guid>
+      <guid>https://xulizhao.com/blog/flask/</guid>
       <description>开发基础 创建 Flask Starter Project pip3 install cookiecutter cookiecutter https://github.com/realpython/cookiecutter-flask-skeleton.git 具体使用参考 项目地址 常用第三方 # requirements.txt Flask Flask-Bcrypt Flask-Login Flask-WTF Flask-Bootstrap Flask-DebugToolbar Flask-Testing Flask-Migrate Flask-SQLAlchemy celery 例子 # -- coding: utf-8 -- from flask import Flask, request, make_response, redirect, abort app = Flask(__name__) # route建立请求路</description>
     </item>
     
     <item>
+      <title>Go基础笔记</title>
+      <link>https://xulizhao.com/blog/go-basic/</link>
+      <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/go-basic/</guid>
+      <description>&lt;p&gt;Go语言学习笔记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java8学习</title>
+      <link>https://xulizhao.com/blog/java8/</link>
+      <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java8/</guid>
+      <description>&lt;p&gt;Java系列记录文章。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java核心库</title>
+      <link>https://xulizhao.com/blog/java-core/</link>
+      <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-core/</guid>
+      <description>&lt;p&gt;回归基础。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java日志</title>
+      <link>https://xulizhao.com/blog/java-logging/</link>
+      <pubDate>Sat, 29 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-logging/</guid>
+      <description>&lt;p&gt;Java日志的使用笔记。&lt;/p&gt;
+&lt;p&gt;现在流行的日志库通常包含Log Facade和Log Implementation两部分，可以理解为上层抽象和底层实现。&lt;/p&gt;
+&lt;p&gt;具体的组合用法为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SLF4J(Simple Logging Facade for Java) + Logback&lt;/li&gt;
+&lt;li&gt;Log4j2 (2.x版本) : log4j-api + log4j-core&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;背景介绍：SLF4J,Logback是log4j 1.x版本的重新实现，作者为同一人。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java命令行及工具集</title>
+      <link>https://xulizhao.com/blog/java-tools/</link>
+      <pubDate>Thu, 29 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-tools/</guid>
+      <description>&lt;p&gt;工欲善其事必先利其器。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RDP远程登录Linux</title>
+      <link>https://xulizhao.com/blog/linux-rdp/</link>
+      <pubDate>Sat, 27 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/linux-rdp/</guid>
+      <description>有时候为了远程调试，经常会遇到RDP到Linux主机的情况。 主要用到xrdp协议并确保Linux主机已安装桌面系统。 连接到Ubuntu sudo apt-get install</description>
+    </item>
+    
+    <item>
+      <title>Java异常处理</title>
+      <link>https://xulizhao.com/blog/java-exception/</link>
+      <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-exception/</guid>
+      <description>&lt;p&gt;异常处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java测试</title>
+      <link>https://xulizhao.com/blog/java-test/</link>
+      <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java面向对象设计</title>
+      <link>https://xulizhao.com/blog/java-oo/</link>
+      <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-oo/</guid>
+      <description>&lt;p&gt;面向对象编程和设计原则。&lt;/p&gt;
+&lt;p&gt;代码质量评判标准:易维护、易读、易扩展，灵活、简洁、可复用、可测试。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>ZooKeeper</title>
-      <link>/blog/zookeeper/</link>
+      <link>https://xulizhao.com/blog/zookeeper/</link>
       <pubDate>Fri, 17 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/zookeeper/</guid>
+      <guid>https://xulizhao.com/blog/zookeeper/</guid>
       <description>作用及原理 作用: 分布式协调, 提供操作API 配置管理 集群管理: 群主选举 资源定位 同步状态 统一命名服务 使用案例: HBase Hadoop Kafka 选举算法 一个Leader,其</description>
     </item>
     
     <item>
+      <title>Java常用库</title>
+      <link>https://xulizhao.com/blog/java-lib/</link>
+      <pubDate>Tue, 21 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-lib/</guid>
+      <description>&lt;p&gt;常用的一些第三方库。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Maven构建工具</title>
+      <link>https://xulizhao.com/blog/maven/</link>
+      <pubDate>Sun, 29 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/maven/</guid>
+      <description>&lt;p&gt;Maven是Java开发中最常用的项目依赖管理工具。&lt;/p&gt;
+&lt;p&gt;虽然喜新厌旧的更喜欢Gradle，可在Java项目中还是会常常用到Maven，干脆做些记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python的Unicode使用</title>
+      <link>https://xulizhao.com/blog/python-unicode/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-unicode/</guid>
+      <description>&lt;p&gt;在做数据处理时，通常会遇到Unicode的问题。 这里对python的编码问题做简单的总结。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python编码规范和风格</title>
+      <link>https://xulizhao.com/blog/python-style/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-style/</guid>
+      <description>&lt;p&gt;用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python高级笔记</title>
+      <link>https://xulizhao.com/blog/python-advance/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-advance/</guid>
+      <description>&lt;p&gt;用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python基础笔记</title>
+      <link>https://xulizhao.com/blog/python-core/</link>
+      <pubDate>Mon, 14 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/python-core/</guid>
+      <description>&lt;p&gt;用Python很多年，可感觉学的比较碎片，整理下之前的笔记。 学而时习之。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>reborn</title>
-      <link>/read/reborn/</link>
+      <link>https://xulizhao.com/read/reborn/</link>
       <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/read/reborn/</guid>
+      <guid>https://xulizhao.com/read/reborn/</guid>
       <description>&lt;p&gt;&amp;ldquo;书籍是人类的好朋友&amp;rdquo;,这是句真理. 在如今信息爆炸,碎片充斥的年代,一年读十几/几十本书已成奢谈.&lt;/p&gt;
-
 &lt;p&gt;在手机上碎片阅读李笑来老师的书可追溯到几年前的&amp;lt;把时间当作朋友&amp;gt;,去年是&amp;lt;成长-YC创业课读书笔记&amp;gt;, 最近还在读的是&amp;lt;新生-七年就是一辈子&amp;gt;.&lt;/p&gt;
-
-&lt;p&gt;笑来老师的书部部精品,还有&lt;a href=&#34;http://zhibimo.com/books/xiaolai&#34;&gt;正版免费&lt;/a&gt;可读,你还奢求什么.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;笑来老师的书部部精品,还有&lt;a href=&#34;http://zhibimo.com/books/xiaolai&#34;&gt;正版免费&lt;/a&gt;可读,你还奢求什么.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go In Action</title>
-      <link>/play/blog-hugo/</link>
+      <link>https://xulizhao.com/play/blog-hugo/</link>
       <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/play/blog-hugo/</guid>
-      <description>更新下关于静态博客Hugo的旧文, 本博客现在就是使用Hugo生成. 最早知道Hugo是在听完&amp;rsquo;内核恐慌&amp;rsquo;播客的一期节目</description>
+      <guid>https://xulizhao.com/play/blog-hugo/</guid>
+      <description>更新下关于静态博客Hugo的旧文, 本博客现在就是使用Hugo生成. 最早知道Hugo是在听完&#39;内核恐慌&#39;播客的一期节目,其实之前已经通过Git</description>
     </item>
     
   </channel>

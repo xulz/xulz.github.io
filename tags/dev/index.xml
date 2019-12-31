@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dev on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/dev/</link>
+    <description>Recent content in dev on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 30 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xulizhao.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>谈编程语言</title>
+      <link>https://xulizhao.com/blog/programming-language/</link>
+      <pubDate>Mon, 30 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/programming-language/</guid>
+      <description>&lt;p&gt;今年是变化的一年，自己最大的收获就是认识到视野和选择远比努力重要。&lt;/p&gt;
+&lt;p&gt;打开视野后，感觉自己以前对于编程语言的理解还是太片面了，所以重新谈谈现在的认识。&lt;/p&gt;
+&lt;p&gt;一句话总结的话，还是那句老话：没有最好语言，只有最适合的语言。 语言只是解决问题的一个工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DDD/领域驱动设计</title>
+      <link>https://xulizhao.com/blog/ddd/</link>
+      <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/ddd/</guid>
+      <description>&lt;p&gt;之前了解到微服务、中台等实践的背后都和领域驱动设计紧密相关，上周从图书馆借了2本相关书来读，记点笔记加深理解。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

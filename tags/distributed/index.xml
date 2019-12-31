@@ -1,37 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Distributed on XuLizhao &#39;s Notes</title>
-    <link>/tags/distributed/</link>
-    <description>Recent content in Distributed on XuLizhao &#39;s Notes</description>
+    <title>distributed on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/distributed/</link>
+    <description>Recent content in distributed on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 03 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/distributed/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/distributed/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>设计数据密集型应用笔记</title>
-      <link>/blog/ddia/</link>
+      <link>https://xulizhao.com/blog/ddia/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/ddia/</guid>
-      <description>&lt;p&gt;去年就看到总有人推荐&lt;Design Data Intensive Applications&gt;这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.&lt;/p&gt;
-
+      <guid>https://xulizhao.com/blog/ddia/</guid>
+      <description>&lt;p&gt;去年就看到总有人推荐&lt;!-- raw HTML omitted --&gt;这本书(简称DDIA),最初手里只有英文版,缓慢的读了个开头后来就忙别的去了.&lt;/p&gt;
 &lt;p&gt;今年偶然看到网上有&lt;a href=&#34;https://github.com/Vonng/ddia&#34;&gt;中译版&lt;/a&gt;,惭愧的是到了年底,最近几个月才读来.&lt;/p&gt;
-
-&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;书的信息量很大,对数据库和分布式系统感兴趣的尤其值得一读.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ZooKeeper</title>
-      <link>/blog/zookeeper/</link>
+      <link>https://xulizhao.com/blog/zookeeper/</link>
       <pubDate>Fri, 17 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/zookeeper/</guid>
+      <guid>https://xulizhao.com/blog/zookeeper/</guid>
       <description>作用及原理 作用: 分布式协调, 提供操作API 配置管理 集群管理: 群主选举 资源定位 同步状态 统一命名服务 使用案例: HBase Hadoop Kafka 选举算法 一个Leader,其</description>
     </item>
     

@@ -1,33 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Microservice on XuLizhao &#39;s Notes</title>
-    <link>/tags/microservice/</link>
-    <description>Recent content in Microservice on XuLizhao &#39;s Notes</description>
+    <title>microservice on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/microservice/</link>
+    <description>Recent content in microservice on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/microservice/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/microservice/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>开源反向代理及负载均衡Envoy初探</title>
-      <link>/blog/envoy-proxy/</link>
+      <link>https://xulizhao.com/blog/envoy-proxy/</link>
       <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/envoy-proxy/</guid>
-      <description>&lt;p&gt;Envoy是Lyft于2017年开源的网络反向代理工具,现属于CNCF基金会的毕业项目.&lt;/p&gt;
-
-&lt;p&gt;和Nginx和HAProxy相比,功能更强大,开源更彻底(提供的许多功能是其他产品的付费功能).&lt;/p&gt;
-
-&lt;p&gt;更重要的是作为新兴代理,与微服务紧密结合,可以做入口代理/边缘代理/中间代理等. 流行的Service Mesh框架istio就是基于Envoy构建而成.&lt;/p&gt;
-
-&lt;p&gt;Envoy本身用C++开发,并发模型与Nginx类似,具有很高的处理性能.&lt;/p&gt;
-
-&lt;p&gt;本文尽量脱离微服务和Service Mesh,聚焦于Envoy代理本身所提供的丰富功能.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/envoy-proxy/</guid>
+      <description>&lt;p&gt;Envoy是Lyft于2017年开源的网络反向代理工具,现属于CNCF基金会的毕业项目.&lt;br&gt;
+和Nginx和HAProxy相比,功能更强大,开源更彻底(提供的许多功能是其他产品的付费功能).&lt;/p&gt;
+&lt;p&gt;作为新兴代理,与微服务紧密结合,可以提高强大的可观察性功能,通常做为入口代理/边缘代理/中间代理等. 流行的Service Mesh框架istio就是基于Envoy构建而成.&lt;/p&gt;
+&lt;p&gt;Envoy本身用C++开发,并发模型与Nginx类似,具有很高的处理性能.属于L4层代理，但支持7层HTTP协议栈。&lt;/p&gt;
+&lt;p&gt;本文聚焦于Envoy代理本身所提供的丰富功能,个别地方也会引入微服务和Service Mesh的概念,读者可以再做深入了解.&lt;/p&gt;</description>
     </item>
     
   </channel>

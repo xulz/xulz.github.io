@@ -1,27 +1,78 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Networking on XuLizhao &#39;s Notes</title>
-    <link>/tags/networking/</link>
-    <description>Recent content in Networking on XuLizhao &#39;s Notes</description>
+    <title>networking on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/networking/</link>
+    <description>Recent content in networking on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 09 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>sipp压测工具介绍</title>
+      <link>https://xulizhao.com/blog/sipp/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/sipp/</guid>
+      <description>&lt;p&gt;把sipp这个性能测试工具的笔记独立出来，更多VOIP知识参考&lt;a href=&#34;https://xulizhao.com/blog/voip/&#34;&gt;VOIP学习笔记&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>了解VOIP</title>
+      <link>https://xulizhao.com/blog/voip/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/voip/</guid>
+      <description>&lt;p&gt;VOIP简单说就是网络电话。&lt;/p&gt;
+&lt;p&gt;按：最近想找做个Java版的VOIP简单demo，发现官方居然没有个正经库。网上这方面的一些介绍文章也已经过时，特整理一份供大家参考。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网络基础</title>
+      <link>https://xulizhao.com/blog/network/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/network/</guid>
+      <description>&lt;p&gt;好记性不如烂笔头, 网络基础知识备忘.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>证书那些事</title>
-      <link>/blog/cert/</link>
+      <link>https://xulizhao.com/blog/cert/</link>
       <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/cert/</guid>
+      <guid>https://xulizhao.com/blog/cert/</guid>
       <description>&lt;p&gt;断断续续接触过加密通讯的一些场景, 随着近两年安全的普及,建站使用https也成为标配.&lt;/p&gt;
-
-&lt;p&gt;这篇文章试图汇总下证书这块的知识提纲.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;这篇文章试图汇总下证书这块的知识提纲.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Wireshark网络分析工具</title>
+      <link>https://xulizhao.com/blog/wireshark/</link>
+      <pubDate>Wed, 03 Jan 2018 08:06:32 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/wireshark/</guid>
+      <description>Wireshark基础 过滤的用法 需要区分两种过滤语言 Capture Filter: Berkley Packet Filter 示例: host xulizhao.com and port 443 Display Filter 常用过滤器 # 地址/端口 ip.addr == 10.0.0.1 ip.src == ip.src_host == tcp.port==4000 tcp.port == 8080 and ip.addr==127.0.0.1 # HTTP http http.request #</description>
+    </item>
+    
+    <item>
+      <title>网络分析工具</title>
+      <link>https://xulizhao.com/blog/network-tools/</link>
+      <pubDate>Wed, 03 Jan 2018 08:06:32 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/network-tools/</guid>
+      <description>&lt;p&gt;这里的网络分析工具可以归为两大类:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;网络代理: 用的最多的是 Fiddler&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分析工具: 比较熟悉的是&lt;a href=&#34;https://xulizhao.com/blog/wireshark/&#34;&gt;Wireshark&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
   </channel>

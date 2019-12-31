@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Nginx - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/nginx/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/nginx/" itemprop="url">
         Nginx
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-12-13">
     2017-12-13
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">Tech</span>
       </a>
       &nbsp; 
@@ -149,131 +148,127 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">1095 字 ~3分钟</span>
+<span class="leancloud-visitors-count">1283 字 ~3分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
-    
-
-<p>时常会用到Nginx,一直没有好好的梳理下,以后更新在这里.</p>
-
-<h2 id="基础使用">基础使用</h2>
-
-<h3 id="安装">安装</h3>
-
+    <p>时常会用到Nginx,一直没有好好的梳理下,以后更新在这里.</p>
+<h2 id="heading">基础使用</h2>
+<h3 id="heading-1">安装</h3>
 <p>照<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install">官方教程</a>来就好,没啥好说的.</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># CentOS中 $releasever替换为主版本号,比如7; $basearch 替换为架构, 用arch命令查看
-# Ubuntu中 用以下命令修复错误: GPG error: http://nginx.org/packages/ubuntu xenial Release: The following signatures couldn&#39;t be verified because the public key is not available: NO_PUBKEY $key;
-# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $key</pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># CentOS
-</span><span style="color:#09f;font-style:italic"></span>sudo tee /etc/yum.repos.d/nginx.repo <span style="color:#c30">&lt;&lt;-&#39;EOF&#39;
+<pre><code># CentOS中 $releasever替换为主版本号,比如7; $basearch 替换为架构, 用arch命令查看
+# Ubuntu中 用以下命令修复错误: GPG error: http://nginx.org/packages/ubuntu xenial Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY $key;
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $key
+</code></pre>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># CentOS</span>
+sudo tee /etc/yum.repos.d/nginx.repo <span style="color:#c30">&lt;&lt;-&#39;EOF&#39;
 </span><span style="color:#c30">[nginx]
 </span><span style="color:#c30">name=nginx repo
 </span><span style="color:#c30">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
 </span><span style="color:#c30">gpgcheck=0
 </span><span style="color:#c30">enabled=1
-</span><span style="color:#c30">EOF</span></code></pre></div>
-<p>常用命令:</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 手动启动
+</span><span style="color:#c30">EOF</span>
+</code></pre></div><p>常用命令:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 手动启动</span>
 /etc/init.d/nginx start
-# 开机启动服务
+<span style="color:#09f;font-style:italic"># 开机启动服务</span>
 chkconfig nginx on
-# 修改配置文件后,验证语法正确
+<span style="color:#09f;font-style:italic"># 修改配置文件后,验证语法正确</span>
 nginx -t
-# 重新加载配置让修改立即生效
-sudo nginx -s reload</pre></div>
-<h2 id="配置">配置</h2>
+<span style="color:#09f;font-style:italic"># 重新加载配置让修改立即生效</span>
+sudo nginx -s reload
 
+<span style="color:#09f;font-style:italic"># 查看当前版本信息</span>
+nginx -V
+</code></pre></div><h2 id="heading-2">配置</h2>
 <ul>
 <li>/etc/nginx/nginx.conf</li>
 <li>默认常用Document Root : /var/www/, /srv, /usr/share/www</li>
 </ul>
-
-<h3 id="指令">指令:</h3>
-
+<h3 id="heading-3">指令:</h3>
 <h4 id="location">Location</h4>
-
 <ul>
 <li>使用正则:必须以下面2种前缀开始
-
 <ul>
 <li>&ldquo;~&rdquo; 大小写匹配</li>
 <li>&ldquo;~*&rdquo; 忽略大小写匹配</li>
 <li>不做匹配检查使用空block,即 &ldquo;/ /&rdquo;</li>
-</ul></li>
+</ul>
+</li>
 <li>不使用正则(literal): 逐字匹配,一旦匹配停止继续检索
-
 <ul>
 <li>= 前缀强制URI和Location参数的匹配</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <blockquote>
 <p>正则备忘: ^ 代表以xx开始, $代表以xx结尾</p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">location  = / {
+<pre><code>location  = / {
 # 只匹配 / 查询
 }
 location /test {
 # 开启目录自动索引
     autoindex on;
-}</pre></div>
-<h4 id="url重写">URL重写</h4>
-
+}
+</code></pre>
+<h4 id="url">URL重写</h4>
 <p>rewrite (PCRE, perl兼容正则)</p>
-
 <h4 id="try-files">try_files</h4>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 首先找相应的URI
+<pre><code># 首先找相应的URI
 # 如果没有,尝试添加/作为目录去匹配
 # 如果还是找不到,转发给代理
-try_files $uri $uri/ @proxy;</pre></div>
-<h3 id="主要变量">主要变量:</h3>
-
+try_files $uri $uri/ @proxy;
+</code></pre>
+<h3 id="heading-4">主要变量:</h3>
 <ul>
 <li>$server_name : 虚拟主机名</li>
 </ul>
+<h3 id="heading-5">日志</h3>
+<p>默认的错误日志位于/var/log/nginx/error.log</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 开启debug日志对调试很有用</span>
+error_log  /var/log/nginx/error.log debug;
 
-<h2 id="本地开发环境">本地开发环境</h2>
-
-<h3 id="mac安装">Mac安装</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew install nginx
+</code></pre></div><h2 id="heading-6">本地开发环境</h2>
+<h3 id="mac">Mac安装</h3>
+<pre><code>brew install nginx
 # 以服务的形式随系统启动
 brew services start nginx
 # 主要配置目录
 /usr/local/var/www  # Doc Root
 /usr/local/etc/nginx/nginx.conf
-/usr/local/etc/nginx/servers/  ## 虚拟server </pre></div>
-<h3 id="windows使用服务">Windows使用服务</h3>
-
+/usr/local/etc/nginx/servers/  ## 虚拟server 
+</code></pre>
+<h3 id="windows">Windows使用服务</h3>
 <p>借助于 <a href="https://github.com/kohsuke/winsw">winsw</a> 可以把Nginx安装成服务.</p>
-
 <blockquote>
 <p>winsw.exe install/uninstall/start/stop/restart/status</p>
 </blockquote>
-
 <h2 id="troubleshooting">Troubleshooting</h2>
-
 <p>Q: 在CentOS安装完,绑定8443端口出错: <code>bind() to 0.0.0.0:8443 failed, Permission denied</code> A: 原因: SELinux 阻止了连接 解决1: semanage port -a -t http_port_t -p tcp 8443 解决2: tsebool httpd_can_network_connect on -P</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 辅助调试命令
+<pre><code># 辅助调试命令
 sestatus
 tail -f /var/log/audit/audit.log
 semanage port -l | grep http_port_t
 getsebool -a | grep httpd
 # 如果找不到semanage命令:
 yum provides /usr/sbin/semanage
-yum -y install policycoreutils-python</pre></div>
-<h2 id="常见配置场景">常见配置场景</h2>
-
-<h3 id="端口重定向">端口重定向</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">    location /test {
+yum -y install policycoreutils-python
+</code></pre>
+<h2 id="heading-7">常见配置场景</h2>
+<h3 id="heading-8">端口重定向</h3>
+<pre><code>    location /test {
         # 重写URLs,把请求/testXXXX转换成/XXXX交给AppServer.
         rewrite ^/test(.*) /$1 break;
         proxy_pass http://127.0.0.1:8000;
         proxy_set_header   X-Forwarded-For $remote_addr;
         proxy_set_header   Host $http_host;
-    }</pre></div>
-<h3 id="启用https">启用HTTPS</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf"># 利用多核
+    }
+</code></pre>
+<h3 id="https">启用HTTPS</h3>
+<p><strong>各主流中间件容器对于ssl的配置可参考Mozilla自动生成<a href="https://ssl-config.mozilla.org">网站</a></strong></p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 利用多核
 worker_processes auto;
 
 http {
@@ -288,51 +283,63 @@ http {
 
         # 优先采用server端算法
         ssl_prefer_server_ciphers   on;
-    ...</code></pre></div>
-<h3 id="对某路径启用认证密码保护">对某路径启用认证密码保护</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 使用htpasswd工具加密密码
+    ...
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 生成曲线参数</span>
+openssl dhparam -out dhparam.pem 2048
+<span style="color:#09f;font-style:italic"># 列出支持的曲线算法</span>
+openssl ecparam -list_curves
+
+<span style="color:#09f;font-style:italic"># 查看系统ssl版本</span>
+rpm -qa openssl
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#09f;font-style:italic"># 关于椭圆曲线配置</span>
+ssl_dhparam /path/to/dhparam.pem;
+ssl_ecdh_curve secp384r1;
+</code></pre></div><h3 id="heading-9">对某路径启用认证密码保护</h3>
+<pre><code># 使用htpasswd工具加密密码
 sudo apt-get install apache2-utils
 sudo htpasswd -c /etc/nginx/.htpasswd admin
 # 编辑配置,添加
 sudo vi /etc/nginx/sites-available/default
-    auth_basic &#34;Private Property&#34;;
+    auth_basic &quot;Private Property&quot;;
     auth_basic_user_file /etc/nginx/.htpasswd;
-sudo service nginx reload</pre></div>
-<h3 id="修改超时设置">修改超时设置</h3>
-
+sudo service nginx reload
+</code></pre>
+<h3 id="heading-10">修改超时设置</h3>
 <p>Nginx连接Tomcat的默认超时是1分钟</p>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vi /etc/nginx/conf.d/default.conf
+<pre><code>vi /etc/nginx/conf.d/default.conf
 # 修改proxy_read_timeout的值
 location / {
         proxy_pass  http://127.0.0.1:8080;
         proxy_read_timeout 180;
-    }</pre></div>
-<h3 id="状态页">状态页</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">location /nginx_status {
+    }
+</code></pre>
+<h3 id="heading-11">状态页</h3>
+<pre><code>location /nginx_status {
         stub_status on;
         access_log   off;
         # Security
         allow 192.168.1.100;
         deny all;
-   }</pre></div>
-<h3 id="blog-二级域名与子目录映射">blog 二级域名与子目录映射</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4">location / {  
+   }
+</code></pre>
+<h3 id="blog-">blog 二级域名与子目录映射</h3>
+<pre><code>location / {  
         rewrite ^/(.*)$ /blog/$1 last;  
     }  
 location ~* ^/blog/.*$ {  
         proxy_pass http://127.0.0.1:8080;  
-    }  </pre></div>
-<h3 id="日志记录响应时间">日志记录响应时间</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf"># 在预制格式combined的最后
+    }  
+</code></pre>
+<h3 id="heading-12">日志记录响应时间</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 在预制格式combined的最后
 # 添加 $request_time 和 $upstream_response_time
 log_format  combined_timed  &#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;
                   &#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;
                   &#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34; $request_time $upstream_response_time&#39;;
-access_log  /var/log/nginx/access.log  combined_timed;</code></pre></div>
-<h2 id="语言支持">语言支持</h2>
-
-<h3 id="支持php">支持php</h3>
-<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 添加以下内容
+access_log  /var/log/nginx/access.log  combined_timed;
+</code></pre></div><h2 id="heading-13">语言支持</h2>
+<h3 id="php">支持php</h3>
+<pre><code># 添加以下内容
 location ~ \.php$ {
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
@@ -340,29 +347,61 @@ location ~ \.php$ {
         fastcgi_index index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         include fastcgi_params;
-}</pre></div>
-<h2 id="资源">资源</h2>
-
+}
+</code></pre>
+<h2 id="heading-14">资源</h2>
 <ul>
 <li><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">location指令官方文档</a></li>
-<li><a href="https://aotu.io/notes/2016/08/16/nginx-https/index.html">Nginx 配置 HTTPS 服务器</a></li>
+<li><a href="https://aotu.io/notes/2016/08/16/nginx-https/index.html">Nginx 配置 HTTPS 服务器</a>/<a href="https://www.pupboss.com/nginx-add-ssl/">Nginx配置更安全的SSL证书</a></li>
 <li><a href="http://openresty.org/cn/">Open Resty</a>: Nginx增强版, 使用Lua扩展功能.
-
 <ul>
 <li>特点: 可以直接访问 Redis/MemCached;</li>
 <li>使用场景: 安全过滤模块, 数据报表;</li>
 <li>应用: 淘宝量子统计, 去哪网</li>
-</ul></li>
+</ul>
+</li>
 <li><a href="https://github.com/moonbingbing/openresty-best-practices">OpenResty 最佳实践</a></li>
 </ul>
 
     </div>
     <footer class="post-footer">
      
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/nginx/" >https://xulizhao.com/blog/nginx/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
  
 <div class="post-tags">     
      
-    <a href="/tags/ops" rel="tag" title="ops">#ops#</a>
+    <a href="https://xulizhao.com/tags/ops" rel="tag" title="ops">#ops#</a>
     
 </div>
 
@@ -371,38 +410,21 @@ location ~ \.php$ {
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/python/" rel="next" title="Python配置备忘">
-        <i class="fa fa-chevron-left"></i> Python配置备忘
+        <a href="https://xulizhao.com/blog/ssh/" rel="next" title="SSH使用及扩展">
+        <i class="fa fa-chevron-left"></i> SSH使用及扩展
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/ssh/" rel="prev" title="SSH使用及扩展">
-        SSH使用及扩展 <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/python/" rel="prev" title="Python学习系列">
+        Python学习系列 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -437,22 +459,23 @@ location ~ \.php$ {
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -462,9 +485,9 @@ location ~ \.php$ {
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -472,25 +495,9 @@ location ~ \.php$ {
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -500,46 +507,44 @@ location ~ \.php$ {
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#基础使用">基础使用</a>
-<ul>
-<li><a href="#安装">安装</a></li>
-</ul></li>
-<li><a href="#配置">配置</a>
-<ul>
-<li><a href="#指令">指令:</a>
-<ul>
-<li><a href="#location">Location</a></li>
-<li><a href="#url重写">URL重写</a></li>
-<li><a href="#try-files">try_files</a></li>
-</ul></li>
-<li><a href="#主要变量">主要变量:</a></li>
-</ul></li>
-<li><a href="#本地开发环境">本地开发环境</a>
-<ul>
-<li><a href="#mac安装">Mac安装</a></li>
-<li><a href="#windows使用服务">Windows使用服务</a></li>
-</ul></li>
-<li><a href="#troubleshooting">Troubleshooting</a></li>
-<li><a href="#常见配置场景">常见配置场景</a>
-<ul>
-<li><a href="#端口重定向">端口重定向</a></li>
-<li><a href="#启用https">启用HTTPS</a></li>
-<li><a href="#对某路径启用认证密码保护">对某路径启用认证密码保护</a></li>
-<li><a href="#修改超时设置">修改超时设置</a></li>
-<li><a href="#状态页">状态页</a></li>
-<li><a href="#blog-二级域名与子目录映射">blog 二级域名与子目录映射</a></li>
-<li><a href="#日志记录响应时间">日志记录响应时间</a></li>
-</ul></li>
-<li><a href="#语言支持">语言支持</a>
-<ul>
-<li><a href="#支持php">支持php</a></li>
-</ul></li>
-<li><a href="#资源">资源</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">基础使用</a>
+      <ul>
+        <li><a href="#heading-1">安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">配置</a>
+      <ul>
+        <li><a href="#heading-3">指令:</a></li>
+        <li><a href="#heading-4">主要变量:</a></li>
+        <li><a href="#heading-5">日志</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-6">本地开发环境</a>
+      <ul>
+        <li><a href="#mac">Mac安装</a></li>
+        <li><a href="#windows">Windows使用服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#heading-7">常见配置场景</a>
+      <ul>
+        <li><a href="#heading-8">端口重定向</a></li>
+        <li><a href="#https">启用HTTPS</a></li>
+        <li><a href="#heading-9">对某路径启用认证密码保护</a></li>
+        <li><a href="#heading-10">修改超时设置</a></li>
+        <li><a href="#heading-11">状态页</a></li>
+        <li><a href="#blog-">blog 二级域名与子目录映射</a></li>
+        <li><a href="#heading-12">日志记录响应时间</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-13">语言支持</a>
+      <ul>
+        <li><a href="#php">支持php</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-14">资源</a></li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -553,18 +558,18 @@ location ~ \.php$ {
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -573,36 +578,58 @@ location ~ \.php$ {
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

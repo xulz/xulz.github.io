@@ -12,15 +12,14 @@
     <meta property="og:image" content="/img/author.jpg"> 
     <meta name="title" content="Go流行库简介 - XuLizhao &#39;s Notes" />
     <meta name="description" content="时光,漫步"> 
-    
-    <link rel="shortcut icon" href="/img/favicon.ico" />
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
-    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
-    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" id="hexo.configuration">
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
@@ -38,7 +37,7 @@
       <div class="header-inner"> <div class="site-meta  custom-logo ">
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">XuLizhao &#39;s Notes</span>
       <span class="logo-line-after"><i></i></span>
@@ -60,25 +59,25 @@
       
       
         <li class="menu-item ">
-          <a href="/" rel="section">
+          <a href="https://xulizhao.com/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/categories/tech/" rel="section">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/docs" rel="section">
+          <a href="https://xulizhao.com/docs" rel="section">
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
           </a>
         </li>
       
         <li class="menu-item ">
-          <a href="/about/" rel="section">
+          <a href="https://xulizhao.com/about/" rel="section">
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
           </a>
         </li>
@@ -110,7 +109,7 @@
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link" href="/blog/go-lib/" itemprop="url">
+        <a class="post-title-link" href="https://xulizhao.com/blog/go-lib/" itemprop="url">
         Go流行库简介
         </a>
       </h1>
@@ -123,7 +122,7 @@
 <time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-12-15">
     2017-12-15
 </time>
-</span> 
+</span>
       
 
   <span class="post-category" >
@@ -134,7 +133,7 @@
   <span class="post-meta-item-text">分类：</span>
   
     <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-      <a href="/categories/tech" itemprop="url" rel="index">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
         <span itemprop="name">Tech</span>
       </a>
       &nbsp; 
@@ -149,30 +148,275 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">阅读：</span>
-<span class="leancloud-visitors-count">0 字 ~0分钟</span>
+<span class="leancloud-visitors-count">491 字 ~1分钟</span>
 </span>
       </div>
     </header>
     <div class="post-body" itemprop="articleBody">
     <p>Go作为最近几年随大数据,Docker而火热起来(依然偏小众)的服务端语言,最近接触下来的感觉是第三方库/框架还是不够稳定和丰富,很多应用场景还没有一个绝对地位的首选库.</p>
-
 <p>偶尔发现<a href="https://go.libhunt.com/">LibHunt</a>还不错,可以在库选型时做些对比.</p>
-
-<p></p>
-
-<h3 id="数据处理">数据处理</h3>
-
-<ul>
-<li>go.uuid</li>
-<li>gjson</li>
-</ul>
-
-<h3 id="系统扩展">系统扩展</h3>
-
-<ul>
-<li>logrus</li>
-</ul>
-
+<p>用Go开发的著名系统：etcd, kubernetes, docker</p>
+<h3 id="heading">微服务</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/go-kit/kit">Go kit</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/micro/micro">Micro </a></td>
+<td><a href="https://github.com/micro-in-cn/tutorials/tree/master/microservice-in-micro">1</a></td>
+<td>灵感于go-kit,支持pub-sub</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bilibili/kratos">Kratos</a></td>
+<td></td>
+<td>bilibili</td>
+</tr>
+<tr>
+<td><a href="https://github.com/nytimes/gizmo">Gizmo </a></td>
+<td></td>
+<td>New York Times</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-1">数据处理</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>go.uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>gjson</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/jinzhu/gorm">GORM</a></td>
+<td></td>
+<td>ORM</td>
+</tr>
+<tr>
+<td><a href="https://github.com/go-sql-driver/mysql">MySQL Driver</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/mattn/go-sqlite3">sqlite3 driver</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/quipo/statsd">statsd</a></td>
+<td></td>
+<td>statsd相关</td>
+</tr>
+<tr>
+<td><a href="https://github.com/stripe/veneur">veneur</a></td>
+<td></td>
+<td>stripe</td>
+</tr>
+<tr>
+<td><a href="https://github.com/armon/go-metrics">go-metrics</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/atlassian/gostatsd">gostatsd</a></td>
+<td></td>
+<td>atlassian</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pachyderm/pachyderm">Pachyderm</a></td>
+<td></td>
+<td>数据管道</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-2">消息</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/nsqio/nsq">NSQ</a></td>
+<td></td>
+<td>bitly, 实时的分布式消息平台、高可用、可靠消息</td>
+</tr>
+<tr>
+<td><a href="https://github.com/RichardKnop/machinery">machinery</a></td>
+<td></td>
+<td>异步任务队列</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-3">测试</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/sclevine/agouti">Agouti</a></td>
+<td></td>
+<td>WebDriver client</td>
+</tr>
+</tbody>
+</table>
+<h3 id="web">Web</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/astaxie/beego">beego </a></td>
+<td><a href="https://github.com/astaxie/build-web-application-with-golang">build-web-application-with-golang</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/gin-gonic/gin">Gin </a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/gogs/gogs">Gogs</a></td>
+<td></td>
+<td>Git service</td>
+</tr>
+<tr>
+<td><a href="https://github.com/qor/qor">QOR </a></td>
+<td></td>
+<td>CMS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-4">系统扩展</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/spf13/viper">Viper</a></td>
+<td></td>
+<td>配置库</td>
+</tr>
+<tr>
+<td><a href="https://github.com/spf13/cobra">Cobra </a></td>
+<td></td>
+<td>CLI</td>
+</tr>
+<tr>
+<td>logrus</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/uber-go/zap">zap</a></td>
+<td></td>
+<td>Uber,日志</td>
+</tr>
+<tr>
+<td><a href="https://github.com/golangci/golangci-lint">GolangCI-Lint</a></td>
+<td></td>
+<td>静态检查</td>
+</tr>
+<tr>
+<td><a href="https://github.com/goreleaser/goreleaser">GoReleaser</a></td>
+<td></td>
+<td>与GitHub集成，打包构建</td>
+</tr>
+<tr>
+<td><a href="https://github.com/robfig/cron">cron</a></td>
+<td></td>
+<td>定时任务</td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-5">分布式系统</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/jaegertracing/jaeger">jaeger</a></td>
+<td></td>
+<td>分布式追踪系统</td>
+</tr>
+<tr>
+<td><a href="https://github.com/m3db/m3">M3</a></td>
+<td></td>
+<td>Uber,时序数据库</td>
+</tr>
+</tbody>
+</table>
+<h3 id="go">用Go开发的工具</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>教程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/cnlh/nps">nps</a></td>
+<td></td>
+<td>内网穿透代理服务器</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#069;font-weight:bold">import</span> (
     <span style="color:#09f;font-style:italic">// UUID生成,支持v1~v4
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c30">&#34;github.com/satori/go.uuid&#34;</span>
@@ -183,25 +427,55 @@
 </span><span style="color:#09f;font-style:italic"></span>    <span style="color:#c30">&#34;github.com/tidwall/gjson&#34;</span>
 )
 <span style="color:#09f;font-style:italic">// UUID示例
-</span><span style="color:#09f;font-style:italic"></span>id <span style="color:#555">:=</span> uuid.NewV4().String()
+</span><span style="color:#09f;font-style:italic"></span>id <span style="color:#555">:=</span> uuid.<span style="color:#c0f">NewV4</span>().<span style="color:#c0f">String</span>()
 
 <span style="color:#09f;font-style:italic">// 支持定义日志级别
-</span><span style="color:#09f;font-style:italic"></span>log.SetLevel(log.DebugLevel)
-log.Debug(resp.StatusCode)
-log.WithFields(log.Fields{<span style="color:#c30">&#34;username&#34;</span>: username}).Debug(<span style="color:#c30">&#34;Login info:&#34;</span>)
+</span><span style="color:#09f;font-style:italic"></span>log.<span style="color:#c0f">SetLevel</span>(log.DebugLevel)
+log.<span style="color:#c0f">Debug</span>(resp.StatusCode)
+log.<span style="color:#c0f">WithFields</span>(log.Fields{<span style="color:#c30">&#34;username&#34;</span>: username}).<span style="color:#c0f">Debug</span>(<span style="color:#c30">&#34;Login info:&#34;</span>)
 
 <span style="color:#09f;font-style:italic">// 用内置json处理会比较繁琐
-</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">const</span> json = <span style="color:#c30">`{&#34;name&#34;:{&#34;first&#34;:&#34;Michael&#34;,&#34;last&#34;:&#34;Xu&#34;},&#34;age&#34;:30}`</span>
-value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30">&#34;name.last&#34;</span>)</code></pre></div>
-
-<p>TBC..</p>
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">const</span> json = <span style="color:#c30">`</span><span style="color:#c30">{</span><span style="color:#c30">&#34;name&#34;:</span><span style="color:#c30">{</span><span style="color:#c30">&#34;first&#34;:&#34;Michael&#34;,&#34;last&#34;:&#34;Xu&#34;},&#34;age&#34;:30}</span><span style="color:#c30">`</span>
+value <span style="color:#555">:=</span> gjson.<span style="color:#c0f">Get</span>(json, <span style="color:#c30">&#34;name.last&#34;</span>)</code></pre></div>
     </div>
     <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/go-lib/" >https://xulizhao.com/blog/go-lib/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
      
  
 <div class="post-tags">     
      
-    <a href="/tags/go" rel="tag" title="go">#go#</a>
+    <a href="https://xulizhao.com/tags/go" rel="tag" title="go">#go#</a>
     
 </div>
 
@@ -210,38 +484,21 @@ value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
     
-        <a href="/blog/ssh/" rel="next" title="SSH使用及扩展">
-        <i class="fa fa-chevron-left"></i> SSH使用及扩展
+        <a href="https://xulizhao.com/blog/tmux/" rel="next" title="利器之TMUX">
+        <i class="fa fa-chevron-left"></i> 利器之TMUX
         </a>
     
     </div>
 
     <div class="post-nav-prev post-nav-item">
     
-        <a href="/blog/tmux/" rel="prev" title="利器之TMUX">
-        利器之TMUX <i class="fa fa-chevron-right"></i>
+        <a href="https://xulizhao.com/blog/ssh/" rel="prev" title="SSH使用及扩展">
+        SSH使用及扩展 <i class="fa fa-chevron-right"></i>
         </a>
     
     </div>
 </div>
       
-     <div class="post-nav">
-
-    
-    
-    
-    
-    
-        
-            
-        
-        
-        
-        
-    
-
-<div class="clear"></div>
-</div>
      
      
      
@@ -276,22 +533,23 @@ value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30
 
     <section class="site-overview sidebar-panel ">
       <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    
-        
-        
+
+
+
     <p class="site-author-name" itemprop="name">xulz</p>
     <p class="site-description motion-element" itemprop="description"> 
         时光,漫步</p>
 </div>
+
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-      <a href="/post/">
-        <span class="site-state-item-count">87</span>
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
-        <a href="/categories/">      
+        <a href="https://xulizhao.com/categories/">      
          
         <span class="site-state-item-count">3</span>
         
@@ -301,9 +559,9 @@ value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30
     </div>
 
     <div class="site-state-item site-state-tags">
-        <a href="/tags/">
+        <a href="https://xulizhao.com/tags/">
          
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">35</span>
         
         <span class="site-state-item-name">标签</span>
         </a>
@@ -311,25 +569,9 @@ value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30
 </nav>
       
       
-<div class="links-of-author motion-element">
-    
-        <span class="links-of-author-item">
-        <a href="https://github.com/xulz/" target="_blank" title="GitHub">
-            <i class="fa fa-fw fa-github"></i>
-            GitHub
-        </a>
-        </span>
-    
-        <span class="links-of-author-item">
-        <a href="https://www.zhihu.com/people/xulz" target="_blank" title="知乎">
-            <i class="fa fa-fw fa-globe"></i>
-            知乎
-        </a>
-        </span>
-    
-</div>
 
       
+
       
 
 
@@ -339,16 +581,20 @@ value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30
 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
     <div class="post-toc">
         <div class="post-toc-content"><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#数据处理">数据处理</a></li>
-<li><a href="#系统扩展">系统扩展</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading">微服务</a></li>
+        <li><a href="#heading-1">数据处理</a></li>
+        <li><a href="#heading-2">消息</a></li>
+        <li><a href="#heading-3">测试</a></li>
+        <li><a href="#web">Web</a></li>
+        <li><a href="#heading-4">系统扩展</a></li>
+        <li><a href="#heading-5">分布式系统</a></li>
+        <li><a href="#go">用Go开发的工具</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav></div>
     </div>
 </section>
@@ -362,18 +608,18 @@ value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
- <div class="copyright" >
-  <span itemprop="copyrightYear">  &copy; 
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
   2017 - 2019</span>
   <span class="with-love"><i class="fa fa-heart"></i></span>
   <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
 </div>
 <div class="powered-by">
-  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.40.1</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
-  </a>
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
 </div>
 <div class="theme-info">
-   津ICP备17010344号-1
+  津ICP备17010344号-1
 </div>
 
 
@@ -382,36 +628,58 @@ value <span style="color:#555">:=</span> gjson.Get(json, <span style="color:#c30
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
     </div>
   </div>
 
-  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
 </script>
-<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
-<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
-<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
-<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
 
-<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-<script type="text/javascript" src="/js/utils.js"></script>
-<script type="text/javascript" src="/js/motion.js"></script>
-<script type="text/javascript" src="/js/affix.js"></script>
-<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
 
-<script type="text/javascript" src="/js/scrollspy.js"></script>
-<script type="text/javascript" src="/js/post-details.js"></script>
-<script type="text/javascript" src="/js/toc.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
 
-<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
 
-<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
 </body>
 </html>

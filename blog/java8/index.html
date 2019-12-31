@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Java8学习 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Java8学习">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Java8学习 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/java8/" itemprop="url">
+        Java8学习
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2017-08-29">
+    2017-08-29
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">682 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Java系列记录文章。</p>
+<h2 id="heading">学习笔记</h2>
+<h3 id="lambda">lambda</h3>
+<p>允许通过::关键字获取方法(可以是类的静态方法,也可以是对象的方法)或者构造函数的的引用.</p>
+<p><strong>范围:</strong>
+与匿名函数类似,可以访问对应外部区域的final变量,成员变量和静态变量. 默认方法无法在lambda表达式内部被访问.</p>
+<p><strong>内置函数式接口:</strong></p>
+<ul>
+<li>Comparator</li>
+<li>Runnable</li>
+<li>Predicate  布尔型函数判断</li>
+<li>Function 接受一个参数,处理并返回</li>
+<li>Supplier 与Function的区别是没有输入参数</li>
+<li>Consumer</li>
+</ul>
+<h3 id="optional">工具接口Optional</h3>
+<p>用来防止NullPointerException</p>
+<ul>
+<li>isPresent()</li>
+</ul>
+<h3 id="streams">Streams/流</h3>
+<p>某种元素的序列,可在其上进行各种中间操作或完结操作</p>
+<p>构造流:</p>
+<ul>
+<li>Collections.stream()</li>
+<li>Collection.parallelStream()</li>
+</ul>
+<p>常用类:</p>
+<ul>
+<li>IntStream.rangeClosed(1,10),forEach()</li>
+</ul>
+<p><strong>常用函数式接口</strong></p>
+<ul>
+<li>Filter接受一个predicate接口类型的变量，并将所有流对象中的元素进行过滤 (中间操作)</li>
+<li>Sorted能够返回一个排过序的流对象的视图,但不会改变原来集合中元素的顺序(中间操作)</li>
+<li>map是一个对于流对象的中间操作</li>
+<li>ForEach接受一个function接口类型的变量，用来执行对每一个元素的操作。ForEach是一个中止操作,不返回流。</li>
+<li>Match匹配操作是终结操作，只返回一个boolean类型的结果</li>
+<li>Count是一个终结操作</li>
+<li>Reduce该操作是一个终结操作,操作的结果会放在一个Optional变量里返回</li>
+</ul>
+<h3 id="heading-1">日期和时间</h3>
+<p>这些时间对象都是不可变的，因此是线程安全的。</p>
+<ul>
+<li>Clock  当前时区相关</li>
+<li>LocalDateTime 与时区无关的本地时间</li>
+<li>Duration 时间区间</li>
+<li>DateTimeFormatter 新实现</li>
+</ul>
+<p>常用方法：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Clock clock <span style="color:#555">=</span> Clock<span style="color:#555">.</span><span style="color:#309">systemDefaultZone</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+<span style="color:#09f;font-style:italic">// 替代 System.currentTimeMillis()
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">long</span> millis <span style="color:#555">=</span> clock<span style="color:#555">.</span><span style="color:#309">millis</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+Instant instant <span style="color:#555">=</span> clock<span style="color:#555">.</span><span style="color:#309">instant</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+Date legacyDate <span style="color:#555">=</span> Date<span style="color:#555">.</span><span style="color:#309">from</span><span style="color:#555">(</span>instant<span style="color:#555">)</span><span style="color:#555">;</span>   <span style="color:#09f;font-style:italic">// legacy java.util.Date
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#09f;font-style:italic">// 时区
+</span><span style="color:#09f;font-style:italic"></span>ZoneId zone <span style="color:#555">=</span> ZoneId<span style="color:#555">.</span><span style="color:#309">of</span><span style="color:#555">(</span><span style="color:#c30">&#34;Asia/Chongqing&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+LocalTime now <span style="color:#555">=</span> LocalTime<span style="color:#555">.</span><span style="color:#309">now</span><span style="color:#555">(</span>zone<span style="color:#555">)</span><span style="color:#555">;</span>
+
+Instant instant <span style="color:#555">=</span> dateTime
+        <span style="color:#555">.</span><span style="color:#309">atZone</span><span style="color:#555">(</span>ZoneId<span style="color:#555">.</span><span style="color:#309">systemDefault</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span>
+        <span style="color:#555">.</span><span style="color:#309">toInstant</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">LocalDateTime dateTime <span style="color:#555">=</span> LocalDateTime<span style="color:#555">.</span><span style="color:#309">now</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+LocalDate<span style="color:#555">.</span><span style="color:#309">of</span><span style="color:#555">(</span>2019<span style="color:#555">,</span> Month<span style="color:#555">.</span><span style="color:#309">OCTOBER</span><span style="color:#555">,</span>16<span style="color:#555">)</span><span style="color:#555">;</span>
+dateTime<span style="color:#555">.</span><span style="color:#309">toLocalDate</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+dateTime<span style="color:#555">.</span><span style="color:#309">getMonth</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+<span style="color:#09f;font-style:italic">// 更新时间
+</span><span style="color:#09f;font-style:italic"></span>dateTime<span style="color:#555">.</span><span style="color:#309">withDayOfMonth</span><span style="color:#555">(</span>13<span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">withYear</span><span style="color:#555">(</span>2018<span style="color:#555">)</span><span style="color:#555">;</span>
+dateTime<span style="color:#555">.</span><span style="color:#309">plusDays</span><span style="color:#555">(</span>25<span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">plusYears</span><span style="color:#555">(</span>2<span style="color:#555">)</span><span style="color:#555">;</span>
+dateTime<span style="color:#555">.</span><span style="color:#309">with</span><span style="color:#555">(</span>TemporalAdjusters<span style="color:#555">.</span><span style="color:#309">lastDayOfMonth</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+
+LocalTime t2 <span style="color:#555">=</span> LocalTime<span style="color:#555">.</span><span style="color:#309">parse</span><span style="color:#555">(</span><span style="color:#c30">&#34;10:15:30&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+t2<span style="color:#555">.</span><span style="color:#309">truncatedTo</span><span style="color:#555">(</span>ChronoUnit<span style="color:#555">.</span><span style="color:#309">MINUTES</span><span style="color:#555">)</span><span style="color:#555">;</span>
+</code></pre></div><p>时间和字符串转化</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">LocalTime time <span style="color:#555">=</span> LocalTime<span style="color:#555">.</span><span style="color:#309">parse</span><span style="color:#555">(</span><span style="color:#c30">&#34;17:07:30&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+DateTimeFormatter formatter <span style="color:#555">=</span> DateTimeFormatter<span style="color:#555">.</span><span style="color:#309">ofPattern</span><span style="color:#555">(</span><span style="color:#c30">&#34;MMM dd yyyy&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+LocalDate date <span style="color:#555">=</span> LocalDate<span style="color:#555">.</span><span style="color:#309">of</span><span style="color:#555">(</span>2019<span style="color:#555">,</span> Month<span style="color:#555">.</span><span style="color:#309">OCTOBER</span><span style="color:#555">,</span> 16<span style="color:#555">)</span><span style="color:#555">;</span>
+System<span style="color:#555">.</span><span style="color:#309">out</span><span style="color:#555">.</span><span style="color:#309">println</span><span style="color:#555">(</span>date<span style="color:#555">.</span><span style="color:#309">format</span><span style="color:#555">(</span>formatter<span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+</code></pre></div><h2 id="heading-2">学习资源</h2>
+<ul>
+<li><a href="https://www.vogella.com/tutorials/JavaDateTimeAPI/article.html">Java Date and Time API in Java 8 - Tutorial</a></li>
+</ul>
+<ul>
+<li><a href="http://blog.didispace.com/books/java8-tutorial/ch1.html">Java 8 简明教程</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/java8/" >https://xulizhao.com/blog/java8/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/java" rel="tag" title="java">#java#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/go-basic/" rel="next" title="Go基础笔记">
+        <i class="fa fa-chevron-left"></i> Go基础笔记
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java-core/" rel="prev" title="Java核心库">
+        Java核心库 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">学习笔记</a>
+      <ul>
+        <li><a href="#lambda">lambda</a></li>
+        <li><a href="#optional">工具接口Optional</a></li>
+        <li><a href="#streams">Streams/流</a></li>
+        <li><a href="#heading-1">日期和时间</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-2">学习资源</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

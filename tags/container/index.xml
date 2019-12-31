@@ -1,31 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Container on XuLizhao &#39;s Notes</title>
-    <link>/tags/container/</link>
-    <description>Recent content in Container on XuLizhao &#39;s Notes</description>
+    <title>container on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/container/</link>
+    <description>Recent content in container on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 18 Dec 2017 02:37:23 +0000</lastBuildDate>
     
-	<atom:link href="/tags/container/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/container/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker基础</title>
-      <link>/blog/docker/</link>
+      <link>https://xulizhao.com/blog/docker/</link>
       <pubDate>Mon, 18 Dec 2017 02:37:23 +0000</pubDate>
       
-      <guid>/blog/docker/</guid>
+      <guid>https://xulizhao.com/blog/docker/</guid>
       <description>&lt;p&gt;最近两年随着微服务而流行起来的Docker是一种轻量级容器技术(相对于VMWare,KVM等Hypervisor解决方案).&lt;/p&gt;
-
 &lt;p&gt;它能给开发,测试,运维各团队提供一个统一的运行环境, 这点很实用.&lt;/p&gt;
-
 &lt;p&gt;Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更高级功能的控制工具,主要特性:&lt;/p&gt;
-
-&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>工作工具箱 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="工作工具箱">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="工作工具箱 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/toolbox/" itemprop="url">
+        工作工具箱
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-01-27">
+    2019-01-27
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">Tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">710 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>在工作中经常会用到各种工具，但重装系统或换机器后经常忘了软件名字。</p>
+<p>工欲善其事，必先利其器。因为工具/软件，计算机才如此强大。</p>
+<h2 id="heading">开发工具</h2>
+<p>说明: paid(付费)、win(仅Windows平台)、mac(仅Mac平台)</p>
+<h3 id="heading-1">通用</h3>
+<ul>
+<li><strong>Git版本管理</strong>
+<ul>
+<li>Github Desktop</li>
+<li>SourceTree</li>
+<li>KDiff3 : 差异比较</li>
+</ul>
+</li>
+<li>文档浏览
+<ul>
+<li>Dash - 最好用(Mac)</li>
+<li>Zeal - 接口文档</li>
+</ul>
+</li>
+</ul>
+<h3 id="python">Python</h3>
+<ul>
+<li>PyCharm : IDE</li>
+</ul>
+<h3 id="go">Go</h3>
+<ul>
+<li>Goland : IDE</li>
+</ul>
+<h3 id="java">Java</h3>
+<ul>
+<li>IntelJ IDEA : IDE</li>
+</ul>
+<p><strong>Profiler</strong></p>
+<ul>
+<li>YourKit (paid)</li>
+</ul>
+<h3 id="heading-2">大前端</h3>
+<ul>
+<li>Android Studio</li>
+</ul>
+<h2 id="heading-3">数据处理</h2>
+<h3 id="heading-4">数据库</h3>
+<ul>
+<li>DataGrip : 全数据库客户端</li>
+<li>MySQL Workbench</li>
+<li>PGAdmin 4</li>
+<li>DB Browser for SQLite</li>
+<li>Redis Desktop Manager</li>
+</ul>
+<h3 id="heading-5">数据科学</h3>
+<ul>
+<li>Octave</li>
+</ul>
+<h3 id="heading-6">综合类</h3>
+<ul>
+<li><a href="https://github.com/geminate/d-tools">d-tools</a> ： 基于Electron开发的跨平台工具集</li>
+<li><a href="https://viewer.dadroit.com/">Dadroit Json Viewer</a></li>
+</ul>
+<h2 id="heading-7">测试/调试工具</h2>
+<h3 id="heading-8">接口测试</h3>
+<ul>
+<li>Postman ：最常用的此类工具，要善用变量{{server}}</li>
+<li>Restlet Client - REST API Testing : 功能同上</li>
+</ul>
+<h3 id="heading-9">网络分析</h3>
+<ul>
+<li>Fiddler （win）</li>
+<li>Wireshark</li>
+<li>Burp Suite</li>
+</ul>
+<h3 id="heading-10">正则</h3>
+<ul>
+<li>Kodos - Python调试工具</li>
+</ul>
+<h3 id="chrome">Chrome</h3>
+<ul>
+<li>Chrome Developer Tools : 快捷键 F12/Ctrl+Shift+I</li>
+<li>Extensions
+<ul>
+<li>有道词典Chrome划词插件</li>
+<li>Evernote Web Clipper</li>
+<li>Save to Pocket</li>
+<li>Base64 Encode and Decode</li>
+<li>JSONView</li>
+<li>Web Developer</li>
+<li>CSS Selector Helper for Chrome</li>
+<li>Proxy SwitchyOmega ： 设置代理</li>
+<li>Screencastify - Screen Video Recorder ： 录屏</li>
+<li>Fireshot - Take Webpage Screenshots Entirely : 截屏</li>
+<li>Seo Enable Copy ： 允许复制</li>
+</ul>
+</li>
+<li>Apps
+<ul>
+<li>FastString - 字符处理工具箱：base64/hash/encoder/generator</li>
+<li>JSON Editor</li>
+<li>Cookies： Cookie编辑器</li>
+<li>JADE - JAvascript based Database Editor： sqlite 客户端</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-11">运维</h2>
+<ul>
+<li>Bitvise SSH Client</li>
+<li>Filezilla Client : FTP</li>
+<li>SecureCRT (paid)</li>
+</ul>
+<h3 id="heading-12">部署</h3>
+<ul>
+<li>XAMPP - 一体化PHP环境</li>
+</ul>
+<h2 id="heading-13">效率类</h2>
+<ul>
+<li>印象笔记/Evernote : 配合Chrome插件使用</li>
+<li>Pomotodo：番茄工作法</li>
+<li>XMind ： 脑图</li>
+</ul>
+<h2 id="heading-14">产品工具</h2>
+<h2 id="heading-15">项目工具</h2>
+<ul>
+<li><strong>画图</strong>
+<ul>
+<li>yED Graph Editor</li>
+<li>Astah Community</li>
+<li>Modelio</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-16">系统工具</h2>
+<ul>
+<li>7-zip: 压缩/解压必备</li>
+<li>Everything: 文件检索（Windows必备）</li>
+<li>Free Download Manager : 多线程下载</li>
+<li>Dukto R6 : 多机器共享</li>
+<li>Bulk Rename Utility</li>
+<li>Synergy : 多机共享键盘</li>
+<li>TreeSize Free :磁盘文件大小统计</li>
+</ul>
+<h3 id="heading-17">编辑器</h3>
+<ul>
+<li>Sublime Text</li>
+<li>VS Code</li>
+<li>Notepad++</li>
+<li>Typora : markdown editor</li>
+<li>TeX Live - TeX IDE</li>
+</ul>
+<h3 id="heading-18">手机</h3>
+<ul>
+<li>Hand Shaker: 安卓文件管理</li>
+</ul>
+<h3 id="heading-19">多媒体处理</h3>
+<ul>
+<li><strong>截屏录屏</strong>
+<ul>
+<li>Snipaste: 图像截屏</li>
+<li>OBS Studio : 屏幕视频录制</li>
+</ul>
+</li>
+<li>PotPlayer: 视频播放</li>
+<li>Audacity : 音频处理</li>
+<li>IrfanView : 图形浏览</li>
+<li>paint.net : 图像编辑</li>
+<li>Any Video Converter： 视频格式转换</li>
+<li>RMVB Converter</li>
+</ul>
+<h3 id="heading-20">电子书</h3>
+<ul>
+<li>Calibre : 电子书管理</li>
+<li>Kindle Previewer 3</li>
+<li>Kindle Mate</li>
+<li>Sigil</li>
+<li>EpubSTAR</li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/toolbox/" >https://xulizhao.com/blog/toolbox/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/python-performance/" rel="next" title="Python高性能技巧">
+        <i class="fa fa-chevron-left"></i> Python高性能技巧
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/django/" rel="prev" title="Django再记录">
+        Django再记录 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">开发工具</a>
+      <ul>
+        <li><a href="#heading-1">通用</a></li>
+        <li><a href="#python">Python</a></li>
+        <li><a href="#go">Go</a></li>
+        <li><a href="#java">Java</a></li>
+        <li><a href="#heading-2">大前端</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">数据处理</a>
+      <ul>
+        <li><a href="#heading-4">数据库</a></li>
+        <li><a href="#heading-5">数据科学</a></li>
+        <li><a href="#heading-6">综合类</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-7">测试/调试工具</a>
+      <ul>
+        <li><a href="#heading-8">接口测试</a></li>
+        <li><a href="#heading-9">网络分析</a></li>
+        <li><a href="#heading-10">正则</a></li>
+        <li><a href="#chrome">Chrome</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-11">运维</a>
+      <ul>
+        <li><a href="#heading-12">部署</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-13">效率类</a></li>
+    <li><a href="#heading-14">产品工具</a></li>
+    <li><a href="#heading-15">项目工具</a></li>
+    <li><a href="#heading-16">系统工具</a>
+      <ul>
+        <li><a href="#heading-17">编辑器</a></li>
+        <li><a href="#heading-18">手机</a></li>
+        <li><a href="#heading-19">多媒体处理</a></li>
+        <li><a href="#heading-20">电子书</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

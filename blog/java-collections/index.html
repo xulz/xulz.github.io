@@ -1,0 +1,500 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>Java集合类 - XuLizhao &#39;s Notes</title>
+    <meta name="keywords" content="博客,读书,笔记,技术,分享,Python,Golang">
+    
+    <meta property="og:title" content="Java集合类">
+    <meta property="og:site_name" content="XuLizhao &#39;s Notes">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Java集合类 - XuLizhao &#39;s Notes" />
+    <meta name="description" content="时光,漫步"> 
+    <link rel="shortcut icon" href="https://xulizhao.com/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://xulizhao.com/img/apple-touch-icon.png" />
+    <link href="https://xulizhao.com/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://xulizhao.com/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://xulizhao.com/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XuLizhao &#39;s Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">时光,漫步</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/categories/tech/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技术
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/docs" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />文档
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://xulizhao.com/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜索</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://xulizhao.com/blog/java-collections/" itemprop="url">
+        Java集合类
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">时间：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2018-09-26">
+    2018-09-26
+</time>
+</span>
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分类：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://xulizhao.com/categories/tech" itemprop="url" rel="index">
+        <span itemprop="name">tech</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读：</span>
+<span class="leancloud-visitors-count">732 字 ~2分钟</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Java系列记录文章。</p>
+<h1 id="heading">集合</h1>
+<blockquote>
+<p>在 Java 编程中，可以将某种类型的变量赋给另一种类型，只要被赋值的变量是赋值变量所实现的超类或接口。</p>
+</blockquote>
+<p><strong>内置方法</strong></p>
+<ul>
+<li>clone() ： Deep Copy 不改变原数据</li>
+<li>Collections.nCopies(1000, new Object()) : 填充N个默认对象副本</li>
+<li>Collections.copy(list, list)</li>
+<li>Collections.sort(list)</li>
+</ul>
+<h2 id="list-">List/列表 接口</h2>
+<p>是一种有序集合，也称为<strong>序列</strong>，实现了Iterable 接口。</p>
+<p>常用方法：</p>
+<ul>
+<li>add(): 添加到末尾</li>
+<li>size(): 获取大小</li>
+<li>get(index): 检索某项</li>
+</ul>
+<p>常用实现：</p>
+<ul>
+<li>ArrayList: get()/set()</li>
+<li>LinkedList: add()/remove()的性能更好</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#555">&lt;</span>String<span style="color:#555">&gt;</span> list <span style="color:#555">=</span> Arrays<span style="color:#555">.</span><span style="color:#309">asList</span><span style="color:#555">(</span><span style="color:#c30">&#34;Lars&#34;</span><span style="color:#555">,</span> <span style="color:#c30">&#34;Simon&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+list<span style="color:#555">.</span><span style="color:#309">forEach</span><span style="color:#555">(</span>System<span style="color:#555">.</span><span style="color:#309">out</span><span style="color:#555">:</span><span style="color:#555">:</span>println<span style="color:#555">)</span><span style="color:#555">;</span>
+
+
+<span style="color:#09f;font-style:italic">// 排序
+</span><span style="color:#09f;font-style:italic"></span>list<span style="color:#555">.</span><span style="color:#309">sort</span><span style="color:#555">(</span><span style="color:#069;font-weight:bold">null</span><span style="color:#555">)</span><span style="color:#555">;</span>
+list<span style="color:#555">.</span><span style="color:#309">sort</span><span style="color:#555">(</span><span style="color:#555">(</span>s1<span style="color:#555">,</span>s2<span style="color:#555">)</span><span style="color:#555">-</span><span style="color:#555">&gt;</span> s1<span style="color:#555">.</span><span style="color:#309">compareToIgnoreCase</span><span style="color:#555">(</span>s2<span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+list<span style="color:#555">.</span><span style="color:#309">sort</span><span style="color:#555">(</span>String<span style="color:#555">:</span><span style="color:#555">:</span>compareToIgnoreCase<span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">//removeIf 条件删除
+</span><span style="color:#09f;font-style:italic"></span>
+ list<span style="color:#555">.</span><span style="color:#309">removeIf</span><span style="color:#555">(</span>s<span style="color:#555">-</span><span style="color:#555">&gt;</span> s<span style="color:#555">.</span><span style="color:#309">toLowerCase</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">contains</span><span style="color:#555">(</span><span style="color:#c30">&#34;x&#34;</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">// Deep Copy
+</span><span style="color:#09f;font-style:italic"></span>ArrayList<span style="color:#555">&lt;</span>String<span style="color:#555">&gt;</span> copy <span style="color:#555">=</span> <span style="color:#555">(</span>ArrayList<span style="color:#555">&lt;</span>String<span style="color:#555">&gt;</span><span style="color:#555">)</span> al<span style="color:#555">.</span><span style="color:#309">clone</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">;</span>
+</code></pre></div><h2 id="heading-1">数组和集合的转换</h2>
+<p><strong>数组转集合</strong></p>
+<ul>
+<li>Arrays.asList(): 返回不可变集合(只可通过set修改原值)，不能做修改个数操作。</li>
+<li>如果需要，则创建新集合new java.util.ArrayList(Arrays.asList(数组))</li>
+</ul>
+<p><strong>集合转数组</strong></p>
+<p>toArray()无参会导致泛型丢失</p>
+<h2 id="set">Set/集</h2>
+<p>包含唯一元素（没有重复元素），确保唯一性，但不保证（添加）顺序。</p>
+<p>接口的常用实现是HashSet。</p>
+<h2 id="map-">Map/映射 接口</h2>
+<p>键值对集合。</p>
+<ul>
+<li>HashMap
+<ul>
+<li>getOrDefault() 取值,如果不存在用默认值</li>
+<li>computeIfAbsent()  存值,如果不存在用默认值</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">map<span style="color:#555">.</span><span style="color:#309">put</span><span style="color:#555">(</span><span style="color:#c30">&#34;key&#34;</span><span style="color:#555">,</span><span style="color:#c30">&#34;value&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+map<span style="color:#555">.</span><span style="color:#309">remove</span><span style="color:#555">(</span><span style="color:#c30">&#34;Android&#34;</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">// keys to Array
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">return</span> map<span style="color:#555">.</span><span style="color:#309">keySet</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">toArray</span><span style="color:#555">(</span><span style="color:#069;font-weight:bold">new</span> String<span style="color:#555">[</span>map<span style="color:#555">.</span><span style="color:#309">keySet</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">size</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">]</span><span style="color:#555">)</span><span style="color:#555">;</span>
+
+<span style="color:#09f;font-style:italic">// keys to List
+</span><span style="color:#09f;font-style:italic"></span>List<span style="color:#555">&lt;</span>String<span style="color:#555">&gt;</span> list <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">new</span> ArrayList<span style="color:#555">&lt;</span>String<span style="color:#555">&gt;</span><span style="color:#555">(</span>map<span style="color:#555">.</span><span style="color:#309">keySet</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+</code></pre></div><h2 id="iterable">Iterable/迭代变量</h2>
+<p>快速迭代语法：</p>
+<blockquote>
+<p>for (objectType varName : collectionReference) {}</p>
+</blockquote>
+<h2 id="heading-2">规范</h2>
+<ul>
+<li>集合初始化时要指定集合初始化大小。默认ArrayList为10，HashMap为16.</li>
+</ul>
+<h2 id="generics">泛型/Generics</h2>
+<p>声明时用&lt;&gt;指明特定类型，确保类型安全，属于编译时特性。</p>
+<p>约定T/Type,K/Key,V/Value,E/Element</p>
+<p>Bounded Generics: 方法接受一种类型和它的所有子类(upper bound) 或类型和它的所有超类 (lower bound).</p>
+<ul>
+<li>List&lt;?&gt;一般作为参数来接受外部的集合，或返回一个不知道具体元素类型(类型未知)的集合。</li>
+<li>
+<!-- raw HTML omitted -->
+</li>
+<li>
+<!-- raw HTML omitted -->
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+<span style="color:#09f;font-style:italic">// 泛型方法
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#09f;font-style:italic">// 返回类型前有类型参数定义,可以有多个以&#34;,&#34;分开的类型参数
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">public</span> <span style="color:#555">&lt;</span>T<span style="color:#555">&gt;</span> List<span style="color:#555">&lt;</span>T<span style="color:#555">&gt;</span> <span style="color:#c0f">fromArrayToList</span><span style="color:#555">(</span>T<span style="color:#555">[</span><span style="color:#555">]</span> a<span style="color:#555">)</span> <span style="color:#555">{</span>
+    <span style="color:#069;font-weight:bold">return</span> Arrays<span style="color:#555">.</span><span style="color:#309">stream</span><span style="color:#555">(</span>a<span style="color:#555">)</span><span style="color:#555">.</span><span style="color:#309">collect</span><span style="color:#555">(</span>Collectors<span style="color:#555">.</span><span style="color:#309">toList</span><span style="color:#555">(</span><span style="color:#555">)</span><span style="color:#555">)</span><span style="color:#555">;</span>
+<span style="color:#555">}</span>
+</code></pre></div><h2 id="heading-3">扩展阅读</h2>
+<ul>
+<li><a href="http://tutorials.jenkov.com/java-collections/index.html">http://tutorials.jenkov.com/java-collections/index.html</a></li>
+<li><a href="http://www.vogella.com/tutorials/JavaCollections/article.html">http://www.vogella.com/tutorials/JavaCollections/article.html</a></li>
+<li><a href="https://www.baeldung.com/java-generics">Java Generics</a></li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+<style type="text/css">
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+.post-copyright i.fa {
+    font-size: 15px;
+}
+
+</style>
+
+
+<div>
+    <ul class="post-copyright">
+        <li class="post-copyright-author">
+            <strong>本文作者： </strong>xulizhao</li>
+        <li class="post-copyright-link">
+            <strong>本文链接：</strong>
+
+            <a href="https://xulizhao.com/blog/java-collections/" >https://xulizhao.com/blog/java-collections/  </a>
+        </li>
+        <li class="post-copyright-license">
+            <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    </ul>
+
+</div>
+
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://xulizhao.com/tags/java" rel="tag" title="java">#java#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/java-patterns/" rel="next" title="Java设计模式">
+        <i class="fa fa-chevron-left"></i> Java设计模式
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://xulizhao.com/blog/more-load-test-note/" rel="prev" title="全链路压测笔记续">
+        全链路压测笔记续 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      文章目录
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      站点概览
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+
+
+    <p class="site-author-name" itemprop="name">xulz</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        时光,漫步</p>
+</div>
+
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://xulizhao.com/post/">
+        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://xulizhao.com/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分类</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://xulizhao.com/tags/">
+         
+        <span class="site-state-item-count">35</span>
+        
+        <span class="site-state-item-name">标签</span>
+        </a>
+    </div>
+</nav>
+      
+      
+
+      
+
+      
+
+
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#list-">List/列表 接口</a></li>
+    <li><a href="#heading-1">数组和集合的转换</a></li>
+    <li><a href="#set">Set/集</a></li>
+    <li><a href="#map-">Map/映射 接口</a></li>
+    <li><a href="#iterable">Iterable/迭代变量</a></li>
+    <li><a href="#heading-2">规范</a></li>
+    <li><a href="#generics">泛型/Generics</a></li>
+    <li><a href="#heading-3">扩展阅读</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright" >
+  <span itemprop="copyrightYear">  &copy;
+  2017 - 2019</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">XuLizhao &#39;s Notes</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo</a>/<a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+</a>
+</div>
+<div class="theme-info">
+  津ICP备17010344号-1
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?4a86be733a69279ba577fadc652cb277";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://xulizhao.com/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://xulizhao.com/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/utils.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/motion.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/affix.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/post-details.js"></script>
+<script type="text/javascript" src="https://xulizhao.com/js/toc.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://xulizhao.com/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/data/</link>
+    <description>Recent content in data on XuLizhao &#39;s Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 24 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xulizhao.com/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>机器学习</title>
+      <link>https://xulizhao.com/blog/machine-learning/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/machine-learning/</guid>
+      <description>&lt;p&gt;学了也用不到系列。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Grafana指标展示仪表盘</title>
+      <link>https://xulizhao.com/blog/grafana/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/grafana/</guid>
+      <description>&lt;p&gt;Grafana本身已经足够成熟，也有了广泛的应用。&lt;/p&gt;
+&lt;p&gt;从&lt;a href=&#34;https://xulizhao.com/blog/monitoring/&#34;&gt;聊聊监控系统&lt;/a&gt;独立出Grafana。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>InfluxDB时序数据库</title>
+      <link>https://xulizhao.com/blog/influxdb/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/influxdb/</guid>
+      <description>&lt;p&gt;InfluxData提供的开源方案&lt;/p&gt;
+&lt;p&gt;开源的几个产品简称TICK. 相对于付费的企业版/云版少了集群和高可用等支持.&lt;/p&gt;
+&lt;p&gt;我主要使用的Telegraf和InfluxDB, 后两者感觉易用性太差.&lt;/p&gt;
+&lt;p&gt;展示这部分使用Grafana替代,它自带基本的告警.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Telegraf : 性能数据的收集,插件支持丰富&lt;/li&gt;
+&lt;li&gt;InfluxDB: 核心的时序数据库,负责存储&lt;/li&gt;
+&lt;li&gt;Chronograf : 前端图形化展示&lt;/li&gt;
+&lt;li&gt;Kapacitor: 流数据处理,异常检测并触发报警&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,39 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on XuLizhao &#39;s Notes</title>
-    <link>/categories/</link>
+    <link>https://xulizhao.com/categories/</link>
     <description>Recent content in Categories on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+    <lastBuildDate>Mon, 30 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Essay</title>
-      <link>/categories/essay/</link>
-      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/essay/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Play</title>
-      <link>/categories/play/</link>
-      <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/play/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Tech</title>
-      <link>/categories/tech/</link>
-      <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
+      <link>https://xulizhao.com/categories/tech/</link>
+      <pubDate>Mon, 30 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/tech/</guid>
+      <guid>https://xulizhao.com/categories/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>essay</title>
+      <link>https://xulizhao.com/categories/essay/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/categories/essay/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>play</title>
+      <link>https://xulizhao.com/categories/play/</link>
+      <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/categories/play/</guid>
       <description></description>
     </item>
     

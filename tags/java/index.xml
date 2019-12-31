@@ -1,53 +1,224 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on XuLizhao &#39;s Notes</title>
-    <link>/tags/java/</link>
-    <description>Recent content in Java on XuLizhao &#39;s Notes</description>
+    <title>java on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/java/</link>
+    <description>Recent content in java on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 27 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Spring实战</title>
+      <link>https://xulizhao.com/blog/spring-in-action/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/spring-in-action/</guid>
+      <description>&lt;p&gt;Spring5 学习记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Protocol Buffers协议笔记</title>
+      <link>https://xulizhao.com/blog/protobuf/</link>
+      <pubDate>Tue, 24 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/protobuf/</guid>
+      <description>&lt;p&gt;之前二进制序列化火热时Thrift和Protocol Buffers是最常用的协议，这次因为要写protobuf的Java程序，做些简单的记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>TestNG测试框架</title>
+      <link>https://xulizhao.com/blog/testng/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/testng/</guid>
+      <description>&lt;p&gt;Java测试必备之TestNG。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>开发者成长</title>
+      <link>https://xulizhao.com/blog/developer/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/developer/</guid>
+      <description>&lt;p&gt;写程序就要有追求，只要还在写，就永无止境。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>构建高性能系统</title>
+      <link>https://xulizhao.com/blog/oss-system/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/oss-system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法</title>
+      <link>https://xulizhao.com/blog/algorithm/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/algorithm/</guid>
+      <description>&lt;p&gt;程序=数据结构+算法，所以这里记录下算法的点点滴滴。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>编码和解码</title>
+      <link>https://xulizhao.com/blog/encoding/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/encoding/</guid>
+      <description>&lt;p&gt;只要和计算机打交道就涉及到编码和解码。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>JVM和GC调优</title>
-      <link>/blog/jvm/</link>
+      <link>https://xulizhao.com/blog/jvm/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/jvm/</guid>
-      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/jvm/</guid>
+      <description>&lt;p&gt;曾多次接触Java的GC参数调优和日志分析，零散的记录在各处，时间一长也忘的差不多了，汇总于此。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java I/O学习</title>
+      <link>https://xulizhao.com/blog/java-io/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-io/</guid>
+      <description>&lt;p&gt;Java系列记录文章.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java设计模式</title>
+      <link>https://xulizhao.com/blog/java-patterns/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-patterns/</guid>
+      <description>&lt;p&gt;Java的世界，你需要知道设计模式^_^&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java集合类</title>
+      <link>https://xulizhao.com/blog/java-collections/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-collections/</guid>
+      <description>&lt;p&gt;Java系列记录文章。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java应用的数据库迁移工具Flyway</title>
-      <link>/blog/java-db-migrate/</link>
+      <link>https://xulizhao.com/blog/flyway/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/java-db-migrate/</guid>
+      <guid>https://xulizhao.com/blog/flyway/</guid>
       <description>&lt;p&gt;最近折腾部署一年前的一个应用,发现一些由于一些细节已经忘记,常常可能多花费几个小时去重新解决问题的过程. 而有的过程之前写过KB,关键字一搜索就出来能省不少时间.&lt;/p&gt;
-
 &lt;p&gt;所以对于健忘的自己,还是多些记录,也不介意技术含量这个概念了.&lt;/p&gt;
-
-&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;印象中flyway应该是Java生态中很成熟的一个解决方案了,简略的记下使用过程.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Tomcat</title>
-      <link>/blog/tomcat/</link>
+      <link>https://xulizhao.com/blog/tomcat/</link>
       <pubDate>Fri, 05 Jan 2018 02:08:09 +0000</pubDate>
       
-      <guid>/blog/tomcat/</guid>
+      <guid>https://xulizhao.com/blog/tomcat/</guid>
       <description>&lt;p&gt;Tomcat是最常用的Java部署容器，在我最初接触Java时就是主流，特点就是稳定.&lt;/p&gt;
-
-&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java8学习</title>
+      <link>https://xulizhao.com/blog/java8/</link>
+      <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java8/</guid>
+      <description>&lt;p&gt;Java系列记录文章。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java核心库</title>
+      <link>https://xulizhao.com/blog/java-core/</link>
+      <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-core/</guid>
+      <description>&lt;p&gt;回归基础。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java日志</title>
+      <link>https://xulizhao.com/blog/java-logging/</link>
+      <pubDate>Sat, 29 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-logging/</guid>
+      <description>&lt;p&gt;Java日志的使用笔记。&lt;/p&gt;
+&lt;p&gt;现在流行的日志库通常包含Log Facade和Log Implementation两部分，可以理解为上层抽象和底层实现。&lt;/p&gt;
+&lt;p&gt;具体的组合用法为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SLF4J(Simple Logging Facade for Java) + Logback&lt;/li&gt;
+&lt;li&gt;Log4j2 (2.x版本) : log4j-api + log4j-core&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;背景介绍：SLF4J,Logback是log4j 1.x版本的重新实现，作者为同一人。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java命令行及工具集</title>
+      <link>https://xulizhao.com/blog/java-tools/</link>
+      <pubDate>Thu, 29 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-tools/</guid>
+      <description>&lt;p&gt;工欲善其事必先利其器。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java异常处理</title>
+      <link>https://xulizhao.com/blog/java-exception/</link>
+      <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-exception/</guid>
+      <description>&lt;p&gt;异常处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java测试</title>
+      <link>https://xulizhao.com/blog/java-test/</link>
+      <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java面向对象设计</title>
+      <link>https://xulizhao.com/blog/java-oo/</link>
+      <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-oo/</guid>
+      <description>&lt;p&gt;面向对象编程和设计原则。&lt;/p&gt;
+&lt;p&gt;代码质量评判标准:易维护、易读、易扩展，灵活、简洁、可复用、可测试。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java常用库</title>
+      <link>https://xulizhao.com/blog/java-lib/</link>
+      <pubDate>Tue, 21 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/java-lib/</guid>
+      <description>&lt;p&gt;常用的一些第三方库。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Maven构建工具</title>
+      <link>https://xulizhao.com/blog/maven/</link>
+      <pubDate>Sun, 29 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/maven/</guid>
+      <description>&lt;p&gt;Maven是Java开发中最常用的项目依赖管理工具。&lt;/p&gt;
+&lt;p&gt;虽然喜新厌旧的更喜欢Gradle，可在Java项目中还是会常常用到Maven，干脆做些记录。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,163 +1,197 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ops on XuLizhao &#39;s Notes</title>
-    <link>/tags/ops/</link>
-    <description>Recent content in Ops on XuLizhao &#39;s Notes</description>
+    <title>ops on XuLizhao &#39;s Notes</title>
+    <link>https://xulizhao.com/tags/ops/</link>
+    <description>Recent content in ops on XuLizhao &#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 13 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/ops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xulizhao.com/tags/ops/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>日志处理</title>
+      <link>https://xulizhao.com/blog/logging/</link>
+      <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/logging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>私有Docker仓库Harbor</title>
-      <link>/blog/harbor/</link>
+      <link>https://xulizhao.com/blog/harbor/</link>
       <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/harbor/</guid>
+      <guid>https://xulizhao.com/blog/harbor/</guid>
       <description>提到私有容器仓库,VMWare出品的开源Harbor算是首选. 安装和配置照官方文档来很简单,今天在尝试push镜像时遇到了如下错误: &amp;ldquo;Get https://yourdomain.com/v2/: Service Unavailable&amp;rdquo;,</description>
     </item>
     
     <item>
       <title>Ansible Checklist</title>
-      <link>/blog/ansible/</link>
+      <link>https://xulizhao.com/blog/ansible/</link>
       <pubDate>Tue, 19 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/ansible/</guid>
+      <guid>https://xulizhao.com/blog/ansible/</guid>
       <description>&lt;p&gt;最早接触Ansible是在15年,后来断断续续用过几次,因为更倾向于所写即所得的Fabric,后者也更轻量级.&lt;/p&gt;
-
-&lt;p&gt;每次拾起来都要查文档,记录下常见用法.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;每次拾起来都要查文档,记录下常见用法.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Docker Command</title>
-      <link>/blog/docker-command/</link>
+      <link>https://xulizhao.com/blog/docker-command/</link>
       <pubDate>Fri, 11 May 2018 10:15:55 +0000</pubDate>
       
-      <guid>/blog/docker-command/</guid>
-      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/docker-command/</guid>
+      <description>&lt;p&gt;实际使用中，docker的命令还是很多的，这里单列出来方便查询。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Kubernetes控制命令kubectl汇总</title>
-      <link>/blog/k8s-command/</link>
+      <link>https://xulizhao.com/blog/k8s-command/</link>
       <pubDate>Fri, 13 Apr 2018 06:43:37 +0000</pubDate>
       
-      <guid>/blog/k8s-command/</guid>
+      <guid>https://xulizhao.com/blog/k8s-command/</guid>
       <description>kubectl 作为Kubernetes集群管理的命令行工具,经常用到的几个子命令包括: kubectl get &amp;ndash; list resources kubectl describe &amp;ndash; show detailed information about a resource kubectl logs &amp;ndash; print the logs from a container in a pod kubectl exec &amp;ndash; execute a command on</description>
     </item>
     
     <item>
       <title>Kubernetes部署篇:Kubespray方式自动化</title>
-      <link>/blog/k8s-deploy/</link>
+      <link>https://xulizhao.com/blog/k8s-deploy/</link>
       <pubDate>Fri, 13 Apr 2018 01:27:57 +0000</pubDate>
       
-      <guid>/blog/k8s-deploy/</guid>
+      <guid>https://xulizhao.com/blog/k8s-deploy/</guid>
       <description>众所周知Kubernetes集群的部署比较繁琐复杂,这里列出常见的几种部署方式及过程. 官方现在提供2种主要的部署方式: Kubespray : 基于Ansible</description>
     </item>
     
     <item>
       <title>Kubernetes部署篇:本地开发测试环境搭建</title>
-      <link>/blog/k8s-local/</link>
+      <link>https://xulizhao.com/blog/k8s-local/</link>
       <pubDate>Fri, 13 Apr 2018 01:19:50 +0000</pubDate>
       
-      <guid>/blog/k8s-local/</guid>
+      <guid>https://xulizhao.com/blog/k8s-local/</guid>
       <description>&lt;p&gt;本文侧重于入门Kubernetes时的本地开发测试环境搭建,及minikube的使用.&lt;/p&gt;
-
-&lt;p&gt;尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;尤其在国内使用时需要开启网络代理,否则会因为访问Google的一些服务失败而造成各种运行失败的问题.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>/blog/mysql/</link>
+      <link>https://xulizhao.com/blog/mysql/</link>
       <pubDate>Thu, 11 Jan 2018 09:31:35 +0000</pubDate>
       
-      <guid>/blog/mysql/</guid>
-      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://xulizhao.com/blog/mysql/</guid>
+      <description>&lt;p&gt;最流行的开源关系型数据库,常用的MySQL版本为社区版或Percona版.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PostgreSQL</title>
-      <link>/blog/postgresql/</link>
+      <link>https://xulizhao.com/blog/postgresql/</link>
       <pubDate>Thu, 11 Jan 2018 09:30:37 +0000</pubDate>
       
-      <guid>/blog/postgresql/</guid>
+      <guid>https://xulizhao.com/blog/postgresql/</guid>
       <description>&lt;p&gt;PostgreSQL是2017年流行度上升最快的数据库.&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;吐槽:官方的管理工具pgAdmin真难用啊, 命令也没有MySQL易记.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
       <title>Tomcat</title>
-      <link>/blog/tomcat/</link>
+      <link>https://xulizhao.com/blog/tomcat/</link>
       <pubDate>Fri, 05 Jan 2018 02:08:09 +0000</pubDate>
       
-      <guid>/blog/tomcat/</guid>
+      <guid>https://xulizhao.com/blog/tomcat/</guid>
       <description>&lt;p&gt;Tomcat是最常用的Java部署容器，在我最初接触Java时就是主流，特点就是稳定.&lt;/p&gt;
-
-&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;与之类似还有个Jetty，用的不多就不涉及了.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>聊聊监控系统</title>
+      <link>https://xulizhao.com/blog/monitoring/</link>
+      <pubDate>Fri, 29 Dec 2017 02:47:29 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/monitoring/</guid>
+      <description>&lt;p&gt;2017很快就要过去了,也顺便整理下散落在印象笔记的一些片段.&lt;/p&gt;
+&lt;p&gt;监控系统本来是运维的一个重要组成,因为工作需要也接触了一些开源的监控系统, 下面简要的聊聊我所知道的.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Grafana指标展示仪表盘</title>
+      <link>https://xulizhao.com/blog/grafana/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/grafana/</guid>
+      <description>&lt;p&gt;Grafana本身已经足够成熟，也有了广泛的应用。&lt;/p&gt;
+&lt;p&gt;从&lt;a href=&#34;https://xulizhao.com/blog/monitoring/&#34;&gt;聊聊监控系统&lt;/a&gt;独立出Grafana。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>InfluxDB时序数据库</title>
+      <link>https://xulizhao.com/blog/influxdb/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/influxdb/</guid>
+      <description>&lt;p&gt;InfluxData提供的开源方案&lt;/p&gt;
+&lt;p&gt;开源的几个产品简称TICK. 相对于付费的企业版/云版少了集群和高可用等支持.&lt;/p&gt;
+&lt;p&gt;我主要使用的Telegraf和InfluxDB, 后两者感觉易用性太差.&lt;/p&gt;
+&lt;p&gt;展示这部分使用Grafana替代,它自带基本的告警.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Telegraf : 性能数据的收集,插件支持丰富&lt;/li&gt;
+&lt;li&gt;InfluxDB: 核心的时序数据库,负责存储&lt;/li&gt;
+&lt;li&gt;Chronograf : 前端图形化展示&lt;/li&gt;
+&lt;li&gt;Kapacitor: 流数据处理,异常检测并触发报警&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>/blog/kubernetes/</link>
+      <link>https://xulizhao.com/blog/kubernetes/</link>
       <pubDate>Mon, 18 Dec 2017 02:38:06 +0000</pubDate>
       
-      <guid>/blog/kubernetes/</guid>
+      <guid>https://xulizhao.com/blog/kubernetes/</guid>
       <description>&lt;p&gt;Kubernetes(缩写为k8s)是最流行的开源容器管理平台, 现在也是事实上的容器编排调度标准.&lt;/p&gt;
-
 &lt;p&gt;打算写系列的相关文章,记录自己的学习过程.&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-local&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes部署篇:本地开发测试环境搭建&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-deploy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes部署篇:Kubespray方式自动化&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/kubeadm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;用kubeadm手动搭建Kubernetes集群&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-command&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kubectl命令汇总&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://xulizhao.com/blog/k8s-namespace&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kubernetes命名空间的应用&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;Kubernetes部署篇:本地开发测试环境搭建&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;Kubernetes部署篇:Kubespray方式自动化&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;用kubeadm手动搭建Kubernetes集群&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;kubectl命令汇总&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;Kubernetes命名空间的应用&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>Docker基础</title>
-      <link>/blog/docker/</link>
+      <link>https://xulizhao.com/blog/docker/</link>
       <pubDate>Mon, 18 Dec 2017 02:37:23 +0000</pubDate>
       
-      <guid>/blog/docker/</guid>
+      <guid>https://xulizhao.com/blog/docker/</guid>
       <description>&lt;p&gt;最近两年随着微服务而流行起来的Docker是一种轻量级容器技术(相对于VMWare,KVM等Hypervisor解决方案).&lt;/p&gt;
-
 &lt;p&gt;它能给开发,测试,运维各团队提供一个统一的运行环境, 这点很实用.&lt;/p&gt;
-
 &lt;p&gt;Docker可以看做在内核容器技术(Cgroup和Namespace)的基础上提供更高级功能的控制工具,主要特性:&lt;/p&gt;
-
-&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;(1)跨主机部署(2)以应用为中心 (3)自动构建 (4)版本管理 (5)组建重用 (6)共享 (7)工具生态链&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>/blog/nginx/</link>
+      <link>https://xulizhao.com/blog/nginx/</link>
       <pubDate>Wed, 13 Dec 2017 10:45:49 +0000</pubDate>
       
-      <guid>/blog/nginx/</guid>
+      <guid>https://xulizhao.com/blog/nginx/</guid>
       <description>时常会用到Nginx,一直没有好好的梳理下,以后更新在这里. 基础使用 安装 照官方教程来就好,没啥好说的. # CentOS中 $releasever</description>
+    </item>
+    
+    <item>
+      <title>Jenkins持续集成工具</title>
+      <link>https://xulizhao.com/blog/jenkins/</link>
+      <pubDate>Thu, 30 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xulizhao.com/blog/jenkins/</guid>
+      <description>时不时会和持续集成工具Jenkins打交道. 安装 直接安装系统安装包 推荐安装方式,以Ubuntu为例: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - sudo vi /etc/apt/sources.list.d/jenkins.list # 添加 deb https://pkg.jenkins.io/debian-stable binary/ sudo</description>
     </item>
     
   </channel>
